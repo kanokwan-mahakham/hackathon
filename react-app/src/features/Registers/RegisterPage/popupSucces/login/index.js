@@ -1,15 +1,15 @@
+// RegSucces.js
 import React from 'react';
-import './reg-succes-user.css';
+import SuccessMessage from '../../../../Component/succesmessage';
+import "./login-succes.css"
 
-const  RegSucces = () => {
+const LoginSucces = () => {
     return (
-        <div className="container">
-            <h1>user completes a successful login.</h1>
-            
-            <button className="button">ENTER</button>
-                
-        </div>
+        <SuccessMessage
+            title="User completes a successful login."
+            buttonText="ENTER"
+        />
     );
 };
 
-export default RegSucces;
+export default LoginSucces;

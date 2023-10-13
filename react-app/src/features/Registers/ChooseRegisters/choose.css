@@ -33,7 +33,7 @@ body {
     align-items: center;
 }
 
-.box-content1 {
+.box-content {
     width: 100%;
     height: 100%;
     display: flex;
@@ -42,19 +42,9 @@ body {
     align-items: center;
     overflow: hidden;
     border-radius: 30px;
-    background: url('https://www.seamwork.com/media/articles/1712/699c4218.jpg') center/cover no-repeat; /* Adjusted the background properties */
+    background: url('#') center/cover no-repeat; /* Adjusted the background properties */
 }
-.box-content2 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    overflow: hidden;
-    border-radius: 30px;
-    background: url('https://www.jimthompson.com/_next/image?url=https%3A%2F%2Fmedia.jimthompson.com%2F9e828e6f-15b1-4dbd-8a60-367f81387798.jpg&w=3840&q=75') center/cover no-repeat; /* Adjusted the background properties */
-}
+
 
 .button {
     margin-top: 10px;
