@@ -1,0 +1,90 @@
+body {
+    background-color: #F9F8EE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 1110px;
+    height: 550px;
+    background-color: #FFFFFF;
+    border-radius: 54px;
+    padding: 30px;
+    padding-top: 50px;
+    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.40);
+}
+
+.box {
+    width: 420px;
+    height: 478.841px;
+    border-radius: 30px;
+    background-color: #EDEDED;
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box-content1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 30px;
+    background: url('https://www.seamwork.com/media/articles/1712/699c4218.jpg') center/cover no-repeat; /* Adjusted the background properties */
+}
+.box-content2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 30px;
+    background: url('https://www.jimthompson.com/_next/image?url=https%3A%2F%2Fmedia.jimthompson.com%2F9e828e6f-15b1-4dbd-8a60-367f81387798.jpg&w=3840&q=75') center/cover no-repeat; /* Adjusted the background properties */
+}
+
+.button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    width: 367px;
+    height: 115px;
+    border-radius: 25px;
+    background-color: #F9F8EE;
+    color: #000;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.previous {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f1f1f1;
+    color: black;
+    border-radius: 50%;
+    position: absolute; /* Position absolutely within the container */
+    top: 20px; /* Adjust top and left values as needed */
+    left: 40px;
+}
+
+.previous:hover {
+    background-color: #ddd;
+    color: black;
+}
