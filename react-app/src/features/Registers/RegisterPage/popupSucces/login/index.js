@@ -1,15 +1,25 @@
-// RegSucces.js
 import React from 'react';
 import SuccessMessage from '../../../../Component/succesmessage';
-import "./login-succes.css"
+import styled from 'styled-components';
 
-const LoginSucces = () => {
+const LoginSuccess = styled.div`
+    background-color: rgba(0, 0, 0, 0.7); /* RGBA color with 0.7 alpha (70% opacity) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+`;
+
+const LoginSuccessComponent = () => {
     return (
-        <SuccessMessage
-            title="User completes a successful login."
-            buttonText="ENTER"
-        />
+        <LoginSuccess>
+            <SuccessMessage
+                title="User completes a successful login."
+                buttonText="ENTER"
+            />
+        </LoginSuccess>
     );
 };
 
-export default LoginSucces;
+export default LoginSuccessComponent;

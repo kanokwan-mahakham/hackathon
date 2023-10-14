@@ -1,14 +1,12 @@
 
 body {
     background-color: #F9F8EE;
-    justify-content: center;
-    align-items: center;
     
 }
 
 .container {
     width: 1110px;
-    height: 720px;
+    height: 770px;
     background-color: #FFFFFF;
     border-radius: 54px;
     display: flex;
@@ -21,18 +19,21 @@ body {
     margin-left: 150px;
     box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.40);
 }
+
 h1 {
     font-size: 43px;
     font-weight: bold;
     margin: 10px;
     text-align: center;
 }
+
 p{
     margin: 10px;
-    padding-left: 100px;
+    padding-left: 70px;
     font-size: 11.55px;
     
 }
+
 .group-underline{
     display: flex;
     justify-content: center
@@ -49,24 +50,9 @@ p{
     background: #DBDBDB;
 }
 
-.input-container {
-    display: flex;
-    height: 34.65px;
-    padding: 5.775px 8.663px;
-    align-items: center;
-    gap: 100px;
-    border-radius: 8.663px;
-    border: 0.722px solid #DBDBDB;
-    margin-top: 10px;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: flex-end;
-    justify-content: space-between;
-    align-items: center;
-}
 
 
-.input-container select {
+.input-container2 select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -77,11 +63,11 @@ p{
     appearance: none; 
 }
 
-.input-container select:hover {
+.input-container2 select:hover {
     border-color: #666;
 }
 
-.input-container select:focus {
+.input-container2 select:focus {
     outline: none;
     border-color: #000000;
     box-shadow: 0 0 5px rgba(77, 77, 77, 0.5);
@@ -99,7 +85,7 @@ p{
 }
 
 /* Custom dropdown arrow */
-.input-container select::after {
+.input-container2 select::after {
     content: '\25BC'; /* Down arrow character */
     position: absolute;
     top: 50%;
@@ -110,25 +96,19 @@ p{
     pointer-events: none;
 }
 
-.input-container input {
-    color: #807D7D;
-    font-family: 'Open Sans';
-    font-size: 11.55px;
-    font-weight: 400;
-    line-height: 17.325px;
-    border: none;
-    outline: none;
-}
+
 
 .input-container2 {
     display: flex;
     height: 34.65px;
     padding: 5.775px 8.663px;
     align-items: center;
-    gap: 130.425px;
+    gap: 10.425px;
     border-radius: 8.663px;
     border: 0.722px solid #DBDBDB;
+    margin-top: 5px;
 }
+
 .input-container2 input {
     color: #807D7D;
     font-family: 'Open Sans';
@@ -138,11 +118,7 @@ p{
     border: none;
     outline: none;
 }
-.icon {
-    width: 14.438px;
-    height: 14.438px;
-    margin-left: 590px ;
-}
+
 .button {
     display: flex;
     width: 288.75px;
@@ -154,7 +130,7 @@ p{
     border-radius: 8.663px;
     cursor: pointer;
     margin-top: 20px;
-    margin-left:80px;
+    margin-left:40px;
 }
 .button-text {
     color: #FFF;
@@ -168,6 +144,7 @@ p{
     margin-top: 20px;
     
 }
+
 .previous{
     text-decoration: none;
     display: inline-block;
@@ -187,7 +164,7 @@ p{
     height: 512px;
     border-radius: 40px;
     margin-top: 100px;
-    background: url('https://i.pinimg.com/564x/e5/fe/63/e5fe63ce3f7f7345f6f57d9864ad717b.jpg') -228.551px -176.433px / 150.681% 182.082% no-repeat;
+    background: url('https://i.pinimg.com/564x/cb/e6/1c/cbe61cf8f0e9511547aad553571bae5c.jpg') -228.551px -176.433px / 150.681% 182.082% no-repeat;
     flex-shrink: 0;
 }
 .additional-text{
@@ -200,5 +177,3 @@ p{
     margin-right: 5px;
     color: #807D7D;
 }
-
-

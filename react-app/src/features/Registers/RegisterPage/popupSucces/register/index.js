@@ -1,15 +1,26 @@
 
 import React from 'react';
 import SuccessMessage from '../../../../Component/succesmessage';
-import './reg-succes.css'
+import styled from 'styled-components';
 
-const RegSucces = () => {
+const RegSucces = styled.div`
+    background-color: rgba(0, 0, 0, 0.7); /* RGBA color with 0.7 alpha (70% opacity) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+`;
+
+const RegSuccesComponent = () => {
     return (
-        <SuccessMessage
-            title="Please wait for the admin to check the information."
-            buttonText="ENTER"
-        />
+        <RegSucces>
+            <SuccessMessage
+                title="Please wait for the admin to check the information."
+                buttonText="ENTER"
+            />
+        </RegSucces>
     );
 };
 
-export default RegSucces;
+export default RegSuccesComponent;
