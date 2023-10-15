@@ -1,21 +1,55 @@
-// BoxComponent.js
 import React from 'react';
+import styled from 'styled-components';
 
-const BoxComponent = ({ backgroundImage, buttonText }) => {
-    const boxContentStyle = {
-        background: backgroundImage, // Apply the background image here
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-    };
-
+const BoxComponent = ({ backgroundImage, buttonText, className, boxWidth, boxHeight }) => {
     return (
-        <div className="box">
-            <div className="box-content" style={boxContentStyle}>
-                <button className="button">{buttonText}</button>
-            </div>
+        <div className={className}>
+            <Box style={{ width: boxWidth, height: boxHeight }}>
+                <BoxContent backgroundImage={backgroundImage} style={{ width: boxWidth, height: boxHeight }}>
+                    <button className="button" >
+                        {buttonText}
+                    </button>
+                </BoxContent>
+            </Box>
         </div>
     );
 };
 
-export default BoxComponent;
+const Box = styled.div`
+    width: 420px;
+    height: 478.841px;
+    border-radius: 30px;
+    background-color: #EDEDED;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const BoxContent = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 30px;
+    background: ${props => `url(${props.backgroundImage}) center / cover no-repeat`};
+`;
+
+export default styled(BoxComponent)`
+    .button {
+        margin-top: 20px; /* Adjusted the margin */
+        padding: 10px 20px;
+        border-radius: 25px;
+        background-color: #F9F8EE;
+        color: #000;
+        font-size: 16px; /* Adjusted the font size */
+        font-weight: bold;
+        text-align: center;
+        border: none;
+        margin-bottom: 30px;
+        cursor: pointer;
+    }
+`;
