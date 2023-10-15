@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
 
 const InputContainer = styled.div`
 display: flex;
@@ -34,11 +35,26 @@ const IconContainer = styled.div`
     margin-left: 130px;
 `;
 
-const InputRegField = ({ placeholder, type, icon }) => {
+const InputRegField = ({ placeholder, type,onChange, icon }) => {
+
+    const [newType,setNewType] = useState(type);
+    const [newIcon,setNewIcon] = useState(icon);
+
+    function changeType(){
+        if(newType==="password"){
+            setNewType("Text")
+            setNewIcon() //icon open eyes
+        }else{
+            setNewType("password")
+            setNewIcon() //icon close eyes
+        }
+        
+    }
+
     return (
         <InputContainer>
-            <Input type={type} placeholder={placeholder} />
-            {icon && <IconContainer>{icon}</IconContainer>}
+            <Input type={newType} placeholder={placeholder} onChange={onChange} />
+            {icon && <IconContainer onClick={changeType}>{newIcon}</IconContainer>}
         </InputContainer>
     );
 };

@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const Navbar = ({ className }) => {
+const Navbar = ({ user, setUser, className }) => {
   const noti = require("../../image Hackathon/icon/notification.png");
   const chat = require("../../image Hackathon/icon/send.png");
   const profile = require("../../image Hackathon/icon/contact.png");
   const logout = require("../../image Hackathon/icon/logout-black.png");
+
+  function logOut() {
+    setUser("");
+  }
 
   return (
     <div className={className}>
@@ -21,11 +26,24 @@ const Navbar = ({ className }) => {
         <div className="about-user">
           <img src={noti} className="round-image" />
           <img src={chat} className="round-image-chat" />
-          <img src={profile} className="round-image" />
-          <button className="logout">
-            <img src={logout} />
-            Log out
-          </button>
+
+          {typeof user === "object" ? (
+            <Link to="/">
+              <img src={profile} className="round-image" alt="Profile" />
+            </Link>
+          ) : (
+            <Link to="/login">
+              <img src={profile} className="round-image" alt="Profile" />
+            </Link>
+          )}
+
+          {typeof user === "object" ? (
+            <button className="logout" onClick={logOut}>
+              <img src={logout} alt="Logout"  />
+              Log out
+            </button>
+          ) : null}
+          
         </div>
       </div>
     </div>

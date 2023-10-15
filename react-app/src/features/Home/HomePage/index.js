@@ -1,15 +1,36 @@
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 import Navbar from "../../Component/Navbar";
 import BlogSlide from "../../Component/BlogSlide";
 import BoxData from "../../Component/BoxData";
 import Footer from "../../Component/Footer";
 
-const Home = ({ className }) => {
+const HomePage = ({ url, user, setUser,companies, className }) => {
   const image = require("../../../image Hackathon/image/background.jpeg");
+
+  const [frabic, setFrabic] = useState([])
+  const [factory, setFactory] = useState([])
+  const [designer, setDesigner] = useState([])
   
+ 
+  useEffect(() => {
+    async function getCompanies() {
+      const frabicCompanies = companies.filter(company => company.type == "frabic shop" && company.status == "company");
+      const factoryCompanies = companies.filter(company => company.type == "company" && company.status == "company");
+      const designerCompanies = companies.filter(company => company.type == "designer" && company.status == "company");
+      
+      setFrabic(frabicCompanies);
+      setFactory(factoryCompanies);
+      setDesigner(designerCompanies);
+    }
+    getCompanies();
+  }, []);
+
   return (
     <div className={className}>
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <div className="image">
         <img src={image}></img>
       </div>
@@ -28,12 +49,14 @@ const Home = ({ className }) => {
           </div>
           <div className="detail">
             <p>รับผลิตและจัดจำหน่ายสินค้าประเภทเสื้อผ้า</p>
-            <a>See All</a>
+            <Link to="/" >
+              See All
+            </Link>
           </div>
           <div className="show-slide">
-            <BoxData />
-            <BoxData />
-            <BoxData />
+            {factory.slice(0, 3).map((company) => {
+                return <BoxData key={company.id} user={user} url={url} item={company} />;
+            })}
           </div>
         </div>
 
@@ -44,12 +67,14 @@ const Home = ({ className }) => {
           </div>
           <div className="detail">
             <p>ร้านค้าขายปลีก-ส่ง ผ้าม้วนนำเข้าราคาถูก</p>
-            <a>See All</a>
+            <Link to="/" >
+              See All
+            </Link>
           </div>
           <div className="show-slide">
-            <BoxData />
-            <BoxData />
-            <BoxData />
+            {frabic.slice(0, 3).map((company) => {
+               return <BoxData key={company.id} user={user} url={url} item={company} />;
+            })}
           </div>
         </div>
 
@@ -60,23 +85,23 @@ const Home = ({ className }) => {
           </div>
           <div className="detail">
             <p>หามืออาชีพออกแบบเสื้อผ้าแฟชั่นงานคุณภาพ</p>
-            <a>See All</a>
+            <Link to="/" >
+              See All
+            </Link>
           </div>
           <div className="show-slide">
-            <BoxData />
-            <BoxData />
-            <BoxData />
+            {designer.slice(0, 3).map((company) => {
+                return <BoxData key={company.id} user={user} url={url} item={company} />;
+            })}
           </div>
         </div>
       </div>
-      <Footer/>
-      
+      <Footer />
     </div>
   );
 };
 
-
-export default styled(Home)`
+export default styled(HomePage)`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .navbar {
     position: absolute;
@@ -153,6 +178,4 @@ export default styled(Home)`
     display: flex;
     justify-content: center;
   }
-
-  
 `;

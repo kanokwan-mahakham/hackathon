@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
-const BoxComponent = ({ backgroundImage, buttonText, className }) => {
+const BoxComponent = ({ backgroundImage, buttonText,path, className }) => {
     return (
         <div className={className}>
             <Box>
                 <BoxContent backgroundImage={backgroundImage}>
-                    <button className="button">{buttonText}</button>
+                    <button className="button"><Link to={path}>{buttonText}</Link></button>
+                    
                 </BoxContent>
             </Box>
         </div>

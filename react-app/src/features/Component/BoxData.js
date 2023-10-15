@@ -1,24 +1,77 @@
 import styled from "styled-components";
-const BoxData = ({ className }) => {
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
+const BoxData = ({ user, url, item, className }) => {
   const save = require("../../image Hackathon/icon/save-instagram.png");
   const image = require("../../image Hackathon/image/background.jpeg");
 
+  const [data, setData] = useState("");
+  const [icon, setIcon] = useState(save);
+  const [favId ,setFavId] = useState("")
+
+  async function fav (){
+    if(typeof favId == "string"){
+      const response = await axios.post(`${url}/customerFavs`,{customerId:user.id,companyId:item.id});
+      setIcon(image) //add saved icon here
+      setFavId(response.data.id)
+    }else{
+      const response = await axios.delete(`${url}/customerFavs/${favId}`);
+      setIcon(save) 
+      setFavId("")
+    }
+  }
+
+  useEffect(() => {
+    async function getDetail() {
+      try {
+        const response = await axios.get(
+          `${url}/informations/${item.informationId}`
+        );
+        setData(response.data);
+
+        if (typeof user == "object") {
+          const responseFav = await axios.get(
+            `${url}/customerFavs/${user.id}/${item.id}`
+          );
+          if (responseFav.data.user) {
+            setIcon(image) //add saved icon here
+            setFavId(responseFav.data.user.id)
+            console.log("User found:", responseFav.data.user);
+          }
+        }
+        
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getDetail();
+  }, [item]);
+
   return (
-    <div className={className}>
-      <div className="box">
-        <img src={image} id="box-image"></img>
-        <div className="box-detail">
-          <p id="name">Thumbinthai</p>
-          <p id="detail">
-            รับผลิตและจัดจำหน่ายสินค้าประเภทเสื้อผ้าและถุงผ้าจากประเทศไทย
-          </p>
-          <div className="button">
-            <button className="conpare-button">เปรียบเทียบ +</button>
-            <img src={save} id="save-button" />
+    <>
+      {Object.keys(data).length > 0 ? (
+        <div className={className}>
+          <div className="box">
+            <img src={image} id="box-image" alt="Box Image" />
+            <div className="box-detail">
+              <p id="name">{data.name}</p>
+              <p id="detail">{data.description}</p>
+  
+              <div className="button">
+                <button className="conpare-button">เปรียบเทียบ +</button>
+                {user.status === "customer" ? (
+                  <img src={icon} id="save-button" alt="Save" onClick={fav}/>
+                ) : null}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <div>Loading...</div>
+      )}
+    </>
   );
 };
 
