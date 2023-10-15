@@ -34,7 +34,7 @@ const IconContainer = styled.div`
     margin-left: 130px;
 `;
 
-const InputRegField = ({ placeholder, type, icon }) => {
+const InputField = ({ placeholder, type, icon }) => {
     return (
         <InputContainer>
             <Input type={type} placeholder={placeholder} />
@@ -43,4 +43,4 @@ const InputRegField = ({ placeholder, type, icon }) => {
     );
 };
 
-export default InputRegField;
+export default InputField;

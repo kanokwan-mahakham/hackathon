@@ -4,7 +4,7 @@ import SuccessMessage from '../../../../Component/succesmessage';
 import styled from 'styled-components';
 
 const RegSucces = styled.div`
-    background-color: rgba(0, 0, 0, 0.7); /* RGBA color with 0.7 alpha (70% opacity) */
+    background-color: rgba(0, 0, 0, 0.2); /* RGBA color with 0.7 alpha (70% opacity) */
     display: flex;
     justify-content: center;
     align-items: center;

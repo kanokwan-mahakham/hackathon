@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const BoxComponent = ({ backgroundImage, buttonText, className }) => {
+const BoxComponent = ({ backgroundImage, buttonText, className, boxWidth, boxHeight }) => {
     return (
         <div className={className}>
-            <Box>
-                <BoxContent backgroundImage={backgroundImage}>
-                    <button className="button">{buttonText}</button>
+            <Box style={{ width: boxWidth, height: boxHeight }}>
+                <BoxContent backgroundImage={backgroundImage} style={{ width: boxWidth, height: boxHeight }}>
+                    <button className="button" >
+                        {buttonText}
+                    </button>
                 </BoxContent>
             </Box>
         </div>
@@ -40,8 +42,6 @@ export default styled(BoxComponent)`
     .button {
         margin-top: 20px; /* Adjusted the margin */
         padding: 10px 20px;
-        width: 200px; /* Adjusted the width */
-        height: 50px; /* Adjusted the height */
         border-radius: 25px;
         background-color: #F9F8EE;
         color: #000;
@@ -49,8 +49,7 @@ export default styled(BoxComponent)`
         font-weight: bold;
         text-align: center;
         border: none;
-        margin-bottom:30px;
+        margin-bottom: 30px;
         cursor: pointer;
     }
 `;
-
