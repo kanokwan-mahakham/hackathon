@@ -366,19 +366,15 @@ const RegisterCompany = ({setUser,url}) => {
                         <div className="text1">already have accoaccount ?</div> 
                         <Link to="/login" className="text2">Sign in</Link>
                     </div>
-                    
+                    </StyleAddtext>
         
                 <div className="right-image">
                     <div className="right-img"></div>
                 </div>
             
-                        <Styledtext1>
-                        <div className="text1">already have accoaccount ?</div> 
-                        </Styledtext1>
-                        
-                        <div href="#" class="text2">Sign in</div>
+                       
                     
-                    </StyleAddtext>
+                   
             </div>
             <StyleRightimg>
                 <div className="right-image">

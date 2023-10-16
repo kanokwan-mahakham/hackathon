@@ -72,76 +72,9 @@ const Styleprevious = styled.div`
     color: black;
 }
 `
-const Styledinput= styled.div` 
-
-.input-container2 {
-    display: flex;
-    height: 34.65px;
-    padding: 5.775px 8.663px;
-    align-items: center;
-    gap: 10.425px;
-    border-radius: 8.663px;
-    border: 0.722px solid #DBDBDB;
-    margin-top: 5px;
-}
-
-.input-container2 input {
-    color: #807D7D;
-    font-family: 'Open Sans';
-    font-size: 11.55px;
-    font-weight: 400;
-    line-height: 17.325px;
-    border: none;
-    outline: none;
-}
 
 
-`
-const StyledSelect = styled.div`
-.select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    font-size: 14px;
-    background-color: #fff;
-    color: #333;
-    appearance: none; 
-}
 
-.select:hover {
-    border-color: #666;
-}
-
-.select:focus {
-    outline: none;
-    border-color: #000000;
-    box-shadow: 0 0 5px rgba(77, 77, 77, 0.5);
-}
-
-.select::after {
-    content: '\25BC'; /* Down arrow character */
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-size: 12px;
-    color: #777;
-    pointer-events: none;
-}
-`
-
-const Styledtextinput =styled.div`
-.textinput{
-    color: #807D7D;
-    font-family: 'Open Sans';
-    font-size: 11.55px;
-    font-weight: 400;
-    line-height: 11.325px;
-    border: none;
-    outline: none;
-}
-`
 const StyleRightimg = styled.div`.right-image {
     width: 465.663px;
     height: 512px;
