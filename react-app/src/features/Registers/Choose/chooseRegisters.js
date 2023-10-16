@@ -2,15 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
+
 import BoxComponent from '../../Component/box';
 
 const ChoosePage = ({ className }) => {
     return (
         <div className={className}>
             <div className="container">
+
             <Link to="/" className="previous">
             &#8249;
             </Link>
+
+            <div href="#" className="previous">
+            &#8249;
+            </div>
+
                 <BoxComponent
                     backgroundImage="https://www.seamwork.com/media/articles/1712/699c4218.jpg"
                     buttonText="สร้างแบรนด์"
@@ -21,6 +28,7 @@ const ChoosePage = ({ className }) => {
                     buttonText="ผู้ประกอบการ"
                     path="/register-company"
                 />
+
             </div>
         </div>
     );

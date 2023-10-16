@@ -212,8 +212,9 @@ export default styled(LoginComponent)`
     background-color: #f1f1f1;
     color: black;
     border-radius: 50%;
-    margin-left: 70px;
-  }
+    margin-left:0px;
+}
+
 
   .previous:hover {
     background-color: #ddd;

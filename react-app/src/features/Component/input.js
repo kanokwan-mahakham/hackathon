@@ -35,6 +35,7 @@ const IconContainer = styled.div`
     margin-left: 130px;
 `;
 
+
 const InputRegField = ({ placeholder, type,onChange, icon }) => {
 
     const [newType,setNewType] = useState(type);
@@ -59,4 +60,4 @@ const InputRegField = ({ placeholder, type,onChange, icon }) => {
     );
 };
 
-export default InputRegField;
+export default Input;

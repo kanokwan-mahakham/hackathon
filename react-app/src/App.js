@@ -5,10 +5,12 @@ import HomePage from './features/Home/HomePage'
 import LoginComponent from './features/Login/LoginUser'
 import RegisterUser from './features/Registers/RegisterPage/Register-user'
 import RegisterCompany from './features/Registers/RegisterPage/Register-company';
-import ChoosePage from './features/Registers/ChooseRegisters'
+import ChoosePage from './features/Registers/Choose/chooseRegisters'
+
 
 
 import { Routes, Route } from "react-router-dom";
+
 
 function App() {
 
@@ -29,6 +31,7 @@ function App() {
 
   return (
     <>
+
     {companies.length > 0 ? (
         <Routes>
           <Route path="/" element={<HomePage url={url} user={user} setUser={setUser} companies={companies} />} />

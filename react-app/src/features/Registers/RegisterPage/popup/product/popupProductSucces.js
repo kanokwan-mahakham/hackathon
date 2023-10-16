@@ -1,9 +1,10 @@
+
 import React from 'react';
 import SuccessMessage from '../../../../Component/succesmessage';
 import styled from 'styled-components';
 
-const LoginSuccess = styled.div`
-    background-color: rgba(0, 0, 0, 0.7); /* RGBA color with 0.7 alpha (70% opacity) */
+const StyleMessage = styled.div`
+    background-color: rgba(0, 0, 0, 0.2); /* RGBA color with 0.7 alpha (70% opacity) */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,15 +12,15 @@ const LoginSuccess = styled.div`
     margin: 0;
 `;
 
-const LoginSuccessComponent = () => {
+const PopupProductSucces = () => {
     return (
-        <LoginSuccess>
+        <StyleMessage>
             <SuccessMessage
-                title="User completes a successful login."
+                title="Please wait for the wait for update the product"
                 buttonText="ENTER"
             />
-        </LoginSuccess>
+        </StyleMessage>
     );
 };
 
-export default LoginSuccessComponent;
+export default PopupProductSucces;
