@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EditHome from './features/Home/EditHome';
@@ -6,11 +7,7 @@ import LoginComponent from './features/Login/LoginUser'
 import RegisterUser from './features/Registers/RegisterPage/Register-user'
 import RegisterCompany from './features/Registers/RegisterPage/Register-company';
 import ChoosePage from './features/Registers/Choose/chooseRegisters'
-
-
-
 import { Routes, Route } from "react-router-dom";
-
 
 function App() {
 
@@ -30,6 +27,7 @@ function App() {
   
 
   return (
+
     <>
 
     {companies.length > 0 ? (
@@ -47,6 +45,7 @@ function App() {
       
 
     </>
+
   );
 }
 
