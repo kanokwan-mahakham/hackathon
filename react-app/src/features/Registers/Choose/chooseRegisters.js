@@ -14,9 +14,7 @@ const ChoosePage = ({ className }) => {
             &#8249;
             </Link>
 
-            <div href="#" className="previous">
-            &#8249;
-            </div>
+            
 
                 <BoxComponent
                     backgroundImage="https://www.seamwork.com/media/articles/1712/699c4218.jpg"

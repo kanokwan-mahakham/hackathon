@@ -288,7 +288,7 @@ const RegisterCompany = ({setUser,url}) => {
         <div className="container">
             <div className="left-content">
                 <Styleprevious>
-                <Link to="/choose-login-page" className="previous">&#8249;</Link>
+                    <Link to="/choose-login-page" className="previous">&#8249;</Link>
                 </Styleprevious>
                     <Styledh1><h1>Create account</h1></Styledh1>
 
@@ -329,9 +329,9 @@ const RegisterCompany = ({setUser,url}) => {
                 <Styledtextinput><div className='textinput'>ประเภทธุรกิจ</div></Styledtextinput>
                 <StyledSelect>
                     <select onChange={(event) => {setType(event.target.value);}}>
-                        <option value="option1" >frabic shop</option>
-                        <option value="option2">company</option>
-                        <option value="option3">designer</option>
+                        <option value="ofrabic shop" >frabic shop</option>
+                        <option value="company">company</option>
+                        <option value="designer">designer</option>
 
                     </select>
                 </StyledSelect>

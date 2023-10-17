@@ -6,7 +6,7 @@ const sequelize = new Sequelize(
     'patty0984686684', // Password
     {
       host: 'localhost', // Connect to your local database
-      dialect: 'postgres' // Tell sequelize to use Postgres
+      dialect: 'postgres'
     }
   );
 
