@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const BoxData = ({ user, url, item, className }) => {
   const save = require("../../image Hackathon/icon/save-instagram.png");
+  const saveGreen = require("../../image Hackathon/icon/bookmark.png")  //ปุ่มที่ถูก save แล้ว
   const image = require("../../image Hackathon/image/background.jpeg");
 
   const [data, setData] = useState("");
@@ -14,7 +15,7 @@ const BoxData = ({ user, url, item, className }) => {
   async function fav (){
     if(typeof favId == "string"){
       const response = await axios.post(`${url}/customerFavs`,{customerId:user.id,companyId:item.id});
-      setIcon(image) //add saved icon here
+      setIcon(saveGreen) //add saved icon here
       setFavId(response.data.id)
     }else{
       const response = await axios.delete(`${url}/customerFavs/${favId}`);

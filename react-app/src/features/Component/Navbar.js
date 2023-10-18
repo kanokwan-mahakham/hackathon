@@ -29,11 +29,11 @@ const Navbar = ({ user, setUser, className }) => {
 
           {typeof user === "object" ? (
             <Link to="/">
-              <img src={profile} className="round-image" alt="Profile" />
+              <img src={profile} className="round-image" id="profile" alt="Profile" />
             </Link>
           ) : (
             <Link to="/login">
-              <img src={profile} className="round-image" alt="Profile" />
+              <img src={profile} className="round-image" id="profile" alt="Profile" />
             </Link>
           )}
 
@@ -147,6 +147,9 @@ export default styled(Navbar)`
   .round-image-chat img {
     max-width: 100%;
     max-height: 100%;
+  }
+  .about-user  a{
+    margin: 40px 0px;
   }
   .logout {
     height: 45px;

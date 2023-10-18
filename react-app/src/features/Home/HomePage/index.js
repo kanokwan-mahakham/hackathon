@@ -49,7 +49,7 @@ const HomePage = ({ url, user, setUser,companies, className }) => {
           </div>
           <div className="detail">
             <p>รับผลิตและจัดจำหน่ายสินค้าประเภทเสื้อผ้า</p>
-            <Link to="/" >
+            <Link to="/" id="seeAll">
               See All
             </Link>
           </div>
@@ -67,7 +67,7 @@ const HomePage = ({ url, user, setUser,companies, className }) => {
           </div>
           <div className="detail">
             <p>ร้านค้าขายปลีก-ส่ง ผ้าม้วนนำเข้าราคาถูก</p>
-            <Link to="/" >
+            <Link to="/" id="seeAll">
               See All
             </Link>
           </div>
@@ -85,7 +85,7 @@ const HomePage = ({ url, user, setUser,companies, className }) => {
           </div>
           <div className="detail">
             <p>หามืออาชีพออกแบบเสื้อผ้าแฟชั่นงานคุณภาพ</p>
-            <Link to="/" >
+            <Link to="/" id="seeAll">
               See All
             </Link>
           </div>
@@ -171,6 +171,13 @@ export default styled(HomePage)`
     font-size: 25px;
     font-weight: 500;
     margin: 0px;
+  }
+  .detail #seeAll{
+    font-family: "lora";
+    font-size: 25px;
+    font-weight: 500;
+    color: #4F7108;
+    text-decoration: none;
   }
 
   /*Showslide */

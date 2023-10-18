@@ -25,9 +25,7 @@ Run the node by using `npm run dev`
 ## change css
 
 ### Jane
-1. Navbar.js //profile icon
-2. HomePage.js //blog size , See all
-3. BoxData.js // add icon saved
+
 
 ### Ae
 1. box.js // button

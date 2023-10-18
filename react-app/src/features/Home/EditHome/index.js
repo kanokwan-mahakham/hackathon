@@ -32,11 +32,9 @@ const EditHome = ({ className }) => {
           </div>
           <div className="detail">
             <p>รับผลิตและจัดจำหน่ายสินค้าประเภทเสื้อผ้า</p>
-            <a>See All</a>
+            <a id="seeAll">See All</a>
           </div>
           <div className="show-slide">
-            <BoxData />
-            <BoxData />
             <BoxData />
           </div>
         </div>
@@ -48,11 +46,9 @@ const EditHome = ({ className }) => {
           </div>
           <div className="detail">
             <p>ร้านค้าขายปลีก-ส่ง ผ้าม้วนนำเข้าราคาถูก</p>
-            <a>See All</a>
+            <a id="seeAll">See All</a>
           </div>
           <div className="show-slide">
-            <BoxData />
-            <BoxData />
             <BoxData />
           </div>
         </div>
@@ -64,11 +60,9 @@ const EditHome = ({ className }) => {
           </div>
           <div className="detail">
             <p>หามืออาชีพออกแบบเสื้อผ้าแฟชั่นงานคุณภาพ</p>
-            <a>See All</a>
+            <a id="seeAll">See All</a>
           </div>
           <div className="show-slide">
-            <BoxData />
-            <BoxData />
             <BoxData />
           </div>
         </div>
@@ -159,6 +153,13 @@ export default styled(EditHome)`
     font-size: 25px;
     font-weight: 500;
     margin: 0px;
+  }
+  .detail #seeAll{
+    font-family: "lora";
+    font-size: 25px;
+    font-weight: 500;
+    color: #4F7108;
+    text-decoration: none;
   }
 
   /*Showslide */

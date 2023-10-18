@@ -32,8 +32,8 @@ export default styled(EditBlogSlide)`
     position: relative;
   }
   .image-blog img {
-    width: 600px;
-    height: 380px;
+    width: 500px;
+    height: 350px;
     margin: 60px 40px 60px 0px;
     border-radius: 20px;
     opacity: 0.4;
