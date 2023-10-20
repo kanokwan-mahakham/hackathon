@@ -1,7 +1,10 @@
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
-const CardNewData = ({ user,url, className }) => {
+const CardNewData = ({ user, url, information, setInformation, className }) => {
   const image = require("../../../image Hackathon/image/background.jpeg");
   const location = require("../../../image Hackathon/icon/pin.png");
   const call = require("../../../image Hackathon/icon/call.png");
@@ -11,22 +14,139 @@ const CardNewData = ({ user,url, className }) => {
   const website = require("../../../image Hackathon/icon/world-wide-web.png");
   const linkIn = require("../../../image Hackathon/icon/linkedin-big-logo.png");
 
+  const [name, setName] = useState(information.name);
+  const [address, setAddress] = useState(information.address);
+  const [tel, setTel] = useState(information.tel);
+  const [facebooks, setFacebooks] = useState(information.facebook);
+  const [email, setEmail] = useState(information.email);
+  const [linkWeb, setLinkWeb] = useState(information.website);
+  const [ins, setIns] = useState(information.instagram);
+  const [description, setDescription] = useState(information.description);
+  const [profile, setProfile] = useState(information.profile);
+  const navigate = useNavigate();
+
+  function handleFileChange(event) { 
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imagePath = e.target.result;
+        console.log("Image path: ", imagePath);
+        setProfile(imagePath)// เก็บ URL ของภาพใน state
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  async function submit() {
+    const update = {
+      name: name,
+      description: description,
+      address: address,
+      tel: tel,
+      facebook: facebooks,
+      email: email,
+      instagram: ins,
+      website: linkWeb,
+      profile:profile
+    };
+    try {
+      const {
+        id,
+        name,
+        description,
+        address,
+        tel,
+        facebook,
+        email,
+        instagram,
+        website,
+        profile,
+        ...item
+      } = information;
+      const up = await axios.put(`${url}/informations/${user.id}`, {
+        ...update,
+        ...item,
+      });
+      console.log(up);
+      setInformation(up.data);
+      console.log("update information");
+      console.log(information);
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        if(user.status == "user"){
+          navigate("/profile-user");
+        }else{
+          navigate("/profile-company");
+        }
+       
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className={className}>
       <div className="profile">
         <div className="box-profile">
           <div className="profile-image">
-            <img src={image} />
+            {/* <img src={image} /> */}
+
+            <input
+              type="file"
+              id="product-image"
+              name="product-image"
+              accept="image/*"
+              className="file-input"
+              style={{ display: 'none'}}
+              onChange={handleFileChange}
+            />
+
+            <label htmlFor="product-image" className="file-label">
+              <div className="file-box">
+                <span className="plus-icon">+</span>
+                
+                
+              </div>
+            </label>
+
             <p id="detail">
-              <input placeholder="Description"></input>
+              <input
+                placeholder="Description"
+                value={description}
+                onChange={(event) => {
+                  setDescription(event.target.value);
+                }}
+              ></input>
             </p>
           </div>
           <div className="line"></div>
           <div className="profile-detail">
-            <h1 id="name"><input placeholder="Name"></input></h1>
+            <h1 id="name">
+              <input
+                placeholder="Name"
+                value={name}
+                onChange={(event) => {
+                  setName(event.target.value);
+                }}
+              ></input>
+            </h1>
             <div className="detail" id="location">
               <img src={location} />
-              <input placeholder="Address"></input>
+              <input
+                placeholder="Address"
+                value={address}
+                onChange={(event) => {
+                  setAddress(event.target.value);
+                }}
+              ></input>
             </div>
             <div className="contact">
               <h2>Contact</h2>
@@ -34,42 +154,75 @@ const CardNewData = ({ user,url, className }) => {
                 <div id="left">
                   <div className="detail" id="เบอร์สำนักงาน">
                     <img src={call} />
-                    <input placeholder="Tel"></input>
+                    <input
+                      placeholder="Tel"
+                      value={tel}
+                      onChange={(event) => {
+                        setTel(event.target.value);
+                      }}
+                    ></input>
                   </div>
-                  <div className="detail" id="เบอร์ตัวเอง">
+                  {/* <div className="detail" id="เบอร์ตัวเอง">
                     <img src={telephone} />
                     <input placeholder="Tel"></input>
-                  </div>
+                  </div> */}
                   <div className="detail" id="facebook">
                     <img src={facebook} />
-                    <input placeholder="Facebook"></input>
+                    <input
+                      placeholder="Facebook"
+                      value={facebooks}
+                      onChange={(event) => {
+                        setFacebooks(event.target.value);
+                      }}
+                    ></input>
                   </div>
                   <div className="detail" id="mail">
                     <img src={mail} />
-                    <input placeholder="Email"></input>
+                    <input
+                      placeholder="Email"
+                      value={email}
+                      onChange={(event) => {
+                        setEmail(event.target.value);
+                      }}
+                    ></input>
                   </div>
                 </div>
                 <div className="rigth">
                   <div className="detail" id="linkIn">
                     <img src={linkIn} />
-                    <input placeholder="Instagram"></input>
+                    <input
+                      placeholder="Instagram"
+                      value={ins}
+                      onChange={(event) => {
+                        setIns(event.target.value);
+                      }}
+                    ></input>
                   </div>
                   <div className="detail" id="website">
                     <img src={website} />
-                    <input placeholder="Website"></input>
+                    <input
+                      placeholder="Website"
+                      value={linkWeb}
+                      onChange={(event) => {
+                        setLinkWeb(event.target.value);
+                      }}
+                    ></input>
                   </div>
                 </div>
               </div>
             </div>
             <div className="button-chat">
               {user.status == "company" ? (
-                <Link to="/profile-company"> <button>SEE PAGE</button></Link>
-              ):(
-                <Link to="/profile-user"> <button>SEE PAGE</button></Link>
+                <Link to="/profile-company">
+                  {" "}
+                  <button onClick={submit}>Save</button>
+                </Link>
+              ) : (
+                <Link to="/profile-user">
+                  {" "}
+                  <button onClick={submit}>Save</button>
+                </Link>
               )}
-              
-             
-            
             </div>
           </div>
         </div>
@@ -151,7 +304,7 @@ export default styled(CardNewData)`
     color: white;
   }
   .profile-detail #location {
-    isplay: flex;
+    display: flex;
     width: 100%;
     justify-content: center;
   }
@@ -197,4 +350,41 @@ export default styled(CardNewData)`
     font-weight: 600;
     background-color: white;
   }
+
+  /* //////////////////////////////// */
+  .file-label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.file-box {
+  width: 280px;
+  height: 310px;
+  background-color: #f4f4f4;
+  border: 2px dashed #aaa;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  overflow: hidden; /* เพิ่มบรรทัดนี้เพื่อซ่อนส่วนที่เกินขอบของ input file */
+}
+
+.plus-icon {
+  font-size: 40px;
+  color: #aaa;
+  z-index: 1;
+}
+
+.plus-icon:hover {
+  color: #555;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative; /* เพิ่มบรรทัดนี้เพื่อให้สามารถกำหนด z-index */
+  z-index: 0; /* กำหนดค่า z-index เพื่อให้รูปภาพอยู่ด้านหลังของ plus icon */
+}
 `;

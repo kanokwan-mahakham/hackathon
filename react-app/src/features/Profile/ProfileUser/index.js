@@ -8,9 +8,10 @@ import axios from "axios";
 import CardNewData from "../../Component/CardProfile/CardNewData";
 import CardEdit from "../../Component/CardProfile/CardEdit";
 
-const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, className }) => {
+const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information, className }) => {
+
   const [factory, setFactory] = useState([]);
-  const [information,setInformation] = useState([]);
+  
 
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, className }
           })
         );
         // หลังจากที่ดึงข้อมูลเสร็จสิ้นให้เรียก setFactory
-        const res = await axios.get(`${url}/informations/${user.informationId}`)
+        
         setFactory(companiesData);
         console.log(`userPage : ${factory}`);
       } catch (error) {
@@ -38,13 +39,13 @@ const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, className }
     }
   
     getCompanies();
-  }, []);
+  }, [user]);
   
 
   return (
     <div className={className}>
       <Navbar user={user} setUser={setUser} />
-      <CardEdit user={user} />
+      <CardEdit user={user} information={information} />
       <div className="approved">
         <h1>Approved</h1>
         <div className="line"></div>

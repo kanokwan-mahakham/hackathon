@@ -19,26 +19,43 @@ function App() {
   const [user, setUser] = useState("");
   const [companies, setCompanies] = useState([]);
   const [favs, setFavs] = useState([]);
+  const [imageHome, setImageHome] = useState([]);
+  const [information,setInformation] = useState([]);
 
   useEffect(() => {
     async function getCompanies() {
       const resCompany = await axios.get(`${url}/users`);
+      const resImageHome = await axios.get(`${url}/informations/4`);
       const resCustomerFavs = await axios.get(`${url}/customerFavs`);
       setCompanies(resCompany.data);
       setFavs(resCustomerFavs.data);
+      setImageHome(resImageHome.data)
       console.log("seccess");
     }
     getCompanies();
   }, []);
 
+  useEffect(() => {
+    async function getInformation() {
+      if(typeof user == "object"){
+      const res = await axios.get(`${url}/informations/${user.informationId}`)
+      setInformation(res.data)
+      }
+    }
+    getInformation();
+  }, [user]);
+
+  
+
   return (
     <>
-      {companies.length >= 0 ? (
+      {companies.length > 0 ? (
         <Routes>
           <Route
             path="/"
             element={
               <HomePage
+                imageHome={imageHome}
                 url={url}
                 user={user}
                 setUser={setUser}
@@ -64,19 +81,19 @@ function App() {
           <Route
             path="/profile-user"
             element={
-              <ProfileUser user={user} setUser={setUser} url={url} companies={companies} favs={favs} setFavs={setFavs} />
+              <ProfileUser user={user} setUser={setUser} url={url} companies={companies} favs={favs} setFavs={setFavs} information={information} />
             }
           />
           <Route
             path="/profile-user-edit"
             element={
-              <EditProfileUser user={user} setUser={setUser} url={url} companies={companies} favs={favs} setFavs={setFavs} />
+              <EditProfileUser user={user} setUser={setUser} url={url} companies={companies} favs={favs} setFavs={setFavs} information={information} setInformation={setInformation} />
             }
           />
 
           <Route path="/profile-addmin" element={<ProfileAddmin user={user} setUser={setUser} />} />
-          <Route path="/profile-company" element={<ProfileCompany user={user} setUser={setUser} />} />
-          <Route path="/edit-profile-company" element={<ProfileEntrepreneurEdit user={user} setUser={setUser} />}/>
+          <Route path="/profile-company" element={<ProfileCompany user={user} setUser={setUser} url={url} />} />
+          <Route path="/edit-profile-company" element={<ProfileEntrepreneurEdit user={user} setUser={setUser} url={url} companies={companies} favs={favs} setFavs={setFavs} information={information} setInformation={setInformation} />}/>
           <Route path="/add-product-desingner" element={<PopupAddProductDesigner />} />
         
 

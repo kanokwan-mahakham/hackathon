@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const CardEdit = ({ user, className }) => {
+const CardEdit = ({ user, information, className }) => {
   const image = require("../../../image Hackathon/image/background.jpeg");
   const location = require("../../../image Hackathon/icon/pin.png");
   const call = require("../../../image Hackathon/icon/call.png");
@@ -16,17 +16,17 @@ const CardEdit = ({ user, className }) => {
       <div className="profile">
         <div className="box-profile">
           <div className="profile-image">
-            <img src={image} />
+            <img src={information.profile} />
             <p id="detail">
-              รับผลิตและจัดจำหน่ายสินค้าประเภท เสื้อผ้าและถุงผ้าจากประเทศไทย
+              {information.description}
             </p>
           </div>
           <div className="line"></div>
           <div className="profile-detail">
-            <h1 id="name">Kanda Faraga</h1>
+            <h1 id="name">{information.name}</h1>
             <div className="detail" id="location">
               <img src={location} />
-              <p>192 ถ.หทัยราษฏร์ บางชัน คลองสามวา กทม.10510</p>
+              <p>{information.address}</p>
             </div>
             <div className="contact">
               <h2>Contact</h2>
@@ -34,29 +34,29 @@ const CardEdit = ({ user, className }) => {
                 <div id="left">
                   <div className="detail" id="เบอร์สำนักงาน">
                     <img src={call} />
-                    <p>02-056-4568 ต่อ 44</p>
+                    <p>{information.tel}</p>
                   </div>
-                  <div className="detail" id="เบอร์ตัวเอง">
+                  {/* <div className="detail" id="เบอร์ตัวเอง">
                     <img src={telephone} />
                     <p>099-386-5212</p>
-                  </div>
+                  </div> */}
                   <div className="detail" id="facebook">
                     <img src={facebook} />
-                    <p>Kanda Faraga</p>
+                    <p>{information.facebook}</p>
                   </div>
                   <div className="detail" id="mail">
                     <img src={mail} />
-                    <p>Kanda.Faraga@gmail.com</p>
+                    <p>{information.email}</p>
                   </div>
                 </div>
                 <div className="rigth">
                   <div className="detail" id="linkIn">
                     <img src={linkIn} />
-                    <p>Kanda Faraga</p>
+                    <p>{information.instagram}</p>
                   </div>
                   <div className="detail" id="website">
                     <img src={website} />
-                    <p>Kanda Faraga</p>
+                    <p>{information.website}</p>
                   </div>
                 </div>
               </div>

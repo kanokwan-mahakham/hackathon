@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
-const BlogSlide = ({ className }) => {
-  const image = require("../../image Hackathon/image/background.jpeg");
+const BlogSlide = ({ imageHome, className }) => {
+  const image1 = require("../../image Hackathon/image/promote1.jpg");
+  const image2 = require("../../image Hackathon/image/promote2.jpg");
+  const image3 = require("../../image Hackathon/image/promote3.jpg");
 
   return (
     <div className={className}>
       <div className="blog-slide">
-        <img src={image}></img>
-        <img src={image}></img>
-        <img src={image}></img>
+        <img src={image1}></img>
+        <img src={image2}></img>
+        <img src={image3}></img>
       </div>
     </div>
   );

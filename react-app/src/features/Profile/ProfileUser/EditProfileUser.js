@@ -7,25 +7,25 @@ import Footer from "../../Component/Footer";
 import axios from "axios";
 import CardNewData from "../../Component/CardProfile/CardNewData";
 
-const EditProfileUser = ({ user, url, setUser, companies, favs, setFavs, className }) => {
+const EditProfileUser = ({ user, url, setUser, companies, favs, setFavs,information, setInformation, className }) => {
   
 
   
-  useEffect(() => {
-    async function getCompanies() {
-      // const resCompany = await axios.get(`${url}/users`);
-      // const resCustomerFavs = await axios.get(`${url}/customerFavs`);
-      // setCompanies(resCompany.data);
-      // setFavs(resCustomerFavs.data);
-      // console.log("seccess");
-    }
-    getCompanies();
-  }, []);
+  // useEffect(() => {
+  //   async function getCompanies() {
+  //     // const resCompany = await axios.get(`${url}/users`);
+  //     // const resCustomerFavs = await axios.get(`${url}/customerFavs`);
+  //     // setCompanies(resCompany.data);
+  //     // setFavs(resCustomerFavs.data);
+  //     // console.log("seccess");
+  //   }
+  //   getCompanies();
+  // }, []);
 
   return (
     <div className={className}>
       <Navbar user={user} setUser={setUser} />
-      <CardNewData user={user} url={url} />
+      <CardNewData user={user} url={url} information={information} setInformation={setInformation} />
       <Footer />
     </div>
   );

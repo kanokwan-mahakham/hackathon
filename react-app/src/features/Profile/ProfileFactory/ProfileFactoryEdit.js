@@ -6,11 +6,11 @@ import ProductSaleEdit from "../../Component/Product/ProductSaleEdit";
 import Package from "../../Component/Package";
 import Footer from "../../Component/Footer";
 
-const ProfileEntrepreneurEdit = ({ user, setUser, className }) => {
+const ProfileEntrepreneurEdit = ({ user, url, setUser, companies, favs, setFavs,information, setInformation, className }) => {
   return (
     <div className={className}>
       <Navbar user={user} setUser={setUser} />
-      <CardNewData user={user}/>
+      <CardNewData user={user} url={url} information={information} setInformation={setInformation}/>
       <div className="products">
         <PhotoProductEdit />
         <h1>Product</h1>

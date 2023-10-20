@@ -1,17 +1,39 @@
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../../Component/Navbar";
 import CardEdit from "../../Component/CardProfile/CardEdit";
 import PhotoProduct from "../../Component/Product/PhotoProduct";
 import ProductSale from "../../Component/Product/ProductSale";
 import Footer from "../../Component/Footer";
+import axios from "axios";
 
 
-const ProfileEntrepreneurShow = ({ user, setUser, className }) => {
+const ProfileEntrepreneurShow = ({ user, setUser, url, className }) => {
+
+  const [information,setInformation] = useState([]);
+
+
+  useEffect(() => {
+    async function getCompanies() {
+    try{
+        // หลังจากที่ดึงข้อมูลเสร็จสิ้นให้เรียก setFactory
+        const res = await axios.get(`${url}/informations/${user.informationId}`)
+        setInformation(res.data)
+       
+       
+      } catch (error) {
+        // จัดการข้อผิดพลาดในกรณีที่เกิดข้อผิดพลาดในการดึงข้อมูลบริษัท
+        console.error('Error fetching company data:', error);
+      }
+    }
+  
+    getCompanies();
+  }, []);
 
   return (
     <div className={className}>
       <Navbar user={user} setUser={setUser} />
-      <CardEdit user={user} />
+      <CardEdit user={user} information={information} />
       <div className="products">
         <PhotoProduct />
         <h1>Product</h1>

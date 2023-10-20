@@ -7,8 +7,9 @@ import BlogSlide from "../../Component/BlogSlide";
 import BoxData from "../../Component/BoxData";
 import Footer from "../../Component/Footer";
 
-const HomePage = ({ url, user, setUser,setFavs,companies, className }) => {
-  const image = require("../../../image Hackathon/image/background.jpeg");
+const HomePage = ({ imageHome, url, user, setUser,setFavs,companies, className }) => {
+  
+  const image = require("../../../image Hackathon/image/background.jpg");
 
   const [frabic, setFrabic] = useState([])
   const [factory, setFactory] = useState([])
@@ -38,7 +39,7 @@ const HomePage = ({ url, user, setUser,setFavs,companies, className }) => {
         <div className="header-text">
           <p>Blog</p>
         </div>
-        <BlogSlide />
+        <BlogSlide imageHome={imageHome} />
       </div>
 
       <div className="show-category">

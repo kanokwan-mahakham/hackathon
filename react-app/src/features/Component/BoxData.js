@@ -59,7 +59,7 @@ const BoxData = ({ user, url, item, setFavs, className }) => {
       
         <div className={className}>
           <div className="box">
-            <img src={image} id="box-image" alt="Box Image" />
+            <img src={data.profile} id="box-image" alt="Box Image" />
             <div className="box-detail">
               <p id="name">{data.name}</p>
               <p id="detail">{data.description}</p>
