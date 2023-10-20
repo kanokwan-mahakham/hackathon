@@ -8,34 +8,16 @@ import Footer from "../../Component/Footer";
 import axios from "axios";
 
 
-const ProfileEntrepreneurShow = ({ user, setUser, url, className }) => {
+const ProfileEntrepreneurShow = ({ user, setUser, information, url, className }) => {
 
-  const [information,setInformation] = useState([]);
-
-
-  useEffect(() => {
-    async function getCompanies() {
-    try{
-        // หลังจากที่ดึงข้อมูลเสร็จสิ้นให้เรียก setFactory
-        const res = await axios.get(`${url}/informations/${user.informationId}`)
-        setInformation(res.data)
-       
-       
-      } catch (error) {
-        // จัดการข้อผิดพลาดในกรณีที่เกิดข้อผิดพลาดในการดึงข้อมูลบริษัท
-        console.error('Error fetching company data:', error);
-      }
-    }
   
-    getCompanies();
-  }, []);
 
   return (
     <div className={className}>
       <Navbar user={user} setUser={setUser} />
       <CardEdit user={user} information={information} />
       <div className="products">
-        <PhotoProduct />
+        <PhotoProduct information={information} />
         <h1>Product</h1>
         <div className="sale-product">
           <ProductSale />

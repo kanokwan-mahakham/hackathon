@@ -12,6 +12,8 @@ import ProfileAddmin from "./features/Profile/ProfileAddmin";
 import ProfileEntrepreneurEdit from "./features/Profile/ProfileFactory/ProfileFactoryEdit";
 import PopupAddProductDesigner from "./features/Registers/RegisterPage/popup/product/designer/addproduct"
 import EditProfileUser from "./features/Profile/ProfileUser/EditProfileUser";
+import PopupAddProductFarbic from "./features/Registers/RegisterPage/popup/product/farbic/addproduct"
+import PopupAddProductFactory from "./features/Registers/RegisterPage/popup/product/factory/addproduct"
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -92,9 +94,11 @@ function App() {
           />
 
           <Route path="/profile-addmin" element={<ProfileAddmin user={user} setUser={setUser} />} />
-          <Route path="/profile-company" element={<ProfileCompany user={user} setUser={setUser} url={url} />} />
+          <Route path="/profile-company" element={<ProfileCompany user={user} setUser={setUser} url={url} information={information} />} />
           <Route path="/edit-profile-company" element={<ProfileEntrepreneurEdit user={user} setUser={setUser} url={url} companies={companies} favs={favs} setFavs={setFavs} information={information} setInformation={setInformation} />}/>
           <Route path="/add-product-desingner" element={<PopupAddProductDesigner />} />
+          <Route path="/add-product-company" element={<PopupAddProductFactory />} />
+          <Route path="/add-product-frabic" element={<PopupAddProductFarbic />} />
         
 
         </Routes>

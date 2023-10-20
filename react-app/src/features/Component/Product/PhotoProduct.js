@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
-const PhotoProduct = ({className}) => {
+const PhotoProduct = ({information, className}) => {
     
     const image = require("../../../image Hackathon/image/background.jpeg");
 
     return(
         <div className={className}>
             <div className="photo-product">
-                    <img src={image}/>
-                    <img src={image}/>
-                    <img src={image}/>
-                    <img src={image}/>
-                    <img src={image}/>
-                    <img src={image}/>
+                    <img src={information.image1}/>
+                    <img src={information.image2}/>
+                    <img src={information.image3}/>
+                    <img src={information.image4}/>
+                    <img src={information.image5}/>
+                    <img src={information.image6}/>
                 </div>
         </div>
     );

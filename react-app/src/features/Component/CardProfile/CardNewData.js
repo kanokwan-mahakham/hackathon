@@ -112,8 +112,6 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
             <label htmlFor="product-image" className="file-label">
               <div className="file-box">
                 <span className="plus-icon">+</span>
-                
-                
               </div>
             </label>
 

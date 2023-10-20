@@ -12,7 +12,7 @@ const ProfileEntrepreneurEdit = ({ user, url, setUser, companies, favs, setFavs,
       <Navbar user={user} setUser={setUser} />
       <CardNewData user={user} url={url} information={information} setInformation={setInformation}/>
       <div className="products">
-        <PhotoProductEdit />
+        <PhotoProductEdit url={url} information={information} setInformation={setInformation} />
         <h1>Product</h1>
         <div className="sale-product">
           <ProductSaleEdit />
