@@ -19,17 +19,11 @@ router.get('/:id', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-  const { name,description,profrileFile,image1,image2,image3,image4,image5,image6 } = req.body;
+  const { name,description,profile,address,tel,facebook,email,instagram,website,image1,image2,image3,image4,image5,image6 } = req.body;
   const newUser = await Information.create({
-    name,description,profrileFile,image1,image2,image3,image4,image5,image6
-  });
+    name,description,profile,address,tel,facebook,email,instagram,website,image1,image2,image3,image4,image5,image6});
   res.json(newUser);
 });
-
-
-
-
-
 
 
 

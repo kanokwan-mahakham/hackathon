@@ -7,7 +7,7 @@ import BlogSlide from "../../Component/BlogSlide";
 import BoxData from "../../Component/BoxData";
 import Footer from "../../Component/Footer";
 
-const HomePage = ({ url, user, setUser,companies, className }) => {
+const HomePage = ({ url, user, setUser,setFavs,companies, className }) => {
   const image = require("../../../image Hackathon/image/background.jpeg");
 
   const [frabic, setFrabic] = useState([])
@@ -55,7 +55,7 @@ const HomePage = ({ url, user, setUser,companies, className }) => {
           </div>
           <div className="show-slide">
             {factory.slice(0, 3).map((company) => {
-                return <BoxData key={company.id} user={user} url={url} item={company} />;
+                return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} />;
             })}
           </div>
         </div>
@@ -73,7 +73,7 @@ const HomePage = ({ url, user, setUser,companies, className }) => {
           </div>
           <div className="show-slide">
             {frabic.slice(0, 3).map((company) => {
-               return <BoxData key={company.id} user={user} url={url} item={company} />;
+               return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} />;
             })}
           </div>
         </div>
@@ -91,7 +91,7 @@ const HomePage = ({ url, user, setUser,companies, className }) => {
           </div>
           <div className="show-slide">
             {designer.slice(0, 3).map((company) => {
-                return <BoxData key={company.id} user={user} url={url} item={company} />;
+                return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} />;
             })}
           </div>
         </div>

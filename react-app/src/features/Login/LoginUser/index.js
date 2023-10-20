@@ -38,7 +38,14 @@ const LoginComponent = ({ url, setUser, className }) => {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          navigate('/');
+
+           if (username === "addmin") {
+             navigate('/edit-home');
+           } else {
+            navigate('/');
+           }
+          console.log(`username:${username}`)
+          
         });
 
       } else {

@@ -18,9 +18,9 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { customerId,companyId } = req.body;
+  const { customerId,companyId,informationId } = req.body;
   const newFav = await CustomerFav.create({
-    customerId,companyId
+    customerId,companyId,informationId
   });
   res.json(newFav);
 });

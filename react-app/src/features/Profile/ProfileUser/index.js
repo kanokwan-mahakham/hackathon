@@ -1,36 +1,111 @@
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../../Component/Navbar";
 import CardUser from "../../Component/CardProfile/CardUser";
 import BoxData from "../../Component/BoxData";
 import Footer from "../../Component/Footer";
+import axios from "axios";
+import CardNewData from "../../Component/CardProfile/CardNewData";
+import CardEdit from "../../Component/CardProfile/CardEdit";
 
-const ProfileUser = ({ className }) => {
+const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, className }) => {
+  const [factory, setFactory] = useState([]);
+  const [information,setInformation] = useState([]);
+
+
+  useEffect(() => {
+    async function getCompanies() {
+      const companiesData = [];
+      // กรอง favs ที่มี customerId ตรงกับ user.id
+      const filteredFavs = favs.filter((fav) => fav.customerId === user.id);
+      
+      try {
+        // ใช้ Promise.all เพื่อดึงข้อมูลของบริษัทพร้อมกัน
+        await Promise.all(
+          filteredFavs.map(async (getFav) => {
+            const response = await axios.get(`${url}/users/${getFav.companyId}`);
+            companiesData.push(response.data);
+          })
+        );
+        // หลังจากที่ดึงข้อมูลเสร็จสิ้นให้เรียก setFactory
+        const res = await axios.get(`${url}/informations/${user.informationId}`)
+        setFactory(companiesData);
+        console.log(`userPage : ${factory}`);
+      } catch (error) {
+        // จัดการข้อผิดพลาดในกรณีที่เกิดข้อผิดพลาดในการดึงข้อมูลบริษัท
+        console.error('Error fetching company data:', error);
+      }
+    }
   
+    getCompanies();
+  }, []);
+  
+
   return (
     <div className={className}>
-      <Navbar />
-      <CardUser />
+      <Navbar user={user} setUser={setUser} />
+      <CardEdit user={user} />
       <div className="approved">
         <h1>Approved</h1>
         <div className="line"></div>
+        {factory.length > 0 ?(<>
         <div className="box-category">
           <div className="name-category">Factory</div>
           <div className="collect">
-            <BoxData />
+            {
+              factory.map((company) => (
+                company.type == "company"?(
+                   <BoxData
+                    key={company.id}
+                    user={user}
+                    url={url}
+                    item={company}
+                    setFavs={setFavs}
+                  />):(null)
+                ))
+              }
           </div>
         </div>
+
         <div className="box-category">
           <div className="name-category">Fabric</div>
           <div className="collect">
-            <BoxData />
+
+          {
+              factory.map((company) => (
+                company.type == "frabic shop"?(
+                   <BoxData
+                    key={company.id}
+                    user={user}
+                    url={url}
+                    item={company}
+                    setFavs={setFavs}
+                  />):(null)
+                ))
+              }
+
           </div>
         </div>
         <div className="box-category">
           <div className="name-category">Designers</div>
           <div className="collect">
-            <BoxData />
+
+          {
+              factory.map((company) => (
+                company.type == "designer"?(
+                   <BoxData
+                    key={company.id}
+                    user={user}
+                    url={url}
+                    item={company}
+                    setFavs={setFavs}
+                  />):(null)
+                ))
+              }
+
           </div>
         </div>
+        </>):(null)}
       </div>
       <Footer />
     </div>

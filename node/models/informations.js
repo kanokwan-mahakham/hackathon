@@ -11,8 +11,26 @@ const Information = sequelize.define(
         description:{
             type: DataTypes.STRING
         },
-        profrileFile:{
+        profile:{
             type: DataTypes.TEXT
+        },
+        address:{
+            type: DataTypes.STRING
+        },
+        tel:{
+            type: DataTypes.STRING
+        },
+        facebook:{
+            type: DataTypes.STRING
+        },
+        email:{
+            type: DataTypes.STRING
+        },
+        instagram:{
+            type: DataTypes.STRING
+        },
+        website:{
+            type: DataTypes.STRING
         },
         image1:{
             type: DataTypes.TEXT

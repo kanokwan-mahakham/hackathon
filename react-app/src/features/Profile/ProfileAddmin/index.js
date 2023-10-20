@@ -4,10 +4,10 @@ import Footer from "../../Component/Footer";
 import CardAdmin from "../../Component/CardProfile/CardAdmin";
 import Package from "../../Component/Package";
 
-const ProfileAdmin = ({ className }) => {
+const ProfileAdmin = ({ user, setUser, className }) => {
   return (
     <div className={className}>
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <CardAdmin />
       <div className="rating">
         <div className="box-rating">

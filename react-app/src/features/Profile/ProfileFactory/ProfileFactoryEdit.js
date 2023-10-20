@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import Navbar from "../../Component/Navbar";
-import CardEdit from "../../Component/CardProfile/CardEdit";
+import CardNewData from "../../Component/CardProfile/CardNewData";
 import PhotoProductEdit from "../../Component/Product/PhotoProductEdit";
 import ProductSaleEdit from "../../Component/Product/ProductSaleEdit";
 import Package from "../../Component/Package";
 import Footer from "../../Component/Footer";
 
-const ProfileEntrepreneurEdit = ({ className }) => {
+const ProfileEntrepreneurEdit = ({ user, setUser, className }) => {
   return (
     <div className={className}>
-      <Navbar />
-      <CardEdit />
+      <Navbar user={user} setUser={setUser} />
+      <CardNewData user={user}/>
       <div className="products">
         <PhotoProductEdit />
         <h1>Product</h1>

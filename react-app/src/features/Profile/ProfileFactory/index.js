@@ -6,12 +6,12 @@ import ProductSale from "../../Component/Product/ProductSale";
 import Footer from "../../Component/Footer";
 
 
-const ProfileEntrepreneurShow = ({ className }) => {
+const ProfileEntrepreneurShow = ({ user, setUser, className }) => {
 
   return (
     <div className={className}>
-      <Navbar />
-      <CardEdit />
+      <Navbar user={user} setUser={setUser} />
+      <CardEdit user={user} />
       <div className="products">
         <PhotoProduct />
         <h1>Product</h1>

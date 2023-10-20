@@ -169,8 +169,10 @@ const RegisterUser = ({setUser,url,className}) => {
             password:password,
             status:"customer"
           };
+        
+        const response1 = await axios.post(`${url}/informations`,'');
+        const response = await axios.post(`${url}/users`,{...newUser,informationId:response1.data.id});
           
-        const response = await axios.post(`${url}/users`,newUser);
         
 
         Swal.fire({

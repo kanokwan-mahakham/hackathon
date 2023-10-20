@@ -203,7 +203,6 @@ const RegisterCompany = ({setUser,url}) => {
     const [comfirmPassword, setComfirmPassword] = useState("")
     const [type, setType] = useState("frabic shop")
     const [juristicNumber, setJuristicNumber] = useState("")
-    const [address, setAddress] = useState("")
     const [JuristicFile ,setJuristicFile] = useState("")
     const navigate = useNavigate();
 
@@ -223,7 +222,7 @@ const RegisterCompany = ({setUser,url}) => {
 
     async function submit(){
 
-        if (!username || !email || !password || !comfirmPassword || !type || !juristicNumber || !address || !JuristicFile) {
+        if (!username || !email || !password || !comfirmPassword || !type || !juristicNumber || !JuristicFile) {
             Swal.fire({
               position: 'center',
               icon: 'error',
@@ -252,7 +251,6 @@ const RegisterCompany = ({setUser,url}) => {
             password:password,
             type:type,
             juristicNumber:juristicNumber,
-            address:address,
             JuristicFile:JuristicFile,
             status:"waiting"
           };
@@ -340,7 +338,7 @@ const RegisterCompany = ({setUser,url}) => {
                 </Styledinput>
 
                 <InputField placeholder="ทะเบียนนิติบุคคลเลขที่" type="text" onChange={(event) => {setJuristicNumber(event.target.value);}}/>
-                    <InputField placeholder="ที่อยู่" type="text" onChange={(event) => {setAddress(event.target.value);}}/>
+                    
                     <Styledinput>
                     <div className="input-container2">
                     <Styledtextinput><div className='textinput'>สำเนารับรองหนังสือทะเบียนนิติบุคคล</div></Styledtextinput>

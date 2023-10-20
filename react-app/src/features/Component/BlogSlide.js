@@ -16,7 +16,7 @@ const BlogSlide = ({ className }) => {
 
 export default styled(BlogSlide)`
   .blog-slide img {
-    width: 500px;
+    width: 450px;
     height: 350px;
     margin: 60px 20px 60px 0px;
     border-radius: 20px;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const CardUser = ({ className }) => {
+const CardNewData = ({ user,url, className }) => {
   const image = require("../../../image Hackathon/image/background.jpeg");
   const location = require("../../../image Hackathon/icon/pin.png");
   const call = require("../../../image Hackathon/icon/call.png");
@@ -17,15 +18,15 @@ const CardUser = ({ className }) => {
           <div className="profile-image">
             <img src={image} />
             <p id="detail">
-              รับผลิตและจัดจำหน่ายสินค้าประเภท เสื้อผ้าและถุงผ้าจากประเทศไทย
+              <input placeholder="Description"></input>
             </p>
           </div>
           <div className="line"></div>
           <div className="profile-detail">
-            <h1 id="name">Kanda Faraga</h1>
+            <h1 id="name"><input placeholder="Name"></input></h1>
             <div className="detail" id="location">
               <img src={location} />
-              <p>192 ถ.หทัยราษฏร์ บางชัน คลองสามวา กทม.10510</p>
+              <input placeholder="Address"></input>
             </div>
             <div className="contact">
               <h2>Contact</h2>
@@ -33,35 +34,42 @@ const CardUser = ({ className }) => {
                 <div id="left">
                   <div className="detail" id="เบอร์สำนักงาน">
                     <img src={call} />
-                    <p>02-056-4568 ต่อ 44</p>
+                    <input placeholder="Tel"></input>
                   </div>
                   <div className="detail" id="เบอร์ตัวเอง">
                     <img src={telephone} />
-                    <p>099-386-5212</p>
+                    <input placeholder="Tel"></input>
                   </div>
                   <div className="detail" id="facebook">
                     <img src={facebook} />
-                    <p>Kanda Faraga</p>
+                    <input placeholder="Facebook"></input>
                   </div>
                   <div className="detail" id="mail">
                     <img src={mail} />
-                    <p>Kanda.Faraga@gmail.com</p>
+                    <input placeholder="Email"></input>
                   </div>
                 </div>
                 <div className="rigth">
                   <div className="detail" id="linkIn">
                     <img src={linkIn} />
-                    <p>Kanda Faraga</p>
+                    <input placeholder="Instagram"></input>
                   </div>
                   <div className="detail" id="website">
                     <img src={website} />
-                    <p>Kanda Faraga</p>
+                    <input placeholder="Website"></input>
                   </div>
                 </div>
               </div>
             </div>
             <div className="button-chat">
-              {/* <button>Chat</button> */}
+              {user.status == "company" ? (
+                <Link to="/profile-company"> <button>SEE PAGE</button></Link>
+              ):(
+                <Link to="/profile-user"> <button>SEE PAGE</button></Link>
+              )}
+              
+             
+            
             </div>
           </div>
         </div>
@@ -70,7 +78,7 @@ const CardUser = ({ className }) => {
   );
 };
 
-export default styled(CardUser)`
+export default styled(CardNewData)`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   /* Profile */
   .profile {

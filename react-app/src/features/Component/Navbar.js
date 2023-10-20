@@ -1,21 +1,30 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = ({ user, setUser, className }) => {
   const noti = require("../../image Hackathon/icon/notification.png");
   const chat = require("../../image Hackathon/icon/send.png");
   const profile = require("../../image Hackathon/icon/contact.png");
   const logout = require("../../image Hackathon/icon/logout-black.png");
+  const navigate = useNavigate(); // นำเข้า useNavigate ที่นี่
 
   function logOut() {
     setUser("");
+    navigate('/');
   }
 
   return (
+   
     <div className={className}>
       <div className="navbar">
         <div className="category">
-          <a>Home</a>
+          
+          {user.status == "addmin"?(
+            <Link to="/edit-home">Home</Link>
+          ):(
+            <Link to="/">Home</Link>
+          )}
+          
           <a>Fabric</a>
           <a>Designer</a>
           <a>Factory</a>
@@ -28,14 +37,24 @@ const Navbar = ({ user, setUser, className }) => {
           <img src={chat} className="round-image-chat" />
 
           {typeof user === "object" ? (
-            <Link to="/">
-              <img src={profile} className="round-image" id="profile" alt="Profile" />
-            </Link>
-          ) : (
-            <Link to="/login">
-              <img src={profile} className="round-image" id="profile" alt="Profile" />
-            </Link>
-          )}
+            user.status === "customer" ? (
+              <Link to="/profile-user">
+                <img src={profile} className="round-image" id="profile" alt="Profile" />
+              </Link>
+            ):(user.status === "company" ? (
+              <Link to="/profile-company">
+                <img src={profile} className="round-image" id="profile" alt="Profile" />
+              </Link>
+            ):(user.status === "addmin" ? (
+              <Link to="/profile-addmin">
+                <img src={profile} className="round-image" id="profile" alt="Profile" />
+              </Link>
+            ):(null))) 
+          ) : ( typeof user === "string" ?(
+              <Link to="/login">
+                <img src={profile} className="round-image" id="profile" alt="Profile" />
+              </Link>)
+          :(null))}
 
           {typeof user === "object" ? (
             <button className="logout" onClick={logOut}>

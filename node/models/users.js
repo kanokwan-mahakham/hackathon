@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
+const CustomerFav = require('./customerFavs');
 
 const User = sequelize.define(
     'User',{
@@ -19,9 +20,6 @@ const User = sequelize.define(
         juristicNumber:{
             type: DataTypes.STRING
         },
-        address:{
-            type: DataTypes.STRING
-        },
         JuristicFile:{
             type: DataTypes.TEXT
         },
@@ -34,5 +32,6 @@ const User = sequelize.define(
         
     }
 );
+
 
 module.exports = User;

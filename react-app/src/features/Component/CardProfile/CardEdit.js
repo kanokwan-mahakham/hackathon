@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const CardEdit = ({ className }) => {
+const CardEdit = ({ user, className }) => {
   const image = require("../../../image Hackathon/image/background.jpeg");
   const location = require("../../../image Hackathon/icon/pin.png");
   const call = require("../../../image Hackathon/icon/call.png");
@@ -61,8 +62,14 @@ const CardEdit = ({ className }) => {
               </div>
             </div>
             <div className="button-chat">
-              <button>Edit</button>
-              <button>Chat</button>
+              
+              {user.status == "company"?(
+                <Link to="/edit-profile-company"> <button>Edit</button></Link>
+              ):(
+                <Link to="/profile-user-edit"> <button>Edit</button></Link>
+              )}
+              
+             
             </div>
           </div>
         </div>

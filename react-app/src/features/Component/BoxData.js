@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const BoxData = ({ user, url, item, className }) => {
+const BoxData = ({ user, url, item, setFavs, className }) => {
   const save = require("../../image Hackathon/icon/save-instagram.png");
   const saveGreen = require("../../image Hackathon/icon/bookmark.png")  //ปุ่มที่ถูก save แล้ว
   const image = require("../../image Hackathon/image/background.jpeg");
@@ -14,11 +14,15 @@ const BoxData = ({ user, url, item, className }) => {
 
   async function fav (){
     if(typeof favId == "string"){
-      const response = await axios.post(`${url}/customerFavs`,{customerId:user.id,companyId:item.id});
+      const response = await axios.post(`${url}/customerFavs`,{customerId:user.id,companyId:item.id,informationId:item.informationId});
+      const newFavs = await axios.get(`${url}/customerFavs`)
+      setFavs(newFavs.data) 
       setIcon(saveGreen) //add saved icon here
       setFavId(response.data.id)
     }else{
       const response = await axios.delete(`${url}/customerFavs/${favId}`);
+      const newFavs = await axios.get(`${url}/customerFavs`)
+      setFavs(newFavs.data) 
       setIcon(save) 
       setFavId("")
     }
@@ -37,7 +41,7 @@ const BoxData = ({ user, url, item, className }) => {
             `${url}/customerFavs/${user.id}/${item.id}`
           );
           if (responseFav.data.user) {
-            setIcon(image) //add saved icon here
+            setIcon(saveGreen) //add saved icon here
             setFavId(responseFav.data.user.id)
             console.log("User found:", responseFav.data.user);
           }
@@ -52,7 +56,7 @@ const BoxData = ({ user, url, item, className }) => {
 
   return (
     <>
-      {Object.keys(data).length > 0 ? (
+      
         <div className={className}>
           <div className="box">
             <img src={image} id="box-image" alt="Box Image" />
@@ -61,7 +65,10 @@ const BoxData = ({ user, url, item, className }) => {
               <p id="detail">{data.description}</p>
   
               <div className="button">
-                <button className="conpare-button">เปรียบเทียบ +</button>
+              {typeof user == "object" ? (
+                  <button className="conpare-button">เปรียบเทียบ +</button>
+                ) : null}
+                
                 {user.status === "customer" ? (
                   <img src={icon} id="save-button" alt="Save" onClick={fav}/>
                 ) : null}
@@ -69,9 +76,7 @@ const BoxData = ({ user, url, item, className }) => {
             </div>
           </div>
         </div>
-      ) : (
-        <div>Loading...</div>
-      )}
+     
     </>
   );
 };

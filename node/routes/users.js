@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/users')
+const CustomerFav = require("../models/customerFavs")
 
 
 router.get('/', async (req, res) => {
@@ -19,9 +20,9 @@ router.get('/:id', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-  const { username,email,password,type,juristicNumber,address,JuristicFile,status,informationId } = req.body;
+  const { username,email,password,type,juristicNumber,JuristicFile,status,informationId } = req.body;
   const newUser = await User.create({
-    username,email,password,type,juristicNumber,address,JuristicFile,status,informationId
+    username,email,password,type,juristicNumber,JuristicFile,status,informationId
   });
   res.json(newUser);
 });
@@ -41,8 +42,6 @@ router.get('/:username/:password', async (req, res) => {
     }
   
 });
-
-
 
 
 

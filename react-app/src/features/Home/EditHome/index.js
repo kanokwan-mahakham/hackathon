@@ -1,16 +1,35 @@
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../../Component/Navbar";
 import EditBlogSlide from "../../Component/EditBlogSlide";
 import BoxData from "../../Component/BoxData";
 import Footer from "../../Component/Footer";
 
-const EditHome = ({ className }) => {
+const EditHome = ({ url, user, setUser, companies, className }) => {
   const image = require("../../../image Hackathon/image/background.jpeg");
   const edit = require("../../../image Hackathon/icon/editing.png");
+
+  const [frabic, setFrabic] = useState([])
+  const [factory, setFactory] = useState([])
+  const [designer, setDesigner] = useState([])
+  
+ 
+  useEffect(() => {
+    async function getCompanies() {
+      const frabicCompanies = companies.filter(company => company.type == "frabic shop" && company.status == "company");
+      const factoryCompanies = companies.filter(company => company.type == "company" && company.status == "company");
+      const designerCompanies = companies.filter(company => company.type == "designer" && company.status == "company");
+      
+      setFrabic(frabicCompanies);
+      setFactory(factoryCompanies);
+      setDesigner(designerCompanies);
+    }
+    getCompanies();
+  }, []);
   
   return (
     <div className={className}>
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <div className="image">
         <img src={image}></img>
         <div className="icon-overlay">
@@ -35,7 +54,9 @@ const EditHome = ({ className }) => {
             <a id="seeAll">See All</a>
           </div>
           <div className="show-slide">
-            <BoxData />
+          {factory.slice(0, 3).map((company) => {
+                return <BoxData key={company.id} user={user} url={url} item={company}  />;
+            })}
           </div>
         </div>
 
@@ -49,7 +70,9 @@ const EditHome = ({ className }) => {
             <a id="seeAll">See All</a>
           </div>
           <div className="show-slide">
-            <BoxData />
+          {frabic.slice(0, 3).map((company) => {
+               return <BoxData key={company.id} user={user} url={url} item={company}  />;
+            })}
           </div>
         </div>
 
@@ -63,7 +86,9 @@ const EditHome = ({ className }) => {
             <a id="seeAll">See All</a>
           </div>
           <div className="show-slide">
-            <BoxData />
+          {designer.slice(0, 3).map((company) => {
+                return <BoxData key={company.id} user={user} url={url} item={company}  />;
+            })}
           </div>
         </div>
       </div>
