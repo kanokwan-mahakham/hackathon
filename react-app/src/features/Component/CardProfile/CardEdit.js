@@ -63,7 +63,7 @@ const CardEdit = ({ user, information, className }) => {
             </div>
             <div className="button-chat">
               
-              {user.status == "company"?(
+              {user.status == "company" || user.status == "waiting" ?(
                 <Link to="/edit-profile-company"> <button>Edit</button></Link>
               ):(
                 <Link to="/profile-user-edit"> <button>Edit</button></Link>

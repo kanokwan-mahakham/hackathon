@@ -6,6 +6,7 @@ const cors = require('cors');
 const userRoutes = require("./routes/users");
 const customerFavRoutes = require("./routes/customerFavs");
 const informationRoutes = require("./routes/informations");
+const productRoutes = require("./routes/products");
 
 
 const app = express();
@@ -37,6 +38,7 @@ app.use((req,res,next)=>{
 app.use('/users', userRoutes);
 app.use('/informations', informationRoutes);
 app.use('/customerFavs', customerFavRoutes);
+app.use('/products', productRoutes);
 
 
 // Creating a server

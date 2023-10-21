@@ -7,9 +7,9 @@ import RegisterUser from "./features/Registers/RegisterPage/Register-user";
 import RegisterCompany from "./features/Registers/RegisterPage/Register-company";
 import ChoosePage from "./features/Registers/Choose/chooseRegisters";
 import ProfileUser from "./features/Profile/ProfileUser";
-import ProfileCompany from "./features/Profile/ProfileFactory";
+import ProfileFactory from "./features/Profile/ProfileFactory";
 import ProfileAddmin from "./features/Profile/ProfileAddmin";
-import ProfileEntrepreneurEdit from "./features/Profile/ProfileFactory/ProfileFactoryEdit";
+import ProfileFactoryEdit from "./features/Profile/ProfileFactory/ProfileFactoryEdit";
 import PopupAddProductDesigner from "./features/Registers/RegisterPage/popup/product/designer/addproduct"
 import EditProfileUser from "./features/Profile/ProfileUser/EditProfileUser";
 import PopupAddProductFarbic from "./features/Registers/RegisterPage/popup/product/farbic/addproduct"
@@ -23,6 +23,7 @@ function App() {
   const [favs, setFavs] = useState([]);
   const [imageHome, setImageHome] = useState([]);
   const [information,setInformation] = useState([]);
+  const [products,setProducts] = useState([]);
 
   useEffect(() => {
     async function getCompanies() {
@@ -41,6 +42,8 @@ function App() {
     async function getInformation() {
       if(typeof user == "object"){
       const res = await axios.get(`${url}/informations/${user.informationId}`)
+      const resProducts = await axios.get(`${url}/products`)
+      setProducts(resProducts.data)
       setInformation(res.data)
       }
     }
@@ -94,11 +97,11 @@ function App() {
           />
 
           <Route path="/profile-addmin" element={<ProfileAddmin user={user} setUser={setUser} />} />
-          <Route path="/profile-company" element={<ProfileCompany user={user} setUser={setUser} url={url} information={information} />} />
-          <Route path="/edit-profile-company" element={<ProfileEntrepreneurEdit user={user} setUser={setUser} url={url} companies={companies} favs={favs} setFavs={setFavs} information={information} setInformation={setInformation} />}/>
-          <Route path="/add-product-desingner" element={<PopupAddProductDesigner />} />
-          <Route path="/add-product-company" element={<PopupAddProductFactory />} />
-          <Route path="/add-product-frabic" element={<PopupAddProductFarbic />} />
+          <Route path="/profile-company" element={<ProfileFactory user={user} setUser={setUser} url={url} information={information} products={products} setProducts={setProducts} />} />
+          <Route path="/edit-profile-company" element={<ProfileFactoryEdit user={user} setUser={setUser} url={url} companies={companies} favs={favs} setFavs={setFavs} information={information} setInformation={setInformation}  products={products} setProducts={setProducts} />}/>
+          <Route path="/add-product-desingner" element={<PopupAddProductDesigner url={url} user={user} setProducts={setProducts}/>} />
+          <Route path="/add-product-company" element={<PopupAddProductFactory url={url} user={user} setProducts={setProducts} />} />
+          <Route path="/add-product-fabric" element={<PopupAddProductFarbic url={url} user={user} setProducts={setProducts} />} />
         
 
         </Routes>

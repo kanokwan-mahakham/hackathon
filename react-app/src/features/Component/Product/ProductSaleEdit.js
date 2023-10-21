@@ -1,50 +1,31 @@
+import axios from "axios";
 import styled from "styled-components";
 
-const ProductSaleEdit = ({ className }) => {
+const ProductSaleEdit = ({ url, setProducts, product, className }) => {
   const cancel = require("../../../image Hackathon/icon/cancel.png");
   const image = require("../../../image Hackathon/image/background.jpeg");
 
+  async function deleteProduct(){
+    try{
+        await axios.delete(`${url}/products/${product.id}`)
+        const res = await axios.get(`${url}/products`)
+        setProducts(res.data)
+    }catch(error){
+      console.error(error)
+    }
+  }
+
   return (
     <div className={className}>
-      <div className="add-product">
-        <p>+</p>
-      </div>
-
       <div className="big-box">
-        <img src={cancel} id="cancel-button" />
+        <img src={cancel} id="cancel-button" onClick={deleteProduct} />
         <div className="box">
-          <img src={image} id="box-image"></img>
+          <img src={product.image} id="box-image"></img>
           <div className="box-detail">
-            <p id="name">เสื้อยืดคอกลม</p>
+            <p id="name">{product.name}</p>
             <p className="detail">
-              <p>เสื้อยืด TK สีขาว คอกลม Polyester T-shirt</p>
-              <p id="price">THB 50 -100</p>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="big-box">
-        <img src={cancel} id="cancel-button" />
-        <div className="box">
-          <img src={image} id="box-image"></img>
-          <div className="box-detail">
-            <p id="name">เสื้อยืดคอกลม</p>
-            <p className="detail">
-              <p>เสื้อยืด TK สีขาว คอกลม Polyester T-shirt</p>
-              <p id="price">THB 50 -100</p>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="big-box">
-        <img src={cancel} id="cancel-button" />
-        <div className="box">
-          <img src={image} id="box-image"></img>
-          <div className="box-detail">
-            <p id="name">เสื้อยืดคอกลม</p>
-            <p className="detail">
-              <p>เสื้อยืด TK สีขาว คอกลม Polyester T-shirt</p>
-              <p id="price">THB 50 -100</p>
+              <p>{product.description}</p>
+              <p id="price">{product.price}</p>
             </p>
           </div>
         </div>
@@ -59,21 +40,7 @@ export default styled(ProductSaleEdit)`
   align-items: center;
   justify-content: center;
   
-  .add-product {
-    width: 420px;
-    height: 520px;
-    border: 4px dashed gray;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 20px 30px 0px;
-  }
-  .add-product p {
-    font-size: 80px;
-    font-weight: 600;
-    color: gray;
-  }
+  
   .big-box{
     position: relative;
   }
@@ -88,6 +55,7 @@ export default styled(ProductSaleEdit)`
     width: 50px;
     height: 50px;
     z-index: 2;
+    cursor: pointer;
   }
 
   .box #box-image {

@@ -41,7 +41,7 @@ const Navbar = ({ user, setUser, className }) => {
               <Link to="/profile-user">
                 <img src={profile} className="round-image" id="profile" alt="Profile" />
               </Link>
-            ):(user.status === "company" ? (
+            ):(user.status === "company" || user.status === "waiting" ? (
               <Link to="/profile-company">
                 <img src={profile} className="round-image" id="profile" alt="Profile" />
               </Link>

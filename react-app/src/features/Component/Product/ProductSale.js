@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-const ProductSale = ({ className }) => {
+const ProductSale = ({ product,className }) => {
   const save = require("../../../image Hackathon/icon/save-instagram.png");
   const image = require("../../../image Hackathon/image/background.jpeg");
   return (
     <div className={className}>
       <div className="box">
-        <img src={image} id="box-image"></img>
+        <img src={product.image} id="box-image"></img>
         <div className="box-detail">
-          <p id="name">เสื้อยืดคอกลม</p>
+          <p id="name">{product.name}</p>
           <p className="detail">
-            <p>เสื้อยืด TK สีขาว คอกลม Polyester T-shirt</p>
-            <p id="price">THB 50 -100</p>
+            <p>{product.description}</p>
+            <p id="price">{product.price}</p>
           </p>
         </div>
       </div>

@@ -210,7 +210,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
               </div>
             </div>
             <div className="button-chat">
-              {user.status == "company" ? (
+              {user.status == "company" || user.status == "waiting" ? (
                 <Link to="/profile-company">
                   {" "}
                   <button onClick={submit}>Save</button>
