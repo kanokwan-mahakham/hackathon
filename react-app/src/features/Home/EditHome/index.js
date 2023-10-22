@@ -191,6 +191,8 @@ export default styled(EditHome)`
   .show-slide {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
   }
 
   
