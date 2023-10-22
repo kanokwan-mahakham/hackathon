@@ -185,5 +185,7 @@ export default styled(HomePage)`
   .show-slide {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
   }
 `;

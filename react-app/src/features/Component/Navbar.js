@@ -113,6 +113,8 @@ export default styled(Navbar)`
     margin: 40px;
     font-size: 26px;
     font-weight: 500;
+    text-decoration: none;
+    color: black;
   }
   .navbar {
     display: flex;

@@ -10,7 +10,7 @@ import PopupCompare from "../Component/PopupCompare";
 const Compare = ({ className }) => {
   return (
     <div className={className}>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="title-header">
         <h1>Compare Factory</h1>
         <div id="line"></div>

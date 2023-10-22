@@ -9,11 +9,16 @@ import ChoosePage from "./features/Registers/Choose/chooseRegisters";
 import ProfileUser from "./features/Profile/ProfileUser";
 import ProfileFactory from "./features/Profile/ProfileFactory";
 import ProfileAddmin from "./features/Profile/ProfileAddmin";
+
 import ProfileFactoryEdit from "./features/Profile/ProfileFactory/ProfileFactoryEdit";
 import PopupAddProductDesigner from "./features/Registers/RegisterPage/popup/product/designer/addproduct"
+
 import EditProfileUser from "./features/Profile/ProfileUser/EditProfileUser";
-import PopupAddProductFarbic from "./features/Registers/RegisterPage/popup/product/farbic/addproduct"
-import PopupAddProductFactory from "./features/Registers/RegisterPage/popup/product/factory/addproduct"
+
+import PopupAddProductFarbic from "./features/Registers/RegisterPage/popup/product/farbic/addproduct";
+import PopupAddProductFactory from "./features/Registers/RegisterPage/popup/product/factory/addproduct";
+
+import Compare from "./features/Compare/index"
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -22,6 +27,7 @@ function App() {
   const [companies, setCompanies] = useState([]);
   const [favs, setFavs] = useState([]);
   const [imageHome, setImageHome] = useState([]);
+
   const [information,setInformation] = useState([]);
   const [products,setProducts] = useState([]);
 
@@ -32,7 +38,7 @@ function App() {
       const resCustomerFavs = await axios.get(`${url}/customerFavs`);
       setCompanies(resCompany.data);
       setFavs(resCustomerFavs.data);
-      setImageHome(resImageHome.data)
+      setImageHome(resImageHome.data);
       console.log("seccess");
     }
     getCompanies();
@@ -40,17 +46,17 @@ function App() {
 
   useEffect(() => {
     async function getInformation() {
+
       if(typeof user == "object"){
       const res = await axios.get(`${url}/informations/${user.informationId}`)
       const resProducts = await axios.get(`${url}/products`)
       setProducts(resProducts.data)
       setInformation(res.data)
+
       }
     }
     getInformation();
   }, [user]);
-
-  
 
   return (
     <>
@@ -69,7 +75,17 @@ function App() {
               />
             }
           />
-          <Route path="/edit-home" element={<EditHome url={url} user={user} setUser={setUser} companies={companies} />} />
+          <Route
+            path="/edit-home"
+            element={
+              <EditHome
+                url={url}
+                user={user}
+                setUser={setUser}
+                companies={companies}
+              />
+            }
+          />
           <Route
             path="/login"
             element={<LoginComponent url={url} setUser={setUser} />}
@@ -86,13 +102,30 @@ function App() {
           <Route
             path="/profile-user"
             element={
-              <ProfileUser user={user} setUser={setUser} url={url} companies={companies} favs={favs} setFavs={setFavs} information={information} />
+              <ProfileUser
+                user={user}
+                setUser={setUser}
+                url={url}
+                companies={companies}
+                favs={favs}
+                setFavs={setFavs}
+                information={information}
+              />
             }
           />
           <Route
             path="/profile-user-edit"
             element={
-              <EditProfileUser user={user} setUser={setUser} url={url} companies={companies} favs={favs} setFavs={setFavs} information={information} setInformation={setInformation} />
+              <EditProfileUser
+                user={user}
+                setUser={setUser}
+                url={url}
+                companies={companies}
+                favs={favs}
+                setFavs={setFavs}
+                information={information}
+                setInformation={setInformation}
+              />
             }
           />
 
@@ -102,7 +135,8 @@ function App() {
           <Route path="/add-product-desingner" element={<PopupAddProductDesigner url={url} user={user} setProducts={setProducts}/>} />
           <Route path="/add-product-company" element={<PopupAddProductFactory url={url} user={user} setProducts={setProducts} />} />
           <Route path="/add-product-fabric" element={<PopupAddProductFarbic url={url} user={user} setProducts={setProducts} />} />
-        
+          <Route path="/compare" element={<Compare/>}/>
+
 
         </Routes>
       ) : (
