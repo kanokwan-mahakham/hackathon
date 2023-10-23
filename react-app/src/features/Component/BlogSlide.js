@@ -17,8 +17,12 @@ const BlogSlide = ({ imageHome, className }) => {
 };
 
 export default styled(BlogSlide)`
+  .blog-slide{
+    display: flex;
+    justify-content: center;
+  }
   .blog-slide img {
-    width: 450px;
+    width: 500px;
     height: 350px;
     margin: 60px 20px 60px 0px;
     border-radius: 20px;

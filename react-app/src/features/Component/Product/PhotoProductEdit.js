@@ -196,7 +196,6 @@
 //           </div>
 //         </label>
 
-        
 //       </div>
 //     </div>
 //   );
@@ -246,7 +245,8 @@ const PhotoProductEdit = ({ url, information, setInformation, className }) => {
     image6: information.image6,
   });
 
-  const {id,image1,image2,image3,image4,image5,image6,...item} = information;
+  const { id, image1, image2, image3, image4, image5, image6, ...item } =
+    information;
 
   // ฟังก์ชันเพื่อจัดการเหตุการณ์เมื่อเลือกไฟล์
   async function handleFileChange(event, imageKey) {
@@ -257,7 +257,7 @@ const PhotoProductEdit = ({ url, information, setInformation, className }) => {
         const imagePath = e.target.result;
         console.log(`Image path for ${imageKey}:`, imagePath);
         setImageUrls({ ...imageUrls, [imageKey]: imagePath });
-        
+
         // เรียกใช้ axios ด้วย url ที่รับมาจาก props
         const res = await axios.put(`${url}/informations/${id}`, {
           ...item,
@@ -268,25 +268,24 @@ const PhotoProductEdit = ({ url, information, setInformation, className }) => {
           image5: image5,
           image6: image6,
         });
-        
+
         console.log(res.data);
-        console.log(imageUrls.image3)
-        console.log(image3)
-        console.log(imageUrls[image3])
+        console.log(imageUrls.image3);
+        console.log(image3);
+        console.log(imageUrls[image3]);
         setInformation(res.data);
       };
       reader.readAsDataURL(file);
     }
   }
 
- 
   return (
     <div className={className}>
       <div className="photo-product">
         {Array.from({ length: 6 }, (_, i) => {
           const imageKey = `image${i + 1}`;
           return (
-            <div key={imageKey}>
+            <div key={imageKey} className="photo">
               <input
                 type="file"
                 id={`product-image${i + 1}`}
@@ -298,7 +297,10 @@ const PhotoProductEdit = ({ url, information, setInformation, className }) => {
               />
 
               <label htmlFor={`product-image${i + 1}`} className="image">
-                <img src={imageUrls[imageKey]} alt={`Product ${i + 1}`} />
+                <div className="img-product">
+                  <img src={imageUrls[imageKey]} alt={`Product ${i + 1}`} />
+                </div>
+
                 <div className="icon-overlay">
                   <img src={edit} id="icon" alt="Edit" />
                 </div>
@@ -317,16 +319,22 @@ export default styled(PhotoProductEdit)`
     flex-wrap: wrap;
     justify-content: center;
   }
-  .photo-product img {
+  
+  .image {
+    position: relative;
+    cursor: pointer;
+  }
+  .image .img-product {
     width: 420px;
     height: 500px;
     border-radius: 30px;
     margin: 10px 40px 40px 0px;
     opacity: 0.4;
+    background-color: black;
   }
-  .image {
-    position: relative;
-    cursor: pointer;
+  .img-product img{
+    width: 100%;
+    height:100%;
   }
   .icon-overlay #icon {
     position: absolute;

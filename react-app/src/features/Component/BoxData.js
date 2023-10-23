@@ -5,26 +5,30 @@ import { Link } from "react-router-dom";
 
 const BoxData = ({ user, url, item, setFavs, className }) => {
   const save = require("../../image Hackathon/icon/save-instagram.png");
-  const saveGreen = require("../../image Hackathon/icon/bookmark.png")  //ปุ่มที่ถูก save แล้ว
+  const saveGreen = require("../../image Hackathon/icon/bookmark.png"); //ปุ่มที่ถูก save แล้ว
   const image = require("../../image Hackathon/image/background.jpeg");
 
   const [data, setData] = useState("");
   const [icon, setIcon] = useState(save);
-  const [favId ,setFavId] = useState("")
+  const [favId, setFavId] = useState("");
 
-  async function fav (){
-    if(typeof favId == "string"){
-      const response = await axios.post(`${url}/customerFavs`,{customerId:user.id,companyId:item.id,informationId:item.informationId});
-      const newFavs = await axios.get(`${url}/customerFavs`)
-      setFavs(newFavs.data) 
-      setIcon(saveGreen) //add saved icon here
-      setFavId(response.data.id)
-    }else{
+  async function fav() {
+    if (typeof favId == "string") {
+      const response = await axios.post(`${url}/customerFavs`, {
+        customerId: user.id,
+        companyId: item.id,
+        informationId: item.informationId,
+      });
+      const newFavs = await axios.get(`${url}/customerFavs`);
+      setFavs(newFavs.data);
+      setIcon(saveGreen); //add saved icon here
+      setFavId(response.data.id);
+    } else {
       const response = await axios.delete(`${url}/customerFavs/${favId}`);
-      const newFavs = await axios.get(`${url}/customerFavs`)
-      setFavs(newFavs.data) 
-      setIcon(save) 
-      setFavId("")
+      const newFavs = await axios.get(`${url}/customerFavs`);
+      setFavs(newFavs.data);
+      setIcon(save);
+      setFavId("");
     }
   }
 
@@ -41,12 +45,11 @@ const BoxData = ({ user, url, item, setFavs, className }) => {
             `${url}/customerFavs/${user.id}/${item.id}`
           );
           if (responseFav.data.user) {
-            setIcon(saveGreen) //add saved icon here
-            setFavId(responseFav.data.user.id)
+            setIcon(saveGreen); //add saved icon here
+            setFavId(responseFav.data.user.id);
             console.log("User found:", responseFav.data.user);
           }
         }
-        
       } catch (error) {
         console.error(error);
       }
@@ -56,27 +59,27 @@ const BoxData = ({ user, url, item, setFavs, className }) => {
 
   return (
     <>
-      
-        <div className={className}>
-          <div className="box">
-            <img src={data.profile} id="box-image" alt="Box Image" />
-            <div className="box-detail">
-              <p id="name">{data.name}</p>
-              <p id="detail">{data.description}</p>
-  
-              <div className="button">
+      <div className={className}>
+        <div className="box">
+          <div className="box-box-image">
+            <img src={data.profile} alt="Box Image" />
+          </div>
+          <div className="box-detail">
+            <p id="name">{data.name}</p>
+            <p id="detail">{data.description}</p>
+
+            <div className="button">
               {typeof user == "object" ? (
-                  <button className="conpare-button">เปรียบเทียบ +</button>
-                ) : null}
-                
-                {user.status === "customer" ? (
-                  <img src={icon} id="save-button" alt="Save" onClick={fav}/>
-                ) : null}
-              </div>
+                <button className="conpare-button">เปรียบเทียบ +</button>
+              ) : null}
+
+              {user.status === "customer" ? (
+                <img src={icon} id="save-button" alt="Save" onClick={fav} />
+              ) : null}
             </div>
           </div>
         </div>
-     
+      </div>
     </>
   );
 };
@@ -85,7 +88,7 @@ export default styled(BoxData)`
   .box {
     position: relative;
   }
-  .box #box-image {
+  .box .box-box-image {
     width: 420px;
     height: 470px;
     border-radius: 30px;
