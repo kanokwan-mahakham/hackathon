@@ -18,11 +18,17 @@ import EditProfileUser from "./features/Profile/ProfileUser/EditProfileUser";
 import PopupAddProductFarbic from "./features/Registers/RegisterPage/popup/product/farbic/addproduct";
 import PopupAddProductFactory from "./features/Registers/RegisterPage/popup/product/factory/addproduct";
 
+import HelpmeFactoryOne from "./features/HelpMe/factory/page1"
+import HelpmeFactoryTwo from "./features/HelpMe/factory/page2"
+import HelpmeFactoryThree from "./features/HelpMe/factory/page3"
+import HelpmeFabicOne from "./features/HelpMe/fabic/page1"
+import HelpmeFabicTwo from "./features/HelpMe/fabic/page2"
+import HelpmeDesignOne from "./features/HelpMe/designer/page1"
+import HelpmeDesignTwo from"./features/HelpMe/designer/page2"
+
 import Compare from "./features/Compare/index"
 import { Routes, Route } from "react-router-dom";
-import HelpMe from "./features/HelpMe";
-import HelpmeFactoryOne from "./features/HelpMe/factory/page1"
-import HelpmeFactorythree from "./features/HelpMe/factory/page3"
+
 function App() {
 
   const url = `http://localhost:3002`
@@ -139,8 +145,13 @@ function App() {
           <Route path="/add-product-company" element={<PopupAddProductFactory url={url} user={user} setProducts={setProducts} />} />
           <Route path="/add-product-fabric" element={<PopupAddProductFarbic url={url} user={user} setProducts={setProducts} />} />
           <Route path="/compare" element={<Compare/>}/>
-
-
+          <Route path="/HelpmeFactoryOne" element={<HelpmeFactoryOne/>}/>
+          <Route path="/HelpmeFactoryTwo" element={<HelpmeFactoryTwo/>}/>
+          <Route path="/HelpmeFactoryThree" element={<HelpmeFactoryThree/>}/>
+          <Route path="/HelpmeFabicOne" element={<HelpmeFabicOne/>}/>
+          <Route path="/HelpmeFabicTwo" element={<HelpmeFabicTwo/>}/>
+          <Route path="/HelpmeDesignOne" element={<HelpmeDesignOne/>}/>
+          <Route path="/HelpmeDesignTwo" element={<HelpmeDesignTwo/>}/>
         </Routes>
       ) : (
         <div>Loading....</div>

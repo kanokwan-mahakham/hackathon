@@ -163,7 +163,7 @@ const HelpmeFabicTwo = ({ className }) => {
     export default styled(HelpmeFabicTwo)`
 
     @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-        .body{
+    .body {
         background-color: rgba(198, 204, 215, 0.7);
         display: flex;
         justify-content: center;
@@ -173,160 +173,207 @@ const HelpmeFabicTwo = ({ className }) => {
         font-family: "Lora";
     }
 
-       
-        
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
+    h1 {
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+        font-family: 'Lora';
+    }
+
+    .group-underline {
+        display: flex;
+        justify-content: center;
+    }
+
+    .underline {
+        width: 430.375px;
+        height: 1.444px;
+        background: #000;
+        margin-bottom: 25px;
+    }
+
+    .container {
+        width: 200%;
+        max-width: 1110px;
+        min-height: 540px;
+        background-color: #ffffff;
+        border-radius: 54px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        flex-direction: column;
+        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin-bottom: 75px;
+        padding: 0 20px;
+    }
+
+    .group-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container-inside1 {
+        border-radius: 30px;
+        background: #C6CCD7;
+        width: 70%;
+        max-width: 800px;
+        flex-shrink: 0;
+        margin-top: 10px;
+        padding: 20px;
+    }
+
+    .groupButton {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    button.button1 {
+        width: 100%;
+        max-width: 177px;
+        height: 48px;
+        flex-shrink: 0;
+        border-radius: 20px;
+        background: #333A56;
+        border-radius: 20px;
+        background: #333A56;
+        margin-top: 10px;
+        color: #FFF;
+        text-align: center;
+        font-family: 'Lora', serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        border: none;
+    }
+
+    button.button2 {
+        width: 100%;
+        max-width: 177px;
+        height: 48px;
+        flex-shrink: 0;
+        border-radius: 20px;
+        background: #C6CCD7;
+        border-radius: 20px;
+        background: #C6CCD7;
+        margin-top: 10px;
+        color: #333A56;
+        text-align: center;
+        font-family: "Lora";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        border: none;
+    }
+
+    button.button2:hover {
+        width: 100%;
+        max-width: 177px;
+        height: 48px;
+        flex-shrink: 0;
+        border-radius: 20px;
+        background: #333A56;
+        border-radius: 20px;
+        background: #333A56;
+        margin-top: 10px;
+        color: #FFF;
+        text-align: center;
+        font-family: 'Lora', serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        border: none;
+    }
+
+    .container-inside2 {
+        width: 200%;
+        max-width: 1110px;
+        height: 90%;
+        border-radius: 50px;
+        margin-top: 20px;
+        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
+        background: #333A56;
+        flex-shrink: 0;
+        padding: 20px;
+    }
+
+    .grouph2 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
+
+    h2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+        font-family: 'Lora';
+        font-weight: 500;
+        color: #fff;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
         h1 {
-            font-size: 40px;
-            font-weight: bold;
-            text-align: center;
-            font-family: 'Lora';
+            font-size: 30px;
         }
-        .group-underline{
-            display: flex;
-            justify-content: center
-
-        }
-
-        .underline {
-            width: 430.375px;
-            height: 1.444px;
-            background: #000;
-            margin-bottom:25px;
-        }
-        
         .container {
-            width: 1110px;
-            height: 540px;
-            background-color: #ffffff;
-            border-radius: 54px;
-            display: flex;
-            flex-wrap: wrap;
-            align-content: space-around;
-            flex-direction: column;
-            box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
-            flex-direction: column;
-            flex-wrap: nowrap;
-            align-items: center;
-            margin-bottom:75px;
+            width: 90%;
+            border-radius: 40px;
         }
-        .group-container{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
+        .container-inside1 {
+            max-width: 600px;
+            padding: 10px;
         }
-
-        .container-inside1{
-            border-radius: 30px;
-            background: #C6CCD7;
-            width:800px;
-            height: 20%;
-            flex-shrink: 0;
-            margin-top:55px; 
-            
+        button.button1, button.button2 {
+            font-size: 18px;
         }
+    }
 
-    
-
-        .groupButton{
-            display:flex;
-            justify-content: space-around
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 24px;
         }
-
-        button.button1
-        {
-            width: 177px;
-            height: 48px;
-            flex-shrink: 0;
-            border-radius: 20px;
-            background: #333A56;border-radius: 20px;
-            background: #333A56;
-            margin-top:10px;
-            color: #FFF;
-            text-align: center;
-            font-family: 'Lora', serif; 
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            border: none;
+        .container {
+            width: 100%;
         }
-
-        button.button2
-        {
-            width: 177px;
-            height: 38px;
-            flex-shrink: 0;
-            border-radius: 20px;
-            background: #C6CCD7;border-radius: 20px;
-            background: #C6CCD7;
-            margin-top:13px;
-            color: #333A56;
-            text-align: center;
-            font-family: "Lora";
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            border: none;
+        .container-inside1 {
+            max-width: 90%;
         }
-
-        button.button2:hover
-        {
-            width: 177px;
-            height: 48px;
-            flex-shrink: 0;
-            border-radius: 20px;
-            background: #333A56;border-radius: 20px;
-            background: #333A56;
-            margin-top:10px;
-            color: #FFF;
-            text-align: center;
-            font-family: 'Lora', serif; 
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            border: none;
+        button.button1, button.button2 {
+            font-size: 16px;
         }
-
-
-        .container-inside2{
-            width: 1110px;
-            height: 90%;
-            border-radius: 50px;  
-            margin-top:20px;  
-            box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
-            background: #333A56;
-            flex-shrink: 0;
+        .underline {
+            width: 300px;
         }
-
-        .grouph2{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: space-around;
+        .previous {
+            left: 20px;
         }
-
-        h2{
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            align-content: center;
-            align-items: center;
-            font-family: 'Lora';
-            font-weight: 500;
-            color:#fff;
+        .dropbtn {
+            margin-left: 20px;
         }
-    
-        /*for dropdrow*/
+        .dropdownList {
+            margin-left: 20px;
+        }
+    }
+
+    /*for dropdrow*/
         .dropbtn {
             background-color:#D9D9D9;
             color: #000;
@@ -370,8 +417,6 @@ const HelpmeFabicTwo = ({ className }) => {
         }
         .dropdown a:hover {background-color: #ddd;}
         .show {display: block;}
-        
-
         .groupButton1{
             display:flex;
             justify-content: space-around;
@@ -427,47 +472,6 @@ const HelpmeFabicTwo = ({ className }) => {
 
         }
 
-        button.selectlong{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            border-radius: 20px;
-            width: 545px;
-            height: 48px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            background: #FFFFFF;
-            border: none;
-        }
-
-        button.selectlong:hover{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            border-radius: 20px;
-            width: 545px;
-            height: 48px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            background: #C6CCD7;
-            border: 2px solid #fff;
-        }
-        
-        
-        button.selectlong span {
-            color: #000;
-            text-align: center;
-            font-family: 'Lora', serif;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 300;
-            line-height: normal;
-        }
-        
         button.select2{
             margin-left:15px;
             display: flex;
@@ -501,6 +505,7 @@ const HelpmeFabicTwo = ({ className }) => {
             padding:0px;
             
         }
+
         button.select2 span {
             color: #000;
             text-align: center;
