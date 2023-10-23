@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom'; 
 
 const HelpmeFactoryOne = ({ className }) => {
 
@@ -20,9 +20,12 @@ const HelpmeFactoryOne = ({ className }) => {
                     <div className="group-container">
                         <div className="container-inside1">
                             <div className="groupButton">
-                                <button className="button1">หมวดหมู่</button>
-                                <button className="button2">งานปักหรือสกรีน</button>
-                                <button className="button2">เนื้อผ้า</button>
+                                <Link to="/HelpmeFactoryOne">
+                                <button className="button1">หมวดหมู่</button></Link>
+                                <Link to="/HelpmeFactoryTwo">
+                                <button className="button2">งานปักหรือสกรีน</button></Link>
+                                <Link to="/HelpmeFactoryThree">
+                                <button className="button2">เนื้อผ้า</button></Link>
                             </div>
                         </div>
                         <div className="container-inside2">

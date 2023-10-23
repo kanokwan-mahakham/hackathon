@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom'; 
 const HelpmeFabicTwo = ({ className }) => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [filterText, setFilterText] = useState('');
@@ -119,8 +119,11 @@ const HelpmeFabicTwo = ({ className }) => {
                     <div className="group-container">
                         <div className="container-inside1">
                             <div className="groupButton">
+                            <Link to="/HelpmeFabicOne">
                             <button className="button2">ประเภท</button>
-                                <button className="button1">ที่ตั้ง</button>
+                            </Link>
+                            <Link to="/HelpmeFabicTwo">
+                                <button className="button1">ที่ตั้ง</button></Link>
                             </div>
                         </div>
                         <div className="container-inside2">
@@ -279,7 +282,7 @@ const HelpmeFabicTwo = ({ className }) => {
     }
 
     button.button2:hover {
-        width: 100%;
+        width: 150px;
         max-width: 177px;
         height: 48px;
         flex-shrink: 0;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'; 
 
 const HelpmeDesignOne = ({ className }) => {
     return (
@@ -18,8 +19,12 @@ const HelpmeDesignOne = ({ className }) => {
                         <div className="group-container">
                             <div className="container-inside1">
                                 <div className="groupButton">
+                                    <Link to="/HelpmeFabicOne">
                                     <button className="button1">สไตล์</button>
+                                    </Link>
+                                    <Link to="/HelpmeFabicTwo">
                                     <button className="button2">เรทราคา</button>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="container-inside2">
@@ -42,7 +47,9 @@ const HelpmeDesignOne = ({ className }) => {
                                     <button className="select"> <span>อื่นๆ</span></button>
                                 </div>
                                 <div className="groupButton2">
+                                    <Link to="/HelpmeDesignTwo">
                                     <button className="select2"> <span>ข้าม</span></button>
+                                    </Link>
                                     <button className="select2"> <span>ต่อไป</span></button>
                                 </div>
                             </div>
@@ -133,7 +140,7 @@ export default styled(HelpmeDesignOne)`
     }
 
     button.button1 {
-        width: 100%;
+        width: 170px;
         max-width: 177px;
         height: 38px;
         flex-shrink: 0;
@@ -153,7 +160,7 @@ export default styled(HelpmeDesignOne)`
     }
 
     button.button2 {
-        width: 100%;
+        width: 170px;
         max-width: 177px;
         height: 38px;
         flex-shrink: 0;
@@ -173,7 +180,7 @@ export default styled(HelpmeDesignOne)`
     }
 
     button.button2:hover {
-        width: 100%;
+        width: 170px;
         max-width: 177px;
         height: 38px;
         flex-shrink: 0;

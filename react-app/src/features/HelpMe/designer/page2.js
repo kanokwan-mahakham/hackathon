@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'; 
 
 const SliderContainer = styled.div`
   width: 100%;
@@ -73,8 +74,10 @@ const HelpmeDesignTwo = ({ className }) => {
                     <div className="group-container">
                         <div className="container-inside1">
                             <div className="groupButton">
-                            <button className="button2">สไตล์</button>
-                                <button className="button1">เรทราคา</button>
+                            <Link to="/HelpmeDesignOne">
+                            <button className="button2">สไตล์</button></Link>
+                            <Link to="/HelpmeDesignTwo">
+                                <button className="button1">เรทราคา</button></Link>
                             </div>
                         </div>
                         <div className="container-inside2">

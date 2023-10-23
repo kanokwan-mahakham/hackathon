@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom'; 
 
 const HelpmeFabicOne = ({ className }) => {
     return (
@@ -19,8 +19,12 @@ const HelpmeFabicOne = ({ className }) => {
                     <div className="group-container">
                         <div className="container-inside1">
                             <div className="groupButton">
+                                <Link to="/HelpmeFabicOne">
                                 <button className="button1">ประเภท</button>
+                                </Link>
+                                <Link to="/HelpmeFabicTwo">
                                 <button className="button2">ที่ตั้ง</button>
+                                </Link>
                             </div>
                         </div>
                         <div className="container-inside2">
