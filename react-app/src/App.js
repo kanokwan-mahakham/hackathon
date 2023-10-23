@@ -15,9 +15,12 @@ import EditProfileUser from "./features/Profile/ProfileUser/EditProfileUser";
 import PopupAddProductFarbic from "./features/Registers/RegisterPage/popup/product/farbic/addproduct"
 import PopupAddProductFactory from "./features/Registers/RegisterPage/popup/product/factory/addproduct"
 import { Routes, Route } from "react-router-dom";
-
+import HelpMe from "./features/HelpMe";
+import HelpmeFactoryOne from "./features/HelpMe/factory/page1"
+import HelpmeFactorythree from "./features/HelpMe/factory/page3"
 function App() {
-  const url = `http://localhost:5000`;
+
+  const url = `http://localhost:3002`
   const [user, setUser] = useState("");
   const [companies, setCompanies] = useState([]);
   const [favs, setFavs] = useState([]);
@@ -28,7 +31,7 @@ function App() {
   useEffect(() => {
     async function getCompanies() {
       const resCompany = await axios.get(`${url}/users`);
-      const resImageHome = await axios.get(`${url}/informations/4`);
+      const resImageHome = await axios.get(`${url}/informations/1`);
       const resCustomerFavs = await axios.get(`${url}/customerFavs`);
       setCompanies(resCompany.data);
       setFavs(resCustomerFavs.data);
@@ -102,8 +105,8 @@ function App() {
           <Route path="/add-product-desingner" element={<PopupAddProductDesigner url={url} user={user} setProducts={setProducts}/>} />
           <Route path="/add-product-company" element={<PopupAddProductFactory url={url} user={user} setProducts={setProducts} />} />
           <Route path="/add-product-fabric" element={<PopupAddProductFarbic url={url} user={user} setProducts={setProducts} />} />
-        
-
+          <Route path="/HelpmeFactorythree" element={<HelpmeFactorythree/>}></Route>
+          
         </Routes>
       ) : (
         <div>Loading....</div>

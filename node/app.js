@@ -23,8 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cors({
-  origin: 'http://localhost:3000',  // อนุญาตเฉพาะต้นทางนี้เท่านั้น
-  methods: ['PUT','DELETE']  // อนุญาตให้ใช้วิธี DELETE
+  origin: 'http://localhost:3001',  // อนุญาตเฉพาะต้นทางนี้เท่านั้น
+  methods: ['PUT','DELETE','POST']  // อนุญาตให้ใช้วิธี DELETE
 }));
 
 
@@ -42,6 +42,6 @@ app.use('/products', productRoutes);
 
 
 // Creating a server
-app.listen(5000, () => {
-  console.log("Listening on port 5000");
+app.listen(3002, () => {
+  console.log("Listening on port 3002");
 });

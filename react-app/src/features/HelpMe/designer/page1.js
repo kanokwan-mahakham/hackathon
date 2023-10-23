@@ -1,67 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const SliderContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
-const RangeSlider = styled.input`
-  -webkit-appearance: none;
-  width: 100%;
-  height: 10px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #4caf50;
-    cursor: pointer;
-  }
-`;
-
-const HelpMe = ({ className }) => {
-    const [dropdownVisible, setDropdownVisible] = useState(false);
-    const [filterText, setFilterText] = useState('');
-    const [filteredItems, setFilteredItems] = useState([]);
-    const [sliderValue, setSliderValue] = useState(25000);
-
-    const toggleDropdown = () => {
-        setDropdownVisible(!dropdownVisible);
-    };
-
-    const filterDropdown = (e) => {
-        const text = e.target.value;
-        setFilterText(text);
-        filterItems(text);
-    };
-
-    const filterItems = (text) => {
-        const items = ["Cow", "Cat", "Dog", "Giraffe", "Lion", "Leopard", "Cheetah"];
-        const filtered = items.filter(item => item.toLowerCase().includes(text.toLowerCase()));
-        setFilteredItems(filtered);
-    };
-
-    const handleSliderChange = (e) => {
-        setSliderValue(parseInt(e.target.value));
-    };
+const HelpmeDesignOne = ({ className }) => {
+   
 
     return (
         <div className={className}>
             <div className='body'>
             <div className="content">
                 <div className="container">
-                    <h1>Factory</h1>
+                    <h1>Designer</h1>
                     <div className="group-underline">
                         <div className="underline"></div>
                         <div className="underline2"></div>
@@ -72,67 +21,33 @@ const HelpMe = ({ className }) => {
                     <div className="group-container">
                         <div className="container-inside1">
                             <div className="groupButton">
-                                <button className="button1">หมวดหมู่</button>
-                                <button className="button2">งานปักหรือสกรีน</button>
-                                <button className="button2">เนื้อผ้า</button>
+                                <button className="button1">สไตล์</button>
+                                <button className="button2">เรทราคา</button>
                             </div>
                         </div>
                         <div className="container-inside2">
                             <div className="grouph2">
-                                <h2>Factory</h2>
-                                <h2>Factory</h2>
-                                <h2>Factory</h2>
+                                <h2>โปรดเลือกสไตล์ที่คุณชอบ</h2>
                             </div>
 
-                            <div className="dropdown">
-                                <button className="dropbtn" onClick={toggleDropdown}>Dropdown</button>
-                                <div id="myDropdown" className={`dropdownList ${dropdownVisible ? 'show' : ''}`}>
-                                    <input
-                                        type="text"
-                                        placeholder="Search.."
-                                        className="searchField"
-                                        value={filterText}
-                                        onChange={filterDropdown}
-                                    />
-                                    {filteredItems.map((item, index) => (
-                                        <a key={index} href="#">{item}</a>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <SliderContainer>
-                                <RangeSlider
-                                    type="range"
-                                    min="50"
-                                    max="5000"
-                                    step="10"
-                                    value={sliderValue}
-                                    onChange={handleSliderChange}
-                                />
-                            </SliderContainer>
-
-                            <p>เรทราคา : {sliderValue}</p>
+                            
+                           
 
                             <div className="groupButton1">
-                                <button className="selectlong"> <span>ทางโรงงานมีเนื้อผ้าที่เหมาะสมให้เลือก (รับทำเฉพาะผ้าที่มีในโรงงานเท่านั้น)</span> </button>
-                                <button className="selectlong"> <span>ทางโรงงานมีเนื้อผ้าที่เหมาะสมให้เลือก (สามารถนำผ้ามาทำกับโรงงานได้)</span> </button>
-                                <button className="selectlong"> <span>ต้องนำผ้ามาให้โรงงานเท่านั้น</span> </button>
-                                <button className="select"> <span>กระโปรง</span> </button>
-                                <button className="select"> <span>เสื้อ</span> </button>
-                                <button className="select"><span>ชุดเซ็ต</span> </button>
-                                <button className="select"><span>ผ้าคลุม</span></button>
+                               
+                                <button className="select"> <span>วินเทจ</span> </button>
+                                <button className="select"> <span>ลำลอง</span> </button>
+                                <button className="select"><span>Grunge</span> </button>
+                                <button className="select"><span>Sexy</span></button>
+                                <button className="select"> <span>Athleisure</span> </button>
+                                <button className="select"> <span>Retro</span> </button>
                             </div>
                             <div className="groupButton1">
-                                <button className="select"> <span>กระโปรง</span> </button>
-                                <button className="select"> <span>เสื้อ</span> </button>
-                                <button className="select"><span>ชุดเซ็ต</span> </button>
-                                <button className="select"><span>ผ้าคลุม</span></button>
-                                <button className="select"> <span>กางเกง</span></button>
-                                <button className="select"> <span>สูท</span></button>
-                                <button className="select"> <span>เดรส</span></button>
-                                <button className="select"> <span>ครบวงจร</span></button>
-                                <button className="select"><span>ชุดเซ็ต</span> </button>
-                                <button className="select"><span>ผ้าคลุม</span></button>
+                                <button className="select"> <span>โบฮีเมียน</span> </button>
+                                <button className="select"> <span>Streetwear</span> </button>
+                                <button className="select"><span>Eco-Friendly</span> </button>
+                                <button className="select"><span>Sporty</span></button>
+                                <button className="select"> <span>อื่นๆ</span></button>
                             </div>
                             <div className="groupButton2">
                                 <button className="select2"> <span>ข้าม</span></button>
@@ -149,7 +64,7 @@ const HelpMe = ({ className }) => {
 
 
 
-    export default styled(HelpMe)`
+    export default styled(HelpmeDesignOne)`
 
     @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
         .body{

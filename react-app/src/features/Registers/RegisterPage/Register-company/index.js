@@ -366,9 +366,7 @@ const RegisterCompany = ({setUser,url}) => {
                     </div>
                     </StyleAddtext>
         
-                <div className="right-image">
-                    <div className="right-img"></div>
-                </div>
+                
             
                        
                     

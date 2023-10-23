@@ -10,7 +10,8 @@ const SliderContainer = styled.div`
 
 const RangeSlider = styled.input`
   -webkit-appearance: none;
-  width: 100%;
+  margin-top:20px;
+  width: 90%;
   height: 10px;
   border-radius: 5px;
   background: #d3d3d3;
@@ -30,7 +31,7 @@ const RangeSlider = styled.input`
   }
 `;
 
-const HelpMe = ({ className }) => {
+const HelpmeDesignTwo = ({ className }) => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [filterText, setFilterText] = useState('');
     const [filteredItems, setFilteredItems] = useState([]);
@@ -61,7 +62,7 @@ const HelpMe = ({ className }) => {
             <div className='body'>
             <div className="content">
                 <div className="container">
-                    <h1>Factory</h1>
+                    <h1>Designer    </h1>
                     <div className="group-underline">
                         <div className="underline"></div>
                         <div className="underline2"></div>
@@ -72,32 +73,14 @@ const HelpMe = ({ className }) => {
                     <div className="group-container">
                         <div className="container-inside1">
                             <div className="groupButton">
-                                <button className="button1">หมวดหมู่</button>
-                                <button className="button2">งานปักหรือสกรีน</button>
-                                <button className="button2">เนื้อผ้า</button>
+                            <button className="button2">สไตล์</button>
+                                <button className="button1">เรทราคา</button>
                             </div>
                         </div>
                         <div className="container-inside2">
                             <div className="grouph2">
-                                <h2>Factory</h2>
-                                <h2>Factory</h2>
-                                <h2>Factory</h2>
-                            </div>
-
-                            <div className="dropdown">
-                                <button className="dropbtn" onClick={toggleDropdown}>Dropdown</button>
-                                <div id="myDropdown" className={`dropdownList ${dropdownVisible ? 'show' : ''}`}>
-                                    <input
-                                        type="text"
-                                        placeholder="Search.."
-                                        className="searchField"
-                                        value={filterText}
-                                        onChange={filterDropdown}
-                                    />
-                                    {filteredItems.map((item, index) => (
-                                        <a key={index} href="#">{item}</a>
-                                    ))}
-                                </div>
+                                <h2>เรทราคา</h2>
+                               
                             </div>
 
                             <SliderContainer>
@@ -113,30 +96,10 @@ const HelpMe = ({ className }) => {
 
                             <p>เรทราคา : {sliderValue}</p>
 
-                            <div className="groupButton1">
-                                <button className="selectlong"> <span>ทางโรงงานมีเนื้อผ้าที่เหมาะสมให้เลือก (รับทำเฉพาะผ้าที่มีในโรงงานเท่านั้น)</span> </button>
-                                <button className="selectlong"> <span>ทางโรงงานมีเนื้อผ้าที่เหมาะสมให้เลือก (สามารถนำผ้ามาทำกับโรงงานได้)</span> </button>
-                                <button className="selectlong"> <span>ต้องนำผ้ามาให้โรงงานเท่านั้น</span> </button>
-                                <button className="select"> <span>กระโปรง</span> </button>
-                                <button className="select"> <span>เสื้อ</span> </button>
-                                <button className="select"><span>ชุดเซ็ต</span> </button>
-                                <button className="select"><span>ผ้าคลุม</span></button>
-                            </div>
-                            <div className="groupButton1">
-                                <button className="select"> <span>กระโปรง</span> </button>
-                                <button className="select"> <span>เสื้อ</span> </button>
-                                <button className="select"><span>ชุดเซ็ต</span> </button>
-                                <button className="select"><span>ผ้าคลุม</span></button>
-                                <button className="select"> <span>กางเกง</span></button>
-                                <button className="select"> <span>สูท</span></button>
-                                <button className="select"> <span>เดรส</span></button>
-                                <button className="select"> <span>ครบวงจร</span></button>
-                                <button className="select"><span>ชุดเซ็ต</span> </button>
-                                <button className="select"><span>ผ้าคลุม</span></button>
-                            </div>
+                           
                             <div className="groupButton2">
                                 <button className="select2"> <span>ข้าม</span></button>
-                                <button className="select2"> <span>ต่อไป</span></button>
+                                <button className="select2"> <span>สำรวจ</span></button>
                             </div>
                         </div>
                     </div>
@@ -149,7 +112,7 @@ const HelpMe = ({ className }) => {
 
 
 
-    export default styled(HelpMe)`
+    export default styled(HelpmeDesignTwo)`
 
     @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
         .body{
@@ -168,6 +131,12 @@ const HelpMe = ({ className }) => {
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+        p{
+            font-size: 20px;
+            color:#fff;
+            text-align: center;
+            font-family: 'Lora';
         }
 
         h1 {

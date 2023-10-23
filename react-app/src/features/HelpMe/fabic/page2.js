@@ -1,41 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const SliderContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const RangeSlider = styled.input`
-  -webkit-appearance: none;
-  width: 100%;
-  height: 10px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #4caf50;
-    cursor: pointer;
-  }
-`;
-
-const HelpMe = ({ className }) => {
+const HelpmeFabicTwo = ({ className }) => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [filterText, setFilterText] = useState('');
     const [filteredItems, setFilteredItems] = useState([]);
-    const [sliderValue, setSliderValue] = useState(25000);
-
+  
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
     };
@@ -47,21 +17,98 @@ const HelpMe = ({ className }) => {
     };
 
     const filterItems = (text) => {
-        const items = ["Cow", "Cat", "Dog", "Giraffe", "Lion", "Leopard", "Cheetah"];
+        const items = [
+            "เชียงใหม่",
+            "นครราชสีมา",
+            "กาญจนบุรี",
+            "ตาก",
+            "อุบลราชธานี",
+            "สุราษฎร์ธานี",
+            "ชัยภูมิ",
+            "แม่ฮ่องสอน",
+            "เพชรบูรณ์",
+            "ลำปาง",
+            "อุดรธานี",
+            "เชียงราย",
+            "น่าน",
+            "เลย",
+            "ขอนแก่น",
+            "พิษณุโลก",
+            "บุรีรัมย",
+            "นครศรีธรรมราช",
+            "สกลนคร",
+            "นครสวรรค์",
+            "ศรีสะเกษ",
+            "กำแพงเพชร",
+            "ร้อยเอ็ด",
+            "สุรินทร์",
+            "อุตรดิตถ์",
+            "สงขลา",
+            "สระแก้ว",
+            "กาฬสินธุ์",
+            "อุทัยธานี",
+            "สุโขทัย",
+            "แพร่",
+            "ประจวบคีรีขันธ์",
+            "จันทบุรี",
+            "พะเยา",
+            "เพชรบุรี",
+            "ลพบุรี",
+            "ชุมพร",
+            "นครพนม",
+            "สุพรรณบุรี",
+            "ฉะเชิงเทรา",
+            "มหาสารคาม",
+            "ราชบุรี",
+            "ตรัง",
+            "ปราจีนบุรี",
+            "กระบี่",
+            "พิจิตร",
+            "ยะลา",
+            "ลำพูน",
+            "นราธิวาส",
+            "ชลบุรี",
+            "มุกดาหาร",
+            "บึงกาฬ",
+            "พังงา",
+            "ยโสธร",
+            "หนองบัวลำภู",
+            "สระบุรี",
+            "ระยอง",
+            "พัทลุง",
+            "ระนอง",
+            "อำนาจเจริญ",
+            "หนองคาย",
+            "ตราด",
+            "พระนครศรีอยุธยา",
+            "สตูล",
+            "ชัยนาท",
+            "นครปฐม",
+            "นครนายก",
+            "ปัตตานี",
+            "กรุงเทพมหานคร",
+            "ปทุมธานี",
+            "สมุทรปราการ",
+            "อ่างทอง",
+            "สมุทรสาคร",
+            "สิงห์บุรี",
+            "นนทบุรี",
+            "ภูเก็ต",
+            "สมุทรสงคราม",
+          ];
+        
+          
         const filtered = items.filter(item => item.toLowerCase().includes(text.toLowerCase()));
         setFilteredItems(filtered);
     };
 
-    const handleSliderChange = (e) => {
-        setSliderValue(parseInt(e.target.value));
-    };
 
     return (
         <div className={className}>
             <div className='body'>
             <div className="content">
                 <div className="container">
-                    <h1>Factory</h1>
+                    <h1>Fabric</h1>
                     <div className="group-underline">
                         <div className="underline"></div>
                         <div className="underline2"></div>
@@ -72,20 +119,17 @@ const HelpMe = ({ className }) => {
                     <div className="group-container">
                         <div className="container-inside1">
                             <div className="groupButton">
-                                <button className="button1">หมวดหมู่</button>
-                                <button className="button2">งานปักหรือสกรีน</button>
-                                <button className="button2">เนื้อผ้า</button>
+                            <button className="button2">ประเภท</button>
+                                <button className="button1">ที่ตั้ง</button>
                             </div>
                         </div>
                         <div className="container-inside2">
                             <div className="grouph2">
-                                <h2>Factory</h2>
-                                <h2>Factory</h2>
-                                <h2>Factory</h2>
+                                <h2>ร้านขายผ้าใกล้ฉัน</h2>
                             </div>
 
                             <div className="dropdown">
-                                <button className="dropbtn" onClick={toggleDropdown}>Dropdown</button>
+                                <button className="dropbtn" onClick={toggleDropdown}>โปรดเลือกจังหวัด</button>
                                 <div id="myDropdown" className={`dropdownList ${dropdownVisible ? 'show' : ''}`}>
                                     <input
                                         type="text"
@@ -100,43 +144,10 @@ const HelpMe = ({ className }) => {
                                 </div>
                             </div>
 
-                            <SliderContainer>
-                                <RangeSlider
-                                    type="range"
-                                    min="50"
-                                    max="5000"
-                                    step="10"
-                                    value={sliderValue}
-                                    onChange={handleSliderChange}
-                                />
-                            </SliderContainer>
 
-                            <p>เรทราคา : {sliderValue}</p>
-
-                            <div className="groupButton1">
-                                <button className="selectlong"> <span>ทางโรงงานมีเนื้อผ้าที่เหมาะสมให้เลือก (รับทำเฉพาะผ้าที่มีในโรงงานเท่านั้น)</span> </button>
-                                <button className="selectlong"> <span>ทางโรงงานมีเนื้อผ้าที่เหมาะสมให้เลือก (สามารถนำผ้ามาทำกับโรงงานได้)</span> </button>
-                                <button className="selectlong"> <span>ต้องนำผ้ามาให้โรงงานเท่านั้น</span> </button>
-                                <button className="select"> <span>กระโปรง</span> </button>
-                                <button className="select"> <span>เสื้อ</span> </button>
-                                <button className="select"><span>ชุดเซ็ต</span> </button>
-                                <button className="select"><span>ผ้าคลุม</span></button>
-                            </div>
-                            <div className="groupButton1">
-                                <button className="select"> <span>กระโปรง</span> </button>
-                                <button className="select"> <span>เสื้อ</span> </button>
-                                <button className="select"><span>ชุดเซ็ต</span> </button>
-                                <button className="select"><span>ผ้าคลุม</span></button>
-                                <button className="select"> <span>กางเกง</span></button>
-                                <button className="select"> <span>สูท</span></button>
-                                <button className="select"> <span>เดรส</span></button>
-                                <button className="select"> <span>ครบวงจร</span></button>
-                                <button className="select"><span>ชุดเซ็ต</span> </button>
-                                <button className="select"><span>ผ้าคลุม</span></button>
-                            </div>
                             <div className="groupButton2">
                                 <button className="select2"> <span>ข้าม</span></button>
-                                <button className="select2"> <span>ต่อไป</span></button>
+                                <button className="select2"> <span>สำรวจ</span></button>
                             </div>
                         </div>
                     </div>
@@ -149,7 +160,7 @@ const HelpMe = ({ className }) => {
 
 
 
-    export default styled(HelpMe)`
+    export default styled(HelpmeFabicTwo)`
 
     @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
         .body{
@@ -216,9 +227,9 @@ const HelpMe = ({ className }) => {
             border-radius: 30px;
             background: #C6CCD7;
             width:800px;
-            height: 18%;
+            height: 20%;
             flex-shrink: 0;
-            margin-top:45px; 
+            margin-top:55px; 
             
         }
 
@@ -232,12 +243,12 @@ const HelpMe = ({ className }) => {
         button.button1
         {
             width: 177px;
-            height: 38px;
+            height: 48px;
             flex-shrink: 0;
             border-radius: 20px;
             background: #333A56;border-radius: 20px;
             background: #333A56;
-            margin-top:13px;
+            margin-top:10px;
             color: #FFF;
             text-align: center;
             font-family: 'Lora', serif; 
@@ -270,12 +281,12 @@ const HelpMe = ({ className }) => {
         button.button2:hover
         {
             width: 177px;
-            height: 38px;
+            height: 48px;
             flex-shrink: 0;
             border-radius: 20px;
             background: #333A56;border-radius: 20px;
             background: #333A56;
-            margin-top:13px;
+            margin-top:10px;
             color: #FFF;
             text-align: center;
             font-family: 'Lora', serif; 
@@ -314,22 +325,25 @@ const HelpMe = ({ className }) => {
             font-weight: 500;
             color:#fff;
         }
+    
         /*for dropdrow*/
         .dropbtn {
-            background-color: rgb(76, 78, 175);
-            color: white;
-            padding: 16px;
+            background-color:#D9D9D9;
+            color: #000;
+            margin-top:10px;
+            margin-left:380px;
+            padding: 20px 120px;
             font-size: 16px;
-            border: none;
+            border: none;   
             cursor: pointer;
         }
         .dropbtn:hover, .dropbtn:focus {
-            background-color: #4f3e8e;
+            background-color: white;
         }
         .searchField {
             box-sizing: border-box;
             font-size: 16px;
-            padding: 14px 20px 12px 45px;
+            padding: 14px 60px 12px 125px;
             border: none;
             border-bottom: 1px solid #ddd;
         }
@@ -344,6 +358,7 @@ const HelpMe = ({ className }) => {
             background-color: #f6f6f6;
             min-width: 230px;
             overflow: auto;
+            margin-left:380px;
             border: 1px solid #ddd;
             z-index: 2x ;
         }
@@ -360,7 +375,7 @@ const HelpMe = ({ className }) => {
         .groupButton1{
             display:flex;
             justify-content: space-around;
-            margin-top:20px;
+            margin-top:50px;
         }
 
         .groupButton2{

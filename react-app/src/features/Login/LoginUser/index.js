@@ -165,6 +165,7 @@ export default styled(LoginComponent)`
     margin: 5px;
     text-align: center;
     padding-top: 40px;
+    font-family: "Lora";
   }
   p {
     padding-left: 130px;
@@ -193,6 +194,7 @@ export default styled(LoginComponent)`
     width: 288.75px;
     padding: 8.663px 5.775px;
     justify-content: center;
+    font-family: "Lora";
     align-items: center;
     gap: 5.775px;
     background: #141415;
@@ -200,11 +202,12 @@ export default styled(LoginComponent)`
     cursor: pointer;
     margin-top: 20px;
     margin-left: 65px;
+
   }
   .button-text {
     color: #fff;
     text-align: center;
-    font-family: "Open Sans";
+    font-family: "Lora";
     font-size: 13px;
     font-weight: 700;
     line-height: 17.325px;
