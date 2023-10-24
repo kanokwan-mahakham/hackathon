@@ -1,27 +1,92 @@
 import styled from "styled-components";
-import BoxData from "../Component/BoxData"; 
+import BoxData from "../Component/BoxData";
 import Footer from "../Component/Footer";
-const Category = ({ className }) => {
-    const image = require("../../image Hackathon/image/background.jpeg")
+import Navbar from "../Component/Navbar";
+
+const Category = ({
+  url,
+  user,
+  setUser,
+  setFavs,
+  companies,
+  type,
+  compares ,setCompares,
+  className,
+}) => {
+  const image = require("../../image Hackathon/image/background.jpeg");
   return (
     <div className={className}>
+      <Navbar user={user} setUser={setUser} />
       <div className="title-header">
-        <h1>Factory</h1>
+        {type == "company" ? (
+          <h1>Factory</h1>
+        ) : type == "fabric" ? (
+          <h1>Fabric</h1>
+        ) : (
+          <h1>Designer</h1>
+        )}
+
         <div id="line"></div>
       </div>
       <div className="box-btn">
-        <p>หาโรงงานที่คุณต้องการได้ง่ายขึ้นเพียงกดปุ่ม Help me</p>
+        {type == "company" ? (
+          <p>หาโรงงานที่คุณต้องการได้ง่ายขึ้นเพียงกดปุ่ม Help me</p>
+        ) : type == "fabric" ? (
+          <p>หาร้านขายผ้าที่คุณต้องการได้ง่ายขึ้นเพียงกดปุ่ม Help me</p>
+        ) : (
+          <p>หานักออกแบบที่คุณต้องการได้ง่ายขึ้นเพียงกดปุ่ม Help me</p>
+        )}
+
         <div className="button">
           <button className="btn-help-me">Help Me</button>
           <button className="btn-see-all">See All</button>
         </div>
-        
+
         {/* นำBoxData มาใส่ตรงนี้ได้เลยจ้า*/}
         <div className="show">
-          
+
+          {type == "company"
+            ? companies
+                .filter((company) => company.type === "company" && company.status == "company")
+                .map((company) => (
+                  <BoxData
+                    key={company.id}
+                    user={user}
+                    url={url}
+                    item={company}
+                    setFavs={setFavs}
+                    setCompares={setCompares}
+                  />
+                ))
+            : type == "fabric"
+            ? companies
+            .filter((company) => company.type === "frabic shop" && company.status == "company")
+            .map((company) => (
+              <BoxData
+                key={company.id}
+                user={user}
+                url={url}
+                item={company}
+                setFavs={setFavs}
+                setCompares={setCompares}
+              />
+            )):
+            companies
+                .filter((company) => company.type === "designer" && company.status == "company")
+                .map((company) => (
+                  <BoxData
+                    key={company.id}
+                    user={user}
+                    url={url}
+                    item={company}
+                    setFavs={setFavs}
+                    setCompares={setCompares}
+                  />
+                ))}
+
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
@@ -94,11 +159,11 @@ export default styled(Category)`
     color: #4f7108;
     cursor: pointer;
   }
-  .show{
+  .show {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: row;
-    margin:50px;
+    margin: 50px;
   }
 `;

@@ -15,6 +15,7 @@ const ProfileFactory = ({
   products,
   setProducts,
   className,
+  compares ,setCompares
 }) => {
   return (
     <div className={className}>

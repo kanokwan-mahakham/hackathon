@@ -8,7 +8,7 @@ import axios from "axios";
 import CardNewData from "../../Component/CardProfile/CardNewData";
 import CardEdit from "../../Component/CardProfile/CardEdit";
 
-const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information, className }) => {
+const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information,compares ,setCompares, className }) => {
 
   const [factory, setFactory] = useState([]);
   
@@ -62,6 +62,7 @@ const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information
                     url={url}
                     item={company}
                     setFavs={setFavs}
+                    setCompares={setCompares} 
                   />):(null)
                 ))
               }

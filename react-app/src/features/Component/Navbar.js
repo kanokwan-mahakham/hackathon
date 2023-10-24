@@ -24,10 +24,9 @@ const Navbar = ({ user, setUser, className }) => {
           ):(
             <Link to="/">Home</Link>
           )}
-          
-          <a>Fabric</a>
-          <a>Designer</a>
-          <a>Factory</a>
+          <Link to="/fabric">Fabric</Link>
+          <Link to="/designer">Designer</Link>
+          <Link to="/company">Factory</Link>
         </div>
         <div className="search">
           <input placeholder="Search" className="search"></input>
@@ -183,10 +182,12 @@ export default styled(Navbar)`
     background-color: white;
     border-radius: 20px;
     border: none;
+    cursor: pointer;
   }
   .logout img {
     max-width: 100%;
     max-height: 100%;
     margin-right: 10px;
+    cursor: pointer;
   }
 `;

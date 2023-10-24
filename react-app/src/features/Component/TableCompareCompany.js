@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const TableCompare = ({ url, compares, products, className }) => {
+const TableCompareCompany = ({ url, compares, products, className }) => {
   const [cotton, setCotton] = useState([]);
   const [silk, setSilk] = useState([]);
   const [linen, setLinen] = useState([]);
@@ -87,7 +87,7 @@ const TableCompare = ({ url, compares, products, className }) => {
     </div>
   );
 };
-export default styled(TableCompare)`
+export default styled(TableCompareCompany)`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .table {
     width: 100%;

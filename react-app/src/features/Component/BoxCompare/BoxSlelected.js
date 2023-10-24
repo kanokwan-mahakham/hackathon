@@ -1,17 +1,38 @@
 import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const BoxSelected = ({ className }) => {
+const BoxSelected = ({ url, item, compares, setCompares, className }) => {
   const cancel = require("../../../image Hackathon/icon/cancel.png");
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const res = await axios.get(`${url}/informations/${item.informationId}`)
+      setData(res.data)
+      
+      console.log("seccess");
+    }
+    getData();
+  }, [item]);
+
+  function cancelItem(){
+    const newCompare = compares.filter((compare)=>compare.id!=item.id)
+    setCompares(newCompare)
+  }
+
+
   return (
     <div className={className}>
       <div className="box">
-        <img src={cancel} />
+        <img src={cancel} onClick={cancelItem} />
         <div className="box-detail">
           <div id="name">
-            <h1>Thumbinthai</h1>
+            <h1>{data.name}</h1>
           </div>
           <div className="detail">
-            <p>รับผลิตและจัดจำหน่ายสินค้าประเภทเสื้อผ้าและถุงผ้าจาก ประเทศไทย</p>
+            <p>{data.description}</p>
           </div>
           <button className="button-detail">รายละเอียด</button>
         </div>
@@ -33,6 +54,7 @@ export default styled(BoxSelected)`
     right: 25px;
     width: 45px;
     height: 45px;
+    cursor: pointer;
   }
   .box-detail {
     width: 310px;

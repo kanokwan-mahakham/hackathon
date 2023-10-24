@@ -2,8 +2,9 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const BoxData = ({ user, url, item, setFavs, className }) => {
+const BoxData = ({ user, url, item, setFavs, compares, setCompares , className }) => {
   const save = require("../../image Hackathon/icon/save-instagram.png");
   const saveGreen = require("../../image Hackathon/icon/bookmark.png"); //ปุ่มที่ถูก save แล้ว
   const image = require("../../image Hackathon/image/background.jpeg");
@@ -11,6 +12,7 @@ const BoxData = ({ user, url, item, setFavs, className }) => {
   const [data, setData] = useState("");
   const [icon, setIcon] = useState(save);
   const [favId, setFavId] = useState("");
+ 
 
   async function fav() {
     if (typeof favId == "string") {
@@ -57,6 +59,46 @@ const BoxData = ({ user, url, item, setFavs, className }) => {
     getDetail();
   }, [item]);
 
+  function compareFn(){
+    if(compares.length === 0){
+      setCompares([...compares, item]);
+    } else if(compares.length < 3){
+      const findType = compares.find((compare) => compare.type == item.type);
+      if (findType){
+        const check = compares.filter((compare) => compare.id == item.id);
+        if (check.length > 0){
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'ซ้ำ',
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          setCompares([...compares, item]);
+        }
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'โปรดเลือกประเภทเดียวกัน',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        return;
+      }
+    } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Compare full',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      return;
+    }
+  }
+
   return (
     <>
       <div className={className}>
@@ -70,7 +112,7 @@ const BoxData = ({ user, url, item, setFavs, className }) => {
 
             <div className="button">
               {typeof user == "object" ? (
-                <button className="conpare-button">เปรียบเทียบ +</button>
+                <button className="conpare-button" onClick={compareFn}>เปรียบเทียบ +</button>
               ) : null}
 
               {user.status === "customer" ? (
@@ -88,7 +130,7 @@ export default styled(BoxData)`
   .box {
     position: relative;
   }
-  .box .box-box-image {
+  .box .box-box-image img{
     width: 420px;
     height: 470px;
     border-radius: 30px;
@@ -129,6 +171,7 @@ export default styled(BoxData)`
     display: flex;
     justify-content: center;
     align-items: center;
+    
   }
   .conpare-button {
     background-color: #c6ccd7;
@@ -138,9 +181,11 @@ export default styled(BoxData)`
     border-radius: 30px;
     border: none;
     font-size: 15px;
+    cursor: pointer;
   }
   .button #save-button {
     width: 25px;
     height: 25px;
+    cursor: pointer;
   }
 `;

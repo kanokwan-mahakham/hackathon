@@ -6,15 +6,16 @@ import Navbar from "../../Component/Navbar";
 import BlogSlide from "../../Component/BlogSlide";
 import BoxData from "../../Component/BoxData";
 import Footer from "../../Component/Footer";
+import PopupCompare from "../../Component/PopupCompare";
 
-const HomePage = ({ imageHome, url, user, setUser,setFavs,companies, className }) => {
+const HomePage = ({ imageHome, url, user, setUser,setFavs,companies,compares ,setCompares, className }) => {
   
   const image = require("../../../image Hackathon/image/background.jpg");
 
   const [frabic, setFrabic] = useState([])
   const [factory, setFactory] = useState([])
   const [designer, setDesigner] = useState([])
-  
+
  
   useEffect(() => {
     async function getCompanies() {
@@ -50,13 +51,13 @@ const HomePage = ({ imageHome, url, user, setUser,setFavs,companies, className }
           </div>
           <div className="detail">
             <p>รับผลิตและจัดจำหน่ายสินค้าประเภทเสื้อผ้า</p>
-            <Link to="/" id="seeAll">
+            <Link to="/company" id="seeAll">
               See All
             </Link>
           </div>
           <div className="show-slide">
             {factory.slice(0, 3).map((company) => {
-                return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} />;
+                return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} compares={compares} setCompares={setCompares}  />;
             })}
           </div>
         </div>
@@ -68,13 +69,13 @@ const HomePage = ({ imageHome, url, user, setUser,setFavs,companies, className }
           </div>
           <div className="detail">
             <p>ร้านค้าขายปลีก-ส่ง ผ้าม้วนนำเข้าราคาถูก</p>
-            <Link to="/" id="seeAll">
+            <Link to="/fabric" id="seeAll">
               See All
             </Link>
           </div>
           <div className="show-slide">
             {frabic.slice(0, 3).map((company) => {
-               return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} />;
+               return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} compares={compares} setCompares={setCompares}  />;
             })}
           </div>
         </div>
@@ -86,18 +87,23 @@ const HomePage = ({ imageHome, url, user, setUser,setFavs,companies, className }
           </div>
           <div className="detail">
             <p>หามืออาชีพออกแบบเสื้อผ้าแฟชั่นงานคุณภาพ</p>
-            <Link to="/" id="seeAll">
+            <Link to="/designer" id="seeAll">
               See All
             </Link>
           </div>
           <div className="show-slide">
             {designer.slice(0, 3).map((company) => {
-                return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} />;
+                return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} compares={compares} setCompares={setCompares}  />;
             })}
           </div>
         </div>
       </div>
       <Footer />
+
+      {compares.length != 0 ?(
+        <PopupCompare url={url} compares={compares} setCompares={setCompares}/>
+      ):(null)}
+      
     </div>
   );
 };

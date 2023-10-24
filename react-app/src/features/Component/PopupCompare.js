@@ -1,28 +1,31 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Item from "./BoxCompare/Item";
 
-const PopupCompare = ({ className, onClose }) => {
+const PopupCompare = ({ url, compares, setCompares, className }) => {
   const cancle = require("../../image Hackathon/icon/cancel.png");
+
+  function closePopup() { 
+    setCompares([]);
+  }
+
+  
+
   return (
     <div className={className}>
       <div className="box-compare">
         <div className="box">
-          <img src={cancle} alt="ปิด" id="close-button" />
-          <div className="box-name">
-            <img src={cancle} alt="ปิด" id="close-name" />
-            <p>Pan Apace</p>
-          </div>
-          <div className="box-name">
-            <img src={cancle} alt="ปิด" id="close-name" />
-            <p>Thumbinthai</p>
-          </div>
-          <div className="box-name">
-            <img src={cancle} alt="ปิด" id="close-name" />
-            <p>Sahawath</p>
-          </div>
+          <img src={cancle} alt="ปิด" id="close-button" onClick={closePopup} />
+
+          {compares.map((compare) => (
+            <Item  key={compare.id} url={url} item={compare} compares={compares} setCompares={setCompares}/>
+          ))}
+
         </div>
         <div className="btn">
-          <button className="btn-compare-seleced">เปรียบเทียบ</button>
-          <button className="btn-clean-seleced">ล้างตัวเลือก</button>
+          <button className="btn-compare-seleced"><Link to="/compare">เปรียบเทียบ</Link></button>
+          
+          <button className="btn-clean-seleced" onClick={closePopup}>ล้างตัวเลือก</button>
         </div>
       </div>
     </div>
@@ -53,6 +56,7 @@ export default styled(PopupCompare)`
     right: -20px;
     width: 40px;
     height: 40px;
+    cursor: pointer;
   }
   .box-name {
     position: relative;
@@ -60,7 +64,7 @@ export default styled(PopupCompare)`
     width: fit-content;
     padding: 5px 20px;
     height: 50px;
-    color: #333A56;
+    color: #333a56;
     background-color: #c6ccd7;
     display: flex;
     border-radius: 30px;
@@ -80,19 +84,20 @@ export default styled(PopupCompare)`
     right: -10px;
     width: 27px;
     height: 27px;
+    cursor: pointer;
   }
   .box {
     display: flex;
     justify-content: center;
   }
-  .btn{
+  .btn {
     position: absolute;
     display: flex;
     width: 100%;
     bottom: 10px;
     justify-content: center;
   }
-  .btn button{
+  .btn button {
     width: 150px;
     height: 40px;
     border-radius: 5px;
@@ -100,11 +105,12 @@ export default styled(PopupCompare)`
     font-family: "Anuphan";
     font-size: 18px;
     font-weight: 500;
-    
+    cursor: pointer;
   }
-  .btn-compare-seleced{
-    background-color: #333A56;
-    color:white;
-    border:none;
+  .btn-compare-seleced {
+    background-color: #333a56;
+    color: white;
+    border: none;
+    cursor: pointer;
   }
 `;

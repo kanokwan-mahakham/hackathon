@@ -80,7 +80,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
-        if(user.status == "user"){
+        if(user.status == "customer"){
           navigate("/profile-user");
         }else{
           navigate("/profile-company");

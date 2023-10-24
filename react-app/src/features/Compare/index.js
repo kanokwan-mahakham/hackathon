@@ -5,30 +5,31 @@ import BoxAddSelect from "../Component/BoxCompare/BoxAddSelect";
 import TableCompare from "../Component/TableCompare";
 import Footer from "../Component/Footer";
 import PopupCompare from "../Component/PopupCompare";
-//import Footer from "../../Component/Footer";
 
-const Compare = ({ className }) => {
+const Compare = ({ url, user, setUser, compares, setCompares, products, className }) => {
   return (
     <div className={className}>
-      {/* <Navbar /> */}
+      <Navbar user={user} setUser={setUser} />
       <div className="title-header">
         <h1>Compare Factory</h1>
         <div id="line"></div>
       </div>
       <div className="box-compare">
         <div className="selected-choice">
-          <BoxSlelected />
-          <BoxSlelected />
-          <BoxAddSelect />
-          {/* add compare */}
+
+          {compares.map((compare) => (
+            <BoxSlelected key={compare.id} url={url} item={compare} compares={compares} setCompares={setCompares}/>
+          ))}
+
+              
         </div>
         <div className="table-compare">
-          <TableCompare />
+          <TableCompare url={url} compares={compares} products={products}/>
         </div>
       </div>
       <Footer />
       <div className="popup-compare">
-        <PopupCompare />
+        {/* <PopupCompare /> */}
       </div>
     </div>
   );
