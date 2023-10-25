@@ -37,8 +37,6 @@ function App() {
   const [products, setProducts] = useState([]);
   const [compares, setCompares] = useState([]);
 
-  
-
   useEffect(() => {
     async function getCompanies() {
       const resCompany = await axios.get(`${url}/users`);
@@ -252,7 +250,19 @@ function App() {
               />
             }
           />
-          <Route path="/compare" element={<Compare url={url} user={user} setUser={setUser} compares={compares} setCompares={setCompares} products={products} />} />
+          <Route
+            path="/compare"
+            element={
+              <Compare
+                url={url}
+                user={user}
+                setUser={setUser}
+                compares={compares}
+                setCompares={setCompares}
+                products={products}
+              />
+            }
+          />
 
           <Route path="/HelpmeFactoryOne" element={<HelpmeFactoryOne />} />
           <Route path="/HelpmeFactoryTwo" element={<HelpmeFactoryTwo />} />

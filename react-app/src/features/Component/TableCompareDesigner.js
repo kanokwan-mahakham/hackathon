@@ -11,13 +11,13 @@ const TableCompareDesigner = ({ url, compares, products, className }) => {
   useEffect(() => {
     async function getData() {
       const findCotton = products.filter(
-        (compare) => compare.typeProduct == "ผ้าฝ้าย"
+        (compare) => compare.typeProduct == "วินเทจ"
       );
       const findSilk = products.filter(
-        (compare) => compare.typeProduct == "ผ้าไหม"
+        (compare) => compare.typeProduct == "Retro"
       );
       const findLinen = products.filter(
-        (compare) => compare.typeProduct == "ผ้าลินิน"
+        (compare) => compare.typeProduct == "Streetwear"
       );
       setCotton(findCotton);
       setSilk(findSilk);
@@ -33,11 +33,11 @@ const TableCompareDesigner = ({ url, compares, products, className }) => {
       <div className="table" id="factory">
         <table>
           <tr id="header">
-            <th id="title-header">ผ้าฝ้าย</th>
+            <th id="title-header">วินเทจ</th>
             <td colspan="3" id="space"></td>
           </tr>
           <tr id="detail">
-            <th id="title">เมตรละ</th>
+            <th id="title">เริ่มต้น</th>
 
             {compares.map((compare) => {
               const cottonMatch = cotton.find((cot) => cot.companyId === compare.id);
@@ -50,11 +50,11 @@ const TableCompareDesigner = ({ url, compares, products, className }) => {
           </tr>
 
           <tr>
-            <th id="title-header">ผ้าไหม</th>
+            <th id="title-header">Retro</th>
             <td colspan="3" id="space"></td>
           </tr>
           <tr id="detail">
-            <th id="title">เมตรละ</th>
+            <th id="title">เริ่มต้น</th>
 
             {compares.map((compare) => {
               const cottonMatch = silk.find((cot) => cot.companyId === compare.id);
@@ -68,11 +68,11 @@ const TableCompareDesigner = ({ url, compares, products, className }) => {
           </tr>
 
           <tr>
-            <th id="title-header">ผ้าลินิน</th>
+            <th id="title-header">Streetwear</th>
             <td colspan="3" id="space"></td>
           </tr>
           <tr id="detail">
-            <th id="title">เมตรละ</th>
+            <th id="title">เริ่มต้น</th>
             {compares.map((compare) => {
               const cottonMatch = linen.find((cot) => cot.companyId === compare.id);
               return (

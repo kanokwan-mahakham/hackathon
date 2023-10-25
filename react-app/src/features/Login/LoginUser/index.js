@@ -39,12 +39,13 @@ const LoginComponent = ({ url, setUser, className }) => {
           timer: 1500
         }).then(() => {
 
-           if (username === "addmin") {
-             navigate('/edit-home');
-           } else {
-            navigate('/');
-           }
-          console.log(`username:${username}`)
+          //  if (username === "addmin") {
+          //    navigate('/edit-home');
+          //  } else {
+          //   navigate('/');
+          //  }
+          // console.log(`username:${username}`)
+          navigate('/');
           
         });
 

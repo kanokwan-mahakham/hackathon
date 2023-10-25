@@ -7,17 +7,18 @@ const TableCompareCompany = ({ url, compares, products, className }) => {
   const [cotton, setCotton] = useState([]);
   const [silk, setSilk] = useState([]);
   const [linen, setLinen] = useState([]);
+  const [heads, setHeads] = useState(["1 - 50", "51 - 100", "100 ตัวขึ้นไป"]);
 
   useEffect(() => {
     async function getData() {
       const findCotton = products.filter(
-        (compare) => compare.typeProduct == "ผ้าฝ้าย"
+        (compare) => compare.typeProduct == "ผลิตเสื้อตามแบบ"
       );
       const findSilk = products.filter(
-        (compare) => compare.typeProduct == "ผ้าไหม"
+        (compare) => compare.typeProduct == "ปักลายเสื้อ"
       );
       const findLinen = products.filter(
-        (compare) => compare.typeProduct == "ผ้าลินิน"
+        (compare) => compare.typeProduct == "สกรีนลายเสื้อ"
       );
       setCotton(findCotton);
       setSilk(findSilk);
@@ -33,14 +34,46 @@ const TableCompareCompany = ({ url, compares, products, className }) => {
       <div className="table" id="factory">
         <table>
           <tr id="header">
-            <th id="title-header">ผ้าฝ้าย</th>
+            <th id="title-header">ผลิตเสื้อตามแบบ</th>
             <td colspan="3" id="space"></td>
           </tr>
-          <tr id="detail">
-            <th id="title">เมตรละ</th>
 
+          <tr id="detail">
+            <th id="title">1 - 50</th>
             {compares.map((compare) => {
-              const cottonMatch = cotton.find((cot) => cot.companyId === compare.id);
+              const cottonMatch = cotton.find(
+                (cot) =>
+                  cot.companyId === compare.id && cot.quantity == "1 - 50"
+              );
+              return (
+                <td key={compare.id}>
+                  {cottonMatch ? cottonMatch.price : "-"}
+                </td>
+              );
+            })}
+          </tr>
+          <tr id="detail">
+            <th id="title">51 - 100</th>
+            {compares.map((compare) => {
+              const cottonMatch = cotton.find(
+                (cot) =>
+                  cot.companyId === compare.id && cot.quantity == "51 - 100"
+              );
+              return (
+                <td key={compare.id}>
+                  {cottonMatch ? cottonMatch.price : "-"}
+                </td>
+              );
+            })}
+          </tr>
+          <tr id="detail">
+            <th id="title">100 ตัวขึ้นไป</th>
+            {compares.map((compare) => {
+              const cottonMatch = cotton.find(
+                (cot) =>
+                  cot.companyId === compare.id &&
+                  cot.quantity == "100 ตัวขึ้นไป"
+              );
               return (
                 <td key={compare.id}>
                   {cottonMatch ? cottonMatch.price : "-"}
@@ -50,31 +83,63 @@ const TableCompareCompany = ({ url, compares, products, className }) => {
           </tr>
 
           <tr>
-            <th id="title-header">ผ้าไหม</th>
+            <th id="title-header">ปักลายเสื้อ</th>
             <td colspan="3" id="space"></td>
           </tr>
-          <tr id="detail">
-            <th id="title">เมตรละ</th>
 
+          <tr id="detail">
+            <th id="title">1 - 50</th>
             {compares.map((compare) => {
-              const cottonMatch = silk.find((cot) => cot.companyId === compare.id);
+              const cottonMatch = silk.find(
+                (cot) =>
+                  cot.companyId === compare.id && cot.quantity == "1 - 50"
+              );
               return (
                 <td key={compare.id}>
                   {cottonMatch ? cottonMatch.price : "-"}
                 </td>
               );
             })}
-
+          </tr>
+          <tr id="detail">
+            <th id="title">51 - 100</th>
+            {compares.map((compare) => {
+              const cottonMatch = silk.find(
+                (cot) =>
+                  cot.companyId === compare.id && cot.quantity == "51 - 100"
+              );
+              return (
+                <td key={compare.id}>
+                  {cottonMatch ? cottonMatch.price : "-"}
+                </td>
+              );
+            })}
+          </tr>
+          <tr id="detail">
+            <th id="title">100 ตัวขึ้นไป</th>
+            {compares.map((compare) => {
+              const cottonMatch = silk.find(
+                (cot) =>
+                  cot.companyId === compare.id &&
+                  cot.quantity == "100 ตัวขึ้นไป"
+              );
+              return (
+                <td key={compare.id}>
+                  {cottonMatch ? cottonMatch.price : "-"}
+                </td>
+              );
+            })}
           </tr>
 
           <tr>
-            <th id="title-header">ผ้าลินิน</th>
+            <th id="title-header">สกรีนลายเสื้อ</th>
             <td colspan="3" id="space"></td>
           </tr>
+
           <tr id="detail">
-            <th id="title">เมตรละ</th>
+            <th id="title">1 - 50</th>
             {compares.map((compare) => {
-              const cottonMatch = linen.find((cot) => cot.companyId === compare.id);
+              const cottonMatch = linen.find((cot) => cot.companyId === compare.id && cot.quantity == "1 - 50");
               return (
                 <td key={compare.id}>
                   {cottonMatch ? cottonMatch.price : "-"}
@@ -82,6 +147,29 @@ const TableCompareCompany = ({ url, compares, products, className }) => {
               );
             })}
           </tr>
+          <tr id="detail">
+            <th id="title">51 - 100</th>
+            {compares.map((compare) => {
+              const cottonMatch = linen.find((cot) => cot.companyId === compare.id && cot.quantity == "51 - 100");
+              return (
+                <td key={compare.id}>
+                  {cottonMatch ? cottonMatch.price : "-"}
+                </td>
+              );
+            })}
+          </tr>
+          <tr id="detail">
+            <th id="title">100 ตัวขึ้นไป</th>
+            {compares.map((compare) => {
+              const cottonMatch = linen.find((cot) => cot.companyId === compare.id && cot.quantity == "100 ตัวขึ้นไป");
+              return (
+                <td key={compare.id}>
+                  {cottonMatch ? cottonMatch.price : "-"}
+                </td>
+              );
+            })}
+          </tr>
+
         </table>
       </div>
     </div>

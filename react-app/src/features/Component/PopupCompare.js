@@ -23,8 +23,8 @@ const PopupCompare = ({ url, compares, setCompares, className }) => {
 
         </div>
         <div className="btn">
-          <button className="btn-compare-seleced"><Link to="/compare">เปรียบเทียบ</Link></button>
           
+          <button className="btn-compare-seleced"><Link to="/compare">เปรียบเทียบ</Link></button>
           <button className="btn-clean-seleced" onClick={closePopup}>ล้างตัวเลือก</button>
         </div>
       </div>

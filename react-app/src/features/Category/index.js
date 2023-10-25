@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BoxData from "../Component/BoxData";
 import Footer from "../Component/Footer";
 import Navbar from "../Component/Navbar";
+import PopupCompare from "../Component/PopupCompare";
 
 const Category = ({
   url,
@@ -55,6 +56,7 @@ const Category = ({
                     url={url}
                     item={company}
                     setFavs={setFavs}
+                    compares={compares}
                     setCompares={setCompares}
                   />
                 ))
@@ -68,6 +70,7 @@ const Category = ({
                 url={url}
                 item={company}
                 setFavs={setFavs}
+                compares={compares}
                 setCompares={setCompares}
               />
             )):
@@ -80,12 +83,16 @@ const Category = ({
                     url={url}
                     item={company}
                     setFavs={setFavs}
+                    compares={compares}
                     setCompares={setCompares}
                   />
                 ))}
 
         </div>
       </div>
+      {compares.length != 0 ?(
+        <PopupCompare url={url} compares={compares} setCompares={setCompares}/>
+      ):(null)}
       <Footer />
     </div>
   );

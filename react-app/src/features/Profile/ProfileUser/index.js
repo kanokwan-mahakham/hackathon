@@ -7,6 +7,7 @@ import Footer from "../../Component/Footer";
 import axios from "axios";
 import CardNewData from "../../Component/CardProfile/CardNewData";
 import CardEdit from "../../Component/CardProfile/CardEdit";
+import PopupCompare from "../../Component/PopupCompare";
 
 const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information,compares ,setCompares, className }) => {
 
@@ -62,7 +63,7 @@ const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information
                     url={url}
                     item={company}
                     setFavs={setFavs}
-                    setCompares={setCompares} 
+                    compares={compares} setCompares={setCompares} 
                   />):(null)
                 ))
               }
@@ -82,6 +83,7 @@ const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information
                     url={url}
                     item={company}
                     setFavs={setFavs}
+                    compares={compares} setCompares={setCompares}
                   />):(null)
                 ))
               }
@@ -101,6 +103,7 @@ const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information
                     url={url}
                     item={company}
                     setFavs={setFavs}
+                    compares={compares} setCompares={setCompares}
                   />):(null)
                 ))
               }
@@ -109,6 +112,9 @@ const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information
         </div>
         </>):(null)}
       </div>
+      {compares.length != 0 ?(
+        <PopupCompare url={url} compares={compares} setCompares={setCompares}/>
+      ):(null)}
       <Footer />
     </div>
   );

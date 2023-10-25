@@ -2,16 +2,35 @@ import styled from "styled-components";
 import Navbar from "../Component/Navbar";
 import BoxSlelected from "../Component/BoxCompare/BoxSlelected";
 import BoxAddSelect from "../Component/BoxCompare/BoxAddSelect";
-import TableCompare from "../Component/TableCompare";
 import Footer from "../Component/Footer";
 import PopupCompare from "../Component/PopupCompare";
+import TableCompareFabric from "../Component/TableCompareFabric";
+import TableCompareDesigner from "../Component/TableCompareDesigner";
+import TableCompareCompany from "../Component/TableCompareCompany";
+import { Link,useNavigate } from "react-router-dom";
 
 const Compare = ({ url, user, setUser, compares, setCompares, products, className }) => {
+
+  const navigate = useNavigate();
+
   return (
     <div className={className}>
       <Navbar user={user} setUser={setUser} />
       <div className="title-header">
-        <h1>Compare Factory</h1>
+      {
+        compares.length > 0?(
+            compares[0].type == "company" ?(
+              <h1>Compare Factory</h1>
+            ):
+            compares[0].type == "frabic shop"?(
+              <h1>Compare Fabric</h1>
+            ):
+            (
+              <h1>Compare Designer</h1>
+            )
+        ):(navigate('/'))
+      }
+        
         <div id="line"></div>
       </div>
       <div className="box-compare">
@@ -24,7 +43,20 @@ const Compare = ({ url, user, setUser, compares, setCompares, products, classNam
               
         </div>
         <div className="table-compare">
-          <TableCompare url={url} compares={compares} products={products}/>
+        {
+           compares.length > 0?(
+            compares[0].type == "company" ?(
+              <TableCompareCompany url={url} compares={compares} products={products}/>
+            ):
+            compares[0].type == "frabic shop"?(
+              <TableCompareFabric url={url} compares={compares} products={products}/>
+            ):
+            (
+              <TableCompareDesigner url={url} compares={compares} products={products}/>
+            )
+           ):(null)
+          }
+          
         </div>
       </div>
       <Footer />
