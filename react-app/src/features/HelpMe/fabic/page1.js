@@ -1,66 +1,62 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'; 
+import { Link,useNavigate } from 'react-router-dom'; 
 
-const HelpmeFabicOne = ({ className }) => {
+const HelpmeFabicOne = ({  filterProduct, setFilterProduct, className }) => {
+
+    const navigate = useNavigate();
+
+    function filter1(){
+        const finds = filterProduct.filter((find)=>find.typeProduct == "ผ้าไหม")
+        setFilterProduct(finds)
+        navigate('/HelpmeFabicTwo');
+    }
+    function filter2(){
+        const finds = filterProduct.filter((find)=>find.typeProduct == "ผ้าฝ้าย")
+        setFilterProduct(finds)
+        navigate('/HelpmeFabicTwo');
+    }
+    function filter3(){
+        const finds = filterProduct.filter((find)=>find.typeProduct == "ผ้าลินิน")
+        setFilterProduct(finds)
+        navigate('/HelpmeFabicTwo');
+    }
+
     return (
         <div className={className}>
-            <div className='body'>
+            <body>
             <div className="content">
                 <div className="container">
-                    <h1>Fabric</h1>
+                    <h1>Factory</h1>
                     <div className="group-underline">
                         <div className="underline"></div>
                         <div className="underline2"></div>
                     </div>
-                    <div className="previous" href="#">
-                        &#8249;
-                    </div>
+                    <Link to="/" className="previous"> &#8249;</Link>
                     <div className="group-container">
                         <div className="container-inside1">
                             <div className="groupButton">
-                                <Link to="/HelpmeFabicOne">
-                                <button className="button1">ประเภท</button>
-                                </Link>
-                                <Link to="/HelpmeFabicTwo">
-                                <button className="button2">ที่ตั้ง</button>
-                                </Link>
+                                <button className="button1">หมวดหมู่</button>
+                                <button className="button2">เรทราคา</button>
+                               
                             </div>
                         </div>
                         <div className="container-inside2">
                             <div className="grouph2">
-                                <h2>เส้นใยธรรมชาติ</h2>
-                                <h2>เส้นใยสังเคราะห์</h2>
-                                <h2>เส้นใยกึ่งสังเคราะห์</h2>
+                                <h2>สินค้าของคุณมีลักษณะเป็นแบบใด</h2>
                             </div>
-
+                           
                             <div className="groupButton1">
-                                <button className="select"> <span>ฝ้าย</span> </button>
-                                <button className="select"> <span>ลินิน</span> </button>
-                                <button className="select"> <span>ไนลอน</span> </button>
-                                <button className="select"> <span>สแปนเด็กซ์/ไลครา</span> </button>
-                                <button className="select"><span>เรยอน</span> </button>
-                                <button className="select"><span>อะซิเตต</span></button>
+                                <button className="select" onClick={filter1}><span>ผ้าไหม</span> </button>
+                                <button className="select" onClick={filter2}><span>ผ้าฝ้าย</span> </button>
+                                <button className="select" onClick={filter3}><span>ผ้าลินิน</span> </button>
                             </div>
-                            <div className="groupButton1">
-                               
-                                <button className="select"><span>ไหม</span> </button>
-                                <button className="select"><span>ขนสัตว์</span></button>
-                                <button className="select"> <span>พอลิเอสเทอร์</span></button>
-                                <button className="select"> <span>อไครลิก</span></button>
-                                <button className="select"> <span>T/C</span></button>
-                                <button className="select"> <span>CTC</span></button>
-                               
-                            </div>
-                            <div className="groupButton2">
-                                <button className="select2"> <span>ข้าม</span></button>
-                                <button className="select2"> <span>ต่อไป</span></button>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
+            </body>
         </div>
     );
 };
@@ -68,18 +64,18 @@ const HelpmeFabicOne = ({ className }) => {
 
 
     export default styled(HelpmeFabicOne)`
+   
 
     @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-        .body{
+
         background-color: rgba(198, 204, 215, 0.7);
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
         margin: 0;
-        font-family: "Lora";
-    }
-
+       
+        
        
         
         .content {
@@ -92,7 +88,7 @@ const HelpmeFabicOne = ({ className }) => {
             font-size: 40px;
             font-weight: bold;
             text-align: center;
-            font-family: 'Lora';
+            font-family: "Lora";
         }
         .group-underline{
             display: flex;
@@ -133,7 +129,7 @@ const HelpmeFabicOne = ({ className }) => {
         .container-inside1{
             border-radius: 30px;
             background: #C6CCD7;
-            width:600px;
+            width:800px;
             height: 15%;
             flex-shrink: 0;
             margin-top:15px; 
@@ -150,15 +146,15 @@ const HelpmeFabicOne = ({ className }) => {
         button.button1
         {
             width: 177px;
-            height: 48px;
+            height: 38px;
             flex-shrink: 0;
             border-radius: 20px;
             background: #333A56;border-radius: 20px;
             background: #333A56;
-            margin-top:10px;
+            margin-top:18px;
             color: #FFF;
             text-align: center;
-            font-family: 'Lora', serif; 
+            font-family: 'Lora', serif;
             font-size: 20px;
             font-style: normal;
             font-weight: 500;
@@ -174,10 +170,10 @@ const HelpmeFabicOne = ({ className }) => {
             border-radius: 20px;
             background: #C6CCD7;border-radius: 20px;
             background: #C6CCD7;
-            margin-top:13px;
+            margin-top:18px;
             color: #333A56;
             text-align: center;
-            font-family: "Lora";
+            font-family: 'Lora', serif;
             font-size: 20px;
             font-style: normal;
             font-weight: 500;
@@ -185,7 +181,7 @@ const HelpmeFabicOne = ({ className }) => {
             border: none;
         }
 
-        button.button2:hover
+        /* button.button2:hover
         {
             width: 177px;
             height: 38px;
@@ -202,7 +198,7 @@ const HelpmeFabicOne = ({ className }) => {
             font-weight: 500;
             line-height: normal;
             border: none;
-        }
+        } */
 
 
         .container-inside2{
@@ -228,9 +224,9 @@ const HelpmeFabicOne = ({ className }) => {
             flex-wrap: wrap;
             align-content: center;
             align-items: center;
-            font-family: 'Lora';
-            font-weight: 500;
             color:#fff;
+            font-family: "lora";
+            font-weight: 500;
         }
     
         /*for dropdrow*/
@@ -279,7 +275,7 @@ const HelpmeFabicOne = ({ className }) => {
         .groupButton1{
             display:flex;
             justify-content: space-around;
-            margin-top:30px;
+            margin-top:50px;
         }
 
         .groupButton2{
@@ -323,12 +319,11 @@ const HelpmeFabicOne = ({ className }) => {
         button.select span {
             color: #000;
             text-align: center;
-            font-family: 'Lora';
+            font-family: 'Lora', serif; 
             font-size: 16px;
             font-style: normal;
             font-weight: 300;
             line-height: normal;
-
         }
 
         button.selectlong{

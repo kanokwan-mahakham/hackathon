@@ -1,22 +1,32 @@
 import styled from "styled-components";
+import { Link,useNavigate } from "react-router-dom";
 
 const Package = ({ className }) => {
+  const navigate = useNavigate();
+
+  function shop(){
+    navigate("/payment")
+  }
+
+
+
+
   return (
     <div className={className}>
       <div className="box">
         <div className="price">THB 29 / DAY</div>
         <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 วัน</div>
-        <button className="button">Shop now</button>
+        <button className="button" onClick={shop}>Shop now</button>
       </div>
       <div className="box">
         <div className="price">THB 499 / MONTH</div>
         <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 เดือน</div>
-        <button className="button">Shop now</button>
+        <button className="button" onClick={shop}>Shop now</button>
       </div>
       <div className="box">
         <div className="price">THB 8999 / YEAR</div>
         <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 ปี</div>
-        <button className="button">Shop now</button>
+        <button className="button" onClick={shop}>Shop now</button>
       </div>
     </div>
   );
@@ -60,6 +70,7 @@ export default styled(Package)`
     background-color: #F7F5E6;
     color: #333A56;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 `;

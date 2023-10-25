@@ -14,9 +14,7 @@ const HelpmeFactorythree = ({ className }) => {
                         <div className="underline"></div>
                         <div className="underline2"></div>
                     </div>
-                    <div className="previous" href="#">
-                        &#8249;
-                    </div>
+                    <Link to="/" className="previous"> &#8249;</Link>
                     <div className="group-container">
                         <div className="container-inside1">
                             

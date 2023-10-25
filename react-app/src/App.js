@@ -16,12 +16,13 @@ import PopupAddProductFarbic from "./features/Registers/RegisterPage/popup/produ
 import PopupAddProductFactory from "./features/Registers/RegisterPage/popup/product/factory/addproduct";
 import HelpmeFactoryOne from "./features/HelpMe/factory/page1";
 import HelpmeFactoryTwo from "./features/HelpMe/factory/page2";
-import HelpmeFactoryThree from "./features/HelpMe/factory/page3";
 import HelpmeFabicOne from "./features/HelpMe/fabic/page1";
 import HelpmeFabicTwo from "./features/HelpMe/fabic/page2";
 import HelpmeDesignOne from "./features/HelpMe/designer/page1";
 import HelpmeDesignTwo from "./features/HelpMe/designer/page2";
 import Category from "./features/Category";
+import Filter from "./features/Category/Filter";
+import PopupPayment from "./features/Payment/popupPayment";
 
 import Compare from "./features/Compare/index";
 import { Routes, Route } from "react-router-dom";
@@ -36,6 +37,7 @@ function App() {
   const [information, setInformation] = useState([]);
   const [products, setProducts] = useState([]);
   const [compares, setCompares] = useState([]);
+  const [filterProduct, setFilterProduct] = useState([]);
 
   useEffect(() => {
     async function getCompanies() {
@@ -58,6 +60,7 @@ function App() {
         );
         const resProducts = await axios.get(`${url}/products`);
         setProducts(resProducts.data);
+        setFilterProduct(resProducts.data);
         setInformation(res.data);
       }
     }
@@ -250,6 +253,62 @@ function App() {
               />
             }
           />
+
+          <Route
+            path="/filter-company"
+            element={
+              <Filter
+                url={url}
+                user={user}
+                setUser={setUser}
+                setFavs={setFavs}
+                companies={companies}
+                type={"company"}
+                compares={compares}
+                setCompares={setCompares}
+                products={products}
+                filterProduct={filterProduct}
+                setFilterProduct={setFilterProduct}
+              />
+            }
+          />
+          <Route
+            path="/filter-designer"
+            element={
+              <Filter
+                url={url}
+                user={user}
+                setUser={setUser}
+                setFavs={setFavs}
+                companies={companies}
+                type={"designer"}
+                compares={compares}
+                setCompares={setCompares}
+                products={products}
+                filterProduct={filterProduct}
+                setFilterProduct={setFilterProduct}
+              />
+            }
+          />
+          <Route
+            path="/filter-fabric"
+            element={
+              <Filter
+                url={url}
+                user={user}
+                setUser={setUser}
+                setFavs={setFavs}
+                companies={companies}
+                type={"fabric"}
+                compares={compares}
+                setCompares={setCompares}
+                products={products}
+                filterProduct={filterProduct}
+                setFilterProduct={setFilterProduct}
+              />
+            }
+          />
+
           <Route
             path="/compare"
             element={
@@ -264,13 +323,68 @@ function App() {
             }
           />
 
-          <Route path="/HelpmeFactoryOne" element={<HelpmeFactoryOne />} />
-          <Route path="/HelpmeFactoryTwo" element={<HelpmeFactoryTwo />} />
-          <Route path="/HelpmeFactoryThree" element={<HelpmeFactoryThree />} />
-          <Route path="/HelpmeFabicOne" element={<HelpmeFabicOne />} />
-          <Route path="/HelpmeFabicTwo" element={<HelpmeFabicTwo />} />
-          <Route path="/HelpmeDesignOne" element={<HelpmeDesignOne />} />
-          <Route path="/HelpmeDesignTwo" element={<HelpmeDesignTwo />} />
+          <Route
+            path="/HelpmeFactoryOne"
+            element={
+              <HelpmeFactoryOne
+                filterProduct={filterProduct}
+                setFilterProduct={setFilterProduct}
+              />
+            }
+          />
+          <Route
+            path="/HelpmeFactoryTwo"
+            element={
+              <HelpmeFactoryTwo
+                filterProduct={filterProduct}
+                setFilterProduct={setFilterProduct}
+              />
+            }
+          />
+
+          <Route
+            path="/HelpmeFabicOne"
+            element={
+              <HelpmeFabicOne
+                filterProduct={filterProduct}
+                setFilterProduct={setFilterProduct}
+              />
+            }
+          />
+          <Route
+            path="/HelpmeFabicTwo"
+            element={
+              <HelpmeFabicTwo
+                filterProduct={filterProduct}
+                setFilterProduct={setFilterProduct}
+              />
+            }
+          />
+          <Route
+            path="/HelpmeDesignOne"
+            element={
+              <HelpmeDesignOne
+                filterProduct={filterProduct}
+                setFilterProduct={setFilterProduct}
+              />
+            }
+          />
+          <Route
+            path="/HelpmeDesignTwo"
+            element={
+              <HelpmeDesignTwo
+                filterProduct={filterProduct}
+                setFilterProduct={setFilterProduct}
+              />
+            }
+          />
+
+          <Route
+            path="/payment"
+            element={
+              <PopupPayment />
+            }
+          />
         </Routes>
       ) : (
         <div>Loading....</div>

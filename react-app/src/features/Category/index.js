@@ -3,6 +3,8 @@ import BoxData from "../Component/BoxData";
 import Footer from "../Component/Footer";
 import Navbar from "../Component/Navbar";
 import PopupCompare from "../Component/PopupCompare";
+import { Link } from "react-router-dom";
+
 
 const Category = ({
   url,
@@ -11,7 +13,8 @@ const Category = ({
   setFavs,
   companies,
   type,
-  compares ,setCompares,
+  compares,
+  setCompares,
   className,
 }) => {
   const image = require("../../image Hackathon/image/background.jpeg");
@@ -39,8 +42,25 @@ const Category = ({
         )}
 
         <div className="button">
-          <button className="btn-help-me">Help Me</button>
-          <button className="btn-see-all">See All</button>
+
+        {type == "company" ? (
+          <Link to="/HelpmeFactoryOne"><button className="btn-help-me">Help Me</button></Link>
+        ) : type == "fabric" ? (
+          <Link to="/HelpmeFabicOne"><button className="btn-help-me">Help Me</button></Link>
+        ) : (
+          <Link to="/HelpmeDesignOne"><button className="btn-help-me">Help Me</button></Link>
+        )}
+          
+
+          {type == "company" ? (
+          <Link to="/company"><button className="btn-see-all">See All</button></Link>
+        ) : type == "fabric" ? (
+          <Link to="/fabric"><button className="btn-see-all">See All</button></Link>
+        ) : (
+          <Link to="/designer"><button className="btn-see-all">See All</button></Link>
+        )}
+          
+
         </div>
 
         {/* นำBoxData มาใส่ตรงนี้ได้เลยจ้า*/}

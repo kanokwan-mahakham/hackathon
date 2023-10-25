@@ -1,8 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'; 
+import { Link,useNavigate } from 'react-router-dom'; 
 
-const HelpmeFactoryOne = ({ className }) => {
+const HelpmeFactoryOne = ({  filterProduct, setFilterProduct, className }) => {
+
+    const navigate = useNavigate();
+
+    function filter1(){
+        const finds = filterProduct.filter((find)=>find.typeProduct == "ผลิตเสื้อตามแบบ")
+        setFilterProduct(finds)
+        navigate('/HelpmeFactoryTwo');
+    }
+    function filter2(){
+        const finds = filterProduct.filter((find)=>find.typeProduct == "ปักลายเสื้อ")
+        setFilterProduct(finds)
+        navigate('/HelpmeFactoryTwo');
+    }
+    function filter3(){
+        const finds = filterProduct.filter((find)=>find.typeProduct == "สกรีนลายเสื้อ")
+        setFilterProduct(finds)
+        navigate('/HelpmeFactoryTwo');
+    }
 
     return (
         <div className={className}>
@@ -14,18 +32,13 @@ const HelpmeFactoryOne = ({ className }) => {
                         <div className="underline"></div>
                         <div className="underline2"></div>
                     </div>
-                    <div className="previous" href="#">
-                        &#8249;
-                    </div>
+                    <Link to="/" className="previous"> &#8249;</Link>
                     <div className="group-container">
                         <div className="container-inside1">
                             <div className="groupButton">
-                                <Link to="/HelpmeFactoryOne">
-                                <button className="button1">หมวดหมู่</button></Link>
-                                <Link to="/HelpmeFactoryTwo">
-                                <button className="button2">งานปักหรือสกรีน</button></Link>
-                                <Link to="/HelpmeFactoryThree">
-                                <button className="button2">เนื้อผ้า</button></Link>
+                                <button className="button1">หมวดหมู่</button>
+                                <button className="button2">จำนวนสินค้า</button>
+                               
                             </div>
                         </div>
                         <div className="container-inside2">
@@ -33,25 +46,12 @@ const HelpmeFactoryOne = ({ className }) => {
                                 <h2>สินค้าของคุณมีลักษณะเป็นแบบใด</h2>
                             </div>
                            
-
-                            
-
                             <div className="groupButton1">
-                                <button className="select"> <span>กระโปรง</span> </button>
-                                <button className="select"> <span>เสื้อ</span> </button>
-                                <button className="select"><span>ชุดเซ็ต</span> </button>
-                                <button className="select"><span>ผ้าคลุม</span></button>
+                                <button className="select" onClick={filter1}><span>ผลิตเสื้อผ้าตามแบบ</span> </button>
+                                <button className="select" onClick={filter2}><span>ปักลายเสื้อ</span> </button>
+                                <button className="select" onClick={filter3}><span>สกรีนลายเสื้อ</span> </button>
                             </div>
-                            <div className="groupButton1">
-                                <button className="select"> <span>กางเกง</span></button>
-                                <button className="select"> <span>สูท</span></button>
-                                <button className="select"> <span>เดรส</span></button>
-                                <button className="select"> <span>ครบวงจร</span></button>
-                            </div>
-                            <div className="groupButton2">
-                                <button className="select2"> <span>ข้าม</span></button>
-                                <button className="select2"> <span>ต่อไป</span></button>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,7 @@ const HelpmeFactoryOne = ({ className }) => {
             border: none;
         }
 
-        button.button2:hover
+        /* button.button2:hover
         {
             width: 177px;
             height: 38px;
@@ -198,7 +198,7 @@ const HelpmeFactoryOne = ({ className }) => {
             font-weight: 500;
             line-height: normal;
             border: none;
-        }
+        } */
 
 
         .container-inside2{

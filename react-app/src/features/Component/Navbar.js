@@ -19,11 +19,12 @@ const Navbar = ({ user, setUser, className }) => {
       <div className="navbar">
         <div className="category">
           
-          {user.status == "addmin"?(
+          {/* {user.status == "addmin"?(
             <Link to="/edit-home">Home</Link>
           ):(
             <Link to="/">Home</Link>
-          )}
+          )} */}
+          <Link to="/">Home</Link>
           <Link to="/fabric">Fabric</Link>
           <Link to="/designer">Designer</Link>
           <Link to="/company">Factory</Link>
