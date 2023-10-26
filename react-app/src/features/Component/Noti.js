@@ -1,11 +1,16 @@
 import styled from "styled-components";
+import ItemNoti from "./ItemNoti";
 
-const Noti = ({ className }) => {
+const Noti = ({ url, user, setShownoti, notis, setNotis, className }) => {
   const cancle = require("../../image Hackathon/icon/cancel.png");
   const login = require("../../image Hackathon/icon/login.png");
   const order = require("../../image Hackathon/icon/order-now.png");
   const checked = require("../../image Hackathon/icon/checked.png");
   const success = require("../../image Hackathon/icon/goal.png");
+
+  function closeNoti() {
+    setShownoti("");
+  }
 
   return (
     <div className={className}>
@@ -13,64 +18,29 @@ const Noti = ({ className }) => {
         <div className="header">
           <p>Notification</p>
           <div className="btn-header">
-            <img src={cancle} id="btn-cancle" />
+            <img src={cancle} id="btn-cancle" onClick={closeNoti} />
           </div>
         </div>
         <div className="line"></div>
         <div className="body-noti">
-          {/* div className="noti-detail" นี้สำหรับ 1 การแจ้งเตือนนะจ๊ะ */}
-          {/* แจ้งเตือนในฝั่งadmin */}
-          <div className="noti-detail">
-            <div className="box-noti-detail">
-              <img src={login} />
-              <p id="name">ThumbinThai</p>
-              <p id="noti-text">
-                กำลังรอคุณตรวจสอบข้อมูลเพื่อดำเนินการเป็นสมาชิก
-              </p>
-            </div>
-          </div>
 
-          <div className="noti-detail">
-            <div className="box-noti-detail">
-              <img src={order} id="buy-package" />
-              <p id="name">Sahawath</p>
-              <p id="noti-text">
-                กำลังรอคุณตรวจสอบข้อมูลเพื่อดำเนินการโปรโมท ตาม package
-                ตามเงื่อนไขของเรา
-              </p>
-            </div>
-          </div>
-
-          {/* แจ้งเตือนในฝั่งfactory */}
-          <div className="noti-detail">
-            <div className="box-noti-detail">
-              <img src={checked} />
-              <p id="name">ThumbinThai</p>
-              <p id="noti-text">การยืนยันตัวตนของคุณสำเร็จแล้ว ยินดีด้วยนะคะ</p>
-            </div>
-          </div>
-
-          <div className="noti-detail">
-            <div className="box-noti-detail">
-              <img src={success} />
-              <p id="name">Sahawath</p>
-              <p id="noti-text">
-                เริ่มการโปรโมทตาม package 499บาท/เดือน นับตั้งแต่วันนี้จนถึง 1
-                ธันวาคม พ.ศ. 2566
-              </p>
-            </div>
-          </div>
-
-          <div className="noti-detail">
-            <div className="box-noti-detail">
-              <img src={success} />
-              <p id="name">Sahawath</p>
-              <p id="noti-text">
-                เริ่มการโปรโมทตาม package 499บาท/เดือน นับตั้งแต่วันนี้จนถึง 1
-                ธันวาคม พ.ศ. 2566
-              </p>
-            </div>
-          </div>
+          {notis.length > 0 ? (
+            user.status === "admin" ? (
+              <></>
+            ) : (
+              notis
+                .filter((item) => item.companyId === user.id)
+                .map((filteredItem) => (
+                  <ItemNoti
+                    key={filteredItem.id}
+                    url={url}
+                    user={user}
+                    item={filteredItem}
+                    setNotis={setNotis} 
+                  />
+                ))
+            )
+          ) : null}
         </div>
       </div>
     </div>
@@ -114,6 +84,7 @@ export default styled(Noti)`
   .btn-header {
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
   .line {
     display: flex;

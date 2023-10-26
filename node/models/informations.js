@@ -4,7 +4,6 @@ const { sequelize } = require('../config/database');
 const Information = sequelize.define(
     'Information',{
         
-        
         name:{
             type: DataTypes.STRING
         },

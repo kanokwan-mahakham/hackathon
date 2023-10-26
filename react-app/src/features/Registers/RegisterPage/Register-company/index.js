@@ -257,6 +257,7 @@ const RegisterCompany = ({setUser,url}) => {
 
         const response1 = await axios.post(`${url}/informations`,'');
         const response = await axios.post(`${url}/users`,{...newUser,informationId:response1.data.id});
+        await axios.post(`${url}/notis`,{companyId:response.data.id,icon:"login.png",type:"wait regis",description:"รอตรวจสอบข้อมูลเพื่อดำเนินการเป็นสมาชิก"})
         
         
 

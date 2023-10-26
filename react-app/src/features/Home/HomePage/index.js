@@ -7,8 +7,9 @@ import BlogSlide from "../../Component/BlogSlide";
 import BoxData from "../../Component/BoxData";
 import Footer from "../../Component/Footer";
 import PopupCompare from "../../Component/PopupCompare";
+import Noti from "../../Component/Noti";
 
-const HomePage = ({ imageHome, url, user, setUser,setFavs,companies,compares ,setCompares, className }) => {
+const HomePage = ({ imageHome, url, user, setUser,setFavs,companies,compares ,setCompares, showNoti ,setShownoti, notis,setNotis, className }) => {
   
   const image = require("../../../image Hackathon/image/background.jpg");
 
@@ -32,7 +33,14 @@ const HomePage = ({ imageHome, url, user, setUser,setFavs,companies,compares ,se
 
   return (
     <div className={className}>
-      <Navbar user={user} setUser={setUser} />
+
+      {showNoti=="show"?(
+        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} setNotis={setNotis}></Noti>
+      ):null
+      }
+      
+
+      <Navbar user={user} setUser={setUser} setShownoti={setShownoti}  />
       <div className="image">
         <img src={image}></img>
       </div>

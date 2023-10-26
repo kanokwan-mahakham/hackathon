@@ -8,6 +8,7 @@ const customerFavRoutes = require("./routes/customerFavs");
 const informationRoutes = require("./routes/informations");
 const productRoutes = require("./routes/products");
 const packageRoutes = require("./routes/packages");
+const notiRoutes = require("./routes/notis");
 
 
 const app = express();
@@ -40,7 +41,8 @@ app.use('/users', userRoutes);
 app.use('/informations', informationRoutes);
 app.use('/customerFavs', customerFavRoutes);
 app.use('/products', productRoutes);
-app.use('/packages', productRoutes);
+app.use('/packages', packageRoutes);
+app.use('/notis', notiRoutes);
 
 
 // Creating a server

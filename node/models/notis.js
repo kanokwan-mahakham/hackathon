@@ -1,30 +1,27 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const Package = sequelize.define(
-    'Package',{
+const Noti = sequelize.define(
+    'Noti',{
 
         companyId:{
             type: DataTypes.DOUBLE
         },
-        slip:{
-            type: DataTypes.TEXT
-        },
-        status:{
+        icon:{
             type: DataTypes.STRING
         },
-        timeEnd:{
+        type:{
             type: DataTypes.STRING
         },
-        dayEnd:{
+        description:{
             type: DataTypes.STRING
-        }
-        
-        
+        },    
     }
 );
 
 
-module.exports = Package;
+module.exports = Noti;
+
+  
 
 

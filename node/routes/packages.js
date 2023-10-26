@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Package = require("../models/packages")
+const Package = require("../models/packages");
+const { NOW } = require('sequelize');
 
 
 router.get('/', async (req, res) => {
@@ -19,9 +20,9 @@ router.get('/:id', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-  const { companyId,slip,status,dayStart,dayEnd } = req.body;
+  const { companyId,slip,status,timeEnd,dayEnd } = req.body;
   const newProduct = await Package.create({
-    companyId,slip,status:"waiting",dayStart,dayEnd
+    companyId,slip,status:"waiting",timeEnd,dayEnd
   });
   res.json(newProduct);
 });
@@ -33,6 +34,29 @@ router.delete('/:id', async (req, res) => {
     }
   });
   res.sendStatus(204);
+});
+
+router.get("/delete/:dayEnd", async (req, res) => {
+
+  try{
+    const { dayEnd } = req.params;
+      const order = await Package.findOne({
+        where: {
+           dayEnd
+        },
+      });
+      
+      if (order) {
+        res.json({ order });
+      } else {
+        res.status(404).json({ message: 'Package not found.' });
+      }
+  }catch(error){
+    console.error(error)
+  }
+ 
+    
+ 
 });
 
 

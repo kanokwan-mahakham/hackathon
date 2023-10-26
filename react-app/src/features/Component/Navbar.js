@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = ({ user, setUser, className }) => {
+const Navbar = ({ user, setUser, setShownoti, className }) => {
   const noti = require("../../image Hackathon/icon/notification.png");
   const chat = require("../../image Hackathon/icon/send.png");
   const profile = require("../../image Hackathon/icon/contact.png");
@@ -11,6 +11,10 @@ const Navbar = ({ user, setUser, className }) => {
   function logOut() {
     setUser("");
     navigate('/');
+  }
+
+  function showNoti(){
+    setShownoti("show")
   }
 
   return (
@@ -33,7 +37,14 @@ const Navbar = ({ user, setUser, className }) => {
           <input placeholder="Search" className="search"></input>
         </div>
         <div className="about-user">
-          <img src={noti} className="round-image" />
+
+          {typeof user == "object"?(
+              <img src={noti} className="round-image" onClick={showNoti}/>
+          ):(
+            <img src={noti} className="round-image" />
+          )}
+
+          
           <img src={chat} className="round-image-chat" />
 
           {typeof user === "object" ? (
@@ -89,11 +100,13 @@ export default styled(Navbar)`
     .round-image-chat {
       margin-right: 0;
       margin-bottom: 10px;
+      cursor: pointer;
     }
     .round-image img,
     .round-image-chat img {
       max-width: 100%;
       max-height: 100%;
+      cursor: pointer;
     }
   }
 
@@ -148,11 +161,13 @@ export default styled(Navbar)`
     align-items: center;
     padding: 10px;
     margin-right: 15px;
+    cursor: pointer;
   }
 
   .round-image img {
     max-width: 100%;
     max-height: 100%;
+    cursor: pointer;
   }
   .round-image-chat {
     width: 30px;
@@ -164,6 +179,7 @@ export default styled(Navbar)`
     align-items: center;
     padding: 10px;
     margin-right: 15px;
+    cursor: pointer;
   }
   .round-image-chat img {
     max-width: 100%;

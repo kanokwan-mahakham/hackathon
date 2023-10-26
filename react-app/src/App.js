@@ -38,16 +38,36 @@ function App() {
   const [products, setProducts] = useState([]);
   const [compares, setCompares] = useState([]);
   const [filterProduct, setFilterProduct] = useState([]);
+  const [packages, setPackages] = useState([]);
+  const [showNoti, setShownoti] = useState('');
+  const [notis ,setNotis] = useState([])
+
+  const currentDate = new Date();
+  const day = String(currentDate.getDate()).padStart(2, "0");
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // เดือนใน JavaScript เริ่มจาก 0
+  const year = String(currentDate.getFullYear()).slice(2); // หรือคุณสามารถใช้ .substr(2) แทน .slice(2)
+  const hours = String(currentDate.getHours()).padStart(2, '0');
+  const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+  const [formattedTime, setFormattedTime] = useState(`${hours}.${minutes}`);
+  const [formattedDay, setFormattedDay] = useState(`${day}-${month}-${year}`);
 
   useEffect(() => {
     async function getCompanies() {
+      try{
       const resCompany = await axios.get(`${url}/users`);
       const resImageHome = await axios.get(`${url}/informations/1`);
       const resCustomerFavs = await axios.get(`${url}/customerFavs`);
+      // const resPackages = await axios.get(`${url}/packages/delete/${formattedDay}`)
+      // if (resPackages) {
+      //   await axios.delete(`${url}/packages/${resPackages.data.order.id}`);
+      // }
       setCompanies(resCompany.data);
       setFavs(resCustomerFavs.data);
       setImageHome(resImageHome.data);
       console.log("seccess");
+    }catch(error){
+      console.error(error)
+    }
     }
     getCompanies();
   }, []);
@@ -55,13 +75,15 @@ function App() {
   useEffect(() => {
     async function getInformation() {
       if (typeof user == "object") {
-        const res = await axios.get(
-          `${url}/informations/${user.informationId}`
-        );
+        const res = await axios.get(`${url}/informations/${user.informationId}`);
         const resProducts = await axios.get(`${url}/products`);
+        const resPackages = await axios.get(`${url}/packages`);
+        const resNoti = await axios.get(`${url}/notis`)
         setProducts(resProducts.data);
         setFilterProduct(resProducts.data);
         setInformation(res.data);
+        setPackages(resPackages.data)
+        setNotis(resNoti.data)
       }
     }
     getInformation();
@@ -83,6 +105,10 @@ function App() {
                 setFavs={setFavs}
                 compares={compares}
                 setCompares={setCompares}
+                showNoti={showNoti}
+                setShownoti={setShownoti}
+                notis={notis}
+                setNotis={setNotis}
               />
             }
           />
@@ -380,9 +406,21 @@ function App() {
           />
 
           <Route
-            path="/payment"
+            path="/payment-day"
             element={
-              <PopupPayment />
+              <PopupPayment url={url} user={user} pomotion={"day"} setPackages={setPackages} />
+            }
+          />
+          <Route
+            path="/payment-month"
+            element={
+              <PopupPayment url={url} user={user} pomotion={"month"} setPackages={setPackages} />
+            }
+          />
+          <Route
+            path="/payment-year"
+            element={
+              <PopupPayment url={url} user={user} pomotion={"year"} setPackages={setPackages} />
             }
           />
         </Routes>
