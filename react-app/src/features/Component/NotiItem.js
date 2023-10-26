@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const ItemNoti = ({ url, user, item, setNotis }) => {
+const NotiItem = ({ url, user, item, setNotis }) => {
   const cancle = require("../../image Hackathon/icon/cancel.png");
   const login = require("../../image Hackathon/icon/login.png");
   const order = require("../../image Hackathon/icon/order-now.png");
@@ -27,8 +28,29 @@ const ItemNoti = ({ url, user, item, setNotis }) => {
 
   return (
     <>
-
-      {item.type == "wait package" ? (
+      {user.status == "addmin" ? (
+        item.type == "wait package" ? (
+          <Link to={`/check-payment/${item.companyId}/${item.id}`}>
+            <div className="noti-detail">
+              <div className="box-noti-detail">
+                <img src={icon} id="buy-package" />
+                <p id="name">{company.name}</p>
+                <p id="noti-text">{item.description}</p>
+              </div>
+            </div>
+          </Link>
+        ) : (
+          <Link to={`/check-regis/${item.companyId}/${item.id}`}>
+            <div className="noti-detail">
+              <div className="box-noti-detail">
+                <img src={icon} />
+                <p id="name">{company.name}</p>
+                <p id="noti-text">{item.description}</p>
+              </div>
+            </div>
+          </Link>
+        )
+      ) : item.type == "wait package" ? (
         <div className="noti-detail">
           <div className="box-noti-detail">
             <img src={icon} id="buy-package" />
@@ -79,4 +101,4 @@ const ItemNoti = ({ url, user, item, setNotis }) => {
     </>
   );
 };
-export default ItemNoti;
+export default NotiItem;

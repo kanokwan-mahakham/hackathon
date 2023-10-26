@@ -13,6 +13,9 @@ const Package = sequelize.define(
         status:{
             type: DataTypes.STRING
         },
+        pack:{
+            type: DataTypes.STRING
+        },
         timeEnd:{
             type: DataTypes.STRING
         },

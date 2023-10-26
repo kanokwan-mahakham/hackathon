@@ -43,7 +43,27 @@ router.get('/:username/:password', async (req, res) => {
   
 });
 
+router.put('/:id', async (req, res) => {
+  const { username,email,password,type,juristicNumber,JuristicFile,status,informationId } = req.body;
+  const information = await User.findOne({
+    where: {
+      id: req.params.id
+    }
+  });
 
+    information.username = username;
+    information.email = email;
+    information.password = password;
+    information.type = type;
+    information.juristicNumber = juristicNumber;
+    information.JuristicFile = JuristicFile;
+    information.status = status;
+    information.informationId = informationId;
+    
+  await information.save();
+
+  res.json(information);
+});
 
 
 module.exports = router;

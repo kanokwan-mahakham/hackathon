@@ -113,7 +113,7 @@ const Styledtext2 = styled.div`
   text-align: center;
   font-weight: bold;
 `;
-const PopupPayment = ({ url, user, pomotion, setPackages }) => {
+const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
   const [image, setImage] = useState([]);
   const navigate = useNavigate();
   const currentDate = new Date();
@@ -124,6 +124,7 @@ const PopupPayment = ({ url, user, pomotion, setPackages }) => {
   const minutes = String(currentDate.getMinutes()).padStart(2, "0");
   const [formattedTime, setFormattedTime] = useState("");
   const [formattedDay, setFormattedDay] = useState("");
+  const [pack, setPack] = useState("");
 
   useEffect(() => {
     async function getCompanies() {
@@ -131,12 +132,15 @@ const PopupPayment = ({ url, user, pomotion, setPackages }) => {
       if (pomotion == "day") {
         const res = String(currentDate.getDate() + 1).padStart(2, "0");
         setFormattedDay(`${res}-${month}-${year}`);
+        setPack("Package for 1 day")
       } else if (pomotion == "month") {
         const res = String(currentDate.getMonth() + 2).padStart(2, "0");
         setFormattedDay(`${day}-${res}-${year}`);
+        setPack("Package for 1 month")
       } else {
         const res = String(currentDate.getFullYear() + 1).slice(2);
         setFormattedDay(`${day}-${month}-${res}`);
+        setPack("Package for 1 year")
       }
     }
     getCompanies();
@@ -159,6 +163,7 @@ const PopupPayment = ({ url, user, pomotion, setPackages }) => {
       await axios.post(`${url}/packages`, {
         companyId: user.id,
         slip: image,
+        pack: pack,
         timeEnd: formattedTime,
         dayEnd: formattedDay,
       });
@@ -170,7 +175,9 @@ const PopupPayment = ({ url, user, pomotion, setPackages }) => {
         type: "wait package",
         description: "รอตรวจสอบข้อมูลเพื่อดำเนินการโปรโมท",
       });
-      
+
+      const notis = await axios.get(`${url}/notis`)
+      setNotis(notis.data)
       setPackages(res.data);
 
       Swal.fire({
@@ -192,7 +199,15 @@ const PopupPayment = ({ url, user, pomotion, setPackages }) => {
     <Backgroud>
       <StyleContainer>
         <Styledh1>
-          <h1>Payment</h1>
+
+          {pomotion=="day"?(
+            <h1>Package 1 day</h1>
+          ):pomotion=="month"?(
+            <h1>Package 1 month</h1>
+          ):(
+            <h1>Package 1 year</h1>
+          )}
+          
         </Styledh1>
         <div className="container">
           <div className="left-content">

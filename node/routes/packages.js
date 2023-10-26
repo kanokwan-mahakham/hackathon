@@ -20,9 +20,9 @@ router.get('/:id', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-  const { companyId,slip,status,timeEnd,dayEnd } = req.body;
+  const { companyId,slip,status,package,timeEnd,dayEnd } = req.body;
   const newProduct = await Package.create({
-    companyId,slip,status:"waiting",timeEnd,dayEnd
+    companyId,slip,status:"waiting",package,timeEnd,dayEnd
   });
   res.json(newProduct);
 });
@@ -55,7 +55,25 @@ router.get("/delete/:dayEnd", async (req, res) => {
     console.error(error)
   }
  
-    
+  router.put('/:id', async (req, res) => {
+    const { companyId,slip,status,pack,timeEnd,dayEnd } = req.body;
+    const information = await Package.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
+  
+      information.companyId = companyId;
+      information.slip = slip;
+      information.status = status;
+      information.pack = pack;
+      information.timeEnd = timeEnd;
+      information.dayEnd = dayEnd;
+      
+    await information.save();
+  
+    res.json(information);
+  });
  
 });
 

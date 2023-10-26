@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ItemNoti from "./ItemNoti";
+import NotiItem from "./NotiItem";
 
 const Noti = ({ url, user, setShownoti, notis, setNotis, className }) => {
   const cancle = require("../../image Hackathon/icon/cancel.png");
@@ -25,13 +25,23 @@ const Noti = ({ url, user, setShownoti, notis, setNotis, className }) => {
         <div className="body-noti">
 
           {notis.length > 0 ? (
-            user.status === "admin" ? (
-              <></>
+            user.status === "addmin" ? (
+              notis
+                .filter((item) => item.type == "wait regis" || item.type == "wait package")
+                .map((filteredItem) => (
+                  <NotiItem
+                    key={filteredItem.id}
+                    url={url}
+                    user={user}
+                    item={filteredItem}
+                    setNotis={setNotis} 
+                  />
+                ))
             ) : (
               notis
                 .filter((item) => item.companyId === user.id)
                 .map((filteredItem) => (
-                  <ItemNoti
+                  <NotiItem
                     key={filteredItem.id}
                     url={url}
                     user={user}
