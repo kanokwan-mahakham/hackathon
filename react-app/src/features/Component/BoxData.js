@@ -104,7 +104,14 @@ const BoxData = ({ user, url, item, setFavs, compares, setCompares , className }
       <div className={className}>
         <div className="box">
           <div className="box-box-image">
-            <img src={data.profile} alt="Box Image" />
+            
+            {typeof user == "object" ? (
+              <Link to={`/company/${item.id}`}><img src={data.profile} alt="Box Image" /></Link>
+            ):(
+              <img src={data.profile} alt="Box Image" />
+            )}
+
+            
           </div>
           <div className="box-detail">
             <p id="name">{data.name}</p>

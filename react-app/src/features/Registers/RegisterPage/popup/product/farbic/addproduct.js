@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputRegField from "../../../../../Component/input";
 import Button from "../../../../../../features/Component/Botton";
 import styled from "styled-components";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -117,98 +117,91 @@ const Styledh1 = styled.div`
     margin-top: 60px;
     text-align: center;
   }
-`
-const Styledtextinput =styled.div`
-.textinput{
-    color: #807D7D;
-    font-family: 'Open Sans';
+`;
+const Styledtextinput = styled.div`
+  .textinput {
+    color: #807d7d;
+    font-family: "Open Sans";
     font-size: 11.55px;
     font-weight: 400;
     line-height: 11.325px;
     border: none;
     outline: none;
-}
-`
-const Styledinput= styled.div` 
-
-.input-container2 {
+  }
+`;
+const Styledinput = styled.div`
+  .input-container2 {
     display: flex;
     height: 34.65px;
     padding: 5.775px 8.663px;
     align-items: center;
     gap: 10.425px;
     border-radius: 8.663px;
-    border: 0.722px solid #DBDBDB;
+    border: 0.722px solid #dbdbdb;
     margin-top: 5px;
-}
+  }
 
-.input-container2 input {
-    color: #807D7D;
-    font-family: 'Open Sans';
+  .input-container2 input {
+    color: #807d7d;
+    font-family: "Open Sans";
     font-size: 11.55px;
     font-weight: 400;
     line-height: 17.325px;
     border: none;
     outline: none;
-}
-`
-;
+  }
+`;
+const PopupAddProductFarbic = ({ url, user, setProducts }) => {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [typeCompany, setTypeCompany] = useState(user.type);
+  const [typeProduct, setTypeProduct] = useState("ผ้าฝ้าย");
+  const [price, setPrice] = useState("");
+  const navigate = useNavigate();
 
-const PopupAddProductFarbic = ({url,user,setProducts}) => {
-
-    const [name, setName] = useState("")
-    const [description, setDescription] = useState("")
-    const [image, setImage] = useState("")
-    const [typeCompany, setTypeCompany] = useState(user.type)
-    const [typeProduct, setTypeProduct] = useState("ผ้าฝ้าย")
-    const [price, setPrice] = useState("")
-    const navigate = useNavigate();
-
-    function handleFileChange(event){
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const imagePath = e.target.result;
-                setImage(imagePath); // เก็บ URL ของภาพใน state
-            };
-        reader.readAsDataURL(file);
-        }
+  function handleFileChange(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imagePath = e.target.result;
+        console.log("Image path: ", imagePath);
+        setImage(imagePath); // เก็บ URL ของภาพใน state
+      };
+      reader.readAsDataURL(file);
     }
+  }
 
+  async function submit() {
+    try {
+      const newProduct = {
+        companyId: user.id,
+        name: name,
+        description: description,
+        image: image,
+        typeCompany: typeCompany,
+        typeProduct: typeProduct,
+        price: price,
+      };
 
-    async function submit(){
-        try{
-            const newProduct = {
-                companyId:user.id,
-                name:name,
-                description:description,
-                image:image,
-                typeCompany:typeCompany,
-                typeProduct:typeProduct,
-                price:price,
-            }
+      await axios.post(`${url}/products`, newProduct);
+      const res = await axios.get(`${url}/products`);
+      setProducts(res.data);
 
-            await axios.post(`${url}/products`,newProduct)
-            const res = await axios.get(`${url}/products`)
-            setProducts(res.data)
-
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Your work has been saved',
-                showConfirmButton: false,
-                timer: 1500
-              }).then(() => {
-                navigate('/edit-profile-company');
-              });
-
-              
-        }catch(error){
-            console.log(error)
-        }
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        navigate("/edit-profile-company");
+      });
+    } catch (error) {
+      console.log(error);
     }
-
+  }
 
   return (
     <Backgroud>
@@ -216,13 +209,28 @@ const PopupAddProductFarbic = ({url,user,setProducts}) => {
         <div className="container">
           <div className="left-content">
             <Styleprevious>
-            <Link to="/edit-profile-company" className="previous">{" "}&#8249;</Link>
+              <Link to="/edit-profile-company" className="previous">
+                {" "}
+                &#8249;
+              </Link>
             </Styleprevious>
             <Styledh1>
               <h1>Add Product</h1>
             </Styledh1>
-            <InputRegField placeholder="ชื่อสินค้า" type="text" onChange={(event) => {setName(event.target.value);}} />
-            <InputRegField placeholder="รายละเอียด" type="text" onChange={(event) => {setDescription(event.target.value);}} />
+            <InputRegField
+              placeholder="ชื่อสินค้า"
+              type="text"
+              onChange={(event) => {
+                setName(event.target.value);
+              }}
+            />
+            <InputRegField
+              placeholder="รายละเอียด"
+              type="text"
+              onChange={(event) => {
+                setDescription(event.target.value);
+              }}
+            />
 
             <Styledinput>
               <div className="input-container2">
@@ -230,7 +238,11 @@ const PopupAddProductFarbic = ({url,user,setProducts}) => {
                   <div className="textinput">ประเภทสินค้า</div>
                 </Styledtextinput>
                 <StyledSelect>
-                  <select onChange={(event) => {setTypeProduct(event.target.value);}}>
+                  <select
+                    onChange={(event) => {
+                      setTypeProduct(event.target.value);
+                    }}
+                  >
                     <option value="ผ้าฝ้าย">ผ้าฝ้าย</option>
                     <option value="ผ้าลินิน">ผ้าลินิน</option>
                     <option value="ผ้าไหม">ผ้าไหม</option>
@@ -239,9 +251,13 @@ const PopupAddProductFarbic = ({url,user,setProducts}) => {
               </div>
             </Styledinput>
 
-
-            <InputRegField placeholder="ราคา/เมตร" type="text" onChange={(event) => {setPrice(event.target.value);}} />
-
+            <InputRegField
+              placeholder="ราคา/เมตร"
+              type="text"
+              onChange={(event) => {
+                setPrice(event.target.value);
+              }}
+            />
 
             <StyledBotton>
               <Button text="Continue" onClick={submit} />
@@ -278,9 +294,16 @@ const PopupAddProductFarbic = ({url,user,setProducts}) => {
                       SVG, PNG, JPG or GIF (MAX. 800x400px)
                     </p>
                   </div>
-                  <input id="dropzone-file" type="file" accept="image/*"class="hidden" onClick={handleFileChange} />
-                  
-              
+
+                  <input
+                    type="file"
+                    id="dropzone-file"
+                    name="product-image"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleFileChange}
+                  />
+
                 </label>
               </div>
             </div>

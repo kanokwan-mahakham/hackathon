@@ -8,8 +8,10 @@ import axios from "axios";
 import CardNewData from "../../Component/CardProfile/CardNewData";
 import CardEdit from "../../Component/CardProfile/CardEdit";
 import PopupCompare from "../../Component/PopupCompare";
+import Noti from "../../Component/Noti";
+import ListChat from "../../Component/ListChat";
 
-const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information,compares ,setCompares, className }) => {
+const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information,compares ,setCompares,setShownoti,showNoti,notis,showChat,setShowChat, className }) => {
 
   const [factory, setFactory] = useState([]);
   
@@ -45,8 +47,17 @@ const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information
 
   return (
     <div className={className}>
-      <Navbar user={user} setUser={setUser} />
+       {showNoti=="show"?(
+        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} ></Noti>
+      ):null
+      }
+      {showChat=="show"?(
+        <ListChat setShowChat={setShowChat}/>
+      ):null}
+      
+      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
       <CardEdit user={user} information={information} />
+      
       <div className="approved">
         <h1>Approved</h1>
         <div className="line"></div>

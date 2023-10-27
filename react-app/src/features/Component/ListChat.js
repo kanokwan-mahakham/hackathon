@@ -1,15 +1,22 @@
 import styled from "styled-components";
 
-const ListChat = ({ className }) => {
+const ListChat = ({ setShowChat,className }) => {
   const cancle = require("../../image Hackathon/icon/cancel.png");
   const photo = require("../../image Hackathon/image/background.jpeg")
+
+
+  function close(){
+    setShowChat("")
+  }
+
   return (
+
     <div className={className}>
       <div className="popup-list">
         <div className="header">
           <p>Chat messages</p>
           <div className="btn-header">
-            <img src={cancle} id="btn-cancle" />
+            <img src={cancle} id="btn-cancle" onClick={close}/>
           </div>
         </div>
         <div className="body-chat">
@@ -58,6 +65,7 @@ export default styled(ListChat)`
     width: 25px;
     height: 25px;
     margin-right: 10px;
+    cursor: pointer;
   }
   .btn-header {
     display: flex;

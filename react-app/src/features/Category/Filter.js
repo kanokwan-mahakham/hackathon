@@ -5,6 +5,8 @@ import Navbar from "../Component/Navbar";
 import PopupCompare from "../Component/PopupCompare";
 import { Link,useNavigate } from 'react-router-dom'; 
 import React, { useState, useEffect } from "react";
+import Noti from "../Component/Noti";
+import ListChat from "../Component/ListChat";
 
 const Filter = ({
   url,
@@ -13,10 +15,17 @@ const Filter = ({
   setFavs,
   companies,
   type,
-  compares ,setCompares,
+  compares,
+  setCompares,
   products,
   filterProduct,
+  setShownoti,
   setFilterProduct,
+  showNoti,
+  notis,
+  setNotis,
+  showChat,
+  setShowChat,
   className,
 }) => {
   const image = require("../../image Hackathon/image/background.jpeg");
@@ -50,7 +59,17 @@ const Filter = ({
 
   return (
     <div className={className}>
-      <Navbar user={user} setUser={setUser} />
+
+      {showChat=="show"?(
+        <ListChat setShowChat={setShowChat}/>
+      ):null}
+      
+      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
+      
+      {showNoti=="show"?(
+        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} setNotis={setNotis}></Noti>
+      ):null
+      }
       <div className="title-header">
         {type == "company" ? (
           <h1>Factory</h1>

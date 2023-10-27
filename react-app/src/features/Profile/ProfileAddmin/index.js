@@ -3,11 +3,24 @@ import Navbar from "../../Component/Navbar";
 import Footer from "../../Component/Footer";
 import CardAdmin from "../../Component/CardProfile/CardAdmin";
 import Package from "../../Component/Package";
+import Noti from "../../Component/Noti";
+import ListChat from "../../Component/ListChat";
 
-const ProfileAdmin = ({ user, setUser, className }) => {
+const ProfileAdmin = ({ url, user, setUser,showNoti ,setShownoti, notis,setNotis,setCompares,showChat,setShowChat, className }) => {
   return (
     <div className={className}>
-      <Navbar user={user} setUser={setUser} />
+      {showNoti=="show"?(
+        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} setNotis={setNotis}></Noti>
+      ):null
+      }
+      
+
+      {showChat=="show"?(
+        <ListChat setShowChat={setShowChat}/>
+      ):null}
+      
+      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
+      
       <CardAdmin />
       <div className="rating">
         <div className="box-rating">

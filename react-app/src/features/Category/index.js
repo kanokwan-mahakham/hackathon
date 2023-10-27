@@ -3,6 +3,8 @@ import BoxData from "../Component/BoxData";
 import Footer from "../Component/Footer";
 import Navbar from "../Component/Navbar";
 import PopupCompare from "../Component/PopupCompare";
+import Noti from "../Component/Noti";
+import ListChat from "../Component/ListChat";
 import { Link } from "react-router-dom";
 
 
@@ -15,12 +17,28 @@ const Category = ({
   type,
   compares,
   setCompares,
+  setShownoti,
+  showNoti,
+  notis,
+  setNotis,
+  showChat,
+  setShowChat,
   className,
 }) => {
   const image = require("../../image Hackathon/image/background.jpeg");
   return (
     <div className={className}>
-      <Navbar user={user} setUser={setUser} />
+
+      {showNoti=="show"?(
+        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} setNotis={setNotis}></Noti>
+      ):null
+      }
+      {showChat=="show"?(
+        <ListChat setShowChat={setShowChat}/>
+      ):null}
+      
+      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
+      
       <div className="title-header">
         {type == "company" ? (
           <h1>Factory</h1>

@@ -1,7 +1,8 @@
 // import styled from "styled-components";
 // import React, { useState } from "react";
+// import axios from "axios";
 
-// const PhotoProductEdit = ({ information, setInformation, className }) => {
+// const PhotoProductEdit = ({ url,information, setInformation, className }) => {
 //   const image = require("../../../image Hackathon/image/background.jpeg");
 //   const edit = require("../../../image Hackathon/icon/editing.png");
 
@@ -12,8 +13,34 @@
 //   const [image5, setImage5] = useState(information.image1);
 //   const [image6, setImage6] = useState(information.image1);
 
+
 //   async function handleFileChange1(event) {
 //     const file = event.target.files[0];
+//     if (file) {
+//       const reader = new FileReader();
+//       reader.onload = async function (e) {
+//         const imagePath = e.target.result;
+//         console.log("Image path: ", imagePath);
+//         // Update the 'image1' property inside the callback
+//         setImage1(imagePath);
+//         // Now, send the PUT request with the updated 'image1'
+//         const { id, ...item } = information;
+//         const res = await axios.put(`${url}/informations/${information.id}`, {
+//           image1: imagePath, // Updated 'image1'
+//           ...item
+//         });
+        
+//         setInformation(res.data);
+//         console.log(res.data);
+//       };
+//       reader.readAsDataURL(file);
+//     }
+//   }
+  
+
+//   async function handleFileChange2(event) {
+//     const file = event.target.files[0];
+//     const {id,image2,...item} = information
 //     if (file) {
 //       const reader = new FileReader();
 //       reader.onload = function (e) {
@@ -22,78 +49,94 @@
 //         setImage1(imagePath); // เก็บ URL ของภาพใน state
 //       };
 //       reader.readAsDataURL(file);
-//     }
-//   }
-
-//   async function handleFileChange2(event) {
-//     const file = event.target.files[0];
-//     if (file) {
-//       const reader = new FileReader();
-//       reader.onload = function (e) {
-//         const imagePath = e.target.result;
-//         console.log("Image path: ", imagePath);
-//         setImage2(imagePath); // เก็บ URL ของภาพใน state
-//       };
-//       reader.readAsDataURL(file);
+//       const res = await axios.put(`${url}/informations/${information.id}`,{
+//         image2:image2,
+//         ...item
+//       })
+//       setInformation(res.data);
 //     }
 //   }
 
 //   async function handleFileChange3(event) {
 //     const file = event.target.files[0];
+//     const {id,image3,...item} = information
 //     if (file) {
 //       const reader = new FileReader();
 //       reader.onload = function (e) {
 //         const imagePath = e.target.result;
 //         console.log("Image path: ", imagePath);
-//         setImage3(imagePath); // เก็บ URL ของภาพใน state
+//         setImage1(imagePath); // เก็บ URL ของภาพใน state
 //       };
 //       reader.readAsDataURL(file);
+//       const res = await axios.put(`${url}/informations/${information.id}`,{
+//         image3:image3,
+//         ...item
+//       })
+//       setInformation(res.data);
 //     }
 //   }
 
 //   async function handleFileChange4(event) {
 //     const file = event.target.files[0];
+//     const {id,image4,...item} = information
 //     if (file) {
 //       const reader = new FileReader();
 //       reader.onload = function (e) {
 //         const imagePath = e.target.result;
 //         console.log("Image path: ", imagePath);
-//         setImage4(imagePath); // เก็บ URL ของภาพใน state
+//         setImage1(imagePath); // เก็บ URL ของภาพใน state
 //       };
 //       reader.readAsDataURL(file);
+//       const res = await axios.put(`${url}/informations/${information.id}`,{
+//         image4:image4,
+//         ...item
+//       })
+//       setInformation(res.data);
 //     }
 //   }
 
 //   async function handleFileChange5(event) {
 //     const file = event.target.files[0];
+//     const {id,image5,...item} = information
 //     if (file) {
 //       const reader = new FileReader();
 //       reader.onload = function (e) {
 //         const imagePath = e.target.result;
 //         console.log("Image path: ", imagePath);
-//         setImage5(imagePath); // เก็บ URL ของภาพใน state
+//         setImage1(imagePath); // เก็บ URL ของภาพใน state
 //       };
 //       reader.readAsDataURL(file);
+//       const res = await axios.put(`${url}/informations/${information.id}`,{
+//         image5:image5,
+//         ...item
+//       })
+//       setInformation(res.data);
 //     }
 //   }
 
-//   function handleFileChange6(event) {
+//   async function handleFileChange6(event) {
 //     const file = event.target.files[0];
+//     const {id,image6,...item} = information
 //     if (file) {
 //       const reader = new FileReader();
 //       reader.onload = function (e) {
 //         const imagePath = e.target.result;
 //         console.log("Image path: ", imagePath);
-//         setImage6(imagePath); // เก็บ URL ของภาพใน state
+//         setImage1(imagePath); // เก็บ URL ของภาพใน state
 //       };
 //       reader.readAsDataURL(file);
+//       const res = await axios.put(`${url}/informations/${information.id}`,{
+//         image6:image6,
+//         ...item
+//       })
+//       setInformation(res.data);
+      
 //     }
 //   }
 
 //   return (
 //     <div className={className}>
 //       <div className="photo-product">
-
 //         <input
 //           type="file"
 //           id="product-image1"
@@ -104,10 +147,12 @@
 //           onChange={handleFileChange1}
 //         />
 
-//         <label htmlFor="product-image1" className="image">
-//           <img src={image1} alt="Product" />
-//           <div className="icon-overlay">
-//             <img src={edit} id="icon" alt="Edit" />
+//         <label htmlFor="product-image" className="image">
+//           <div className="img-product">
+//             <img src={image1} alt="Product" />
+//             <div className="icon-overlay">
+//               <img src={edit} id="icon" alt="Edit" />
+//             </div>
 //           </div>
 //         </label>
 
@@ -122,9 +167,11 @@
 //         />
 
 //         <label htmlFor="product-image2" className="image">
-//           <img src={image2} alt="Product" />
-//           <div className="icon-overlay">
-//             <img src={edit} id="icon" alt="Edit" />
+//           <div className="img-product">
+//             <img src={image2} alt="Product" />
+//             <div className="icon-overlay">
+//               <img src={edit} id="icon" alt="Edit" />
+//             </div>
 //           </div>
 //         </label>
 
@@ -138,10 +185,12 @@
 //           onChange={handleFileChange3}
 //         />
 
-//         <label htmlFor="product-image3" className="image">
-//           <img src={image3} alt="Product" />
-//           <div className="icon-overlay">
-//             <img src={edit} id="icon" alt="Edit" />
+//         <label htmlFor="product-image" className="image">
+//           <div className="img-product">
+//             <img src={image3} alt="Product" />
+//             <div className="icon-overlay">
+//               <img src={edit} id="icon" alt="Edit" />
+//             </div>
 //           </div>
 //         </label>
 
@@ -156,9 +205,11 @@
 //         />
 
 //         <label htmlFor="product-image4" className="image">
-//           <img src={image4} alt="Product" />
-//           <div className="icon-overlay">
-//             <img src={edit} id="icon" alt="Edit" />
+//           <div className="img-product">
+//             <img src={image4} alt="Product" />
+//             <div className="icon-overlay">
+//               <img src={edit} id="icon" alt="Edit" />
+//             </div>
 //           </div>
 //         </label>
 
@@ -173,9 +224,11 @@
 //         />
 
 //         <label htmlFor="product-image5" className="image">
-//           <img src={image5} alt="Product" />
-//           <div className="icon-overlay">
-//             <img src={edit} id="icon" alt="Edit" />
+//           <div className="img-product">
+//             <img src={image5} alt="Product" />
+//             <div className="icon-overlay">
+//               <img src={edit} id="icon" alt="Edit" />
+//             </div>
 //           </div>
 //         </label>
 
@@ -190,12 +243,13 @@
 //         />
 
 //         <label htmlFor="product-image6" className="image">
-//           <img src={image6} alt="Product" />
-//           <div className="icon-overlay">
-//             <img src={edit} id="icon" alt="Edit" />
+//           <div className="img-product">
+//             <img src={image6} alt="Product" />
+//             <div className="icon-overlay">
+//               <img src={edit} id="icon" alt="Edit" />
+//             </div>
 //           </div>
 //         </label>
-
 //       </div>
 //     </div>
 //   );
@@ -206,16 +260,22 @@
 //     flex-wrap: wrap;
 //     justify-content: center;
 //   }
-//   .photo-product img {
+
+//   .image {
+//     position: relative;
+//     cursor: pointer;
+//   }
+//   .image .img-product {
 //     width: 420px;
 //     height: 500px;
 //     border-radius: 30px;
 //     margin: 10px 40px 40px 0px;
 //     opacity: 0.4;
+//     background-color: black;
 //   }
-//   .image {
-//     position: relative;
-//     cursor: pointer;
+//   .img-product img{
+//     width: 100%;
+//     height:100%;
 //   }
 //   .icon-overlay #icon {
 //     position: absolute;
@@ -227,15 +287,14 @@
 //     border-radius: 0;
 //   }
 // `;
+
 import styled from "styled-components";
 import React, { useState } from "react";
 import axios from "axios";
 
 const PhotoProductEdit = ({ url, information, setInformation, className }) => {
-  const image = require("../../../image Hackathon/image/background.jpeg");
   const edit = require("../../../image Hackathon/icon/editing.png");
 
-  // สร้าง state ในรูปแบบของออบเจ็กต์เพื่อเก็บ URL ของรูปภาพ
   const [imageUrls, setImageUrls] = useState({
     image1: information.image1,
     image2: information.image2,
@@ -245,10 +304,8 @@ const PhotoProductEdit = ({ url, information, setInformation, className }) => {
     image6: information.image6,
   });
 
-  const { id, image1, image2, image3, image4, image5, image6, ...item } =
-    information;
+  const { id, ...item } = information;
 
-  // ฟังก์ชันเพื่อจัดการเหตุการณ์เมื่อเลือกไฟล์
   async function handleFileChange(event, imageKey) {
     const file = event.target.files[0];
     if (file) {
@@ -256,25 +313,20 @@ const PhotoProductEdit = ({ url, information, setInformation, className }) => {
       reader.onload = async function (e) {
         const imagePath = e.target.result;
         console.log(`Image path for ${imageKey}:`, imagePath);
+
+        // Update the appropriate image state
         setImageUrls({ ...imageUrls, [imageKey]: imagePath });
 
-        // เรียกใช้ axios ด้วย url ที่รับมาจาก props
-        const res = await axios.put(`${url}/informations/${id}`, {
+        // Prepare the data for the PUT request
+        const imageData = {
           ...item,
-          image1: image1,
-          image2: image2,
-          image3: image3,
-          image4: image4,
-          image5: image5,
-          image6: image6,
-        });
+          [imageKey]: imagePath,
+        };
 
-        console.log(res.data);
-        console.log(imageUrls.image3);
-        console.log(image3);
-        console.log(imageUrls[image3]);
+        const res = await axios.put(`${url}/informations/${id}`, imageData);
         setInformation(res.data);
       };
+
       reader.readAsDataURL(file);
     }
   }
@@ -314,35 +366,35 @@ const PhotoProductEdit = ({ url, information, setInformation, className }) => {
 };
 
 export default styled(PhotoProductEdit)`
-  .photo-product {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .image {
-    position: relative;
-    cursor: pointer;
-  }
-  .image .img-product {
-    width: 420px;
-    height: 500px;
-    border-radius: 30px;
-    margin: 10px 40px 40px 0px;
-    opacity: 0.4;
-    background-color: black;
-  }
-  .img-product img{
-    width: 100%;
-    height:100%;
-  }
-  .icon-overlay #icon {
-    position: absolute;
-    bottom: 220px;
-    left: 200px;
-    width: 50px;
-    height: 50px;
-    z-index: 1;
-    border-radius: 0;
-  }
+ .photo-product {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+   }
+
+   .image {
+     position: relative;
+     cursor: pointer;
+   }
+   .image .img-product {
+     width: 420px;
+     height: 500px;
+     border-radius: 30px;
+     margin: 10px 40px 40px 0px;
+     opacity: 0.4;
+     background-color: black;
+   }
+   .img-product img{
+     width: 100%;
+     height:100%;
+   }
+   .icon-overlay #icon {
+     position: absolute;
+     bottom: 220px;
+     left: 200px;
+     width: 50px;
+     height: 50px;
+     z-index: 1;
+     border-radius: 0;
+   }
 `;

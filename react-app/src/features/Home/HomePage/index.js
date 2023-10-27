@@ -8,22 +8,45 @@ import BoxData from "../../Component/BoxData";
 import Footer from "../../Component/Footer";
 import PopupCompare from "../../Component/PopupCompare";
 import Noti from "../../Component/Noti";
+import Chat from "../../Component/Chat";
+import ListChat from "../../Component/ListChat";
 
-const HomePage = ({ imageHome, url, user, setUser,setFavs,companies,compares ,setCompares, showNoti ,setShownoti, notis,setNotis, className }) => {
-  
+const HomePage = ({
+  imageHome,
+  url,
+  user,
+  setUser,
+  setFavs,
+  companies,
+  compares,
+  setCompares,
+  showNoti,
+  setShownoti,
+  notis,
+  setNotis,
+  showChat,
+  setShowChat,
+  className,
+}) => {
   const image = require("../../../image Hackathon/image/background.jpg");
 
-  const [frabic, setFrabic] = useState([])
-  const [factory, setFactory] = useState([])
-  const [designer, setDesigner] = useState([])
+  const [frabic, setFrabic] = useState([]);
+  const [factory, setFactory] = useState([]);
+  const [designer, setDesigner] = useState([]);
 
- 
   useEffect(() => {
     async function getCompanies() {
-      const frabicCompanies = companies.filter(company => company.type == "frabic shop" && company.status == "company");
-      const factoryCompanies = companies.filter(company => company.type == "company" && company.status == "company");
-      const designerCompanies = companies.filter(company => company.type == "designer" && company.status == "company");
-      
+      const frabicCompanies = companies.filter(
+        (company) =>
+          company.type == "frabic shop" && company.status == "company"
+      );
+      const factoryCompanies = companies.filter(
+        (company) => company.type == "company" && company.status == "company"
+      );
+      const designerCompanies = companies.filter(
+        (company) => company.type == "designer" && company.status == "company"
+      );
+
       setFrabic(frabicCompanies);
       setFactory(factoryCompanies);
       setDesigner(designerCompanies);
@@ -33,14 +56,28 @@ const HomePage = ({ imageHome, url, user, setUser,setFavs,companies,compares ,se
 
   return (
     <div className={className}>
+      {showNoti == "show" ? (
+        <Noti
+          url={url}
+          user={user}
+          setShownoti={setShownoti}
+          notis={notis}
+          setNotis={setNotis}
+        ></Noti>
+      ) : null}
 
-      {showNoti=="show"?(
-        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} setNotis={setNotis}></Noti>
-      ):null
-      }
-      
+      {showChat == "show" ? <ListChat setShowChat={setShowChat} /> : null}
 
-      <Navbar user={user} setUser={setUser} setShownoti={setShownoti}  />
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setShownoti={setShownoti}
+        setCompares={setCompares}
+        setShowChat={setShowChat}
+      />
+
+  
+
       <div className="image">
         <img src={image}></img>
       </div>
@@ -65,7 +102,17 @@ const HomePage = ({ imageHome, url, user, setUser,setFavs,companies,compares ,se
           </div>
           <div className="show-slide">
             {factory.slice(0, 3).map((company) => {
-                return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} compares={compares} setCompares={setCompares}  />;
+              return (
+                <BoxData
+                  key={company.id}
+                  user={user}
+                  url={url}
+                  item={company}
+                  setFavs={setFavs}
+                  compares={compares}
+                  setCompares={setCompares}
+                />
+              );
             })}
           </div>
         </div>
@@ -83,7 +130,17 @@ const HomePage = ({ imageHome, url, user, setUser,setFavs,companies,compares ,se
           </div>
           <div className="show-slide">
             {frabic.slice(0, 3).map((company) => {
-               return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} compares={compares} setCompares={setCompares}  />;
+              return (
+                <BoxData
+                  key={company.id}
+                  user={user}
+                  url={url}
+                  item={company}
+                  setFavs={setFavs}
+                  compares={compares}
+                  setCompares={setCompares}
+                />
+              );
             })}
           </div>
         </div>
@@ -101,17 +158,26 @@ const HomePage = ({ imageHome, url, user, setUser,setFavs,companies,compares ,se
           </div>
           <div className="show-slide">
             {designer.slice(0, 3).map((company) => {
-                return <BoxData key={company.id} user={user} url={url} item={company} setFavs={setFavs} compares={compares} setCompares={setCompares}  />;
+              return (
+                <BoxData
+                  key={company.id}
+                  user={user}
+                  url={url}
+                  item={company}
+                  setFavs={setFavs}
+                  compares={compares}
+                  setCompares={setCompares}
+                />
+              );
             })}
           </div>
         </div>
       </div>
       <Footer />
 
-      {compares.length != 0 ?(
-        <PopupCompare url={url} compares={compares} setCompares={setCompares}/>
-      ):(null)}
-      
+      {compares.length != 0 ? (
+        <PopupCompare url={url} compares={compares} setCompares={setCompares} />
+      ) : null}
     </div>
   );
 };
@@ -187,11 +253,11 @@ export default styled(HomePage)`
     font-weight: 500;
     margin: 0px;
   }
-  .detail #seeAll{
+  .detail #seeAll {
     font-family: "lora";
     font-size: 25px;
     font-weight: 500;
-    color: #4F7108;
+    color: #4f7108;
     text-decoration: none;
   }
 

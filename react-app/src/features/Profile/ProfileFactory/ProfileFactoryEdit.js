@@ -7,13 +7,24 @@ import ProductSaleEdit from "../../Component/Product/ProductSaleEdit";
 import Package from "../../Component/Package";
 import Footer from "../../Component/Footer";
 import { Link,useNavigate } from "react-router-dom";
+import Noti from "../../Component/Noti";
 import Swal from "sweetalert2";
 import axios from "axios";
+import ListChat from "../../Component/ListChat";
 
-const ProfileFactoryEdit = ({ user, url, setUser, companies, favs, setFavs,information, setInformation, products,setProducts, className }) => {
+const ProfileFactoryEdit = ({ user, url, setUser, companies, favs, setFavs,information, setInformation, products,setProducts,setCompares,setShownoti,showNoti,notis,setShowChat,showChat, className }) => {
   return (
     <div className={className}>
-      <Navbar user={user} setUser={setUser} />
+             {showNoti=="show"?(
+        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} ></Noti>
+      ):null
+      }
+      {showChat=="show"?(
+        <ListChat setShowChat={setShowChat}/>
+      ):null}
+      
+      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
+      
       <CardNewData user={user} url={url} information={information} setInformation={setInformation}/>
       <div className="products">
         <PhotoProductEdit url={url} information={information} setInformation={setInformation} />

@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = ({ user, setUser, setShownoti, className }) => {
+const Navbar = ({
+  user,
+  setUser,
+  setShownoti,
+  setCompares,
+  setShowChat,
+  className,
+}) => {
   const noti = require("../../image Hackathon/icon/notification.png");
   const chat = require("../../image Hackathon/icon/send.png");
   const profile = require("../../image Hackathon/icon/contact.png");
@@ -10,19 +17,23 @@ const Navbar = ({ user, setUser, setShownoti, className }) => {
 
   function logOut() {
     setUser("");
-    navigate('/');
+    setCompares([]);
+    setShowChat("")
+    navigate("/");
   }
 
-  function showNoti(){
-    setShownoti("show")
+  function showNoti() {
+    setShownoti("show");
+  }
+
+  function showChat() {
+    setShowChat("show")
   }
 
   return (
-   
     <div className={className}>
       <div className="navbar">
         <div className="category">
-          
           {/* {user.status == "addmin"?(
             <Link to="/edit-home">Home</Link>
           ):(
@@ -37,43 +48,64 @@ const Navbar = ({ user, setUser, setShownoti, className }) => {
           <input placeholder="Search" className="search"></input>
         </div>
         <div className="about-user">
-
-          {typeof user == "object"?(
-              <img src={noti} className="round-image" onClick={showNoti}/>
-          ):(
-            <img src={noti} className="round-image" />
+          {typeof user == "object" ? (
+            <>
+              <img src={noti} className="round-image" onClick={showNoti} />
+              <img src={chat} className="round-image-chat" onClick={showChat}/>
+            </>
+          ) : (
+            <>
+              <img src={noti} className="round-image" />
+              <img src={chat} className="round-image-chat" />
+            </>
           )}
-
-          
-          <img src={chat} className="round-image-chat" />
 
           {typeof user === "object" ? (
             user.status === "customer" ? (
               <Link to="/profile-user">
-                <img src={profile} className="round-image" id="profile" alt="Profile" />
+                <img
+                  src={profile}
+                  className="round-image"
+                  id="profile"
+                  alt="Profile"
+                />
               </Link>
-            ):(user.status === "company" || user.status === "waiting" ? (
+            ) : user.status === "company" || user.status === "waiting" ? (
               <Link to="/profile-company">
-                <img src={profile} className="round-image" id="profile" alt="Profile" />
+                <img
+                  src={profile}
+                  className="round-image"
+                  id="profile"
+                  alt="Profile"
+                />
               </Link>
-            ):(user.status === "addmin" ? (
+            ) : user.status === "addmin" ? (
               <Link to="/profile-addmin">
-                <img src={profile} className="round-image" id="profile" alt="Profile" />
+                <img
+                  src={profile}
+                  className="round-image"
+                  id="profile"
+                  alt="Profile"
+                />
               </Link>
-            ):(null))) 
-          ) : ( typeof user === "string" ?(
-              <Link to="/login">
-                <img src={profile} className="round-image" id="profile" alt="Profile" />
-              </Link>)
-          :(null))}
+            ) : null
+          ) : typeof user === "string" ? (
+            <Link to="/login">
+              <img
+                src={profile}
+                className="round-image"
+                id="profile"
+                alt="Profile"
+              />
+            </Link>
+          ) : null}
 
           {typeof user === "object" ? (
             <button className="logout" onClick={logOut}>
-              <img src={logout} alt="Logout"  />
+              <img src={logout} alt="Logout" />
               Log out
             </button>
           ) : null}
-          
         </div>
       </div>
     </div>
@@ -185,7 +217,7 @@ export default styled(Navbar)`
     max-width: 100%;
     max-height: 100%;
   }
-  .about-user  a{
+  .about-user a {
     margin: 40px 0px;
   }
   .logout {

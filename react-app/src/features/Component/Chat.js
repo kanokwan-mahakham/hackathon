@@ -15,6 +15,7 @@ const Chat = ({ className }) => {
             <img src={cancle} id="btn-cancle" />
           </div>
         </div>
+        
         <div className="body-chat">
           <div className="right">
             <div id="text-right">

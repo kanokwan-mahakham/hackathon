@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { io } from "socket.io-client";
 import axios from "axios";
 import EditHome from "./features/Home/EditHome";
 import HomePage from "./features/Home/HomePage";
@@ -28,6 +29,7 @@ import CheackPayment from "./features/Payment/checkPayment";
 
 import Compare from "./features/Compare/index";
 import { Routes, Route } from "react-router-dom";
+import SeeProfile from "./features/Profile/ProfileFactory/SeeProfile";
 
 function App() {
   const url = `http://localhost:5000`;
@@ -43,6 +45,8 @@ function App() {
   const [packages, setPackages] = useState([]);
   const [showNoti, setShownoti] = useState("");
   const [notis, setNotis] = useState([]);
+  const [showListChat, setShowListChat] = useState("");
+  const [showChat, setShowChat] = useState("");
 
   const currentDate = new Date();
   const day = String(currentDate.getDate()).padStart(2, "0");
@@ -52,6 +56,8 @@ function App() {
   const minutes = String(currentDate.getMinutes()).padStart(2, "0");
   const [formattedTime, setFormattedTime] = useState(`${hours}.${minutes}`);
   const [formattedDay, setFormattedDay] = useState(`${day}-${month}-${year}`);
+
+  const socket = io.connect("http://localhost:3000");
 
   useEffect(() => {
     async function getCompanies() {
@@ -115,6 +121,10 @@ function App() {
                 setShownoti={setShownoti}
                 notis={notis}
                 setNotis={setNotis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -155,6 +165,11 @@ function App() {
                 information={information}
                 compares={compares}
                 setCompares={setCompares}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -170,13 +185,31 @@ function App() {
                 setFavs={setFavs}
                 information={information}
                 setInformation={setInformation}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
 
           <Route
             path="/profile-addmin"
-            element={<ProfileAddmin user={user} setUser={setUser} />}
+            element={
+              <ProfileAddmin
+                url={url}
+                user={user}
+                setUser={setUser}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                setCompares={setCompares}
+                showChat={showChat}
+                setShowChat={setShowChat}
+              />
+            }
           />
           <Route
             path="/profile-company"
@@ -190,6 +223,12 @@ function App() {
                 setProducts={setProducts}
                 compares={compares}
                 setCompares={setCompares}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -207,6 +246,12 @@ function App() {
                 setInformation={setInformation}
                 products={products}
                 setProducts={setProducts}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -252,6 +297,12 @@ function App() {
                 type={"company"}
                 compares={compares}
                 setCompares={setCompares}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -267,6 +318,12 @@ function App() {
                 type={"designer"}
                 compares={compares}
                 setCompares={setCompares}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -282,6 +339,12 @@ function App() {
                 type={"fabric"}
                 compares={compares}
                 setCompares={setCompares}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -301,6 +364,12 @@ function App() {
                 products={products}
                 filterProduct={filterProduct}
                 setFilterProduct={setFilterProduct}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -319,6 +388,12 @@ function App() {
                 products={products}
                 filterProduct={filterProduct}
                 setFilterProduct={setFilterProduct}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -337,6 +412,12 @@ function App() {
                 products={products}
                 filterProduct={filterProduct}
                 setFilterProduct={setFilterProduct}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -351,6 +432,12 @@ function App() {
                 compares={compares}
                 setCompares={setCompares}
                 products={products}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                showChat={showChat}
+                setShowChat={setShowChat}
               />
             }
           />
@@ -462,7 +549,35 @@ function App() {
           <Route
             path="/check-payment/:id/:notiId"
             element={
-              <CheackPayment url={url} packages={packages} setPackages={setPackages} setNotis={setNotis}/>
+              <CheackPayment
+                url={url}
+                packages={packages}
+                setPackages={setPackages}
+                setNotis={setNotis}
+              />
+            }
+          />
+
+          <Route
+            path="/company/:id"
+            element={
+              <SeeProfile
+                user={user}
+                setUser={setUser}
+                url={url}
+                information={information}
+                products={products}
+                setProducts={setProducts}
+                compares={compares}
+                setCompares={setCompares}
+                setShownoti={setShownoti}
+                showNoti={showNoti}
+                notis={notis}
+                setNotis={setNotis}
+                showChat={showChat}
+                setShowChat={setShowChat}
+                companies={companies}
+              />
             }
           />
         </Routes>
