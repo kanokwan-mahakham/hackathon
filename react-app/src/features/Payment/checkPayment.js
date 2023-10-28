@@ -178,49 +178,52 @@ const CheackPayment = ({ url, packages, setPackages, setNotis }) => {
     const { id } = useParams();
     const { notiId } = useParams();
     const navigate = useNavigate();
-    const pomotion = packages.find((pack)=> pack.companyId == Number(id));
+    const pomotion = packages.find((packs)=> packs.companyId == Number(id));
 
     async function confirm() {
-        try {
-          // Step 1: Delete a notification (notis) based on notiId
-          await axios.delete(`${url}/notis/${Number(notiId)}`);
-      
-          // Step 2: Create a new notification
-          await axios.post(`${url}/notis`, {
-            companyId: pomotion.companyId,
-            icon: "checked.png",
-            type: "confirm",
-            description: `เริ่มการโปรโมทตาม ${pomotion.pack} นับตั้งแต่วันนี้จนถึง ${pomotion.dayEnd} เวลา ${pomotion.timeEnd}`,
-          });
-      
-          // Step 3: Update the user's status to "company"
-          const { id, status, ...item } = pomotion;
-          await axios.put(`${url}/packages/${Number(id)}`, { ...item, status: "completed" });
-          const ress= await axios.get(`${url}/notis`)
-          const resCom = await axios.get(`${url}/packages`)
-          setPackages(resCom.data)
-          setNotis(ress.data)
-      
-          // Step 4: Display a success message using Swal (SweetAlert)
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1500,
-          }).then(() => {
-            // Step 5: Navigate back to the home page
-            navigate("/");
-          });
-        } catch (error) {
-          console.error(error);
-        }
+      try {
+        // Step 1: Delete a notification (notis) based on notiId
+        await axios.delete(`${url}/notis/${Number(notiId)}`);
+    
+        // Step 2: Create a new notification
+        await axios.post(`${url}/notis`, {
+          companyId: pomotion.companyId,
+          icon: "checked.png",
+          type: "confirm",
+          description: `เริ่มการโปรโมทตาม ${pomotion.pack} นับตั้งแต่วันนี้จนถึงวันที่ ${pomotion.dayEnd}`,
+        });
+    
+        // Step 3: Update the user's status to "company"
+        const { id, status, ...item } = pomotion;
+        await axios.delete(`${url}/packages/${id}`)
+        await axios.post(`${url}/packages`, { ...item, status: "completed" });
+
+        const ress = await axios.get(`${url}/notis`)
+        const resCom = await axios.get(`${url}/packages`)
+        setPackages(resCom.data)
+        setNotis(ress.data)
+    
+        // Step 4: Display a success message using Swal (SweetAlert)
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          // Step 5: Navigate back to the home page
+          navigate("/");
+        });
+      } catch (error) {
+        console.error(error);
       }
+    }
   
       async function cancel() {
         try {
           // Step 1: Delete a notification (notis) based on notiId
           await axios.delete(`${url}/notis/${Number(notiId)}`);
+          await axios.delete(`${url}/packages/${Number(id)}`)
       
           // Step 2: Create a new notification
           await axios.post(`${url}/notis`, {

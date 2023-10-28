@@ -163,6 +163,7 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
       await axios.post(`${url}/packages`, {
         companyId: user.id,
         slip: image,
+        status:"waiting",
         pack: pack,
         timeEnd: formattedTime,
         dayEnd: formattedDay,

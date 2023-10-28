@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Package = require("../models/packages");
-const { NOW } = require('sequelize');
-
 
 router.get('/', async (req, res) => {
   const products = await Package.findAll();
@@ -20,9 +18,9 @@ router.get('/:id', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-  const { companyId,slip,status,package,timeEnd,dayEnd } = req.body;
+  const { companyId,slip,status,pack,timeEnd,dayEnd } = req.body;
   const newProduct = await Package.create({
-    companyId,slip,status:"waiting",package,timeEnd,dayEnd
+    companyId,slip,status,pack,timeEnd,dayEnd
   });
   res.json(newProduct);
 });
