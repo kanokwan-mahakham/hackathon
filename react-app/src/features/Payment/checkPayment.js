@@ -180,6 +180,13 @@ const CheackPayment = ({ url, packages, setPackages, setNotis }) => {
     const navigate = useNavigate();
     const pomotion = packages.find((packs)=> packs.companyId == Number(id));
 
+    async function setUser(){
+        const respone = await axios.get(`${url}/users/${pomotion.companyId}`)
+        const {id,pack,...item} = respone.data;
+        await axios.put(`${url}/users/${id}`,{...item,pack:1})
+
+    }
+
     async function confirm() {
       try {
         // Step 1: Delete a notification (notis) based on notiId
@@ -197,11 +204,13 @@ const CheackPayment = ({ url, packages, setPackages, setNotis }) => {
         const { id, status, ...item } = pomotion;
         await axios.delete(`${url}/packages/${id}`)
         await axios.post(`${url}/packages`, { ...item, status: "completed" });
+        
 
         const ress = await axios.get(`${url}/notis`)
         const resCom = await axios.get(`${url}/packages`)
         setPackages(resCom.data)
         setNotis(ress.data)
+        setUser()
     
         // Step 4: Display a success message using Swal (SweetAlert)
         Swal.fire({

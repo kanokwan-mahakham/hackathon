@@ -106,7 +106,24 @@ function App() {
       }
     }
     getInformation();
+
+    async function endPackage(){
+        const find = packages.filter((pack)=> pack.dayEnd == formattedDay)
+        if(find){
+          find.map((item)=>{
+              endPack(item)
+          })
+        }
+    }
+    endPackage()
   }, [user]);
+
+  async function endPack(item){
+    const company = companies.find((com)=> com.id == item.companyId)
+    let {id,pack,...other} = company
+    await axios.put(`${url}/users/${id}`,{...other,pack:0})
+    await axios.delete(`${url}/packages/${item.id}`)
+  }
 
   return (
     <>

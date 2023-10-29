@@ -10,6 +10,7 @@ import PopupCompare from "../../Component/PopupCompare";
 import Noti from "../../Component/Noti";
 import Chat from "../../Component/Chat";
 import ListChat from "../../Component/ListChat";
+import NavBarHome from "../../Component/NavbarSearch";
 
 const HomePage = ({
   imageHome,

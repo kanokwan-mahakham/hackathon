@@ -19,7 +19,7 @@ const Chat = ({
 
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
-  const [check,setCheck] = useState([]);
+  const [check, setCheck] = useState([]);
 
   useEffect(() => {
     const data = chat.filter((mes) => mes.room == room);
@@ -29,14 +29,11 @@ const Chat = ({
   }, []);
 
   useEffect(() => {
-    // async function get(){
-    //   const res = await axios(`${url}/chats`)
-    //   const find = res.data.filter((fi)=>fi.room == room)
-    //   setMessageList(find)
-    // }
-    // get()
+    
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
+      setChat([...chat, data]);
+      console.log(data)
       // setMessageList([...messageList, data]);
     });
   }, [socket]);
@@ -50,11 +47,13 @@ const Chat = ({
       };
 
       await socket.emit("send_message", messageData);
-      await axios.post(`${url}/chats`,messageData)
+      await axios.post(`${url}/chats`, messageData);
       // setMessageList((list) => [...list, messageData]);
-      setMessageList([...messageList,messageData])
+      let updatedMessageList = [...messageList, messageData];
+      let updatedChat = [...chat, messageData];
+      setMessageList(updatedMessageList);
+      setChat(updatedChat);
       setCurrentMessage("");
-      
     }
   };
 
@@ -77,7 +76,7 @@ const Chat = ({
           {messageList.map((messageContent) => {
             if (messageContent.sendId === user.id) {
               return (
-                <div className="right" key={messageContent.id}>
+                <div className="right" >
                   <div id="text-right">
                     <p>{messageContent.message}</p>
                   </div>
@@ -85,7 +84,7 @@ const Chat = ({
               );
             } else {
               return (
-                <div className="left" key={messageContent.id}>
+                <div className="left" >
                   <div id="text-left">
                     <p>{messageContent.message}</p>
                   </div>
@@ -96,10 +95,16 @@ const Chat = ({
         </div>
 
         <div className="box-send-messages">
-          <input id="input-messages" onChange={(event) => {setCurrentMessage(event.target.value);}}></input>
+          <input
+            id="input-messages"
+            value={currentMessage}
+            onChange={(event) => {
+              setCurrentMessage(event.target.value);
+            }}
+          ></input>
           <div className="btn-send-messages">
             <img src={file} />
-            <img src={send} onClick={sendMessage}/>
+            <img src={send} onClick={sendMessage} />
           </div>
         </div>
       </div>

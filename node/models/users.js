@@ -28,6 +28,9 @@ const User = sequelize.define(
         },
         informationId:{
             type: DataTypes.DOUBLE
+        },
+        pack:{
+            type: DataTypes.DOUBLE
         }
         
     }

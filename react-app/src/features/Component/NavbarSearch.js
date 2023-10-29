@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = ({
+const NavbarSearch = ({
   user,
   setUser,
   setShownoti,
@@ -9,6 +9,7 @@ const Navbar = ({
   setShowListChat,
   className,
 }) => {
+    
   const noti = require("../../image Hackathon/icon/notification.png");
   const chat = require("../../image Hackathon/icon/send.png");
   const profile = require("../../image Hackathon/icon/contact.png");
@@ -45,7 +46,7 @@ const Navbar = ({
           <Link to="/company">Factory</Link>
         </div>
         <div className="search">
-          {/* <input placeholder="Search" className="search"></input> */}
+          <input placeholder="Search" className="search"></input>
         </div>
         <div className="about-user">
           {typeof user == "object" ? (
@@ -112,7 +113,7 @@ const Navbar = ({
   );
 };
 
-export default styled(Navbar)`
+export default styled(NavbarSearch)`
   .navbar {
     display: flex;
     justify-content: space-evenly;

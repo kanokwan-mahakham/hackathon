@@ -7,6 +7,7 @@ import Noti from "../Component/Noti";
 import ListChat from "../Component/ListChat";
 import { Link } from "react-router-dom";
 import Chat from "../Component/Chat";
+import NavbarSearch from "../Component/NavbarSearch";
 
 const Category = ({
   url,
@@ -50,7 +51,7 @@ const Category = ({
       {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} /> : null }
 
 
-      <Navbar
+      <NavbarSearch
         user={user}
         setUser={setUser}
         setShownoti={setShownoti}

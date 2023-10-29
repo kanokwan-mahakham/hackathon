@@ -252,7 +252,8 @@ const RegisterCompany = ({setUser,url}) => {
             type:type,
             juristicNumber:juristicNumber,
             JuristicFile:JuristicFile,
-            status:"waiting"
+            status:"waiting",
+            pack:0
           };
 
         const response1 = await axios.post(`${url}/informations`,'');

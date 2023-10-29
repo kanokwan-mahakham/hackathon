@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import Noti from "../Component/Noti";
 import ListChat from "../Component/ListChat";
 import Chat from "../Component/Chat";
+import NavbarSearch from "../Component/NavbarSearch";
 
 const Filter = ({
   url,
@@ -72,7 +73,7 @@ const Filter = ({
       {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} /> : null }
 
 
-      <Navbar
+      <NavbarSearch
         user={user}
         setUser={setUser}
         setShownoti={setShownoti}
