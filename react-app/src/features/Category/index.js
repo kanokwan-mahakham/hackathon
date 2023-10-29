@@ -6,7 +6,7 @@ import PopupCompare from "../Component/PopupCompare";
 import Noti from "../Component/Noti";
 import ListChat from "../Component/ListChat";
 import { Link } from "react-router-dom";
-
+import Chat from "../Component/Chat";
 
 const Category = ({
   url,
@@ -23,22 +23,34 @@ const Category = ({
   setNotis,
   showChat,
   setShowChat,
+  showListChat,
+  setShowListChat,
   className,
 }) => {
   const image = require("../../image Hackathon/image/background.jpeg");
   return (
     <div className={className}>
+      {showNoti == "show" ? (
+        <Noti
+          url={url}
+          user={user}
+          setShownoti={setShownoti}
+          notis={notis}
+          setNotis={setNotis}
+        ></Noti>
+      ) : null}
+      {showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
 
-      {showNoti=="show"?(
-        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} setNotis={setNotis}></Noti>
-      ):null
-      }
-      {showChat=="show"?(
-        <ListChat setShowChat={setShowChat}/>
-      ):null}
-      
-      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
-      
+{showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
+
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setShownoti={setShownoti}
+        setCompares={setCompares}
+        setShowListChat={setShowListChat}
+      />
+
       <div className="title-header">
         {type == "company" ? (
           <h1>Factory</h1>
@@ -60,33 +72,43 @@ const Category = ({
         )}
 
         <div className="button">
-
-        {type == "company" ? (
-          <Link to="/HelpmeFactoryOne"><button className="btn-help-me">Help Me</button></Link>
-        ) : type == "fabric" ? (
-          <Link to="/HelpmeFabicOne"><button className="btn-help-me">Help Me</button></Link>
-        ) : (
-          <Link to="/HelpmeDesignOne"><button className="btn-help-me">Help Me</button></Link>
-        )}
-          
+          {type == "company" ? (
+            <Link to="/HelpmeFactoryOne">
+              <button className="btn-help-me">Help Me</button>
+            </Link>
+          ) : type == "fabric" ? (
+            <Link to="/HelpmeFabicOne">
+              <button className="btn-help-me">Help Me</button>
+            </Link>
+          ) : (
+            <Link to="/HelpmeDesignOne">
+              <button className="btn-help-me">Help Me</button>
+            </Link>
+          )}
 
           {type == "company" ? (
-          <Link to="/company"><button className="btn-see-all">See All</button></Link>
-        ) : type == "fabric" ? (
-          <Link to="/fabric"><button className="btn-see-all">See All</button></Link>
-        ) : (
-          <Link to="/designer"><button className="btn-see-all">See All</button></Link>
-        )}
-          
-
+            <Link to="/company">
+              <button className="btn-see-all">See All</button>
+            </Link>
+          ) : type == "fabric" ? (
+            <Link to="/fabric">
+              <button className="btn-see-all">See All</button>
+            </Link>
+          ) : (
+            <Link to="/designer">
+              <button className="btn-see-all">See All</button>
+            </Link>
+          )}
         </div>
 
         {/* นำBoxData มาใส่ตรงนี้ได้เลยจ้า*/}
         <div className="show">
-
           {type == "company"
             ? companies
-                .filter((company) => company.type === "company" && company.status == "company")
+                .filter(
+                  (company) =>
+                    company.type === "company" && company.status == "company"
+                )
                 .map((company) => (
                   <BoxData
                     key={company.id}
@@ -100,20 +122,27 @@ const Category = ({
                 ))
             : type == "fabric"
             ? companies
-            .filter((company) => company.type === "frabic shop" && company.status == "company")
-            .map((company) => (
-              <BoxData
-                key={company.id}
-                user={user}
-                url={url}
-                item={company}
-                setFavs={setFavs}
-                compares={compares}
-                setCompares={setCompares}
-              />
-            )):
-            companies
-                .filter((company) => company.type === "designer" && company.status == "company")
+                .filter(
+                  (company) =>
+                    company.type === "frabic shop" &&
+                    company.status == "company"
+                )
+                .map((company) => (
+                  <BoxData
+                    key={company.id}
+                    user={user}
+                    url={url}
+                    item={company}
+                    setFavs={setFavs}
+                    compares={compares}
+                    setCompares={setCompares}
+                  />
+                ))
+            : companies
+                .filter(
+                  (company) =>
+                    company.type === "designer" && company.status == "company"
+                )
                 .map((company) => (
                   <BoxData
                     key={company.id}
@@ -125,12 +154,11 @@ const Category = ({
                     setCompares={setCompares}
                   />
                 ))}
-
         </div>
       </div>
-      {compares.length != 0 ?(
-        <PopupCompare url={url} compares={compares} setCompares={setCompares}/>
-      ):(null)}
+      {compares.length != 0 ? (
+        <PopupCompare url={url} compares={compares} setCompares={setCompares} />
+      ) : null}
       <Footer />
     </div>
   );

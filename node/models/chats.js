@@ -1,23 +1,23 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const ListChat = sequelize.define(
-    'ListChat',{
+const Chat = sequelize.define(
+    'Chat',{
 
-        userId:{
-            type: DataTypes.DOUBLE
-        },
-        companyId:{
-            type: DataTypes.DOUBLE
-        },
         room:{
             type: DataTypes.DOUBLE
+        },
+        sendId:{
+            type: DataTypes.DOUBLE
+        },
+        message:{
+            type: DataTypes.TEXT
         },
             
     }
 );
 
-module.exports = ListChat;
+module.exports = Chat;
 
   
 

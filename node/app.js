@@ -12,6 +12,7 @@ const productRoutes = require("./routes/products");
 const packageRoutes = require("./routes/packages");
 const notiRoutes = require("./routes/notis");
 const listChatRoutes = require("./routes/listChat")
+const chatRoutes = require("./routes/chats")
 
 
 const app = express();
@@ -23,7 +24,7 @@ async function initializeDatabase() {
 initializeDatabase();
 
 // Setting up middleware
-app.use(morgan("tiny"));
+// app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -43,21 +44,11 @@ const server = http.createServer(app);
 
 const io = new Server(server,{
   cors:{
-    origin: 'http://localhost:3001',  // อนุญาตเฉพาะต้นทางนี้เท่านั้น
+    origin: 'http://localhost:3000',  // อนุญาตเฉพาะต้นทางนี้เท่านั้น
     methods: ['PUT','POST']
   }
 })
 
-io.on("connection", (socket) => {
-    console.log(socket.id)
-    socket.on("joinRoom",(data) => {
-      socket.join(data);
-    })
-    socket.on("disconnect", () => {
-      console.log("user disconnect" , socket.io)
-    })
-
-})
 
 // Setting up routes
 app.use('/users', userRoutes);
@@ -67,9 +58,28 @@ app.use('/products', productRoutes);
 app.use('/packages', packageRoutes);
 app.use('/notis', notiRoutes);
 app.use('/listChats', listChatRoutes);
+app.use('/chats', chatRoutes);
+
 
 
 // Creating a server
-app.listen(5000, () => {
-  console.log("Listening on port 5000");
+io.on("connection", (socket) => {
+  console.log(`User Connected: ${socket.id}`);
+
+  socket.on("join_room", (data) => {
+    socket.join(data);
+    console.log(`User with ID: ${socket.id} joined room: ${data}`);
+  });
+
+  socket.on("send_message", (data) => {
+    socket.to(data.room).emit("receive_message", data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("User Disconnected", socket.id);
+  });
+});
+
+server.listen(5000, () => {
+  console.log("SERVER RUNNING");
 });

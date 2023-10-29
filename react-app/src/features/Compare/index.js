@@ -7,69 +7,114 @@ import PopupCompare from "../Component/PopupCompare";
 import TableCompareFabric from "../Component/TableCompareFabric";
 import TableCompareDesigner from "../Component/TableCompareDesigner";
 import TableCompareCompany from "../Component/TableCompareCompany";
-import { Link,useNavigate } from "react-router-dom";
+import Noti from "../Component/Noti";
+import ListChat from "../Component/ListChat";
+import Chat from "../Component/Chat";
+import { Link, useNavigate } from "react-router-dom";
 
-const Compare = ({ url, user, setUser, compares, setCompares, products, className }) => {
-
+const Compare = ({
+  url,
+  user,
+  setUser,
+  compares,
+  setCompares,
+  products,
+  showListChat,
+  showNoti,
+  setShowListChat,
+  setShownoti,
+  notis,
+  setNotis,
+  setShowChat,
+  showChat,
+  className,
+}) => {
   const navigate = useNavigate();
 
   return (
     <div className={className}>
-      <Navbar user={user} setUser={setUser} />
+
+      {showNoti == "show" ? (
+        <Noti
+          url={url}
+          user={user}
+          setShownoti={setShownoti}
+          notis={notis}
+          setNotis={setNotis}
+        ></Noti>
+      ) : null}
+
+{showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
+
+{showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
+
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setShownoti={setShownoti}
+        setCompares={setCompares}
+        setShowListChat={setShowListChat}
+      />
       <div className="title-header">
-      {
-        compares.length > 0?(
-            compares[0].type == "company" ?(
-              <h1>Compare Factory</h1>
-            ):
-            compares[0].type == "frabic shop"?(
-              <h1>Compare Fabric</h1>
-            ):
-            (
-              <h1>Compare Designer</h1>
-            )
-        ):(navigate('/'))
-      }
-        
+        {compares.length > 0 ? (
+          compares[0].type == "company" ? (
+            <h1>Compare Factory</h1>
+          ) : compares[0].type == "frabic shop" ? (
+            <h1>Compare Fabric</h1>
+          ) : (
+            <h1>Compare Designer</h1>
+          )
+        ) : (
+          navigate("/")
+        )}
+
         <div id="line"></div>
       </div>
       <div className="box-compare">
         <div className="selected-choice">
-
           {compares.map((compare) => (
-            <BoxSlelected key={compare.id} url={url} item={compare} compares={compares} setCompares={setCompares}/>
+            <BoxSlelected
+              key={compare.id}
+              url={url}
+              item={compare}
+              compares={compares}
+              setCompares={setCompares}
+            />
           ))}
-
-              
         </div>
         <div className="table-compare">
-        {
-           compares.length > 0?(
-            compares[0].type == "company" ?(
-              <TableCompareCompany url={url} compares={compares} products={products}/>
-            ):
-            compares[0].type == "frabic shop"?(
-              <TableCompareFabric url={url} compares={compares} products={products}/>
-            ):
-            (
-              <TableCompareDesigner url={url} compares={compares} products={products}/>
+          {compares.length > 0 ? (
+            compares[0].type == "company" ? (
+              <TableCompareCompany
+                url={url}
+                compares={compares}
+                products={products}
+              />
+            ) : compares[0].type == "frabic shop" ? (
+              <TableCompareFabric
+                url={url}
+                compares={compares}
+                products={products}
+              />
+            ) : (
+              <TableCompareDesigner
+                url={url}
+                compares={compares}
+                products={products}
+              />
             )
-           ):(null)
-          }
-          
+          ) : null}
         </div>
       </div>
       <Footer />
-      <div className="popup-compare">
-        {/* <PopupCompare /> */}
-      </div>
+      <div className="popup-compare">{/* <PopupCompare /> */}</div>
     </div>
   );
 };
 
 export default styled(Compare)`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-position:relative;
+  position: relative;
   .title-header {
     display: flex;
     flex-direction: column;

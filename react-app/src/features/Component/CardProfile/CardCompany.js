@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-const CardCompany = ({ user, information, className }) => {
+const CardCompany = ({ url, id, userId, user, information,setShowListChat, setShowChat,setListChat,listChat, className }) => {
   const image = require("../../../image Hackathon/image/background.jpeg");
   const location = require("../../../image Hackathon/icon/pin.png");
   const call = require("../../../image Hackathon/icon/call.png");
@@ -10,6 +11,28 @@ const CardCompany = ({ user, information, className }) => {
   const mail = require("../../../image Hackathon/icon/arroba.png");
   const website = require("../../../image Hackathon/icon/world-wide-web.png");
   const linkIn = require("../../../image Hackathon/icon/linkedin-big-logo.png");
+
+  async function openChat(){
+    try{
+
+          const find = listChat.find((list)=> list.room == `${userId}${id}` || list.room == `${id}${userId}`)
+          if(find){
+            setShowListChat("show")
+            setShowChat("show")
+          }else{
+            await axios.post(`${url}/listChats`,{userId:userId,companyId:Number(id),room:Number(`${userId}${Number(id)}`)})
+            await axios.post(`${url}/listChats`,{userId:Number(id),companyId:userId,room:Number(`${userId}${Number(id)}`)})
+            const response = await axios.get(`${url}/listChats`)
+            setListChat(response.data)
+            setShowListChat("show")
+            setShowChat("show")
+          }  
+
+    }catch(error){
+      console.error(error) 
+    }
+    
+  }
 
   return (
     <div className={className}>
@@ -63,7 +86,7 @@ const CardCompany = ({ user, information, className }) => {
             </div>
             <div className="button-chat">
               
-                 <button>Chat</button>
+                 <button onClick={openChat} >Chat</button>
               
             </div>
           </div>
@@ -191,5 +214,6 @@ export default styled(CardCompany)`
     font-size: 25px;
     font-weight: 600;
     background-color: white;
+    cursor: pointer;
   }
 `;

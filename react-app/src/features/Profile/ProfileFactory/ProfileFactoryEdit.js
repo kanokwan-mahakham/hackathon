@@ -6,56 +6,109 @@ import PhotoProductEdit from "../../Component/Product/PhotoProductEdit";
 import ProductSaleEdit from "../../Component/Product/ProductSaleEdit";
 import Package from "../../Component/Package";
 import Footer from "../../Component/Footer";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Noti from "../../Component/Noti";
 import Swal from "sweetalert2";
 import axios from "axios";
 import ListChat from "../../Component/ListChat";
+import Chat from "../../Component/Chat";
 
-const ProfileFactoryEdit = ({ user, url, setUser, companies, favs, setFavs,information, setInformation, products,setProducts,setCompares,setShownoti,showNoti,notis,setShowChat,showChat, className }) => {
+const ProfileFactoryEdit = ({
+  user,
+  url,
+  setUser,
+  companies,
+  favs,
+  setFavs,
+  information,
+  setInformation,
+  products,
+  setProducts,
+  setCompares,
+  setShownoti,
+  showNoti,
+  notis,
+  setShowChat,
+  showChat,
+  showListChat,
+  setShowListChat,
+  className,
+}) => {
   return (
     <div className={className}>
-             {showNoti=="show"?(
-        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} ></Noti>
-      ):null
-      }
-      {showChat=="show"?(
-        <ListChat setShowChat={setShowChat}/>
-      ):null}
-      
-      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
-      
-      <CardNewData user={user} url={url} information={information} setInformation={setInformation}/>
+      {showNoti == "show" ? (
+        <Noti
+          url={url}
+          user={user}
+          setShownoti={setShownoti}
+          notis={notis}
+        ></Noti>
+      ) : null}
+      {showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
+
+{showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
+
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setShownoti={setShownoti}
+        setCompares={setCompares}
+        setShowListChat={setShowListChat}
+      />
+
+      <CardNewData
+        user={user}
+        url={url}
+        information={information}
+        setInformation={setInformation}
+      />
       <div className="products">
-        <PhotoProductEdit url={url} information={information} setInformation={setInformation} />
+        <PhotoProductEdit
+          url={url}
+          information={information}
+          setInformation={setInformation}
+        />
         <h1>Product</h1>
         <div className="sale-product">
-          
-
           {user.type == "company" ? (
-              <Link to="/add-product-company"><div className="add-product"><p>+</p></div></Link>
-          ):user.type == "designer"?(
-              <Link to="/add-product-desingner"><div className="add-product"><p>+</p></div></Link>
-          ):user.type == "frabic shop" ? (
-              <Link to="/add-product-fabric"><div className="add-product"><p>+</p></div></Link>
-          ) : (null)}
+            <Link to="/add-product-company">
+              <div className="add-product">
+                <p>+</p>
+              </div>
+            </Link>
+          ) : user.type == "designer" ? (
+            <Link to="/add-product-desingner">
+              <div className="add-product">
+                <p>+</p>
+              </div>
+            </Link>
+          ) : user.type == "frabic shop" ? (
+            <Link to="/add-product-fabric">
+              <div className="add-product">
+                <p>+</p>
+              </div>
+            </Link>
+          ) : null}
 
-          
           {products.length > 0
             ? products.map((product) => {
                 return product.companyId === user.id ? (
-                  <ProductSaleEdit key={product.id} url={url} setProducts={setProducts} product={product} />
+                  <ProductSaleEdit
+                    key={product.id}
+                    url={url}
+                    setProducts={setProducts}
+                    product={product}
+                  />
                 ) : null;
               })
             : null}
-          
         </div>
         <div className="package">
           <h1>Package</h1>
         </div>
       </div>
       <div className="shop-package">
-        <Package/>
+        <Package />
       </div>
       <Footer />
     </div>

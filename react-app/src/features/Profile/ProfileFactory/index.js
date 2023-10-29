@@ -7,6 +7,7 @@ import ProductSale from "../../Component/Product/ProductSale";
 import Footer from "../../Component/Footer";
 import Noti from "../../Component/Noti";
 import ListChat from "../../Component/ListChat";
+import Chat from "../../Component/Chat";
 import axios from "axios";
 
 const ProfileFactory = ({
@@ -17,27 +18,45 @@ const ProfileFactory = ({
   products,
   setProducts,
   className,
-  compares ,setCompares,showChat,setShowChat
-  ,setShownoti,showNoti,notis
+  compares,
+  setCompares,
+  showChat,
+  setShowChat,
+  setShownoti,
+  showNoti,
+  showListChat,
+  setShowListChat,
+  notis,
 }) => {
   return (
     <div className={className}>
-             {showNoti=="show"?(
-        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} ></Noti>
-      ):null
-      }
-      {showChat=="show"?(
-        <ListChat setShowChat={setShowChat}/>
-      ):null}
-      
-      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
-      
+      {showNoti == "show" ? (
+        <Noti
+          url={url}
+          user={user}
+          setShownoti={setShownoti}
+          notis={notis}
+        ></Noti>
+      ) : null}
+      {showListChat == "show" ? (
+        <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} />
+      ) : null}
+
+      {showChat == "show" ? <Chat setShowChat={setShowChat} /> : null}
+
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setShownoti={setShownoti}
+        setCompares={setCompares}
+        setShowListChat={setShowListChat}
+      />
+
       <CardEdit user={user} information={information} />
       <div className="products">
         <PhotoProduct information={information} />
         <h1>Product</h1>
         <div className="sale-product">
-
           {products.length > 0
             ? products.map((product) => {
                 return product.companyId === user.id ? (
@@ -45,7 +64,6 @@ const ProfileFactory = ({
                 ) : null;
               })
             : null}
-            
         </div>
       </div>
       <Footer />

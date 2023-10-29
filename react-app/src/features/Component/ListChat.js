@@ -1,30 +1,62 @@
 import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import ListChatItem from "./ListChatItem";
+import Item from "./BoxCompare/Item";
 
-const ListChat = ({ setShowChat,className }) => {
+const ListChat = ({
+  url,
+  user,
+  listChat,
+  setShowChat,
+  setShowListChat,
+  socket,
+  setRoom,
+  className,
+}) => {
   const cancle = require("../../image Hackathon/icon/cancel.png");
-  const photo = require("../../image Hackathon/image/background.jpeg")
+  const photo = require("../../image Hackathon/image/background.jpeg");
 
+  const [data, setData] = useState([]);
 
-  function close(){
-    setShowChat("")
+  useEffect(() => {
+    async function getCompanies() {
+      try {
+        const dataList = listChat.filter((list) => list.userId == user.id);
+        if(dataList){
+          return setData(dataList);
+        }
+        
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getCompanies();
+  }, [listChat]);
+
+  function close() {
+    setShowListChat("");
   }
 
-  return (
 
+  return (
     <div className={className}>
       <div className="popup-list">
         <div className="header">
           <p>Chat messages</p>
           <div className="btn-header">
-            <img src={cancle} id="btn-cancle" onClick={close}/>
+            <img src={cancle} id="btn-cancle" onClick={close} />
           </div>
         </div>
         <div className="body-chat">
-            {/* div className="contact-user" นี้สำหรับuser 1 คนนะจ๊ะ */}
-            <div className="contact-user">
-                <img src={photo}/>
-                <p>Kanokwan Mahakham</p>
-            </div>
+          {/* div className="contact-user" นี้สำหรับuser 1 คนนะจ๊ะ */}
+
+          {data.length > 0 ? (
+            data.map((item) => (
+              <ListChatItem key={item.id} url={url} item={item} setShowChat={setShowChat} socket={socket} setRoom={setRoom} />
+            ))
+          ) : null}
+          
+
         </div>
       </div>
     </div>
@@ -79,17 +111,17 @@ export default styled(ListChat)`
     border-bottom-right-radius: 10px;
     overflow-y: scroll;
   }
-  .contact-user{
+  .contact-user {
     display: flex;
     margin: 10px;
   }
-  .contact-user img{
+  .contact-user img {
     width: 50px;
     height: 50px;
     border-radius: 50px;
-    margin-right:20px;
+    margin-right: 20px;
   }
-  .contact-user p{
+  .contact-user p {
     font-family: "lora";
     font-size: 18px;
     font-weight: 500;

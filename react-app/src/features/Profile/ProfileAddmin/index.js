@@ -5,8 +5,9 @@ import CardAdmin from "../../Component/CardProfile/CardAdmin";
 import Package from "../../Component/Package";
 import Noti from "../../Component/Noti";
 import ListChat from "../../Component/ListChat";
+import Chat from "../../Component/Chat";
 
-const ProfileAdmin = ({ url, user, setUser,showNoti ,setShownoti, notis,setNotis,setCompares,showChat,setShowChat, className }) => {
+const ProfileAdmin = ({ url, user, setUser,showNoti ,setShownoti, notis,setNotis,setCompares,showChat,setShowChat,setShowListChat,showListChat, className }) => {
   return (
     <div className={className}>
       {showNoti=="show"?(
@@ -15,11 +16,17 @@ const ProfileAdmin = ({ url, user, setUser,showNoti ,setShownoti, notis,setNotis
       }
       
 
-      {showChat=="show"?(
-        <ListChat setShowChat={setShowChat}/>
-      ):null}
-      
-      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
+      {showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
+
+      {showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
+
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setShownoti={setShownoti}
+        setCompares={setCompares}
+        setShowListChat={setShowListChat}
+      />
       
       <CardAdmin />
       <div className="rating">

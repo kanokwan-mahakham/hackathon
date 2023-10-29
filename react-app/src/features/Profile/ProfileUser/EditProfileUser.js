@@ -8,11 +8,27 @@ import axios from "axios";
 import CardNewData from "../../Component/CardProfile/CardNewData";
 import Noti from "../../Component/Noti";
 import ListChat from "../../Component/ListChat";
+import Chat from "../../Component/Chat";
 
-const EditProfileUser = ({ user, url, setUser, companies, favs, setFavs,information, setInformation,setShownoti,showNoti,notis,setCompares,setShowChat,showChat, className }) => {
-  
-
-  
+const EditProfileUser = ({
+  user,
+  url,
+  setUser,
+  companies,
+  favs,
+  setFavs,
+  information,
+  setInformation,
+  setShownoti,
+  showNoti,
+  notis,
+  setCompares,
+  setShowChat,
+  showChat,
+  showListChat,
+  setShowListChat,
+  className,
+}) => {
   // useEffect(() => {
   //   async function getCompanies() {
   //     // const resCompany = await axios.get(`${url}/users`);
@@ -26,17 +42,32 @@ const EditProfileUser = ({ user, url, setUser, companies, favs, setFavs,informat
 
   return (
     <div className={className}>
-       {showNoti=="show"?(
-        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} ></Noti>
-      ):null
-      }
-      {showChat=="show"?(
-        <ListChat setShowChat={setShowChat}/>
-      ):null}
-      
-      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
-      
-      <CardNewData user={user} url={url} information={information} setInformation={setInformation} />
+      {showNoti == "show" ? (
+        <Noti
+          url={url}
+          user={user}
+          setShownoti={setShownoti}
+          notis={notis}
+        ></Noti>
+      ) : null}
+      {showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
+
+{showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
+
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setShownoti={setShownoti}
+        setCompares={setCompares}
+        setShowListChat={setShowListChat}
+      />
+
+      <CardNewData
+        user={user}
+        url={url}
+        information={information}
+        setInformation={setInformation}
+      />
       <Footer />
     </div>
   );

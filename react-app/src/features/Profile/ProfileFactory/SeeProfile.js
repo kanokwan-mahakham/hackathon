@@ -7,9 +7,10 @@ import ProductSale from "../../Component/Product/ProductSale";
 import Footer from "../../Component/Footer";
 import Noti from "../../Component/Noti";
 import ListChat from "../../Component/ListChat";
-import { Link,useNavigate,useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import CardCompany from "../../Component/CardProfile/CardCompany";
+import Chat from "../../Component/Chat";
 
 const SeeProfile = ({
   user,
@@ -18,25 +19,32 @@ const SeeProfile = ({
   products,
   companies,
   className,
-  compares ,
+  compares,
   setCompares,
-  showChat,setShowChat
-  ,setShownoti,showNoti,notis
+  showChat,
+  setShowChat,
+  setShownoti,
+  showNoti,
+  showListChat,
+  setShowListChat,
+  setListChat,
+  listChat,
+  notis,
 }) => {
-
-
   const { id } = useParams();
 
-  const [company , setCompany] = useState([]);
-  const [information , setInformation] = useState([]);
+  const [company, setCompany] = useState([]);
+  const [information, setInformation] = useState([]);
 
   useEffect(() => {
     async function getData() {
       try {
-        const findeCompany = companies.find((com)=> com.id == id);
+        const findeCompany = companies.find((com) => com.id == id);
         setCompany(findeCompany);
-        const response = await axios.get(`${url}/informations/${findeCompany.informationId}`)
-        setInformation(response.data)
+        const response = await axios.get(
+          `${url}/informations/${findeCompany.informationId}`
+        );
+        setInformation(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -44,28 +52,35 @@ const SeeProfile = ({
     getData();
   }, [id]);
 
-
   return (
     <div className={className}>
-             {showNoti=="show"?(
-        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} ></Noti>
-      ):null
-      }
-      {showChat=="show"?(
-        <ListChat setShowChat={setShowChat}/>
-      ):null}
-      
-      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
-      
-      <CardCompany user={company} information={information} />
+      {showNoti == "show" ? (
+        <Noti
+          url={url}
+          user={user}
+          setShownoti={setShownoti}
+          notis={notis}
+        ></Noti>
+      ) : null}
+      {showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
+
+{showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
+
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setShownoti={setShownoti}
+        setCompares={setCompares}
+        setShowListChat={setShowListChat}
+      />
+
+      <CardCompany url={url} id={id} userId={user.id} user={company} information={information} setShowListChat={setShowListChat} setShowChat={setShowChat} setListChat={setListChat} listChat={listChat} />
 
       <div className="products">
-
         <PhotoProduct information={information} />
 
         <h1>Product</h1>
         <div className="sale-product">
-
           {products.length > 0
             ? products.map((product) => {
                 return product.companyId === Number(id) ? (
@@ -73,7 +88,6 @@ const SeeProfile = ({
                 ) : null;
               })
             : null}
-            
         </div>
       </div>
       <Footer />

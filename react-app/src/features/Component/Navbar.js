@@ -6,7 +6,7 @@ const Navbar = ({
   setUser,
   setShownoti,
   setCompares,
-  setShowChat,
+  setShowListChat,
   className,
 }) => {
   const noti = require("../../image Hackathon/icon/notification.png");
@@ -18,7 +18,7 @@ const Navbar = ({
   function logOut() {
     setUser("");
     setCompares([]);
-    setShowChat("")
+    setShowListChat("")
     navigate("/");
   }
 
@@ -27,7 +27,7 @@ const Navbar = ({
   }
 
   function showChat() {
-    setShowChat("show")
+    setShowListChat("show")
   }
 
   return (

@@ -35,6 +35,22 @@ router.delete('/:id', async (req, res) => {
   res.sendStatus(204);
 });
 
+router.get("/findChat/:room", async (req, res) => {
+  const { room } = req.params;
+      const order = await ListChat.findOne({
+        where: {
+          room
+        },
+      });
+      
+      if (order) {
+        res.json({ order });
+      } 
+      // else {
+      //   res.status(404).json({ message: 'Order not found.' });
+      // }
+});
+
 
 
 

@@ -10,122 +10,147 @@ import CardEdit from "../../Component/CardProfile/CardEdit";
 import PopupCompare from "../../Component/PopupCompare";
 import Noti from "../../Component/Noti";
 import ListChat from "../../Component/ListChat";
+import Chat from "../../Component/Chat";
 
-const ProfileUser = ({ user, url, setUser, companies, favs, setFavs, information,compares ,setCompares,setShownoti,showNoti,notis,showChat,setShowChat, className }) => {
-
+const ProfileUser = ({
+  user,
+  url,
+  setUser,
+  companies,
+  favs,
+  setFavs,
+  information,
+  compares,
+  setCompares,
+  setShownoti,
+  showNoti,
+  notis,
+  showChat,
+  setShowChat,
+  setShowListChat,
+  showListChat,
+  className,
+}) => {
   const [factory, setFactory] = useState([]);
-  
-
 
   useEffect(() => {
     async function getCompanies() {
       const companiesData = [];
       // กรอง favs ที่มี customerId ตรงกับ user.id
       const filteredFavs = favs.filter((fav) => fav.customerId === user.id);
-      
+
       try {
         // ใช้ Promise.all เพื่อดึงข้อมูลของบริษัทพร้อมกัน
         await Promise.all(
           filteredFavs.map(async (getFav) => {
-            const response = await axios.get(`${url}/users/${getFav.companyId}`);
+            const response = await axios.get(
+              `${url}/users/${getFav.companyId}`
+            );
             companiesData.push(response.data);
           })
         );
         // หลังจากที่ดึงข้อมูลเสร็จสิ้นให้เรียก setFactory
-        
+
         setFactory(companiesData);
         console.log(`userPage : ${factory}`);
       } catch (error) {
         // จัดการข้อผิดพลาดในกรณีที่เกิดข้อผิดพลาดในการดึงข้อมูลบริษัท
-        console.error('Error fetching company data:', error);
+        console.error("Error fetching company data:", error);
       }
     }
-  
+
     getCompanies();
   }, [user]);
-  
 
   return (
     <div className={className}>
-       {showNoti=="show"?(
-        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} ></Noti>
-      ):null
-      }
-      {showChat=="show"?(
-        <ListChat setShowChat={setShowChat}/>
-      ):null}
-      
-      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
+      {showNoti == "show" ? (
+        <Noti
+          url={url}
+          user={user}
+          setShownoti={setShownoti}
+          notis={notis}
+        ></Noti>
+      ) : null}
+      {showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
+
+{showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
+
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setShownoti={setShownoti}
+        setCompares={setCompares}
+        setShowListChat={setShowListChat}
+      />
       <CardEdit user={user} information={information} />
-      
+
       <div className="approved">
         <h1>Approved</h1>
         <div className="line"></div>
-        {factory.length > 0 ?(<>
-        <div className="box-category">
-          <div className="name-category">Factory</div>
-          <div className="collect">
-            {
-              factory.map((company) => (
-                company.type == "company"?(
-                   <BoxData
-                    key={company.id}
-                    user={user}
-                    url={url}
-                    item={company}
-                    setFavs={setFavs}
-                    compares={compares} setCompares={setCompares} 
-                  />):(null)
-                ))
-              }
-          </div>
-        </div>
+        {factory.length > 0 ? (
+          <>
+            <div className="box-category">
+              <div className="name-category">Factory</div>
+              <div className="collect">
+                {factory.map((company) =>
+                  company.type == "company" ? (
+                    <BoxData
+                      key={company.id}
+                      user={user}
+                      url={url}
+                      item={company}
+                      setFavs={setFavs}
+                      compares={compares}
+                      setCompares={setCompares}
+                    />
+                  ) : null
+                )}
+              </div>
+            </div>
 
-        <div className="box-category">
-          <div className="name-category">Fabric</div>
-          <div className="collect">
-
-          {
-              factory.map((company) => (
-                company.type == "frabic shop"?(
-                   <BoxData
-                    key={company.id}
-                    user={user}
-                    url={url}
-                    item={company}
-                    setFavs={setFavs}
-                    compares={compares} setCompares={setCompares}
-                  />):(null)
-                ))
-              }
-
-          </div>
-        </div>
-        <div className="box-category">
-          <div className="name-category">Designers</div>
-          <div className="collect">
-
-          {
-              factory.map((company) => (
-                company.type == "designer"?(
-                   <BoxData
-                    key={company.id}
-                    user={user}
-                    url={url}
-                    item={company}
-                    setFavs={setFavs}
-                    compares={compares} setCompares={setCompares}
-                  />):(null)
-                ))
-              }
-
-          </div>
-        </div>
-        </>):(null)}
+            <div className="box-category">
+              <div className="name-category">Fabric</div>
+              <div className="collect">
+                {factory.map((company) =>
+                  company.type == "frabic shop" ? (
+                    <BoxData
+                      key={company.id}
+                      user={user}
+                      url={url}
+                      item={company}
+                      setFavs={setFavs}
+                      compares={compares}
+                      setCompares={setCompares}
+                    />
+                  ) : null
+                )}
+              </div>
+            </div>
+            <div className="box-category">
+              <div className="name-category">Designers</div>
+              <div className="collect">
+                {factory.map((company) =>
+                  company.type == "designer" ? (
+                    <BoxData
+                      key={company.id}
+                      user={user}
+                      url={url}
+                      item={company}
+                      setFavs={setFavs}
+                      compares={compares}
+                      setCompares={setCompares}
+                    />
+                  ) : null
+                )}
+              </div>
+            </div>
+          </>
+        ) : null}
       </div>
-      {compares.length != 0 ?(
-        <PopupCompare url={url} compares={compares} setCompares={setCompares}/>
-      ):(null)}
+      {compares.length != 0 ? (
+        <PopupCompare url={url} compares={compares} setCompares={setCompares} />
+      ) : null}
       <Footer />
     </div>
   );

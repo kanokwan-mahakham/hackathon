@@ -3,10 +3,11 @@ import BoxData from "../Component/BoxData";
 import Footer from "../Component/Footer";
 import Navbar from "../Component/Navbar";
 import PopupCompare from "../Component/PopupCompare";
-import { Link,useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Noti from "../Component/Noti";
 import ListChat from "../Component/ListChat";
+import Chat from "../Component/Chat";
 
 const Filter = ({
   url,
@@ -26,50 +27,62 @@ const Filter = ({
   setNotis,
   showChat,
   setShowChat,
+  showListChat,
+  setShowListChat,
   className,
 }) => {
   const image = require("../../image Hackathon/image/background.jpeg");
   const navigate = useNavigate();
   const [newCompanys, setNewCompanys] = useState([]);
 
-  function clearAll(){
-    setFilterProduct(products)
-    if(type=="company"){
-      navigate('/company');
-    }else if(type=="fabric"){
-      navigate('/fabric');
-    }else{
-      navigate('/designer');
+  function clearAll() {
+    setFilterProduct(products);
+    if (type == "company") {
+      navigate("/company");
+    } else if (type == "fabric") {
+      navigate("/fabric");
+    } else {
+      navigate("/designer");
     }
   }
 
   useEffect(() => {
     async function getCompanies() {
-    filterProduct.map((product)=>{
-      companies.map((company)=>{
-        if(product.companyId==company.id){
-          setNewCompanys([...newCompanys,company])
-        }
-      })
-    })
-      
+      filterProduct.map((product) => {
+        companies.map((company) => {
+          if (product.companyId == company.id) {
+            setNewCompanys([...newCompanys, company]);
+          }
+        });
+      });
     }
     getCompanies();
   }, []);
 
   return (
     <div className={className}>
+      
+      {showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
 
-      {showChat=="show"?(
-        <ListChat setShowChat={setShowChat}/>
-      ):null}
-      
-      <Navbar user={user} setUser={setUser} setShownoti={setShownoti} setCompares={setCompares} setShowChat={setShowChat}  />
-      
-      {showNoti=="show"?(
-        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} setNotis={setNotis}></Noti>
-      ):null
-      }
+{showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
+
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setShownoti={setShownoti}
+        setCompares={setCompares}
+        setShowListChat={setShowListChat}
+      />
+
+      {showNoti == "show" ? (
+        <Noti
+          url={url}
+          user={user}
+          setShownoti={setShownoti}
+          notis={notis}
+          setNotis={setNotis}
+        ></Noti>
+      ) : null}
       <div className="title-header">
         {type == "company" ? (
           <h1>Factory</h1>
@@ -92,16 +105,19 @@ const Filter = ({
 
         <div className="button">
           {/* <button className="btn-help-me"onClick={clearAll}>Help Me</button> */}
-          <button className="btn-see-all" onClick={clearAll}>See All</button>
-          
+          <button className="btn-see-all" onClick={clearAll}>
+            See All
+          </button>
         </div>
 
         {/* นำBoxData มาใส่ตรงนี้ได้เลยจ้า*/}
         <div className="show">
-
           {type == "company"
             ? newCompanys
-                .filter((company) => company.type === "company" && company.status == "company")
+                .filter(
+                  (company) =>
+                    company.type === "company" && company.status == "company"
+                )
                 .map((company) => (
                   <BoxData
                     key={company.id}
@@ -115,20 +131,27 @@ const Filter = ({
                 ))
             : type == "fabric"
             ? newCompanys
-            .filter((company) => company.type === "frabic shop" && company.status == "company")
-            .map((company) => (
-              <BoxData
-                key={company.id}
-                user={user}
-                url={url}
-                item={company}
-                setFavs={setFavs}
-                compares={compares}
-                setCompares={setCompares}
-              />
-            )):
-            newCompanys
-                .filter((company) => company.type === "designer" && company.status == "company")
+                .filter(
+                  (company) =>
+                    company.type === "frabic shop" &&
+                    company.status == "company"
+                )
+                .map((company) => (
+                  <BoxData
+                    key={company.id}
+                    user={user}
+                    url={url}
+                    item={company}
+                    setFavs={setFavs}
+                    compares={compares}
+                    setCompares={setCompares}
+                  />
+                ))
+            : newCompanys
+                .filter(
+                  (company) =>
+                    company.type === "designer" && company.status == "company"
+                )
                 .map((company) => (
                   <BoxData
                     key={company.id}
@@ -140,12 +163,11 @@ const Filter = ({
                     setCompares={setCompares}
                   />
                 ))}
-
         </div>
       </div>
-      {compares.length != 0 ?(
-        <PopupCompare url={url} compares={compares} setCompares={setCompares}/>
-      ):(null)}
+      {compares.length != 0 ? (
+        <PopupCompare url={url} compares={compares} setCompares={setCompares} />
+      ) : null}
       <Footer />
     </div>
   );

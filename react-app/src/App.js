@@ -30,8 +30,10 @@ import CheackPayment from "./features/Payment/checkPayment";
 import Compare from "./features/Compare/index";
 import { Routes, Route } from "react-router-dom";
 import SeeProfile from "./features/Profile/ProfileFactory/SeeProfile";
+const socket = io.connect("http://localhost:5000");
 
 function App() {
+  
   const url = `http://localhost:5000`;
   const [user, setUser] = useState("");
   const [companies, setCompanies] = useState([]);
@@ -48,16 +50,21 @@ function App() {
   const [showListChat, setShowListChat] = useState("");
   const [showChat, setShowChat] = useState("");
 
+  const [listChat ,setListChat] = useState([]);
+  const [chat, setChat] = useState([]);
+  const [room, setRoom] = useState("");
+
   const currentDate = new Date();
-  const day = String(currentDate.getDate()).padStart(2, "0");
-  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // เดือนใน JavaScript เริ่มจาก 0
+  const day = String(currentDate.getDate()).padStart(2,"0");
+  const month = String(currentDate.getMonth() + 1).padStart(2,"0"); // เดือนใน JavaScript เริ่มจาก 0
   const year = String(currentDate.getFullYear()).slice(2); // หรือคุณสามารถใช้ .substr(2) แทน .slice(2)
   const hours = String(currentDate.getHours()).padStart(2, "0");
   const minutes = String(currentDate.getMinutes()).padStart(2, "0");
   const [formattedTime, setFormattedTime] = useState(`${hours}.${minutes}`);
   const [formattedDay, setFormattedDay] = useState(`${day}-${month}-${year}`);
 
-  const socket = io.connect("http://localhost:3000");
+ 
+
 
   useEffect(() => {
     async function getCompanies() {
@@ -65,10 +72,6 @@ function App() {
         const resCompany = await axios.get(`${url}/users`);
         const resImageHome = await axios.get(`${url}/informations/1`);
         const resCustomerFavs = await axios.get(`${url}/customerFavs`);
-        // const resPackages = await axios.get(`${url}/packages/delete/${formattedDay}`)
-        // if (resPackages) {
-        //   await axios.delete(`${url}/packages/${resPackages.data.order.id}`);
-        // }
         setCompanies(resCompany.data);
         setFavs(resCustomerFavs.data);
         setImageHome(resImageHome.data);
@@ -90,12 +93,16 @@ function App() {
         const resProducts = await axios.get(`${url}/products`);
         const resPackages = await axios.get(`${url}/packages`);
         const resNoti = await axios.get(`${url}/notis`);
+        const resListChat = await axios.get(`${url}/listChats`)
+        const resChat = await axios.get(`${url}/chats`)
         setCompanies(resCompany.data);
         setProducts(resProducts.data);
         setFilterProduct(resProducts.data);
         setInformation(res.data);
         setPackages(resPackages.data);
         setNotis(resNoti.data);
+        setListChat(resListChat.data)
+        setChat(resChat.data)
       }
     }
     getInformation();
@@ -125,6 +132,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -168,6 +182,8 @@ function App() {
                 setShownoti={setShownoti}
                 showNoti={showNoti}
                 notis={notis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -188,6 +204,8 @@ function App() {
                 setShownoti={setShownoti}
                 showNoti={showNoti}
                 notis={notis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -206,6 +224,8 @@ function App() {
                 notis={notis}
                 setNotis={setNotis}
                 setCompares={setCompares}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -227,6 +247,8 @@ function App() {
                 showNoti={showNoti}
                 notis={notis}
                 setNotis={setNotis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -250,6 +272,8 @@ function App() {
                 showNoti={showNoti}
                 notis={notis}
                 setNotis={setNotis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -301,6 +325,8 @@ function App() {
                 showNoti={showNoti}
                 notis={notis}
                 setNotis={setNotis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -322,6 +348,8 @@ function App() {
                 showNoti={showNoti}
                 notis={notis}
                 setNotis={setNotis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -343,6 +371,8 @@ function App() {
                 showNoti={showNoti}
                 notis={notis}
                 setNotis={setNotis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -368,6 +398,8 @@ function App() {
                 showNoti={showNoti}
                 notis={notis}
                 setNotis={setNotis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -392,6 +424,8 @@ function App() {
                 showNoti={showNoti}
                 notis={notis}
                 setNotis={setNotis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -416,6 +450,8 @@ function App() {
                 showNoti={showNoti}
                 notis={notis}
                 setNotis={setNotis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -436,6 +472,8 @@ function App() {
                 showNoti={showNoti}
                 notis={notis}
                 setNotis={setNotis}
+                showListChat={showListChat}
+                setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
               />
@@ -577,6 +615,10 @@ function App() {
                 showChat={showChat}
                 setShowChat={setShowChat}
                 companies={companies}
+                setShowListChat={setShowListChat}
+                showListChat={showListChat}
+                setListChat={setListChat}
+                listChat={listChat}
               />
             }
           />

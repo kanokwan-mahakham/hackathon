@@ -1,63 +1,105 @@
 import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const Chat = ({ className }) => {
+const Chat = ({
+  url,
+  user,
+  setShowChat,
+  socket,
+  room,
+  setChat,
+  chat,
+  className,
+}) => {
   const cancle = require("../../image Hackathon/icon/cancel.png");
-  const chat = require("../../image Hackathon/icon/bubble-chat.png");
+  const chatImg = require("../../image Hackathon/icon/bubble-chat.png");
   const file = require("../../image Hackathon/icon/attach-file.png");
   const send = require("../../image Hackathon/icon/send 2.png");
+
+  const [currentMessage, setCurrentMessage] = useState("");
+  const [messageList, setMessageList] = useState([]);
+  const [check,setCheck] = useState([]);
+
+  useEffect(() => {
+    const data = chat.filter((mes) => mes.room == room);
+    if (data) {
+      setMessageList(data);
+    }
+  }, []);
+
+  useEffect(() => {
+    // async function get(){
+    //   const res = await axios(`${url}/chats`)
+    //   const find = res.data.filter((fi)=>fi.room == room)
+    //   setMessageList(find)
+    // }
+    // get()
+    socket.on("receive_message", (data) => {
+      setMessageList((list) => [...list, data]);
+      // setMessageList([...messageList, data]);
+    });
+  }, [socket]);
+
+  const sendMessage = async () => {
+    if (currentMessage !== "") {
+      const messageData = {
+        room: room,
+        sendId: user.id,
+        message: currentMessage,
+      };
+
+      await socket.emit("send_message", messageData);
+      await axios.post(`${url}/chats`,messageData)
+      // setMessageList((list) => [...list, messageData]);
+      setMessageList([...messageList,messageData])
+      setCurrentMessage("");
+      
+    }
+  };
+
+  function close() {
+    setShowChat("");
+  }
+
   return (
     <div className={className}>
       <div className="popup-chat">
         <div className="header">
           <p>Chat messages</p>
           <div className="btn-header">
-            <img src={chat} id="btn-chat" />
-            <img src={cancle} id="btn-cancle" />
+            <img src={chatImg} id="btn-chat" />
+            <img src={cancle} id="btn-cancle" onClick={close} />
           </div>
         </div>
-        
+
         <div className="body-chat">
-          <div className="right">
-            <div id="text-right">
-              <p>สู้ดิว่ะ</p>
-            </div>
-          </div>
-          <div className="left">
-            <div id="text-left">
-              <p>ดูชาวบ้านบางระจัน</p>
-            </div>
-          </div>
-          <div className="left">
-            <div id="text-left">
-              <p>เป็นตัวอย่าง</p>
-            </div>
-          </div>
-          <div className="right">
-            <div id="text-right">
-              <p>ทำไมอ่ะ</p>
-            </div>
-          </div>
-          <div className="left">
-            <div id="text-left">
-              <p>ไม่มีไรอ่ะสุดท้ายเค้าก็ตายอยู่ดี</p>
-            </div>
-          </div>
-          <div className="right">
-            <div id="text-right">
-              <p>อ้าว</p>
-            </div>
-          </div>
-          <div className="right">
-            <div id="text-right">
-              <p>แล้วจะพูดทำไม</p>
-            </div>
-          </div>
+          {messageList.map((messageContent) => {
+            if (messageContent.sendId === user.id) {
+              return (
+                <div className="right" key={messageContent.id}>
+                  <div id="text-right">
+                    <p>{messageContent.message}</p>
+                  </div>
+                </div>
+              );
+            } else {
+              return (
+                <div className="left" key={messageContent.id}>
+                  <div id="text-left">
+                    <p>{messageContent.message}</p>
+                  </div>
+                </div>
+              );
+            }
+          })}
         </div>
+
         <div className="box-send-messages">
-          <input id="input-messages"></input>
+          <input id="input-messages" onChange={(event) => {setCurrentMessage(event.target.value);}}></input>
           <div className="btn-send-messages">
             <img src={file} />
-            <img src={send} />
+            <img src={send} onClick={sendMessage}/>
           </div>
         </div>
       </div>
@@ -99,6 +141,7 @@ export default styled(Chat)`
     width: 25px;
     height: 25px;
     margin-right: 10px;
+    cursor: pointer;
   }
   .btn-header {
     display: flex;
@@ -120,9 +163,9 @@ export default styled(Chat)`
     display: flex;
     justify-content: flex-end;
   }
-  .right #text-right{
-    background-color: #F7F5E6;
-    color: #333A56;
+  .right #text-right {
+    background-color: #f7f5e6;
+    color: #333a56;
     width: fit-content;
     padding: 0px 15px;
     border-radius: 30px;
@@ -137,9 +180,9 @@ export default styled(Chat)`
     display: flex;
     justify-content: flex-start;
   }
-  .left #text-left{
-    background-color: #C6CCD7;
-    color: #333A56;
+  .left #text-left {
+    background-color: #c6ccd7;
+    color: #333a56;
     width: fit-content;
     padding: 0px 15px;
     border-radius: 30px;
