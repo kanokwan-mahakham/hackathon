@@ -186,6 +186,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -208,6 +215,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -228,6 +242,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -251,6 +272,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -276,6 +304,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -329,6 +364,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -352,6 +394,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -375,6 +424,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -402,6 +458,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -428,6 +491,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -454,6 +524,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -476,6 +553,13 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />
@@ -619,6 +703,13 @@ function App() {
                 showListChat={showListChat}
                 setListChat={setListChat}
                 listChat={listChat}
+
+                listChat={listChat}
+                socket={socket}
+                room={room}
+                setRoom={setRoom}
+                chat={chat}
+                setChat={setChat}
               />
             }
           />

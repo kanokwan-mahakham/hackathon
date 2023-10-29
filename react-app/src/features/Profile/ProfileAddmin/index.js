@@ -7,18 +7,61 @@ import Noti from "../../Component/Noti";
 import ListChat from "../../Component/ListChat";
 import Chat from "../../Component/Chat";
 
-const ProfileAdmin = ({ url, user, setUser,showNoti ,setShownoti, notis,setNotis,setCompares,showChat,setShowChat,setShowListChat,showListChat, className }) => {
+const ProfileAdmin = ({
+  url,
+  user,
+  setUser,
+  showNoti,
+  setShownoti,
+  notis,
+  setNotis,
+  setCompares,
+  showChat,
+  setShowChat,
+  setShowListChat,
+  showListChat,
+  listChat,
+  socket,
+  room,
+  setRoom,
+  chat,
+  setChat,
+  className,
+}) => {
   return (
     <div className={className}>
-      {showNoti=="show"?(
-        <Noti url={url} user={user} setShownoti={setShownoti} notis={notis} setNotis={setNotis}></Noti>
-      ):null
-      }
-      
+      {showNoti == "show" ? (
+        <Noti
+          url={url}
+          user={user}
+          setShownoti={setShownoti}
+          notis={notis}
+          setNotis={setNotis}
+        ></Noti>
+      ) : null}
 
-      {showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
-
-      {showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
+      {showListChat == "show" ? (
+        <ListChat
+          url={url}
+          user={user}
+          listChat={listChat}
+          setShowListChat={setShowListChat}
+          setShowChat={setShowChat}
+          socket={socket}
+          setRoom={setRoom}
+        />
+      ) : null}
+      {showChat == "show" ? (
+        <Chat
+          url={url}
+          user={user}
+          setShowChat={setShowChat}
+          socket={socket}
+          room={room}
+          setChat={setChat}
+          chat={chat}
+        />
+      ) : null}
 
       <Navbar
         user={user}
@@ -27,7 +70,7 @@ const ProfileAdmin = ({ url, user, setUser,showNoti ,setShownoti, notis,setNotis
         setCompares={setCompares}
         setShowListChat={setShowListChat}
       />
-      
+
       <CardAdmin />
       <div className="rating">
         <div className="box-rating">
@@ -51,12 +94,11 @@ const ProfileAdmin = ({ url, user, setUser,showNoti ,setShownoti, notis,setNotis
       </div>
       <div className="package">
         <div className="head-name">
-            <h1>Package</h1>
+          <h1>Package</h1>
         </div>
-        
       </div>
       <div className="sale-package">
-        <Package/>
+        <Package />
       </div>
       <Footer />
     </div>
@@ -101,10 +143,10 @@ export default styled(ProfileAdmin)`
     font-weight: 400;
     text-align: center;
   }
-  .package{
+  .package {
     position: relative;
   }
-  .package .head-name h1{
+  .package .head-name h1 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,14 +155,14 @@ export default styled(ProfileAdmin)`
     z-index: 2;
     font-size: 50px;
   }
-  .head-name h1{
+  .head-name h1 {
     background-color: white;
     width: 300px;
     height: 80px;
     border: 1px solid;
     border-radius: 50px;
   }
-  .sale-package{
+  .sale-package {
     width: 100%;
     height: 500px;
     background-color: #333a56;

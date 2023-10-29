@@ -27,6 +27,12 @@ const Compare = ({
   setNotis,
   setShowChat,
   showChat,
+  listChat,
+  socket,
+  room,
+  setRoom,
+  chat,
+  setChat,
   className,
 }) => {
   const navigate = useNavigate();
@@ -44,9 +50,9 @@ const Compare = ({
         ></Noti>
       ) : null}
 
-{showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
+      {showListChat == "show" ? <ListChat url={url} user={user} listChat={listChat} setShowListChat={setShowListChat} setShowChat={setShowChat} socket={socket} setRoom={setRoom} /> : null}
+      {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} /> : null }
 
-{showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
 
       <Navbar
         user={user}

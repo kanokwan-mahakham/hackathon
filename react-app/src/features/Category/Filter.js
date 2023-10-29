@@ -29,6 +29,12 @@ const Filter = ({
   setShowChat,
   showListChat,
   setShowListChat,
+  listChat,
+  socket,
+  room,
+  setRoom,
+  chat,
+  setChat,
   className,
 }) => {
   const image = require("../../image Hackathon/image/background.jpeg");
@@ -62,9 +68,9 @@ const Filter = ({
   return (
     <div className={className}>
       
-      {showListChat == "show" ? <ListChat setShowListChat={setShowListChat} setShowChat={setShowChat} /> : null}
+      {showListChat == "show" ? <ListChat url={url} user={user} listChat={listChat} setShowListChat={setShowListChat} setShowChat={setShowChat} socket={socket} setRoom={setRoom} /> : null}
+      {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} /> : null }
 
-{showChat == "show" ? <Chat setShowChat={setShowChat}/> : null }
 
       <Navbar
         user={user}
