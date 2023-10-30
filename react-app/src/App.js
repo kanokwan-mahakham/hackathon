@@ -27,7 +27,9 @@ import PopupPayment from "./features/Payment/popupPayment";
 import CheckData from "./features/Registers/RegisterPage/popup/checkData";
 import CheackPayment from "./features/Payment/checkPayment";
 
+
 import Compare from "./features/Compare/index";
+
 import { Routes, Route } from "react-router-dom";
 import SeeProfile from "./features/Profile/ProfileFactory/SeeProfile";
 const socket = io.connect("http://localhost:5000");
@@ -721,7 +723,6 @@ function App() {
                 setListChat={setListChat}
                 listChat={listChat}
 
-                listChat={listChat}
                 socket={socket}
                 room={room}
                 setRoom={setRoom}
