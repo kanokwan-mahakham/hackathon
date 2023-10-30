@@ -25,14 +25,14 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
   const [profile, setProfile] = useState(information.profile);
   const navigate = useNavigate();
 
-  function handleFileChange(event) { 
+  function handleFileChange(event) {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = function (e) {
         const imagePath = e.target.result;
         console.log("Image path: ", imagePath);
-        setProfile(imagePath)// เก็บ URL ของภาพใน state
+        setProfile(imagePath); // เก็บ URL ของภาพใน state
       };
       reader.readAsDataURL(file);
     }
@@ -48,7 +48,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
       email: email,
       instagram: ins,
       website: linkWeb,
-      profile:profile
+      profile: profile,
     };
     try {
       const {
@@ -80,12 +80,11 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
-        if(user.status == "customer"){
+        if (user.status == "customer") {
           navigate("/profile-user");
-        }else{
+        } else {
           navigate("/profile-company");
         }
-       
       });
     } catch (error) {
       console.error(error);
@@ -105,7 +104,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
               name="product-image"
               accept="image/*"
               className="file-input"
-              style={{ display: 'none'}}
+              style={{ display: "none" }}
               onChange={handleFileChange}
             />
 
@@ -117,6 +116,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
 
             <p id="detail">
               <input
+                className="edit-name"
                 placeholder="Description"
                 value={description}
                 onChange={(event) => {
@@ -129,6 +129,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
           <div className="profile-detail">
             <h1 id="name">
               <input
+                className="edit-name"
                 placeholder="Name"
                 value={name}
                 onChange={(event) => {
@@ -139,6 +140,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
             <div className="detail" id="location">
               <img src={location} />
               <input
+                className="edit-name"
                 placeholder="Address"
                 value={address}
                 onChange={(event) => {
@@ -153,6 +155,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
                   <div className="detail" id="เบอร์สำนักงาน">
                     <img src={call} />
                     <input
+                      className="edit-name"
                       placeholder="Tel"
                       value={tel}
                       onChange={(event) => {
@@ -167,6 +170,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
                   <div className="detail" id="facebook">
                     <img src={facebook} />
                     <input
+                      className="edit-name"
                       placeholder="Facebook"
                       value={facebooks}
                       onChange={(event) => {
@@ -177,6 +181,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
                   <div className="detail" id="mail">
                     <img src={mail} />
                     <input
+                      className="edit-name"
                       placeholder="Email"
                       value={email}
                       onChange={(event) => {
@@ -189,6 +194,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
                   <div className="detail" id="linkIn">
                     <img src={linkIn} />
                     <input
+                      className="edit-name"
                       placeholder="Instagram"
                       value={ins}
                       onChange={(event) => {
@@ -199,6 +205,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
                   <div className="detail" id="website">
                     <img src={website} />
                     <input
+                      className="edit-name"
                       placeholder="Website"
                       value={linkWeb}
                       onChange={(event) => {
@@ -330,7 +337,9 @@ export default styled(CardNewData)`
   }
   .total-detail .detail {
     display: flex;
+    align-items: center;
     padding-left: 50px;
+    margin-bottom: 20px;
   }
   .button-chat {
     width: 100%;
@@ -351,38 +360,50 @@ export default styled(CardNewData)`
 
   /* //////////////////////////////// */
   .file-label {
-  display: inline-block;
-  cursor: pointer;
-}
+    display: inline-block;
+    cursor: pointer;
+  }
 
-.file-box {
-  width: 280px;
-  height: 310px;
-  background-color: #f4f4f4;
-  border: 2px dashed #aaa;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 5px;
-  overflow: hidden; /* เพิ่มบรรทัดนี้เพื่อซ่อนส่วนที่เกินขอบของ input file */
-}
+  .file-box {
+    width: 280px;
+    height: 310px;
+    background-color: #f4f4f4;
+    border: 2px dashed #aaa;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    overflow: hidden; 
+  }
 
-.plus-icon {
-  font-size: 40px;
-  color: #aaa;
-  z-index: 1;
-}
+  .plus-icon {
+    font-size: 40px;
+    color: #aaa;
+    z-index: 1;
+  }
 
-.plus-icon:hover {
-  color: #555;
-}
+  .plus-icon:hover {
+    color: #555;
+  }
 
-.product-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: relative; /* เพิ่มบรรทัดนี้เพื่อให้สามารถกำหนด z-index */
-  z-index: 0; /* กำหนดค่า z-index เพื่อให้รูปภาพอยู่ด้านหลังของ plus icon */
-}
+  .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative; 
+    z-index: 0; 
+  }
+
+  .edit-name {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    color: gray;
+    font-family: "Anuphan";
+    font-size: 16px;
+    font-weight: 500;
+  }
 `;

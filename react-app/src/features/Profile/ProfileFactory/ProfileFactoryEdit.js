@@ -128,21 +128,22 @@ export default styled(ProfileFactoryEdit)`
   padding-top: 10px;
 
   .add-product {
-    width: 420px;
-    height: 520px;
+    width: 400px;
+    height: 500px;
     border: 4px dashed gray;
     border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10px 20px 30px 0px;
+    margin: 10px 40px 40px 0px;
     cursor: pointer;
   }
-  .add-product p {
+  .add-product p, a{
     font-size: 80px;
     font-weight: 600;
     color: gray;
     cursor: pointer;
+    text-decoration: none;
   }
 
   .products {
@@ -162,6 +163,7 @@ export default styled(ProfileFactoryEdit)`
   }
   .sale-product {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
   .products .package {

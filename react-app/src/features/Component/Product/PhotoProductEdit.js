@@ -377,12 +377,11 @@ export default styled(PhotoProductEdit)`
      cursor: pointer;
    }
    .image .img-product {
-     width: 420px;
+     width: 400px;
      height: 500px;
      border-radius: 30px;
      margin: 10px 40px 40px 0px;
-     opacity: 0.4;
-     background-color: black;
+     border: 4px dashed gray;
    }
    .img-product img{
      width: 100%;
@@ -396,5 +395,6 @@ export default styled(PhotoProductEdit)`
      height: 50px;
      z-index: 1;
      border-radius: 0;
+     opacity: 0.4;
    }
 `;

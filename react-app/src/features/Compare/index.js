@@ -78,6 +78,7 @@ const Compare = ({
       </div>
       <div className="box-compare">
         <div className="selected-choice">
+          <div className="box-space"></div>
           {compares.map((compare) => (
             <BoxSlelected
               key={compare.id}
@@ -139,8 +140,17 @@ export default styled(Compare)`
   }
   .selected-choice {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     margin: 90px 90px 20px 90px;
+  }
+  .selected-choice .box-space{
+    width: 350px;
+    height: 350px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .table-compare {
     display: flex;

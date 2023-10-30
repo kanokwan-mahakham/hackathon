@@ -81,7 +81,7 @@ export default styled(PopupCompare)`
   .box-name #close-name {
     position: absolute;
     top: -10px;
-    right: -10px;
+    right: -6px;
     width: 27px;
     height: 27px;
     cursor: pointer;
@@ -109,8 +109,11 @@ export default styled(PopupCompare)`
   }
   .btn-compare-seleced {
     background-color: #333a56;
-    color: white;
     border: none;
     cursor: pointer;
+  }
+  .btn-compare-seleced a{
+    text-decoration: none;
+    color: white;
   }
 `;

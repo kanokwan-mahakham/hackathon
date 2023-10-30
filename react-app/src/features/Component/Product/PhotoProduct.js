@@ -24,7 +24,7 @@ export default styled(PhotoProduct)`
     justify-content: center;
 }
 .photo-product img{
-    width: 420px;
+    width: 400px;
     height: 500px;
     border-radius: 30px;
     margin: 10px 40px 40px 0px;

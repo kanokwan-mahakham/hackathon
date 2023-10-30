@@ -51,7 +51,7 @@ export default styled(BoxSelected)`
   .box img {
     position: absolute;
     top: -20px;
-    right: 25px;
+    right: 15px;
     width: 45px;
     height: 45px;
     cursor: pointer;
@@ -59,7 +59,7 @@ export default styled(BoxSelected)`
   .box-detail {
     width: 310px;
     height: 350px;
-    margin-right: 35px;
+    margin-right: 25px;
     border-radius: 10px;
     border: 3px solid #807d7d;
     display: flex;
@@ -89,5 +89,10 @@ export default styled(BoxSelected)`
     font-weight: 500;
     background-color: #333A56;
     color: white;
+  }
+  .button-detail:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
   }
 `;

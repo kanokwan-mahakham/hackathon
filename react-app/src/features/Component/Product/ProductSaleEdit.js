@@ -59,10 +59,10 @@ export default styled(ProductSaleEdit)`
   }
 
   .box #box-image {
-    width: 420px;
-    height: 520px;
+    width: 400px;
+    height: 500px;
     border-radius: 30px;
-    margin: 10px 20px 30px 0px;
+    margin: 10px 40px 40px 0px;
   }
   .box-detail {
     display: flex;

@@ -123,5 +123,6 @@ export default styled(SeeProfile)`
   .sale-product {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   }
 `;

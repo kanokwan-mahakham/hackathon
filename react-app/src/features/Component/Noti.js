@@ -121,7 +121,7 @@ export default styled(Noti)`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid black;
   }
   .box-noti-detail img {
     width: 30px;
@@ -133,6 +133,7 @@ export default styled(Noti)`
     font-family: "lora";
     font-size: 18px;
     font-weight: 500;
+    text-decoration: none;
   }
   .box-noti-detail #noti-text {
     font-family: "lora";
@@ -142,9 +143,15 @@ export default styled(Noti)`
     margin-left: 15px;
     color: gray;
   }
+  .box-noti-detail #name{
+    color: black;
+  }
   .box-noti-detail #buy-package {
     width: 40px;
     height: 20px;
     margin-right: 15px;
+  }
+  .popup-noti a{
+    text-decoration: none;
   }
 `;

@@ -143,12 +143,24 @@ export default styled(BoxData)`
     border-radius: 30px;
     margin: 10px 30px 30px 0px;
   }
+  .box .box-box-image{
+    width: 420px;
+    height: 470px;
+    border-radius: 30px;
+    margin: 10px 30px 30px 0px;
+    display:flex;
+    justify-content: center;
+  }
+  .box .box-box-image a{
+    text-decoration: none;
+    color: #333a56;
+  }
   .box-detail {
     display: flex;
     text-align: center;
     position: absolute;
     bottom: 60px;
-    left: 40px;
+    left: 25px;
     background-color: white;
     width: 340px;
     height: 170px;
@@ -188,6 +200,11 @@ export default styled(BoxData)`
     border-radius: 30px;
     border: none;
     font-size: 15px;
+    cursor: pointer;
+  }
+  .conpare-button:hover {
+    background-color: #333a56;
+    color: white;
     cursor: pointer;
   }
   .button #save-button {
