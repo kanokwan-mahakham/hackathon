@@ -123,16 +123,17 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
 
     export default styled(HelpmeDesignTwo)`
 
+   
     @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-        .body{
-        background-color: rgba(198, 204, 215, 0.7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: "Lora";
-    }
+        
+            background-color: rgba(198, 204, 215, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Lora';
+    
 
        
         
@@ -140,7 +141,9 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
+            width:1100px;
+            height:50%;
+          }
         p{
             font-size: 20px;
             color:#fff;
@@ -161,26 +164,22 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
         }
 
         .underline {
-            width: 430.375px;
+            max-width:800px;
+            width:100%;
             height: 1.444px;
             background: #000;
             margin-bottom:25px;
         }
         
         .container {
-            width: 1110px;
-            height: 540px;
+            width: 100%;
+            height: 500px;
+            max-width: 1200px;
             background-color: #ffffff;
-            border-radius: 54px;
+            border-radius: 20px;
             display: flex;
-            flex-wrap: wrap;
-            align-content: space-around;
             flex-direction: column;
             box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
-            flex-direction: column;
-            flex-wrap: nowrap;
-            align-items: center;
-            margin-bottom:75px;
         }
         .group-container{
             display: flex;
@@ -191,36 +190,31 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
         }
 
         .container-inside1{
-            border-radius: 30px;
-            background: #C6CCD7;
-            width:800px;
-            height: 18%;
-            flex-shrink: 0;
-            margin-top:45px; 
-            
-        }
-
+            border-radius: 20px;
+    margin-top:1%;
+    background: #C6CCD7;
+    width: 70%;
+    min-height: 55px;
+        } 
     
 
         .groupButton{
-            display:flex;
-            justify-content: space-around
+            display: flex;
+            justify-content: space-around;
         }
 
         button.button1
         {
-            width: 177px;
+            flex: 1;
+            max-width: 177px;
             height: 38px;
-            flex-shrink: 0;
             border-radius: 20px;
-            background: #333A56;border-radius: 20px;
             background: #333A56;
-            margin-top:13px;
+            margin-top: 12px;
             color: #FFF;
             text-align: center;
-            font-family: 'Lora', serif; 
+            font-family: 'Lora', serif;
             font-size: 20px;
-            font-style: normal;
             font-weight: 500;
             line-height: normal;
             border: none;
@@ -228,18 +222,16 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
 
         button.button2
         {
-            width: 177px;
+            flex: 1;
+            max-width: 177px;
             height: 38px;
-            flex-shrink: 0;
             border-radius: 20px;
-            background: #C6CCD7;border-radius: 20px;
             background: #C6CCD7;
-            margin-top:13px;
+            margin-top: 12px;
             color: #333A56;
             text-align: center;
-            font-family: "Lora";
+            font-family: 'Lora', serif;
             font-size: 20px;
-            font-style: normal;
             font-weight: 500;
             line-height: normal;
             border: none;
@@ -266,13 +258,13 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
 
 
         .container-inside2{
-            width: 1110px;
-            height: 90%;
-            border-radius: 50px;  
-            margin-top:20px;  
+            width: 100%;
+            min-height:270px;
+            height: auto;
+            border-radius: 20px;
+            margin-top: 4%;
             box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
             background: #333A56;
-            flex-shrink: 0;
         }
 
         .grouph2{
@@ -346,43 +338,39 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
             align-content: center;
             justify-content: center;
             margin-top:50px;
+            margin-bottom:10px;
         }
 
         button.select{
             display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            border-radius: 20px;
-            width: 145px;
-            height: 48px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            background: #FFFFFF;
-            border: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center text both horizontally and vertically */
+  border-radius: 20px;
+  max-width: 145px;
+  width:100%;
+  height: 48px;
+  background: #FFFFFF;
+  border: none;
         }
 
         button.select:hover{
             display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            border-radius: 20px;
-            width: 145px;
-            height: 48px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            background: #C6CCD7;
-            border: 2px solid #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center text both horizontally and vertically */
+  border-radius: 20px;
+  max-width: 145px;
+  height: 48px;
+  background: #C6CCD7;
+  border: 2px solid #fff;
         }
         
         
         button.select span {
             color: #000;
             text-align: center;
-            font-family: 'Lora';
+            font-family: 'Lora', serif; 
             font-size: 16px;
             font-style: normal;
             font-weight: 300;
@@ -499,6 +487,45 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
             background-color: #ddd;
             color: black;
         }
+
+        @media (max-width: 768px) {
+        .container {
+            margin: 10px;
+            border-radius: 20px;
+            width: 50%;
+            height: auto;
+            max-width: 90%;
+            max-height: none;  
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+
+    .underline {
+      width: 100%;
+    }
+
+    .previous {
+      top: 10px;
+      left: 10px;
+    }
+
+    .container-inside1 {
+      width: 100%;
+      max-width: 90%;
+      margin-top: 5%;
+    }
+
+    .container-inside2 {
+      width: 100%;
+      min-height: 200px;
+      border-radius: 20px;
+      margin-top: 4%;
+      box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
+      background: #333A56;
+    }
+  }
     `;
 
 

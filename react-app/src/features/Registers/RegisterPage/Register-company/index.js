@@ -7,53 +7,64 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const Backgroud = styled.div`
-background-color: #F9F8EE;`;
-const StyledBotton = styled.div`
-.button {
-    display: flex;
-    width: 288.75px;
+background-color: #F9F8EE;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+
+
+`
+
+const StyledButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: #141415;
+  width: 288.75px;
     padding: 8.663px 5.775px;
-    justify-content: center;
-    align-items: center;
-    gap: 5.775px;
-    background: #141415;
     border-radius: 8.663px;
     cursor: pointer;
     margin-top: 20px;
-    margin-left:40px;
-}
-.button-text {
-    color: #FFF;
-    text-align: center;
-    font-family: 'Open Sans';
-    font-size: 13px;    
-    font-weight: 700;
-    line-height: 17.325px;
-}
 `;
-const Stylep = styled.div`
 
+const StyledButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFF;
+  
+`;
+
+const Stylep = styled.div`
+p{
     margin: 10px;
-    padding-left: 70px;
-    font-size: 11.55px;
-    
+    text-align: center;
+    font-size: 17.55px;
+}
 `
 const StyleContainer =styled.div`
 .container {
-    width: 1110px;
-    height: 770px;
-    background-color: #FFFFFF;
-    border-radius: 54px;
     display: flex;
-    flex-wrap: wrap;
-    align-content: space-around;
-    flex-direction: column;
-    padding: 30px;
-    padding-top: px;
-    margin-top: px;
-    margin-left: 150px;
-    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.40);
+  flex-direction: column; 
+  width:95%;
+  max-width: 1110px;
+  background-color: #FFFFFF;
+  border-radius: 54px;
+  padding: 30px;
+  padding-top: 20px;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.40);
 }
+
+@media (max-width: 768px) {
+margin: 10px;
+      border-radius: 20px;
+      width: 50%;
+      height: auto;
+      max-width: 100%;
+      max-height: none; 
+  } 
 `
 const Styleprevious = styled.div`
 .previous{
@@ -84,9 +95,9 @@ const Styledinput= styled.div`
 }
 
 .input-container2 input {
-    color: #807D7D;
+   color: #807D7D;
     font-family: 'Open Sans';
-    font-size: 11.55px;
+    font-size: 14.55px;
     font-weight: 400;
     line-height: 17.325px;
     border: none;
@@ -133,21 +144,14 @@ const Styledtextinput =styled.div`
 .textinput{
     color: #807D7D;
     font-family: 'Open Sans';
-    font-size: 11.55px;
+    font-size: 13.55px;
     font-weight: 400;
     line-height: 11.325px;
     border: none;
     outline: none;
 }
 `
-const StyleRightimg = styled.div`.right-image {
-    width: 465.663px;
-    height: 512px;
-    border-radius: 40px;
-    margin-top: 100px;
-    background: url('https://i.pinimg.com/564x/cb/e6/1c/cbe61cf8f0e9511547aad553571bae5c.jpg') -228.551px -176.433px / 150.681% 182.082% no-repeat;
-    flex-shrink: 0;
-}`
+
 
 const StyledGroupline = styled.div`
 .group-underline{
@@ -156,7 +160,7 @@ const StyledGroupline = styled.div`
 }`
 const Styleline1 = styled.div `
 .underline {
-    width: 130.375px;
+    width:  50%;
     height: 1.444px;
     background: #000;
 }
@@ -165,14 +169,14 @@ const Styleline1 = styled.div `
 const Styleline2 = styled.div `
 
 .underline2 {
-    width: 194.375px;
+    width: 50%;
     height: 1.444px;
     background: #DBDBDB;
 }`
 
 const StyleAddtext = styled.div`
 .additional-text{
-    font-size: 11.55px;
+    font-size: 13.55px;
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -182,6 +186,7 @@ const StyleAddtext = styled.div`
 const Styledtext1 = styled.div`
 .text1{
     margin-right: 5px;
+    font-size: 13.55px;
     color: #807D7D;
 }`
 
@@ -192,7 +197,25 @@ h1 {
     margin: 10px;
     text-align: center;
 }
+
 `
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: your-desired-color; // Specify your desired text color here
+  // Add other CSS styles if needed
+`;
+const right = styled.div`
+.right-content {
+    width: 600px;
+    max-height: 420px;
+    border-radius: 40px;
+    flex-shrink: 0;
+    display: flex;
+    margin-left:15px;
+    justify-content: center;
+    align-items: center;
+    background: url("https://happiestcamper.com/wp-content/uploads/2020/09/DSC03551.jpg") -228.551px -176.433px / 150.681% 182.082% no-repeat;
+  }`
 
 
 const RegisterCompany = ({setUser,url}) => {
@@ -356,29 +379,29 @@ const RegisterCompany = ({setUser,url}) => {
                     </div>
                     </Styledinput>
 
-                           
-                    <StyledBotton>
+                    <StyledButtonContainer>   
+                    <StyledButton>
                     <Button text="Continue" onClick={submit} />
-                    </StyledBotton>
+                    </StyledButton>
+                    </StyledButtonContainer>
                     
                     <StyleAddtext>
                     <div className='additional-text'>
                         <div className="text1">already have accoaccount ?</div> 
-                        <Link to="/login" className="text2">Sign in</Link>
+                        <StyledLink to="/login" className="text2">
+  Sign in
+</StyledLink>
                     </div>
                     </StyleAddtext>
         
-                
-            
+                    <right><div className="right-content">
+              <div className="right-img"></div>
+            </div>
+            </right>
                        
                     
                    
             </div>
-            <StyleRightimg>
-                <div className="right-image">
-                    <div className="right-img"></div>
-                </div>
-            </StyleRightimg>
 
             </div>
         

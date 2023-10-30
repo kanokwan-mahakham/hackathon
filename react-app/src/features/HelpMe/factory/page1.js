@@ -65,374 +65,238 @@ const HelpmeFactoryOne = ({  filterProduct, setFilterProduct, className }) => {
 
     export default styled(HelpmeFactoryOne)`
    
+    @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
 
-    @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-
-        background-color: rgba(198, 204, 215, 0.7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-       
-        
-       
-        
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 40px;
-            font-weight: bold;
-            text-align: center;
-            font-family: "Lora";
-        }
-        .group-underline{
-            display: flex;
-            justify-content: center
-
-        }
-
-        .underline {
-            width: 430.375px;
-            height: 1.444px;
-            background: #000;
-            margin-bottom:25px;
-        }
-        
-        .container {
-            width: 1110px;
-            height: 540px;
-            background-color: #ffffff;
-            border-radius: 54px;
-            display: flex;
-            flex-wrap: wrap;
-            align-content: space-around;
-            flex-direction: column;
-            box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
-            flex-direction: column;
-            flex-wrap: nowrap;
-            align-items: center;
-            margin-bottom:75px;
-        }
-        .group-container{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-        }
-
-        .container-inside1{
-            border-radius: 30px;
-            background: #C6CCD7;
-            width:800px;
-            height: 15%;
-            flex-shrink: 0;
-            margin-top:15px; 
-            
-        }
-
+    background-color: rgba(198, 204, 215, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width:1100px;
+      height:50%;
+    }
+  
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Lora';
+    }
+  
+    .group-underline {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .underline {
+      width: 70%;
+      height: 1px;
+      background: #000;
+      margin-bottom: 25px;
+    }
+  
+    .container {
+      width: 100%;
+      height: 500px;
+      max-width: 1200px;
+      background-color: #ffffff;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
+    }
+  
+    .group-container {
+      display: flex;
+      
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .container-inside1 {
+      border-radius: 20px;
+      margin-top:3%;
+      background: #C6CCD7;
+      width: 70%;
+      min-height: 55px;
+    }
+  
+  
+    .groupButton {
+      display: flex;
+      justify-content: space-around;
+      min-height: 55%;
+    }
+  
+    button.button1 {
+      flex: 1;
+      max-width: 177px;
+      height: 38px;
+      border-radius: 20px;
+      background: #333A56;
+      margin-top: 12px;
+      color: #FFF;
+      text-align: center;
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: normal;
+      border: none;
+    }
+  
+    button.button2 {
+      flex: 1;
+      max-width: 177px;
+      height: 38px;
+      border-radius: 20px;
+      background: #C6CCD7;
+      margin-top: 12px;
+      color: #333A56;
+      text-align: center;
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: normal;
+      border: none;
+    }
+  
+    .container-inside2 {
+      width: 100%;
+      min-height:250px;
+      height: auto;
+      border-radius: 20px;
+      margin-top: 4%;
+      box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
+      background: #333A56;
+    }
+  
     
-
-        .groupButton{
-            display:flex;
-            justify-content: space-around
+  
+  
+    .grouph2 {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+  
+    h2 {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+      align-items: center;
+      color: #fff;
+      font-family: 'Lora', serif;
+      font-weight: 500;
+    }
+  
+    .groupButton1 {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+    }
+  
+  button.select {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center text both horizontally and vertically */
+    border-radius: 20px;
+    max-width: 145px;
+    width:100%;
+    height: 48px;
+    background: #FFFFFF;
+    border: none;
+  }
+  
+  button.select:hover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center text both horizontally and vertically */
+    border-radius: 20px;
+    max-width: 145px;
+    height: 48px;
+    background: #C6CCD7;
+    border: 2px solid #fff;
+  }
+  
+  button.select span {
+      color: #000;
+      text-align: center;
+      font-family: 'Lora', serif; 
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+      
+    }
+  
+    .previous {
+      text-decoration: none;
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #f1f1f1;
+      color: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+  
+    .previous:hover {
+      background-color: #ddd;
+      color: black;
+    }
+  
+    @media (max-width: 768px) {
+      .container {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 20px;
+        width: 50%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;  
+      }
+  
+      h1 {
+        font-size: 30px;
+      }
+  
+      .underline {
+        width: 100%;
+      }
+  
+      .previous {
+        top: 10px;
+        left: 10px;
+      }
+  
+      .container-inside1 {
+          border-radius: 20px;
+          margin-top:5%;
+          background: #C6CCD7;
+          width: 70%;
+          min-height: 55px;
         }
-
-        button.button1
-        {
-            width: 177px;
-            height: 38px;
-            flex-shrink: 0;
-            border-radius: 20px;
-            background: #333A56;border-radius: 20px;
-            background: #333A56;
-            margin-top:18px;
-            color: #FFF;
-            text-align: center;
-            font-family: 'Lora', serif;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            border: none;
+  
+        .container-inside2 {
+          width: 100%;
+          height: auto;   
+          border-radius: 20px;
+          margin-top: 4%;
+          box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
+          background: #333A56;
         }
-
-        button.button2
-        {
-            width: 177px;
-            height: 38px;
-            flex-shrink: 0;
-            border-radius: 20px;
-            background: #C6CCD7;border-radius: 20px;
-            background: #C6CCD7;
-            margin-top:18px;
-            color: #333A56;
-            text-align: center;
-            font-family: 'Lora', serif;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            border: none;
-        }
-
-        /* button.button2:hover
-        {
-            width: 177px;
-            height: 38px;
-            flex-shrink: 0;
-            border-radius: 20px;
-            background: #333A56;border-radius: 20px;
-            background: #333A56;
-            margin-top:18px;
-            color: #FFF;
-            text-align: center;
-            font-family: 'Lora', serif; 
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            border: none;
-        } */
-
-
-        .container-inside2{
-            width: 1110px;
-            height: 90%;
-            border-radius: 50px;  
-            margin-top:20px;  
-            box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
-            background: #333A56;
-            flex-shrink: 0;
-        }
-
-        .grouph2{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: space-around;
-        }
-
-        h2{
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            align-content: center;
-            align-items: center;
-            color:#fff;
-            font-family: "lora";
-            font-weight: 500;
-        }
-    
-        /*for dropdrow*/
-        .dropbtn {
-            background-color: rgb(76, 78, 175);
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-        .dropbtn:hover, .dropbtn:focus {
-            background-color: #4f3e8e;
-        }
-        .searchField {
-            box-sizing: border-box;
-            font-size: 16px;
-            padding: 14px 20px 12px 45px;
-            border: none;
-            border-bottom: 1px solid #ddd;
-        }
-        .searchField:focus {outline: 3px solid #ddd;}
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdownList {
-            display: none;
-            position: absolute;
-            background-color: #f6f6f6;
-            min-width: 230px;
-            overflow: auto;
-            border: 1px solid #ddd;
-            z-index: 2x ;
-        }
-        .dropdownList a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown a:hover {background-color: #ddd;}
-        .show {display: block;}
-        
-
-        .groupButton1{
-            display:flex;
-            justify-content: space-around;
-            margin-top:50px;
-        }
-
-        .groupButton2{
-            display:flex;
-            align-content: center;
-            justify-content: center;
-            margin-top:50px;
-        }
-
-        button.select{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            border-radius: 20px;
-            width: 145px;
-            height: 48px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            background: #FFFFFF;
-            border: none;
-        }
-
-        button.select:hover{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            border-radius: 20px;
-            width: 145px;
-            height: 48px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            background: #C6CCD7;
-            border: 2px solid #fff;
-        }
-        
-        
-        button.select span {
-            color: #000;
-            text-align: center;
-            font-family: 'Lora', serif; 
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 300;
-            line-height: normal;
-        }
-
-        button.selectlong{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            border-radius: 20px;
-            width: 545px;
-            height: 48px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            background: #FFFFFF;
-            border: none;
-        }
-
-        button.selectlong:hover{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            border-radius: 20px;
-            width: 545px;
-            height: 48px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            background: #C6CCD7;
-            border: 2px solid #fff;
-        }
-        
-        
-        button.selectlong span {
-            color: #000;
-            text-align: center;
-            font-family: 'Lora', serif;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 300;
-            line-height: normal;
-        }
-        
-        button.select2{
-            margin-left:15px;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            border-radius: 20px;
-            width: 145px;
-            height: 48px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            background: #C6CCD7;
-            padding:0px;
-            border: none;
-        }
-
-        button.select2:hover{
-            margin-left:15px;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-content: center;
-            border-radius: 20px;
-            width: 145px;
-            height: 48px;
-            flex-direction: column;
-            justify-content: center;
-            flex-shrink: 0;
-            background: #000;
-            padding:0px;
-            
-        }
-        button.select2 span {
-            color: #000;
-            text-align: center;
-            font-family: 'Lora', serif;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 300;
-            line-height: normal;
-        }
-
-        button.select2:hover span {
-            color: #fff ;
-            text-align: center;
-            font-family: 'Lora', serif;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 300;
-            line-height: normal;
-        }
-        .previous {
-            text-decoration: none;
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #f1f1f1;
-            color: black;
-            border-radius: 50%;
-            position: absolute;
-            top: 20px;
-            left: 40px;
-        }
-
-        .previous:hover {
-            background-color: #ddd;
-            color: black;
-        }
+      
+    }
     `;

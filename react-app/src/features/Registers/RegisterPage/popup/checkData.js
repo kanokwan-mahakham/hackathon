@@ -8,6 +8,11 @@ import Swal from "sweetalert2";
 import axios from "axios";
 const Backgroud = styled.div`
   background-color: #f9f8ee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  margin: 0;
 `;
 
 const StyleContainer = styled.div`
@@ -19,29 +24,42 @@ const StyleContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-content: space-around;
-    flex-direction: row;
+    flex-direction: column;
     padding: 30px;
-    flex-wrap: nowrap
+    flex-wrap: nowrap;
     margin-top: px;
-    margin-left: 150px;
+    margin-left:90px
     box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.40);
 }
+@media (max-width: 1208px) {
+  .container {
+    width: 70%; /* Make it full width on smaller screens */
+    border-radius: 20px; /* Adjust border-radius */
+    margin-top: 10px; /* Adjust the margin top */
+    flex-direction: row;
+    margin-left:90px
+  }
 `;
 
-const Styleprevious = styled.div`
-  .previous {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #f1f1f1;
-    color: black;
-    border-radius: 50%;
-  }
 
-  .previous:hover {
-    background-color: #ddd;
-    color: black;
-  }
+
+const Styleprevious = styled.div`
+.previous {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #f1f1f1;
+  color: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.previous:hover {
+  background-color: #ddd;
+  color: black;
+}
 `;
 
 const StyledBotton = styled.div`
@@ -67,6 +85,10 @@ const StyledBotton = styled.div`
     font-weight: 700;
     line-height: 17.325px;
   }
+  @media (max-width: 1208px) {
+    .button {
+      width:70%
+    }
 `;
 const StyledBotton2 = styled.div`
   .button {
@@ -92,6 +114,12 @@ const StyledBotton2 = styled.div`
     font-weight: 700;
     line-height: 17.325px;
   }
+
+  @media (max-width: 1208px) {
+    .button {
+      width:70%
+    }
+}
 `;
 
 const Styledh1 = styled.div`
@@ -100,8 +128,17 @@ const Styledh1 = styled.div`
     font-weight: bold;
     margin-top: 30px;
     text-align: center;
-    margin-left: 120px;
+   
+    
   }
+
+  @media (max-width: 768px) 
+    .h1 {
+    font-size: 43px;
+    font-weight: bold;
+    padding:0px;
+    }
+
 `;
 const ButtonContainer = styled.div`
   display: flex;
@@ -110,6 +147,11 @@ const ButtonContainer = styled.div`
   margin-top: 15px;
   margin-bottom: 10px;
   gap: 10px; /* Adjust the gap as needed */
+
+  @media (max-width: 1208px) {
+      margin-right: 400px;
+  }
+
 `;
 
 const Styleleft = styled.div`
@@ -119,10 +161,13 @@ const Styleleft = styled.div`
     display: flex;
     margin-left: 380px;
     margin-top: 5px;
-
     background: url(${doc}) no-repeat;
     background-size: 100%;
   }
+  @media (max-width: 1208px) {
+    .image {
+      margin-left:200px;
+    }
 `;
 const Styleline1 = styled.div`
   .underline {
@@ -132,15 +177,24 @@ const Styleline1 = styled.div`
     margin-bottom: 50px;
     margin-left: 120px;
   }
+  @media (max-width: 1208px) {
+    .underline {
+      width: 50%;
+    }
 `;
 const Stylep = styled.div`
   .boxtext {
     margin: 30px;
-    padding-left: 300px;
     font-size: 17.55px;
     margin-left: 180px;
   }
+
+  @media (max-width: 768px) {
+    .boxtext {
+      font-size: 17.55px;
+    }
 `;
+
 const CheckData = ({url, companies,setCompanies,setNotis}) => {
 
     const { id } = useParams();

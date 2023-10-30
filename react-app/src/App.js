@@ -36,7 +36,7 @@ const socket = io.connect("http://localhost:5000");
 
 function App() {
   
-  const url = `http://localhost:5000`;
+  const url = `http://localhost:3002`;
   const [user, setUser] = useState("");
   const [companies, setCompanies] = useState([]);
   const [favs, setFavs] = useState([]);

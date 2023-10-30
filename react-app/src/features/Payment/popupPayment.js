@@ -39,21 +39,30 @@ const StyledBotton = styled.div`
   }
 `;
 const StyleContainer = styled.div`
+.container {
+  width: 870px;
+  height: 470px;
+  background-color: #ffffff;
+  border-radius: 54px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  flex-direction: column;
+  padding: 30px;
+  padding-top: 20px; /* Adjust the padding top */
+  margin-top: 20px; /* Adjust the margin top */
+  margin-left: 20px;
+  border: 2px solid #000;
+}
+
+@media (max-width: 768px) {
   .container {
-    width: 870px;
-    height: 570px;
-    background-color: #ffffff;
-    border-radius: 54px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-around;
+    width: 70%; /* Make it full width on smaller screens */
+    border-radius: 20px; /* Adjust border-radius */
+    margin-top: 10px; /* Adjust the margin top */
     flex-direction: column;
-    padding: 30px;
-    padding-top: px;
-    margin-top: 0px;
-    margin-left: 20px;
-    border: 2px solid #000;
   }
+}
 `;
 const Styleprevious = styled.div`
   .previous {
@@ -63,12 +72,33 @@ const Styleprevious = styled.div`
     background-color: #f1f1f1;
     color: black;
     border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 40px;
   }
 
   .previous:hover {
     background-color: #ddd;
     color: black;
   }
+
+  @media (max-width: 768px) {
+    .previous {
+      text-decoration: none;
+      display: inline-block;
+      
+      padding: 8px 16px;
+      background-color: #f1f1f1;
+      color: black;
+      border-radius: 50%;
+    }
+  
+    .previous:hover {
+      background-color: #ddd;
+      color: black;
+    }
+  }
+
 `;
 const Styledh1 = styled.div`
   h1 {
@@ -80,30 +110,55 @@ const Styledh1 = styled.div`
   }
 `;
 const StyleRight = styled.div`
+
   .right {
-    width: 220px;
-    height: 150px;
-    border-radius: 40px;
-    margin-top: 140px;
-    padding-right: 30px;
+    margin-top: 140px; /* Adjust the margin top */
+    display: flex;
+    justify-content: center;
   }
+
+  @media (max-width: 768px) {
+    .right  {
+      margin-top:10px;
+      display: flex;
+    justify-content: center;
+    }
 `;
 const Styleleft = styled.div`
   .left-image {
-    width: 250px;
-    height: 255px;
+    width: 210px;
+    height: 215px;
     margin-left: 80px;
     margin-top: 5px;
     background: url(${paymentImage}) no-repeat;
     flex-shrink: 0;
     background-size: 100%;
   }
+
+  @media (max-width: 768px) {
+    .left-image   {
+      width: 150px;
+    height: 155px;
+    margin-left: 130px;
+    margin-top: 0px;
+    background: url(${paymentImage}) no-repeat;
+    flex-shrink: 0;
+    background-size: 100%;
+    }
 `;
 const Styledtext1 = styled.div`
   .text1 {
     margin-top: 10px;
     color: #000;
     text-align: center;
+    font-size:15px;
+  }
+  @media (max-width: 768px) 
+  .text1 {
+    margin-top: 10px;
+    color: #000;
+    text-align: center;
+    font-size:10px;
   }
 `;
 const Styledtext2 = styled.div`
@@ -112,6 +167,11 @@ const Styledtext2 = styled.div`
   color: #000;
   text-align: center;
   font-weight: bold;
+
+  @media (max-width: 768px) 
+  .text2 {
+    font-size:10px;
+  }
 `;
 const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
   const [image, setImage] = useState([]);
@@ -260,46 +320,47 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
             </StyledBotton>
           </div>
           <StyleRight>
-            <div className="right">
-              <div class="flex items-center justify-center w-full">
+          
+              <div className="right-image ">
+                <div class="flex items-center justify-center w-full">
                 <label
-                  for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-16 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                >
-                  <div class="flex flex-col items-center justify-center pt-2 pb-3">
-                    <svg
-                      class="w-6 h-6 mb-2 text-gray-500 dark:text-gray-400"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 20 16"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                      />
-                    </svg>
-                    <p class="mb-1 text-xs text-gray-500 dark:text-gray-400">
-                      <span class="font-semibold">Click to upload</span> or drag
-                      and drop
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                      SVG, PNG, JPG or GIF (MAX. 800x400px)
-                    </p>
-                  </div>
-                  <input
-                    id="dropzone-file"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    class="hidden"
-                  />
-                </label>
+    for="dropzone-file"
+    class="flex flex-col items-center justify-center w-full h-16 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+  >
+                     <div class="flex flex-col items-center justify-center pt-2 pb-3">
+      <svg
+        class="text-gray-500 dark:text-gray-400"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 40 26"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+        />
+      </svg>
+      <span>Click to upload</span> or drag and drop
+      <p class="text-xs text-gray-500 dark:text-gray-400">
+        SVG, PNG, JPG or GIF (MAX. 800x400px)
+      </p>
+    </div>
+                    
+                    <input
+                      type="file"
+                      id="dropzone-file"
+                      name="product-image"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleFileChange}
+                    />
+                  </label>
+                </div>
               </div>
-            </div>
+            
           </StyleRight>
         </div>
       </StyleContainer>

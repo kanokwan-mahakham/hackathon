@@ -44,13 +44,14 @@ export default styled(ChoosePage)`
         display: flex;
         justify-content: space-around;
         align-items: center;
-        width: 1000px;
-        height: 550px;
+        /* Changed width to max-width for responsiveness */
+        width: 90%;
+        height: 70%; /* Changed height to auto for responsiveness */
         background-color: #FFFFFF;
         border-radius: 54px;
         padding: 30px;
         padding-top: 50px;
-        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.40);
+        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.40);   
     }
 
     .previous {
@@ -68,5 +69,27 @@ export default styled(ChoosePage)`
     .previous:hover {
         background-color: #ddd;
         color: black;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            display: flex;
+        justify-content: space-around;
+        align-items: center;
+        /* Changed width to max-width for responsiveness */
+        width: 90%;
+        height: 70%; /* Changed height to auto for responsiveness */
+        background-color: #FFFFFF;
+        border-radius: 54px;
+        padding: 30px;
+        padding-top: 50px;
+        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.40);   
+        }
+
+        .previous {
+            position: static; /* Remove absolute positioning on smaller screens */
+            margin-top: 20px; /* Add margin for spacing on smaller screens */
+            left: 0; /* Reset left position */
+        }
     }
 `;
