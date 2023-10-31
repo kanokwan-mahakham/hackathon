@@ -30,6 +30,10 @@ const Navbar = ({
     setShowListChat("show")
   }
 
+  function login(){
+    navigate("/login");
+  }
+
   return (
     <div className={className}>
       <div className="navbar">
@@ -55,8 +59,8 @@ const Navbar = ({
             </>
           ) : (
             <>
-              <img src={noti} className="round-image" />
-              <img src={chat} className="round-image-chat" />
+              <img src={noti} className="round-image" onClick={login}/>
+              <img src={chat} className="round-image-chat" onClick={login} />
             </>
           )}
 

@@ -41,6 +41,7 @@ const Filter = ({
   const image = require("../../image Hackathon/image/background.jpeg");
   const navigate = useNavigate();
   const [newCompanys, setNewCompanys] = useState([]);
+  window.scrollTo(0, 0);
 
   function clearAll() {
     setFilterProduct(products);
@@ -71,7 +72,7 @@ const Filter = ({
       
       {showListChat == "show" ? <ListChat url={url} user={user} listChat={listChat} setShowListChat={setShowListChat} setShowChat={setShowChat} socket={socket} setRoom={setRoom} /> : null}
       {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} /> : null }
-
+      
 
       <NavbarSearch
         user={user}

@@ -24,6 +24,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
   const [description, setDescription] = useState(information.description);
   const [profile, setProfile] = useState(information.profile);
   const navigate = useNavigate();
+  
 
   function handleFileChange(event) {
     const file = event.target.files[0];
@@ -110,7 +111,8 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
 
             <label htmlFor="product-image" className="file-label">
               <div className="file-box">
-                <span className="plus-icon">+</span>
+                {/* <span className="plus-icon">+</span> */}
+                <img src={profile}/>
               </div>
             </label>
 

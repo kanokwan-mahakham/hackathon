@@ -98,6 +98,7 @@
                   </svg>
                 }
                 placeholder="Username"
+                type="text"
                 onChange={(event) => {
                   setUsername(event.target.value);
                 }}
@@ -118,6 +119,7 @@
                   </svg>
                 }
                 placeholder="Password"
+                type="password"
                 onChange={(event) => {
                   setPassword(event.target.value);
                 }}

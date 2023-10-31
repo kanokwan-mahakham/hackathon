@@ -115,7 +115,7 @@ const ProfileFactoryEdit = ({
         </div>
       </div>
       <div className="shop-package">
-        <Package />
+        <Package user={user}/>
       </div>
       <Footer />
     </div>

@@ -5,9 +5,10 @@ import Navbar from "../Component/Navbar";
 import PopupCompare from "../Component/PopupCompare";
 import Noti from "../Component/Noti";
 import ListChat from "../Component/ListChat";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Chat from "../Component/Chat";
 import NavbarSearch from "../Component/NavbarSearch";
+import Swal from "sweetalert2";
 
 const Category = ({
   url,
@@ -35,6 +36,14 @@ const Category = ({
   className,
 }) => {
   const image = require("../../image Hackathon/image/background.jpeg");
+  const navigate = useNavigate();
+
+  window.scrollTo(0, 0);
+
+  function login(){
+      navigate('/login');
+  }
+
   return (
     <div className={className}>
       {showNoti == "show" ? (
@@ -46,10 +55,29 @@ const Category = ({
           setNotis={setNotis}
         ></Noti>
       ) : null}
-      
-      {showListChat == "show" ? <ListChat url={url} user={user} listChat={listChat} setShowListChat={setShowListChat} setShowChat={setShowChat} socket={socket} setRoom={setRoom} /> : null}
-      {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} /> : null }
 
+      {showListChat == "show" ? (
+        <ListChat
+          url={url}
+          user={user}
+          listChat={listChat}
+          setShowListChat={setShowListChat}
+          setShowChat={setShowChat}
+          socket={socket}
+          setRoom={setRoom}
+        />
+      ) : null}
+      {showChat == "show" ? (
+        <Chat
+          url={url}
+          user={user}
+          setShowChat={setShowChat}
+          socket={socket}
+          room={room}
+          setChat={setChat}
+          chat={chat}
+        />
+      ) : null}
 
       <NavbarSearch
         user={user}
@@ -80,19 +108,21 @@ const Category = ({
         )}
 
         <div className="button">
-          {type == "company" ? (
-            <Link to="/HelpmeFactoryOne">
-              <button className="btn-help-me">Help Me</button>
-            </Link>
-          ) : type == "fabric" ? (
-            <Link to="/HelpmeFabicOne">
-              <button className="btn-help-me">Help Me</button>
-            </Link>
-          ) : (
-            <Link to="/HelpmeDesignOne">
-              <button className="btn-help-me">Help Me</button>
-            </Link>
-          )}
+          {typeof user == "object" ? (
+            type == "company" ? (
+              <Link to="/HelpmeFactoryOne">
+                <button className="btn-help-me">Help Me</button>
+              </Link>
+            ) : type == "fabric" ? (
+              <Link to="/HelpmeFabicOne">
+                <button className="btn-help-me">Help Me</button>
+              </Link>
+            ) : (
+              <Link to="/HelpmeDesignOne">
+                <button className="btn-help-me">Help Me</button>
+              </Link>
+            )
+          ) : <button className="btn-help-me" onClick={login}>Help Me</button>}
 
           {type == "company" ? (
             <Link to="/company">

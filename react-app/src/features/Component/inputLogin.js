@@ -32,11 +32,11 @@ height: 14.438px;
 margin-left: 100px ;
 `;
 
-const InputLoginFields = ({ icon,onChange, placeholder }) => {
+const InputLoginFields = ({ icon,type,onChange, placeholder }) => {
     return (
         <InputContainer>
             <IconContainer>{icon}</IconContainer>
-            <Input type="text" placeholder={placeholder} onChange={onChange} />
+            <Input type={type} placeholder={placeholder} onChange={onChange} />
         </InputContainer>
     );
 };

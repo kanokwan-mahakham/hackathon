@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useMemo } from "react";
 import axios from "axios";
 
 const Chat = ({
@@ -28,7 +28,7 @@ const Chat = ({
     }
   }, []);
 
-  useEffect(() => {
+  useMemo(() => {
     
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);

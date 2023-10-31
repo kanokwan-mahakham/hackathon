@@ -31,6 +31,10 @@ const NavbarSearch = ({
     setShowListChat("show")
   }
 
+  function login(){
+    navigate("/login");
+  }
+
   return (
     <div className={className}>
       <div className="navbar">
@@ -49,15 +53,16 @@ const NavbarSearch = ({
           <input placeholder="Search" className="search"></input>
         </div>
         <div className="about-user">
-          {typeof user == "object" ? (
+          
+        {typeof user == "object" ? (
             <>
               <img src={noti} className="round-image" onClick={showNoti} />
               <img src={chat} className="round-image-chat" onClick={showChat}/>
             </>
           ) : (
             <>
-              <img src={noti} className="round-image" />
-              <img src={chat} className="round-image-chat" />
+              <img src={noti} className="round-image" onClick={login}/>
+              <img src={chat} className="round-image-chat" onClick={login} />
             </>
           )}
 

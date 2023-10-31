@@ -1,8 +1,20 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const CardCompany = ({ url, id, userId, user, information,setShowListChat, setShowChat,setListChat,listChat, className }) => {
+const CardCompany = ({
+  url,
+  id,
+  client,
+  userId,
+  user,
+  information,
+  setShowListChat,
+  setShowChat,
+  setListChat,
+  listChat,
+  className,
+}) => {
   const image = require("../../../image Hackathon/image/background.jpeg");
   const location = require("../../../image Hackathon/icon/pin.png");
   const call = require("../../../image Hackathon/icon/call.png");
@@ -11,27 +23,39 @@ const CardCompany = ({ url, id, userId, user, information,setShowListChat, setSh
   const mail = require("../../../image Hackathon/icon/arroba.png");
   const website = require("../../../image Hackathon/icon/world-wide-web.png");
   const linkIn = require("../../../image Hackathon/icon/linkedin-big-logo.png");
+  const navigate = useNavigate();
 
-  async function openChat(){
-    try{
-
-          const find = listChat.find((list)=> list.room == `${userId}${id}` || list.room == `${id}${userId}`)
-          if(find){
-            setShowListChat("show")
-            setShowChat("show")
-          }else{
-            await axios.post(`${url}/listChats`,{userId:userId,companyId:Number(id),room:Number(`${userId}${Number(id)}`)})
-            await axios.post(`${url}/listChats`,{userId:Number(id),companyId:userId,room:Number(`${userId}${Number(id)}`)})
-            const response = await axios.get(`${url}/listChats`)
-            setListChat(response.data)
-            setShowListChat("show")
-            setShowChat("show")
-          }  
-
-    }catch(error){
-      console.error(error) 
+  async function openChat() {
+    try {
+      const find = listChat.find(
+        (list) => list.room == `${userId}${id}` || list.room == `${id}${userId}`
+      );
+      if (find) {
+        setShowListChat("show");
+        setShowChat("show");
+      } else {
+        await axios.post(`${url}/listChats`, {
+          userId: userId,
+          companyId: Number(id),
+          room: Number(`${userId}${Number(id)}`),
+        });
+        await axios.post(`${url}/listChats`, {
+          userId: Number(id),
+          companyId: userId,
+          room: Number(`${userId}${Number(id)}`),
+        });
+        const response = await axios.get(`${url}/listChats`);
+        setListChat(response.data);
+        setShowListChat("show");
+        setShowChat("show");
+      }
+    } catch (error) {
+      console.error(error);
     }
-    
+  }
+
+  function login() {
+    navigate("/login");
   }
 
   return (
@@ -40,9 +64,7 @@ const CardCompany = ({ url, id, userId, user, information,setShowListChat, setSh
         <div className="box-profile">
           <div className="profile-image">
             <img src={information.profile} />
-            <p id="detail">
-              {information.description}
-            </p>
+            <p id="detail">{information.description}</p>
           </div>
           <div className="line"></div>
           <div className="profile-detail">
@@ -85,8 +107,11 @@ const CardCompany = ({ url, id, userId, user, information,setShowListChat, setSh
               </div>
             </div>
             <div className="button-chat">
-              
-                 <button onClick={openChat} >Chat</button>
+              {typeof client == "object"?(
+                <button onClick={openChat}>Chat</button>
+              ):(
+                null
+              )}
               
             </div>
           </div>
