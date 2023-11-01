@@ -59,7 +59,6 @@ const Compare = ({
       {showListChat == "show" ? <ListChat url={url} user={user} listChat={listChat} setShowListChat={setShowListChat} setShowChat={setShowChat} socket={socket} setRoom={setRoom} /> : null}
       {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} /> : null }
 
-
       <Navbar
         user={user}
         setUser={setUser}
@@ -89,6 +88,7 @@ const Compare = ({
             <BoxSlelected
               key={compare.id}
               url={url}
+              user = {user}
               item={compare}
               compares={compares}
               setCompares={setCompares}

@@ -51,32 +51,26 @@ const Category = ({
   }, []);
 
   useEffect(() => {
-    async function findData() {
-      if (search == "" || search == null || search == undefined) {
+    async function findData(search) {
+      if (search === "" || search === null || search === undefined) {
         setData(companies);
       } else {
-        const filteredData = [];
-        setData([])
+        setData([]);
         for (const item of companies) {
           try {
-            const response = await axios.get(`${url}/users/${item.id}`);
-            if (search && response.data.name && response.data.name.startsWith(search)) {
-              // ตรวจสอบว่าค่า search และ response.data.name มีค่าและข้อมูลของคุณมีคำสตาร์ทที่ถูกต้อง
-              setData([...data, item])
+            const res = await axios.get(`${url}/informations/${item.id}`);
+            if (res.data.name.toLowerCase().includes(search.toLowerCase())) {
+              setData((prevData) => [...prevData, item]);
             }
           } catch (error) {
             console.error("Error fetching data for item", item.id, error);
           }
         }
-        // setData(filteredData);
       }
-    } 
-    findData(); // เรียกฟังก์ชันทันทีเมื่อ useEffect เริ่มต้น
+    }
+
+    findData(search);
   }, [search]);
-  
-
-
-  
 
   return (
     <div className={className}>

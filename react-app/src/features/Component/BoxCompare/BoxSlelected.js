@@ -1,27 +1,27 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
-const BoxSelected = ({ url, item, compares, setCompares, className }) => {
+const BoxSelected = ({ url, user, item, compares, setCompares, className }) => {
   const cancel = require("../../../image Hackathon/icon/cancel.png");
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
     async function getData() {
-      const res = await axios.get(`${url}/informations/${item.informationId}`)
-      setData(res.data)
-      
+      const res = await axios.get(`${url}/informations/${item.informationId}`);
+      setData(res.data);
+
       console.log("seccess");
     }
     getData();
   }, [item]);
 
-  function cancelItem(){
-    const newCompare = compares.filter((compare)=>compare.id!=item.id)
-    setCompares(newCompare)
+  function cancelItem() {
+    const newCompare = compares.filter((compare) => compare.id != item.id);
+    setCompares(newCompare);
   }
-
 
   return (
     <div className={className}>
@@ -34,7 +34,16 @@ const BoxSelected = ({ url, item, compares, setCompares, className }) => {
           <div className="detail">
             <p>{data.description}</p>
           </div>
-          <button className="button-detail">รายละเอียด</button>
+          {item.id==user.id?(
+            <Link to="/profile-company">
+            <button className="button-detail">รายละเอียด</button>
+          </Link> 
+          ):(
+            <Link to={`/company/${item.id}`}>
+            <button className="button-detail">รายละเอียด</button>
+          </Link> 
+          )}
+          
         </div>
       </div>
     </div>
@@ -42,7 +51,7 @@ const BoxSelected = ({ url, item, compares, setCompares, className }) => {
 };
 
 export default styled(BoxSelected)`
-@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   display: flex;
 
   .box {
@@ -67,12 +76,12 @@ export default styled(BoxSelected)`
     align-items: center;
     justify-content: center;
   }
-  .box-detail h1{
+  .box-detail h1 {
     font-family: "Lora";
     font-size: 35px;
     font-weight: 600;
   }
-  .detail p{
+  .detail p {
     font-family: "Anuphan";
     font-size: 20px;
     font-weight: 500;
@@ -80,14 +89,14 @@ export default styled(BoxSelected)`
     padding: 18px;
     line-height: 30px;
   }
-  .button-detail{
+  .button-detail {
     width: 200px;
     height: 50px;
     border-radius: 30px;
     font-family: "Anuphan";
     font-size: 19px;
     font-weight: 500;
-    background-color: #333A56;
+    background-color: #333a56;
     color: white;
   }
   .button-detail:hover {

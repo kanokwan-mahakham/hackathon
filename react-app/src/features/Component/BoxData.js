@@ -4,7 +4,15 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const BoxData = ({ user, url, item, setFavs, compares, setCompares , className }) => {
+const BoxData = ({
+  user,
+  url,
+  item,
+  setFavs,
+  compares,
+  setCompares,
+  className,
+}) => {
   const save = require("../../image Hackathon/icon/save-instagram.png");
   const saveGreen = require("../../image Hackathon/icon/bookmark.png"); //ปุ่มที่ถูก save แล้ว
   const image = require("../../image Hackathon/image/background.jpeg");
@@ -12,7 +20,6 @@ const BoxData = ({ user, url, item, setFavs, compares, setCompares , className }
   const [data, setData] = useState("");
   const [icon, setIcon] = useState(save);
   const [favId, setFavId] = useState("");
- 
 
   async function fav() {
     if (typeof favId == "string") {
@@ -59,18 +66,18 @@ const BoxData = ({ user, url, item, setFavs, compares, setCompares , className }
     getDetail();
   }, [item]);
 
-  function compareFn(){
-    if(compares.length === 0){
+  function compareFn() {
+    if (compares.length === 0) {
       setCompares([...compares, item]);
-    } else if(compares.length < 3){
+    } else if (compares.length < 3) {
       const findType = compares.find((compare) => compare.type == item.type);
-      if (findType){
+      if (findType) {
         const check = compares.filter((compare) => compare.id == item.id);
-        if (check.length > 0){
+        if (check.length > 0) {
           Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'ซ้ำ',
+            position: "center",
+            icon: "error",
+            title: "ซ้ำ",
             showConfirmButton: false,
             timer: 2000,
           });
@@ -79,9 +86,9 @@ const BoxData = ({ user, url, item, setFavs, compares, setCompares , className }
         }
       } else {
         Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'โปรดเลือกประเภทเดียวกัน',
+          position: "center",
+          icon: "error",
+          title: "โปรดเลือกประเภทเดียวกัน",
           showConfirmButton: false,
           timer: 2000,
         });
@@ -89,9 +96,9 @@ const BoxData = ({ user, url, item, setFavs, compares, setCompares , className }
       }
     } else {
       Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Compare full',
+        position: "center",
+        icon: "error",
+        title: "Compare full",
         showConfirmButton: false,
         timer: 2000,
       });
@@ -104,7 +111,15 @@ const BoxData = ({ user, url, item, setFavs, compares, setCompares , className }
       <div className={className}>
         <div className="box">
           <div className="box-box-image">
-              <Link to={`/company/${item.id}`}><img src={data.profile} alt="Box Image" /></Link>
+            {user.id == item.id ? (
+              <Link to="/profile-company">
+                <img src={data.profile} alt="Box Image" />
+              </Link>
+            ) : (
+              <Link to={`/company/${item.id}`}>
+                <img src={data.profile} alt="Box Image" />
+              </Link>
+            )}
           </div>
           <div className="box-detail">
             <p id="name">{data.name}</p>
@@ -112,7 +127,9 @@ const BoxData = ({ user, url, item, setFavs, compares, setCompares , className }
 
             <div className="button">
               {typeof user == "object" ? (
-                <button className="conpare-button" onClick={compareFn}>เปรียบเทียบ +</button>
+                <button className="conpare-button" onClick={compareFn}>
+                  เปรียบเทียบ +
+                </button>
               ) : null}
 
               {user.status === "customer" ? (
@@ -130,21 +147,21 @@ export default styled(BoxData)`
   .box {
     position: relative;
   }
-  .box .box-box-image img{
+  .box .box-box-image img {
     width: 420px;
     height: 470px;
     border-radius: 30px;
     margin: 10px 30px 30px 0px;
   }
-  .box .box-box-image{
+  .box .box-box-image {
     width: 420px;
     height: 470px;
     border-radius: 30px;
     margin: 10px 30px 30px 0px;
-    display:flex;
+    display: flex;
     justify-content: center;
   }
-  .box .box-box-image a{
+  .box .box-box-image a {
     text-decoration: none;
     color: #333a56;
   }
@@ -183,7 +200,6 @@ export default styled(BoxData)`
     display: flex;
     justify-content: center;
     align-items: center;
-    
   }
   .conpare-button {
     background-color: #c6ccd7;
