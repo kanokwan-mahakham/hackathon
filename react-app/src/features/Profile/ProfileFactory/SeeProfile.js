@@ -70,7 +70,7 @@ const SeeProfile = ({
       ) : null}
       
       {showListChat == "show" ? <ListChat url={url} user={user} listChat={listChat} setShowListChat={setShowListChat} setShowChat={setShowChat} socket={socket} setRoom={setRoom} /> : null}
-      {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} /> : null }
+      {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} setRoom={setRoom} /> : null }
 
       <Navbar
         user={user}
@@ -80,7 +80,7 @@ const SeeProfile = ({
         setShowListChat={setShowListChat}
       />
 
-      <CardCompany url={url} client={user} id={id} userId={user.id} user={company} information={information} setShowListChat={setShowListChat} setShowChat={setShowChat} setListChat={setListChat} listChat={listChat} />
+      <CardCompany url={url} client={user} id={id} userId={user.id} user={company} information={information} setShowListChat={setShowListChat} setShowChat={setShowChat} setListChat={setListChat} listChat={listChat} setRoom={setRoom} />
 
       <div className="products">
         <PhotoProduct information={information} />

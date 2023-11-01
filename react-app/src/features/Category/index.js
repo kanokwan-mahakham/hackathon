@@ -52,6 +52,7 @@ const Category = ({
 
   useEffect(() => {
     async function findData(search) {
+
       if (search === "" || search === null || search === undefined) {
         setData(companies);
       } else {
@@ -104,6 +105,7 @@ const Category = ({
           room={room}
           setChat={setChat}
           chat={chat}
+          setRoom={setRoom}
         />
       ) : null}
 

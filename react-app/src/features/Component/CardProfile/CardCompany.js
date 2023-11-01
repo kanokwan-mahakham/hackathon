@@ -13,6 +13,7 @@ const CardCompany = ({
   setShowChat,
   setListChat,
   listChat,
+  setRoom,
   className,
 }) => {
   const image = require("../../../image Hackathon/image/background.jpeg");
@@ -31,6 +32,9 @@ const CardCompany = ({
         (list) => list.room == `${userId}${id}` || list.room == `${id}${userId}`
       );
       if (find) {
+        const getRoom = await axios.get(`${url}/listChats`)
+        const find = getRoom.data.find((data)=> data.companyId == id)
+        setRoom(find.room);
         setShowListChat("show");
         setShowChat("show");
       } else {

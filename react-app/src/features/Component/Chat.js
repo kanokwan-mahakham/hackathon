@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState, useEffect,useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import axios from "axios";
 
 const Chat = ({
@@ -10,6 +10,7 @@ const Chat = ({
   room,
   setChat,
   chat,
+  setRoom,
   className,
 }) => {
   const cancle = require("../../image Hackathon/icon/cancel.png");
@@ -20,6 +21,7 @@ const Chat = ({
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const [check, setCheck] = useState([]);
+  
 
   useEffect(() => {
     const data = chat.filter((mes) => mes.room == room);
@@ -29,16 +31,15 @@ const Chat = ({
   }, []);
 
   useMemo(() => {
-    
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
       setChat([...chat, data]);
-      console.log(data)
-      // setMessageList([...messageList, data]);
+      console.log(data);
     });
   }, [socket]);
 
   const sendMessage = async () => {
+  
     if (currentMessage !== "") {
       const messageData = {
         room: room,
@@ -59,6 +60,7 @@ const Chat = ({
 
   function close() {
     setShowChat("");
+    setRoom("");
   }
 
   return (
@@ -72,11 +74,11 @@ const Chat = ({
           </div>
         </div>
 
-        <div className="body-chat">
+        <div className="body-chat" >
           {messageList.map((messageContent) => {
             if (messageContent.sendId === user.id) {
               return (
-                <div className="right" >
+                <div className="right">
                   <div id="text-right">
                     <p>{messageContent.message}</p>
                   </div>
@@ -84,7 +86,7 @@ const Chat = ({
               );
             } else {
               return (
-                <div className="left" >
+                <div className="left">
                   <div id="text-left">
                     <p>{messageContent.message}</p>
                   </div>

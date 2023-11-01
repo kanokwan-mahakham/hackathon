@@ -60,6 +60,7 @@ const ProfileAdmin = ({
           room={room}
           setChat={setChat}
           chat={chat}
+          setRoom={setRoom}
         />
       ) : null}
 
