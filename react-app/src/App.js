@@ -26,13 +26,14 @@ import Filter from "./features/Category/Filter";
 import PopupPayment from "./features/Payment/popupPayment";
 import CheckData from "./features/Registers/RegisterPage/popup/checkData";
 import CheackPayment from "./features/Payment/checkPayment";
+import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange"
 
 
 import Compare from "./features/Compare/index";
 
 import { Routes, Route } from "react-router-dom";
 import SeeProfile from "./features/Profile/ProfileFactory/SeeProfile";
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("http://localhost:3002");
 
 function App() {
   
@@ -130,6 +131,7 @@ function App() {
   return (
     <>
       {companies.length > 0 ? (
+        <>
         <Routes>
           <Route
             path="/"
@@ -178,11 +180,11 @@ function App() {
           />
           <Route
             path="/register-user"
-            element={<RegisterUser setUser={setUser} url={url} />}
+            element={<RegisterUser companies={companies} setUser={setUser} url={url} />}
           />
           <Route
             path="/register-company"
-            element={<RegisterCompany setUser={setUser} url={url} />}
+            element={<RegisterCompany companies={companies} setUser={setUser} url={url} />}
           />
           <Route path="/choose-login-page" element={<ChoosePage />} />
           <Route
@@ -234,6 +236,7 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+                setCompares={setCompares}
 
                 listChat={listChat}
                 socket={socket}
@@ -323,6 +326,7 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+                setCompares={setCompares}
 
                 listChat={listChat}
                 socket={socket}
@@ -732,6 +736,7 @@ function App() {
             }
           />
         </Routes>
+        </>
       ) : (
         <div>Loading....</div>
       )}

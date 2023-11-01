@@ -34,6 +34,8 @@ const ProfileFactory = ({
   setChat,
   notis,
 }) => {
+  
+  window.scrollTo(0, 0);
   return (
     <div className={className}>
       {showNoti == "show" ? (

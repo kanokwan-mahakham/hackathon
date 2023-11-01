@@ -5,9 +5,12 @@ import Navbar from "../Component/Navbar";
 import PopupCompare from "../Component/PopupCompare";
 import Noti from "../Component/Noti";
 import ListChat from "../Component/ListChat";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Chat from "../Component/Chat";
 import NavbarSearch from "../Component/NavbarSearch";
+import Swal from "sweetalert2";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Category = ({
   url,
@@ -35,6 +38,46 @@ const Category = ({
   className,
 }) => {
   const image = require("../../image Hackathon/image/background.jpeg");
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState([]);
+
+  function login() {
+    navigate("/login");
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    async function findData() {
+      if (search == "" || search == null || search == undefined) {
+        setData(companies);
+      } else {
+        const filteredData = [];
+        setData([])
+        for (const item of companies) {
+          try {
+            const response = await axios.get(`${url}/users/${item.id}`);
+            if (search && response.data.name && response.data.name.startsWith(search)) {
+              // ตรวจสอบว่าค่า search และ response.data.name มีค่าและข้อมูลของคุณมีคำสตาร์ทที่ถูกต้อง
+              setData([...data, item])
+            }
+          } catch (error) {
+            console.error("Error fetching data for item", item.id, error);
+          }
+        }
+        // setData(filteredData);
+      }
+    } 
+    findData(); // เรียกฟังก์ชันทันทีเมื่อ useEffect เริ่มต้น
+  }, [search]);
+  
+
+
+  
+
   return (
     <div className={className}>
       {showNoti == "show" ? (
@@ -46,10 +89,29 @@ const Category = ({
           setNotis={setNotis}
         ></Noti>
       ) : null}
-      
-      {showListChat == "show" ? <ListChat url={url} user={user} listChat={listChat} setShowListChat={setShowListChat} setShowChat={setShowChat} socket={socket} setRoom={setRoom} /> : null}
-      {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} /> : null }
 
+      {showListChat == "show" ? (
+        <ListChat
+          url={url}
+          user={user}
+          listChat={listChat}
+          setShowListChat={setShowListChat}
+          setShowChat={setShowChat}
+          socket={socket}
+          setRoom={setRoom}
+        />
+      ) : null}
+      {showChat == "show" ? (
+        <Chat
+          url={url}
+          user={user}
+          setShowChat={setShowChat}
+          socket={socket}
+          room={room}
+          setChat={setChat}
+          chat={chat}
+        />
+      ) : null}
 
       <NavbarSearch
         user={user}
@@ -57,6 +119,8 @@ const Category = ({
         setShownoti={setShownoti}
         setCompares={setCompares}
         setShowListChat={setShowListChat}
+        search={search}
+        setSearch={setSearch}
       />
 
       <div className="title-header">
@@ -80,18 +144,24 @@ const Category = ({
         )}
 
         <div className="button">
-          {type == "company" ? (
-            <Link to="/HelpmeFactoryOne">
-              <button className="btn-help-me">Help Me</button>
-            </Link>
-          ) : type == "fabric" ? (
-            <Link to="/HelpmeFabicOne">
-              <button className="btn-help-me">Help Me</button>
-            </Link>
+          {typeof user == "object" ? (
+            type == "company" ? (
+              <Link to="/HelpmeFactoryOne">
+                <button className="btn-help-me">Help Me</button>
+              </Link>
+            ) : type == "fabric" ? (
+              <Link to="/HelpmeFabicOne">
+                <button className="btn-help-me">Help Me</button>
+              </Link>
+            ) : (
+              <Link to="/HelpmeDesignOne">
+                <button className="btn-help-me">Help Me</button>
+              </Link>
+            )
           ) : (
-            <Link to="/HelpmeDesignOne">
-              <button className="btn-help-me">Help Me</button>
-            </Link>
+            <button className="btn-help-me" onClick={login}>
+              Help Me
+            </button>
           )}
 
           {type == "company" ? (
@@ -112,7 +182,7 @@ const Category = ({
         {/* นำBoxData มาใส่ตรงนี้ได้เลยจ้า*/}
         <div className="show">
           {type == "company"
-            ? companies
+            ? data
                 .filter(
                   (company) =>
                     company.type === "company" && company.status == "company"
@@ -129,7 +199,7 @@ const Category = ({
                   />
                 ))
             : type == "fabric"
-            ? companies
+            ? data
                 .filter(
                   (company) =>
                     company.type === "frabic shop" &&
@@ -146,7 +216,7 @@ const Category = ({
                     setCompares={setCompares}
                   />
                 ))
-            : companies
+            : data
                 .filter(
                   (company) =>
                     company.type === "designer" && company.status == "company"

@@ -38,6 +38,7 @@ const ProfileUser = ({
   className,
 }) => {
   const [factory, setFactory] = useState([]);
+  window.scrollTo(0, 0);
 
   useEffect(() => {
     async function getCompanies() {

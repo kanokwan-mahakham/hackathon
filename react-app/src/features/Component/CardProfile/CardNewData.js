@@ -24,17 +24,41 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
   const [description, setDescription] = useState(information.description);
   const [profile, setProfile] = useState(information.profile);
   const navigate = useNavigate();
+  
+
+  // function handleFileChange(event) {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = function (e) {
+  //       const imagePath = e.target.result;
+  //       console.log("Image path: ", imagePath);
+  //       setProfile(imagePath); // เก็บ URL ของภาพใน state
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
 
   function handleFileChange(event) {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const imagePath = e.target.result;
-        console.log("Image path: ", imagePath);
-        setProfile(imagePath); // เก็บ URL ของภาพใน state
-      };
-      reader.readAsDataURL(file);
+      if (file.size <= 70 * 1024) { // ตรวจสอบขนาดของไฟล์ (70KB)
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const imagePath = e.target.result;
+          setProfile(imagePath); // เก็บ URL ของภาพใน state
+        };
+        reader.readAsDataURL(file);
+        
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "ภาพใหญ่ไป",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
     }
   }
 
@@ -110,7 +134,8 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
 
             <label htmlFor="product-image" className="file-label">
               <div className="file-box">
-                <span className="plus-icon">+</span>
+                {/* <span className="plus-icon">+</span> */}
+                <img src={profile}/>
               </div>
             </label>
 

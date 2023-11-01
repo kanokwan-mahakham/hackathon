@@ -2,12 +2,12 @@
 const { DataTypes } = require('sequelize');
 const {sequelize} = require('../config/database');
 
-const Image = sequelize.define('Image', {
+const Image = sequelize.define('image', {
   filename: {
     type: DataTypes.STRING,
   },
-  data: {
-    type: DataTypes.BLOB('long'),
+  imageUrl: {
+    type: DataTypes.STRING,
   },
 });
 

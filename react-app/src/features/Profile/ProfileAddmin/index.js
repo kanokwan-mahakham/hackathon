@@ -98,7 +98,7 @@ const ProfileAdmin = ({
         </div>
       </div>
       <div className="sale-package">
-        <Package />
+        <Package user={user}/>
       </div>
       <Footer />
     </div>

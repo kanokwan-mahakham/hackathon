@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../Component/Navbar";
 import BoxSlelected from "../Component/BoxCompare/BoxSlelected";
@@ -36,6 +37,11 @@ const Compare = ({
   className,
 }) => {
   const navigate = useNavigate();
+  
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={className}>

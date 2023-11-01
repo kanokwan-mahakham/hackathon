@@ -45,6 +45,7 @@ const EditProfileUser = ({
   //   }
   //   getCompanies();
   // }, []);
+  window.scrollTo(0, 0);
 
   return (
     <div className={className}>

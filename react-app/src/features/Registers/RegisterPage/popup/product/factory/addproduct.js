@@ -128,6 +128,7 @@ const StyleRightimg = styled.div`
       display: flex;
     justify-content: center;
     }
+  }
     
 `;
 
@@ -146,6 +147,7 @@ const Styledh1 = styled.div`
       margin-top: 90px;
       text-align: center;
     }
+  }
   
 `;
 
@@ -164,6 +166,7 @@ const Styledtextinput = styled.div`
     .textinput {
       font-size: 12px;
     }
+  }
 `;
 
 
@@ -221,20 +224,55 @@ const Styledinput = styled.div`
     const [price, setPrice] = useState("");
     const navigate = useNavigate();
 
+    // function handleFileChange(event) {
+    //   const file = event.target.files[0];
+    //   if (file) {
+    //     const reader = new FileReader();
+    //     reader.onload = function (e) {
+    //       const imagePath = e.target.result;
+    //       console.log("Image path: ", imagePath);
+    //       setImage(imagePath); // เก็บ URL ของภาพใน state
+    //     };
+    //     reader.readAsDataURL(file);
+    //   }
+    // }
+
     function handleFileChange(event) {
       const file = event.target.files[0];
       if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          const imagePath = e.target.result;
-          console.log("Image path: ", imagePath);
-          setImage(imagePath); // เก็บ URL ของภาพใน state
-        };
-        reader.readAsDataURL(file);
+        if (file.size <= 70 * 1024) { // ตรวจสอบขนาดของไฟล์ (70KB)
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const imagePath = e.target.result;
+            setImage(imagePath); // เก็บ URL ของภาพใน state
+          };
+          reader.readAsDataURL(file);
+          
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "ภาพใหญ่ไป",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
       }
     }
 
     async function submit() {
+
+      if (!name || !description || !image || !typeProduct || !price) {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Please fill in all fields",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        return;
+      }
+
       try {
         const newProduct = {
           companyId: user.id,
@@ -334,7 +372,7 @@ const Styledinput = styled.div`
 
               <InputField
                 placeholder="ราคา/ตัว"
-                type="text"
+                type="number"
                 onChange={(event) => {
                   setPrice(event.target.value);
                 }}

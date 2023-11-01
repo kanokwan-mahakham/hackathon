@@ -8,7 +8,6 @@ const sequelize = new Sequelize(
       host: 'localhost', // Connect to your local database
       dialect: 'postgres',// Tell sequelize to use Postgres
       port:5432
-      
     }
   );
 
@@ -37,6 +36,7 @@ const sequelize = new Sequelize(
         )
     }
   }
+
 
 
 module.exports = { sequelize, connect, sync };

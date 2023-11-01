@@ -13,7 +13,6 @@
 //   const [image5, setImage5] = useState(information.image1);
 //   const [image6, setImage6] = useState(information.image1);
 
-
 //   async function handleFileChange1(event) {
 //     const file = event.target.files[0];
 //     if (file) {
@@ -29,14 +28,13 @@
 //           image1: imagePath, // Updated 'image1'
 //           ...item
 //         });
-        
+
 //         setInformation(res.data);
 //         console.log(res.data);
 //       };
 //       reader.readAsDataURL(file);
 //     }
 //   }
-  
 
 //   async function handleFileChange2(event) {
 //     const file = event.target.files[0];
@@ -130,7 +128,7 @@
 //         ...item
 //       })
 //       setInformation(res.data);
-      
+
 //     }
 //   }
 
@@ -291,6 +289,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const PhotoProductEdit = ({ url, information, setInformation, className }) => {
   const edit = require("../../../image Hackathon/icon/editing.png");
@@ -306,28 +305,51 @@ const PhotoProductEdit = ({ url, information, setInformation, className }) => {
 
   const { id, ...item } = information;
 
-  async function handleFileChange(event, imageKey) {
+  // async function handleFileChange(event, imageKey) {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = async function (e) {
+  //       const imagePath = e.target.result;
+  //       console.log(`Image path for ${imageKey}:`, imagePath);
+  //       setImageUrls({ ...imageUrls, [imageKey]: imagePath });
+  //       const imageData = {
+  //         ...item,
+  //         [imageKey]: imagePath,
+  //       };
+  //       const res = await axios.put(`${url}/informations/${id}`, imageData);
+  //       setInformation(res.data);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
+
+  function handleFileChange(event,imageKey) {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = async function (e) {
-        const imagePath = e.target.result;
-        console.log(`Image path for ${imageKey}:`, imagePath);
-
-        // Update the appropriate image state
-        setImageUrls({ ...imageUrls, [imageKey]: imagePath });
-
-        // Prepare the data for the PUT request
-        const imageData = {
-          ...item,
-          [imageKey]: imagePath,
+      if (file.size <= 70 * 1024) {
+        const reader = new FileReader();
+        reader.onload = async function (e) {
+          const imagePath = e.target.result;
+          console.log(`Image path for ${imageKey}:`, imagePath);
+          setImageUrls({ ...imageUrls, [imageKey]: imagePath });
+          const imageData = {
+            ...item,
+            [imageKey]: imagePath,
+          };
+          const res = await axios.put(`${url}/informations/${id}`, imageData);
+          setInformation(res.data);
         };
-
-        const res = await axios.put(`${url}/informations/${id}`, imageData);
-        setInformation(res.data);
-      };
-
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "ภาพใหญ่ไป",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
     }
   }
 
@@ -366,35 +388,35 @@ const PhotoProductEdit = ({ url, information, setInformation, className }) => {
 };
 
 export default styled(PhotoProductEdit)`
- .photo-product {
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
-   }
+  .photo-product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-   .image {
-     position: relative;
-     cursor: pointer;
-   }
-   .image .img-product {
-     width: 400px;
-     height: 500px;
-     border-radius: 30px;
-     margin: 10px 40px 40px 0px;
-     border: 4px dashed gray;
-   }
-   .img-product img{
-     width: 100%;
-     height:100%;
-   }
-   .icon-overlay #icon {
-     position: absolute;
-     bottom: 220px;
-     left: 200px;
-     width: 50px;
-     height: 50px;
-     z-index: 1;
-     border-radius: 0;
-     opacity: 0.4;
-   }
+  .image {
+    position: relative;
+    cursor: pointer;
+  }
+  .image .img-product {
+    width: 400px;
+    height: 500px;
+    border-radius: 30px;
+    margin: 10px 40px 40px 0px;
+    border: 4px dashed gray;
+  }
+  .img-product img {
+    width: 100%;
+    height: 100%;
+  }
+  .icon-overlay #icon {
+    position: absolute;
+    bottom: 220px;
+    left: 200px;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    border-radius: 0;
+    opacity: 0.4;
+  }
 `;

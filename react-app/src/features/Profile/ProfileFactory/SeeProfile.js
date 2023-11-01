@@ -42,6 +42,7 @@ const SeeProfile = ({
   const [information, setInformation] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     async function getData() {
       try {
         const findeCompany = companies.find((com) => com.id == id);
@@ -80,7 +81,7 @@ const SeeProfile = ({
         setShowListChat={setShowListChat}
       />
 
-      <CardCompany url={url} id={id} userId={user.id} user={company} information={information} setShowListChat={setShowListChat} setShowChat={setShowChat} setListChat={setListChat} listChat={listChat} />
+      <CardCompany url={url} client={user} id={id} userId={user.id} user={company} information={information} setShowListChat={setShowListChat} setShowChat={setShowChat} setListChat={setListChat} listChat={listChat} />
 
       <div className="products">
         <PhotoProduct information={information} />
