@@ -45,14 +45,14 @@ const NavbarSearch = ({
           ):(
             <Link to="/">Home</Link>
           )} */}
-          <Link to="/">Home</Link>
-          <Link to="/fabric">Fabric</Link>
-          <Link to="/designer">Designer</Link>
-          <Link to="/company">Factory</Link>
+          <Link to="/">หน้าหลัก</Link>
+          <Link to="/fabric">ร้านขายผ้า</Link>
+          <Link to="/designer">ดีไซน์เนอร์</Link>
+          <Link to="/company">โรงงาน</Link>
         </div>
         <div className="search">
           <input
-            placeholder="Search"
+            placeholder="ค้นหา...."
             className="search"
             value={search}
             onChange={(event) => {
@@ -116,7 +116,7 @@ const NavbarSearch = ({
           {typeof user === "object" ? (
             <button className="logout" onClick={logOut}>
               <img src={logout} alt="Logout" />
-              Log out
+              ออกจากระบบ
             </button>
           ) : null}
         </div>
@@ -126,6 +126,7 @@ const NavbarSearch = ({
 };
 
 export default styled(NavbarSearch)`
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .navbar {
     display: flex;
     justify-content: space-evenly;
@@ -169,16 +170,18 @@ export default styled(NavbarSearch)`
 
   .navbar a {
     margin: 40px;
-    font-size: 26px;
+    font-size: 23px;
     font-weight: 500;
     text-decoration: none;
-    color: black;
+    color:white;
+    font-family: "Anuphan";
   }
   .navbar {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin: 30px;
+    background-image: linear-gradient(to bottom right, #12136e, #6b78ff);
   }
   .search {
     width: 250px;
@@ -200,7 +203,7 @@ export default styled(NavbarSearch)`
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #333a56;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -236,9 +239,10 @@ export default styled(NavbarSearch)`
   .logout {
     height: 45px;
     padding: 10px;
-    font-family: "lora";
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
+    color: #333a56;
+    font-family: "Anuphan";
     display: flex;
     align-items: center;
     background-color: white;

@@ -33,6 +33,7 @@ const PopupCompare = ({ url, compares, setCompares, className }) => {
 };
 
 export default styled(PopupCompare)`
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .box-compare {
     position: fixed;
     bottom: 0px;
@@ -64,8 +65,8 @@ export default styled(PopupCompare)`
     width: fit-content;
     padding: 5px 20px;
     height: 50px;
-    color: #333a56;
-    background-color: #c6ccd7;
+    color: black;
+    background-color: #ff9d00;
     display: flex;
     border-radius: 30px;
     flex-direction: column;
@@ -108,7 +109,7 @@ export default styled(PopupCompare)`
     cursor: pointer;
   }
   .btn-compare-seleced {
-    background-color: #333a56;
+    background-image: linear-gradient(to bottom right, #12136e, #6b78ff);
     border: none;
     cursor: pointer;
   }

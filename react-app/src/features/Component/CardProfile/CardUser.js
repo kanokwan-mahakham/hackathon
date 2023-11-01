@@ -28,7 +28,7 @@ const CardUser = ({ className }) => {
               <p>192 ถ.หทัยราษฏร์ บางชัน คลองสามวา กทม.10510</p>
             </div>
             <div className="contact">
-              <h2>Contact</h2>
+              <h2>ช่องทางการติดต่อ</h2>
               <div className="total-detail">
                 <div id="left">
                   <div className="detail" id="เบอร์สำนักงาน">
@@ -76,10 +76,10 @@ export default styled(CardUser)`
   .profile {
     display: flex;
     justify-content: center;
-    margin: 70px 70px 20px 70px;
+    margin: 150px 70px 20px 70px;
   }
   .box-profile {
-    background-color: #293241;
+    background-image: linear-gradient(to bottom, #12136e, #6b78ff);
     width: 1200px;
     height: 650px;
     border-radius: 20px;
@@ -154,6 +154,7 @@ export default styled(CardUser)`
     flex-direction: column;
   }
   .contact h2 {
+    font-family: "Anuphan";
     color: white;
     font-size: 30px;
     font-weight: 600;

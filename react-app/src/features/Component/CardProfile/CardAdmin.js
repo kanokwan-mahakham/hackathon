@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const CardAdmin = ({ className }) => {
-  const image = require("../../../image Hackathon/image/background.jpeg");
+  const image = require("../../../image Hackathon/image/bk1.png");
   const call = require("../../../image Hackathon/icon/call (1).png");
   const telephone = require("../../../image Hackathon/icon/telephone (1).png");
   const facebook = require("../../../image Hackathon/icon/facebook (1).png");
@@ -87,8 +87,9 @@ export default styled(CardAdmin)`
     top: 45px;
     right: 200px;
     position: absolute;
-    width: 300px;
+    width: 400px;
     height: 300px;
-    border-radius: 50%;
+    border-radius: 20px;
+    object-fit: cover;
   }
 `;

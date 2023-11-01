@@ -393,30 +393,32 @@ export default styled(PhotoProductEdit)`
     flex-wrap: wrap;
     justify-content: center;
   }
+   .image {
+     position: relative;
+     cursor: pointer;
+   }
+   .image .img-product {
+     width: 400px;
+     height: 500px;
+     border-radius: 30px;
+     margin: 10px 40px 40px 0px;
+     border: 4px dashed gray;
+   }
+   .img-product img{
+     width: 100%;
+     height:100%;
+     object-fit: cover;
+     border-radius: 30px
+   }
+   .icon-overlay #icon {
+     position: absolute;
+     bottom: 220px;
+     left: 200px;
+     width: 50px;
+     height: 50px;
+     z-index: 1;
+     border-radius: 0;
+     opacity: 0.4;
+   }
 
-  .image {
-    position: relative;
-    cursor: pointer;
-  }
-  .image .img-product {
-    width: 400px;
-    height: 500px;
-    border-radius: 30px;
-    margin: 10px 40px 40px 0px;
-    border: 4px dashed gray;
-  }
-  .img-product img {
-    width: 100%;
-    height: 100%;
-  }
-  .icon-overlay #icon {
-    position: absolute;
-    bottom: 220px;
-    left: 200px;
-    width: 50px;
-    height: 50px;
-    z-index: 1;
-    border-radius: 0;
-    opacity: 0.4;
-  }
 `;

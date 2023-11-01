@@ -39,7 +39,7 @@ const HomePage = ({
   
   className,
 }) => {
-  const image = require("../../../image Hackathon/image/background.jpg");
+  const image = require("../../../image Hackathon/image/bk1.png");
 
   const [frabic, setFrabic] = useState([]);
   const [factory, setFactory] = useState([]);
@@ -104,16 +104,16 @@ const HomePage = ({
         {/* Factory */}
         <div id="factory">
           <div className="header-category">
-            <p>Factory</p>
+            <p>โรงงาน</p>
           </div>
           <div className="detail">
             <p>รับผลิตและจัดจำหน่ายสินค้าประเภทเสื้อผ้า</p>
             <Link to="/company" id="seeAll">
-              See All
+              ดูทั้งหมด
             </Link>
           </div>
           <div className="show-slide">
-            {factory.slice(0, 3).map((company) => {
+            {factory.slice(0, 4).map((company) => {
               return (
                 <BoxData
                   key={company.id}
@@ -132,16 +132,16 @@ const HomePage = ({
         {/* Fabric */}
         <div id="fabric">
           <div className="header-category">
-            <p>Fabric</p>
+            <p>ร้านขายผ้า</p>
           </div>
           <div className="detail">
             <p>ร้านค้าขายปลีก-ส่ง ผ้าม้วนนำเข้าราคาถูก</p>
             <Link to="/fabric" id="seeAll">
-              See All
+              ดูทั้งหมด
             </Link>
           </div>
           <div className="show-slide">
-            {frabic.slice(0, 3).map((company) => {
+            {frabic.slice(0, 4).map((company) => {
               return (
                 <BoxData
                   key={company.id}
@@ -160,16 +160,16 @@ const HomePage = ({
         {/* Designer */}
         <div id="designer">
           <div className="header-category">
-            <p>Designer</p>
+            <p>ดีไซน์เนอร์</p>
           </div>
           <div className="detail">
             <p>หามืออาชีพออกแบบเสื้อผ้าแฟชั่นงานคุณภาพ</p>
             <Link to="/designer" id="seeAll">
-              See All
+              ดูทั้งหมด
             </Link>
           </div>
           <div className="show-slide">
-            {designer.slice(0, 3).map((company) => {
+            {designer.slice(0, 4).map((company) => {
               return (
                 <BoxData
                   key={company.id}
@@ -196,16 +196,23 @@ const HomePage = ({
 
 export default styled(HomePage)`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+  background-color: black;
+
   .navbar {
     position: absolute;
-    width: 100%;
+    width: 85%;
+    height: 75px;
     z-index: 2;
+    background-color: white;
+    border-radius: 100px;
+    left: 90px;
   }
   .image img {
     width: 100%;
-    height: 800px;
+    height: 850px;
     border-bottom-left-radius: 400px;
     border-bottom-right-radius: 400px;
+    object-fit: cover;
   }
   .blog {
     width: 100%;
@@ -213,38 +220,43 @@ export default styled(HomePage)`
     margin: 80px 0px;
   }
   .header-text {
+    margin-left:20px;
+    background-color: white;
     border-radius: 50px;
-    border: 1px solid black;
+    border: 1px solid white;
     width: fit-content;
     height: fit-content;
+    box-shadow: rgb(5 5 255 / 57%) 0px 10px 300px -20px, rgb(5 55 194 / 83%) 0px 30px 60px -30px, rgb(2 44 130 / 81%) 0px -2px 6px 0px inset;
   }
   .header-text p {
     margin: 15px 60px;
     font-family: "lora";
-    font-size: 45px;
+    font-size: 40px;
     font-weight: 500;
   }
 
   /*Category */
   .show-category {
-    background-color: #f7f5e6;
+    background-color: white;
     padding: 40px;
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
   .header-category {
-    background-color: #333a56;
+    background-color: black;
     border-radius: 50px;
     border: 1px solid black;
     width: fit-content;
     height: fit-content;
     color: white;
     margin: 50px;
+    box-shadow: rgb(46 65 240 / 40%) 5px 5px, rgba(46, 65, 240, 0.3) 10px 10px, rgba(46, 65, 240, 0.2) 15px 15px, rgba(46, 65, 240, 0.1) 20px 20px, rgba(46, 65, 240, 0.05) 25px 25px;
   }
   .header-category p {
     margin: 15px 60px;
-    font-family: "lora";
-    font-size: 45px;
+    font-family: "Anuphan";
+    font-size: 35px;
     font-weight: 500;
   }
   .detail {
@@ -255,22 +267,25 @@ export default styled(HomePage)`
   }
   .detail p {
     font-family: "Anuphan";
-    font-size: 33px;
-    font-weight: 400;
+    font-size: 27px;
+    font-weight: 500;
     margin: 0 80px;
   }
   .detail a {
-    font-family: "lora";
+    font-family: "Anuphan";
     font-size: 25px;
     font-weight: 500;
     margin: 0px;
   }
   .detail #seeAll {
-    font-family: "lora";
+    font-family: "Anuphan";
     font-size: 25px;
     font-weight: 500;
-    color: #4f7108;
+    color:#ff9d00;;
     text-decoration: none;
+  }
+  .detail #seeAll:hover{
+    color: #12136e;
   }
 
   /*Showslide */

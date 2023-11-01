@@ -83,6 +83,19 @@ const EditProfileUser = ({
 
 export default styled(EditProfileUser)`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+  background-color: black;
+  padding-top: 10px;
+  font-family: "Anuphan";
+
+  .navbar {
+    position: absolute;
+    width: 85%;
+    height: 75px;
+    z-index: 2;
+    background-color: white;
+    border-radius: 100px;
+    left: 90px;
+  }
   .approved {
     display: flex;
     flex-direction: column;

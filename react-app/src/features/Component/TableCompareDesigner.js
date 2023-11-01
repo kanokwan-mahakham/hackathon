@@ -99,12 +99,12 @@ export default styled(TableCompareDesigner)`
     font-size: 30px;
     font-weight: 500;
     text-align: center;
-    background-color: #333a56;
-    color: white;
+    background-color: #fdc300;
+    color: black;
     border: none;
   }
   .table #space {
-    background-color: #333a56;
+    background-color:#fdc300;
     font-family: "Anuphan";
     font-size: 30px;
     font-weight: 500;

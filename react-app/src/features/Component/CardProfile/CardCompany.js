@@ -78,7 +78,7 @@ const CardCompany = ({
               <p>{information.address}</p>
             </div>
             <div className="contact">
-              <h2>Contact</h2>
+              <h2>ช่องทางการติดต่อ</h2>
               <div className="total-detail">
                 <div id="left">
                   <div className="detail" id="เบอร์สำนักงาน">
@@ -112,7 +112,7 @@ const CardCompany = ({
             </div>
             <div className="button-chat">
               {typeof client == "object"?(
-                <button onClick={openChat}>Chat</button>
+                <button onClick={openChat}>ส่งข้อความ</button>
               ):(
                 null
               )}
@@ -131,10 +131,10 @@ export default styled(CardCompany)`
   .profile {
     display: flex;
     justify-content: center;
-    margin: 70px 70px 20px 70px;
+    margin: 150px 70px 20px 70px;
   }
   .box-profile {
-    background-color: #293241;
+    background-image: linear-gradient(to bottom, #12136e, #6b78ff);
     width: 1200px;
     height: 650px;
     border-radius: 20px;
@@ -209,6 +209,7 @@ export default styled(CardCompany)`
     flex-direction: column;
   }
   .contact h2 {
+    font-family: "Anuphan";
     color: white;
     font-size: 30px;
     font-weight: 600;
@@ -235,14 +236,19 @@ export default styled(CardCompany)`
     padding-right: 130px;
   }
   .button-chat button {
-    width: 130px;
+    width: 150px;
     height: 45px;
     margin: 30px 20px 0px 0px;
     border-radius: 20px;
-    font-family: "Lora";
+    font-family: "Anuphan";
     font-size: 25px;
     font-weight: 600;
     background-color: white;
+    box-shadow: #fff 0px 2px 30px -10px;
+    cursor: pointer;
+  }
+  .button-chat button:hover {
+    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
     cursor: pointer;
   }
 `;

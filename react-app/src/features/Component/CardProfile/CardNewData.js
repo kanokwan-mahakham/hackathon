@@ -174,7 +174,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
               ></input>
             </div>
             <div className="contact">
-              <h2>Contact</h2>
+              <h2>ช่องทางการติดต่อ</h2>
               <div className="total-detail">
                 <div id="left">
                   <div className="detail" id="เบอร์สำนักงาน">
@@ -245,12 +245,12 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
               {user.status == "company" || user.status == "waiting" ? (
                 <Link to="/profile-company">
                   {" "}
-                  <button onClick={submit}>Save</button>
+                  <button onClick={submit}>บันทึก</button>
                 </Link>
               ) : (
                 <Link to="/profile-user">
                   {" "}
-                  <button onClick={submit}>Save</button>
+                  <button onClick={submit}>บันทึก</button>
                 </Link>
               )}
             </div>
@@ -267,10 +267,10 @@ export default styled(CardNewData)`
   .profile {
     display: flex;
     justify-content: center;
-    margin: 70px 70px 20px 70px;
+    margin: 150px 70px 20px 70px;
   }
   .box-profile {
-    background-color: #293241;
+    background-image: linear-gradient(to bottom, #12136e, #6b78ff);
     width: 1200px;
     height: 650px;
     border-radius: 20px;
@@ -345,6 +345,7 @@ export default styled(CardNewData)`
     flex-direction: column;
   }
   .contact h2 {
+    font-family: "Anuphan";
     color: white;
     font-size: 30px;
     font-weight: 600;
@@ -377,7 +378,7 @@ export default styled(CardNewData)`
     height: 45px;
     margin: 30px 20px 0px 0px;
     border-radius: 20px;
-    font-family: "Lora";
+    font-family: "Anuphan";
     font-size: 25px;
     font-weight: 600;
     background-color: white;

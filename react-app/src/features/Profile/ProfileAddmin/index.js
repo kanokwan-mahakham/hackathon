@@ -95,7 +95,7 @@ const ProfileAdmin = ({
       </div>
       <div className="package">
         <div className="head-name">
-          <h1>Package</h1>
+          <h1>แพ็คเกจสุดคุ้ม</h1>
         </div>
       </div>
       <div className="sale-package">
@@ -121,7 +121,7 @@ export default styled(ProfileAdmin)`
     justify-content: space-around;
     height: 150px;
     width: 1100px;
-    background-color: #333a56;
+    background-image: linear-gradient(to bottom, #12136e, #6b78ff);
     color: white;
     margin: 50px 0px 150px 0px;
     border-radius: 100px;
@@ -152,13 +152,13 @@ export default styled(ProfileAdmin)`
     align-items: center;
     justify-content: center;
     position: absolute;
-    transform: translate(205%, -90%);
+    transform: translate(170%, -90%);
     z-index: 2;
     font-size: 50px;
   }
   .head-name h1 {
     background-color: white;
-    width: 300px;
+    width: 350px;
     height: 80px;
     border: 1px solid;
     border-radius: 50px;
@@ -166,7 +166,7 @@ export default styled(ProfileAdmin)`
   .sale-package {
     width: 100%;
     height: 500px;
-    background-color: #333a56;
+    background-color: black;
     margin-bottom: 50px;
     padding-top: 100px;
   }

@@ -93,28 +93,28 @@ const Filter = ({
       ) : null}
       <div className="title-header">
         {type == "company" ? (
-          <h1>Factory</h1>
+          <h1>โรงงาน</h1>
         ) : type == "fabric" ? (
-          <h1>Fabric</h1>
+          <h1>ร้านขายผ้า</h1>
         ) : (
-          <h1>Designer</h1>
+          <h1>ดีไซน์เนอร์</h1>
         )}
 
         <div id="line"></div>
       </div>
       <div className="box-btn">
         {type == "company" ? (
-          <p>หาโรงงานที่คุณต้องการได้ง่ายขึ้นเพียงกดปุ่ม Help me</p>
+          <p>หาโรงงานที่คุณต้องการได้ง่ายขึ้นเพียงกดปุ่ม กลั่นกรอง</p>
         ) : type == "fabric" ? (
-          <p>หาร้านขายผ้าที่คุณต้องการได้ง่ายขึ้นเพียงกดปุ่ม Help me</p>
+          <p>หาร้านขายผ้าที่คุณต้องการได้ง่ายขึ้นเพียงกดปุ่ม กลั่นกรอง</p>
         ) : (
-          <p>หานักออกแบบที่คุณต้องการได้ง่ายขึ้นเพียงกดปุ่ม Help me</p>
+          <p>หานักออกแบบที่คุณต้องการได้ง่ายขึ้นเพียงกดปุ่ม กลั่นกรอง</p>
         )}
 
         <div className="button">
           {/* <button className="btn-help-me"onClick={clearAll}>Help Me</button> */}
           <button className="btn-see-all" onClick={clearAll}>
-            See All
+          ดูทั้งหมด
           </button>
         </div>
 
@@ -182,6 +182,15 @@ const Filter = ({
 };
 export default styled(Filter)`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+  .navbar {
+    position: absolute;
+    width: 85%;
+    height: 75px;
+    z-index: 2;
+    background-color: white;
+    border-radius: 100px;
+    left: 90px;
+  }
   .title-header {
     display: flex;
     flex-direction: column;
@@ -189,14 +198,15 @@ export default styled(Filter)`
     justify-content: center;
   }
   .title-header h1 {
-    font-family: "Lora";
+    font-family: "Anuphan";
     font-size: 65px;
     font-weight: 600;
-    color: #333a56;
+    color: black;
+    margin-top: 180px;
   }
   .title-header #line {
     width: 65%;
-    border: 2.22px solid #333a56;
+    border: 2.22px solid black;
   }
   .box-btn {
     display: flex;
@@ -209,7 +219,7 @@ export default styled(Filter)`
     font-family: "Anuphan";
     font-size: 20px;
     font-weight: 500;
-    color: #333a56;
+    color: black;
   }
   .button {
     display: flex;
@@ -218,7 +228,7 @@ export default styled(Filter)`
     justify-content: center;
   }
   .btn-help-me {
-    font-family: "Lora";
+    font-family: "Anuphan";
     font-size: 18px;
     font-weight: 600;
     background-color: white;
@@ -229,12 +239,12 @@ export default styled(Filter)`
     transition: background-color 0.3s;
   }
   .btn-help-me:hover {
-    background-color: #333a56;
+    background-image: linear-gradient(to bottom right, #12136e, #6b78ff);
     color: white;
     cursor: pointer;
   }
   .btn-see-all {
-    font-family: "Lora";
+    font-family: "Anuphan";
     font-size: 18px;
     font-weight: 600;
     background: none;
@@ -243,10 +253,10 @@ export default styled(Filter)`
     height: 50px;
     margin-right: 40px;
     transition: background-color 0.3s;
-    color: #333a56;
+    color: #12136e;
   }
   .btn-see-all:hover {
-    color: #4f7108;
+    color: #ff9d00;
     cursor: pointer;
   }
   .show {

@@ -96,12 +96,14 @@ export default styled(BoxSelected)`
     font-family: "Anuphan";
     font-size: 19px;
     font-weight: 500;
-    background-color: #333a56;
+    background-image: linear-gradient(to bottom right, #12136e, #6b78ff);
     color: white;
+    border:none;
   }
   .button-detail:hover {
-    background-color: white;
-    color: black;
+    color: #12136e;
+    background-image: linear-gradient(to bottom right, #ff9d00, #ded05a);
+    border:none;
     cursor: pointer;
   }
 `;

@@ -42,7 +42,7 @@ const ListChat = ({
     <div className={className}>
       <div className="popup-list">
         <div className="header">
-          <p>Chat messages</p>
+          <p>ข้อความ</p>
           <div className="btn-header">
             <img src={cancle} id="btn-cancle" onClick={close} />
           </div>
@@ -64,22 +64,24 @@ const ListChat = ({
 };
 
 export default styled(ListChat)`
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .popup-list {
     position: fixed;
     bottom: 20px;
     right: 7px;
     background-color: white;
     border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 5;
     width: 320px;
     height: 400px;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
   }
   .header {
     width: 100%;
     height: 60px;
-    background-color: #293241;
+    background-image: linear-gradient(to bottom right, #ff9d00, #ded05a);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     display: flex;
@@ -87,8 +89,8 @@ export default styled(ListChat)`
     align-items: center;
   }
   .header p {
-    color: white;
-    font-family: "Lora";
+    color:black;
+    font-family: "Anuphan";
     font-weight: 500;
     font-size: 20px;
     margin-left: 15px;

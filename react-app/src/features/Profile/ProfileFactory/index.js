@@ -62,7 +62,7 @@ const ProfileFactory = ({
       <CardEdit user={user} information={information} />
       <div className="products">
         <PhotoProduct information={information} />
-        <h1>Product</h1>
+        <h1>สินค้าตัวอย่าง</h1>
         <div className="sale-product">
           {products.length > 0
             ? products.map((product) => {
@@ -80,8 +80,18 @@ const ProfileFactory = ({
 
 export default styled(ProfileFactory)`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-  background-color: #c6ccd7;
+  background-color: black;
   padding-top: 10px;
+
+  .navbar {
+    position: absolute;
+    width: 85%;
+    height: 75px;
+    z-index: 2;
+    background-color: white;
+    border-radius: 100px;
+    left: 90px;
+  }
 
   .products {
     height: fit-content;
@@ -92,10 +102,12 @@ export default styled(ProfileFactory)`
     border-radius: 100px;
   }
   .products h1 {
+    font-family: "Anuphan";
     font-size: 120px;
     font-weight: 600;
     color: #333a56;
     text-align: center;
+
   }
   .sale-product {
     display: flex;

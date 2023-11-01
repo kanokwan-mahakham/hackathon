@@ -18,7 +18,7 @@ const Navbar = ({
   function logOut() {
     setUser("");
     setCompares([]);
-    setShowListChat("")
+    setShowListChat("");
     navigate("/");
   }
 
@@ -27,10 +27,10 @@ const Navbar = ({
   }
 
   function showChat() {
-    setShowListChat("show")
+    setShowListChat("show");
   }
 
-  function login(){
+  function login() {
     navigate("/login");
   }
 
@@ -43,10 +43,10 @@ const Navbar = ({
           ):(
             <Link to="/">Home</Link>
           )} */}
-          <Link to="/">Home</Link>
-          <Link to="/fabric">Fabric</Link>
-          <Link to="/designer">Designer</Link>
-          <Link to="/company">Factory</Link>
+          <Link to="/">หน้าหลัก</Link>
+          <Link to="/fabric">ร้านขายผ้า</Link>
+          <Link to="/designer">ดีไซน์เนอร์</Link>
+          <Link to="/company">โรงงาน</Link>
         </div>
         <div className="search">
           {/* <input placeholder="Search" className="search"></input> */}
@@ -55,11 +55,11 @@ const Navbar = ({
           {typeof user == "object" ? (
             <>
               <img src={noti} className="round-image" onClick={showNoti} />
-              <img src={chat} className="round-image-chat" onClick={showChat}/>
+              <img src={chat} className="round-image-chat" onClick={showChat} />
             </>
           ) : (
             <>
-              <img src={noti} className="round-image" onClick={login}/>
+              <img src={noti} className="round-image" onClick={login} />
               <img src={chat} className="round-image-chat" onClick={login} />
             </>
           )}
@@ -107,7 +107,7 @@ const Navbar = ({
           {typeof user === "object" ? (
             <button className="logout" onClick={logOut}>
               <img src={logout} alt="Logout" />
-              Log out
+              ออกจากระบบ
             </button>
           ) : null}
         </div>
@@ -117,6 +117,7 @@ const Navbar = ({
 };
 
 export default styled(Navbar)`
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .navbar {
     display: flex;
     justify-content: space-evenly;
@@ -160,10 +161,11 @@ export default styled(Navbar)`
 
   .navbar a {
     margin: 40px;
-    font-size: 26px;
+    font-size: 23px;
     font-weight: 500;
     text-decoration: none;
     color: black;
+    font-family: "Anuphan";
   }
   .navbar {
     display: flex;
@@ -191,7 +193,7 @@ export default styled(Navbar)`
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #333a56;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,9 +229,10 @@ export default styled(Navbar)`
   .logout {
     height: 45px;
     padding: 10px;
-    font-family: "lora";
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
+    color: #333a56;
+    font-family: "Anuphan";
     display: flex;
     align-items: center;
     background-color: white;

@@ -17,61 +17,61 @@ const Package = ({ user, className }) => {
       {user.status == "addmin" ? (
         <>
           <div className="box">
-            <div className="price">THB 29 / DAY</div>
+            <div className="price">29 บาท / วัน</div>
             <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 วัน</div>
-            <button className="button">Shop now</button>
+            <button className="button">ซื้อทันที</button>
           </div>
           <div className="box">
-            <div className="price">THB 499 / MONTH</div>
+            <div className="price">499 บาท / เดือน</div>
             <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 เดือน</div>
-            <button className="button">Shop now</button>
+            <button className="button">ซื้อทันที</button>
           </div>
           <div className="box">
-            <div className="price">THB 8999 / YEAR</div>
+            <div className="price">8999 บาท / ปี</div>
             <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 ปี</div>
-            <button className="button">Shop now</button>
+            <button className="button">ซื้อทันที</button>
           </div>
         </>
       ) : user.status == "company" ? (
         <>
           <div className="box">
-            <div className="price">THB 29 / DAY</div>
+            <div className="price">29 บาท / วัน</div>
             <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 วัน</div>
             <Link to="/payment-day">
-              <button className="button">Shop now</button>
+              <button className="button">ซื้อทันที</button>
             </Link>
           </div>
           <div className="box">
-            <div className="price">THB 499 / MONTH</div>
+            <div className="price">499 บาท / เดือน</div>
             <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 เดือน</div>
             <Link to="/payment-month">
-              <button className="button">Shop now</button>
+              <button className="button">ซื้อทันที</button>
             </Link>
           </div>
           <div className="box">
-            <div className="price">THB 8999 / YEAR</div>
+            <div className="price">8999 บาท / ปี</div>
             <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 ปี</div>
             <Link to="/payment-year">
-              <button className="button">Shop now</button>
+              <button className="button">ซื้อทันที</button>
             </Link>
           </div>
         </>
       ) : (
         <>
           <div className="box">
-            <div className="price">THB 29 / DAY</div>
+            <div className="price">29 บาท / วัน</div>
             <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 วัน</div>
-              <button className="button" onClick={wait}>Shop now</button> 
+              <button className="button" onClick={wait}>ซื้อทันที</button> 
           </div>
           <div className="box">
-            <div className="price">THB 499 / MONTH</div>
+            <div className="price">499 บาท / เดือน</div>
             <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 เดือน</div>
-              <button className="button" onClick={wait} >Shop now</button> 
+              <button className="button" onClick={wait} >ซื้อทันที</button> 
           </div>
           <div className="box">
-            <div className="price">THB 8999 / YEAR</div>
+            <div className="price">8999 บาท / ปี</div>
             <div className="detail">อัตตราการมอง เห็นเพิ่มขึ้น ใน 1 ปี</div>
-              <button className="button" onClick={wait} >Shop now</button>
+              <button className="button" onClick={wait} >ซื้อทันที</button>
           </div>
         </>
       )}
@@ -114,9 +114,14 @@ export default styled(Package)`
     font-size: 30px;
     font-weight: 600;
     border-radius: 30px;
-    background-color: #f7f5e6;
-    color: #333a56;
+    background-image: linear-gradient(to bottom right, #ff9d00, #ded05a);
+    border:none;
+    color: #12136e;
     margin-top: 20px;
     cursor: pointer;
+  }
+  .button:hover{
+    background-image: linear-gradient(to bottom right, #12136e, #6b78ff);
+    color: white;
   }
 `;

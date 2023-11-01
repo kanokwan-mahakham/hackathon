@@ -75,7 +75,7 @@ const ProfileFactoryEdit = ({
           information={information}
           setInformation={setInformation}
         />
-        <h1>Product</h1>
+        <h1>สินค้าตัวอย่าง</h1>
         <div className="sale-product">
           {user.type == "company" ? (
             <Link to="/add-product-company">
@@ -111,7 +111,7 @@ const ProfileFactoryEdit = ({
             : null}
         </div>
         <div className="package">
-          <h1>Package</h1>
+          <h1>แพ็คเกจสุดคุ้ม</h1>
         </div>
       </div>
       <div className="shop-package">
@@ -124,9 +124,18 @@ const ProfileFactoryEdit = ({
 
 export default styled(ProfileFactoryEdit)`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-  background-color: #c6ccd7;
+  background-color: black;
   padding-top: 10px;
 
+  .navbar {
+    position: absolute;
+    width: 85%;
+    height: 75px;
+    z-index: 2;
+    background-color: white;
+    border-radius: 100px;
+    left: 90px;
+  }
   .add-product {
     width: 400px;
     height: 500px;
@@ -156,6 +165,7 @@ export default styled(ProfileFactoryEdit)`
     border-radius: 100px;
   }
   .products h1 {
+    font-family: "Anuphan";
     font-size: 120px;
     font-weight: 600;
     color: #333a56;
@@ -168,14 +178,15 @@ export default styled(ProfileFactoryEdit)`
   }
   .products .package {
     position: absolute;
-    transform: translate(190%, -10%);
+    transform: translate(150%, -10%);
   }
   .package h1 {
     font-size: 55px;
     font-weight: 600;
     color: white;
-    width: 300px;
-    height: 90px;
+    width: fit-content;
+    padding: 0px 25px;
+    height: 100px;
     background-color: black;
     border-radius: 50px;
     display: flex;

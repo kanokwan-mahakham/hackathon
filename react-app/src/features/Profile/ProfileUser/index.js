@@ -94,12 +94,12 @@ const ProfileUser = ({
       <CardEdit user={user} information={information} />
 
       <div className="approved">
-        <h1>Approved</h1>
+        <h1>สิ่งที่คุณสนใจ</h1>
         <div className="line"></div>
         {factory.length > 0 ? (
           <>
             <div className="box-category">
-              <div className="name-category">Factory</div>
+              <div className="name-category">โรงงาน</div>
               <div className="collect">
                 {factory.map((company) =>
                   company.type == "company" ? (
@@ -118,7 +118,7 @@ const ProfileUser = ({
             </div>
 
             <div className="box-category">
-              <div className="name-category">Fabric</div>
+              <div className="name-category">ร้านขายผ้า</div>
               <div className="collect">
                 {factory.map((company) =>
                   company.type == "frabic shop" ? (
@@ -136,7 +136,7 @@ const ProfileUser = ({
               </div>
             </div>
             <div className="box-category">
-              <div className="name-category">Designers</div>
+              <div className="name-category">ดีไซน์เนอร์</div>
               <div className="collect">
                 {factory.map((company) =>
                   company.type == "designer" ? (
@@ -166,6 +166,19 @@ const ProfileUser = ({
 
 export default styled(ProfileUser)`
   @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+  background-color: black;
+  padding-top: 10px;
+  font-family: "Anuphan";
+
+  .navbar {
+    position: absolute;
+    width: 85%;
+    height: 75px;
+    z-index: 2;
+    background-color: white;
+    border-radius: 100px;
+    left: 90px;
+  }
   .approved {
     display: flex;
     flex-direction: column;
@@ -174,10 +187,11 @@ export default styled(ProfileUser)`
   .approved h1 {
     font-size: 80px;
     font-weight: 600;
+    color:white;
     margin-bottom: 40px;
   }
   .approved .line {
-    border-bottom: 4px solid black;
+    border-bottom: 4px solid white;
     width: 70%;
     margin: 20px 0px 50px 0px;
   }
@@ -189,18 +203,18 @@ export default styled(ProfileUser)`
     margin-left: 150px;
   }
   .name-category {
-    font-size: 50px;
-    font-weight: 600;
-    color: #333a56;
-    width: 350px;
-    height: 90px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 40px;
-    border: 3px solid black;
-    margin: 40px 0px;
+    font-family: "Anuphan";
+    font-size: 35px;
+    font-weight: 500;
+    background-color: white;
+    border-radius: 50px;
+    border: 1px solid black;
+    width: fit-content;
+    height: fit-content;
+    color: black;
+    margin: 50px;
+    padding: 15px 60px;
+    box-shadow: rgb(46 65 240 / 40%) 5px 5px, rgba(46, 65, 240, 0.3) 10px 10px, rgba(46, 65, 240, 0.2) 15px 15px, rgba(46, 65, 240, 0.1) 20px 20px, rgba(46, 65, 240, 0.05) 25px 25px;
   }
   .collect {
     display: flex;
