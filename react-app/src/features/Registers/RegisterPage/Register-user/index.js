@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const Backgroud = styled.div`
-  background-color: #f9f8ee;
+  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;

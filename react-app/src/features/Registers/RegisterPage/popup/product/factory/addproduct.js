@@ -1,3 +1,4 @@
+
   import React, { useState } from "react";
   import InputField from "../../../../../Component/input";
   import Button from "../../../../../../features/Component/Botton";
@@ -170,7 +171,7 @@ const Styledtextinput = styled.div`
 `;
 
 
-const Styledinput = styled.div`
+const Styledinput1 = styled.div`
   .input-container2 {
     display: flex;
     height: 27px;
@@ -213,6 +214,32 @@ const Styledinput = styled.div`
     }
   }
 
+`;
+
+const Styledinput = styled.label`
+input {
+    padding: 8px 15px 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    background-color: #ECEFF1;
+    font-size: 16px;
+    letter-spacing: 1px
+}
+input:focus{
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #673AB7;
+    outline-width: 0
+}
+@media (max-width: 768px) {
+
+}
 `;
   const PopupAddProductFactory = ({ url, user, setProducts }) => {
     const [name, setName] = useState("");
@@ -332,7 +359,7 @@ const Styledinput = styled.div`
                 }}
               />
 
-              <Styledinput>
+              <Styledinput1>
                 <div className="input-container2">
                   <Styledtextinput>
                     <div className="textinput">ประเภทสินค้า</div>
@@ -349,9 +376,9 @@ const Styledinput = styled.div`
                     </select>
                   </StyledSelect>
                 </div>
-              </Styledinput>
+              </Styledinput1>
 
-              <Styledinput>
+              <Styledinput1>
                 <div className="input-container2">
                   <Styledtextinput>
                     <div className="textinput">จำนวนที่ผลิต</div>
@@ -368,7 +395,7 @@ const Styledinput = styled.div`
                     </select>
                   </StyledSelect>
                 </div>
-              </Styledinput>
+              </Styledinput1>
 
               <InputField
                 placeholder="ราคา/ตัว"
@@ -383,35 +410,9 @@ const Styledinput = styled.div`
               </StyledBotton>
             </div>
             <StyleRightimg>
-              <div className="right-image ">
-                <div class="flex items-center justify-center w-full">
-                <label
-    for="dropzone-file"
-    class="flex flex-col items-center justify-center w-full h-16 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-  >
-                     <div class="flex flex-col items-center justify-center pt-2 pb-3">
-      <svg
-        class="text-gray-500 dark:text-gray-400"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 40 26"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-        />
-      </svg>
-      <span>Click to upload</span> or drag and drop
-      <p class="text-xs text-gray-500 dark:text-gray-400">
-        SVG, PNG, JPG or GIF (MAX. 800x400px)
-      </p>
-    </div>
-                    
-                    <input
+          <div className="right-image ">
+          <Styledinput>
+          <input
                       type="file"
                       id="dropzone-file"
                       name="product-image"
@@ -419,9 +420,9 @@ const Styledinput = styled.div`
                       className="hidden"
                       onChange={handleFileChange}
                     />
-                  </label>
-                </div>
-              </div>
+              </Styledinput>
+              
+          </div>
             </StyleRightimg>
           </div>
         </StyleContainer>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
@@ -33,7 +34,7 @@ const ChoosePage = ({ className }) => {
 };
 
 export default styled(ChoosePage)`
-        background-color: #F9F8EE;
+        background-color: #000;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -45,7 +46,7 @@ export default styled(ChoosePage)`
         justify-content: space-around;
         align-items: center;
         /* Changed width to max-width for responsiveness */
-        width: 90%;
+        width: 70%;
         height: 70%; /* Changed height to auto for responsiveness */
         background-color: #FFFFFF;
         border-radius: 54px;
@@ -77,7 +78,7 @@ export default styled(ChoosePage)`
         justify-content: space-around;
         align-items: center;
         /* Changed width to max-width for responsiveness */
-        width: 90%;
+        width: 80%;
         height: 70%; /* Changed height to auto for responsiveness */
         background-color: #FFFFFF;
         border-radius: 54px;

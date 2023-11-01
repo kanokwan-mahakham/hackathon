@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Button from "../Component/Botton";
 import styled from "styled-components";
 import paymentImage from "../../image Hackathon/image/qrcode.png";
-import slip from "../../image Hackathon/image/Slip.jpeg";
 import { Link,useNavigate,useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -122,12 +121,11 @@ const Styleleft = styled.div`
 const StyleRight = styled.div`
   .right-image {
     display: flex;
-    width: 250px;
-    height: 755px;
-
+    width: 140px;
+    height: 255px;
     margin-left: -180px;
     margin-top: 100px;
-    background: url(${slip}) no-repeat;
+
     flex-shrink: 0;
     background-size: 100%;
   }
@@ -322,7 +320,7 @@ const CheackPayment = ({ url, packages, setPackages, setNotis }) => {
 
           <StyleRight>
             <div className="right-image">
-                <img src={pomotion.slip}></img>
+                <img src={pomotion.slip} ></img>
             </div>
           </StyleRight>
         </div>

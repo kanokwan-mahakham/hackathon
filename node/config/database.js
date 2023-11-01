@@ -3,11 +3,11 @@ const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize(
     'hackathon', // Database name
     'postgres', // Username
-    '23022547', // Password
+    '1674977150', // Password
     {
       host: 'localhost', // Connect to your local database
       dialect: 'postgres',// Tell sequelize to use Postgres
-    port:5432
+    port:5433
     }
   );
 

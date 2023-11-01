@@ -1,6 +1,8 @@
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link,useNavigate } from 'react-router-dom'; 
+import backgroundImage from '../../../image Hackathon/image/bg.png'; 
 
 const HelpmeFactoryTwo = ({  filterProduct, setFilterProduct, className }) => {
 
@@ -23,41 +25,25 @@ const HelpmeFactoryTwo = ({  filterProduct, setFilterProduct, className }) => {
     }
 
     return (
-        <div className={className}>
-            <body>
-            <div className="content">
-                <div className="container">
-                    <h1>Factory</h1>
-                    <div className="group-underline">
-                        <div className="underline"></div>
-                        <div className="underline2"></div>
-                    </div>
-                    <Link to="/" className="previous"> &#8249;</Link>
-                    <div className="group-container">
-                        <div className="container-inside1">
-                            <div className="groupButton">
-                                <button className="button2">หมวดหมู่</button>
-                                <button className="button1">จำนวนสินค้า</button>
-                               
-                            </div>
-                        </div>
-                        <div className="container-inside2">
-                            <div className="grouph2">
-                                <h2>เลือกจำนวนสินค้าที่คุณต้องการ</h2>
-                            </div>
-                           
-                            <div className="groupButton1">
-                                <button className="select" onClick={filter1}><span>1 - 50 ตัว</span> </button>
-                                <button className="select" onClick={filter2}><span>51 - 100 ตัว</span> </button>
-                                <button className="select" onClick={filter3}><span>100 ตัวขึ้นไป</span> </button>
-                            </div>
-                          
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </body>
-        </div>
+
+      <div className={className}>
+      <Link to="/" className="previous"> &#8249;</Link>
+   <div className="container">
+  
+     <div className="formHolder">
+       <div className="formHeader">
+         <p>โรงงาน (Factory)</p>
+         <h3>จำนวนสินค้า</h3>
+         <h3>เลือกจำนวนสินค้าที่คุณต้องการ</h3>
+       </div>
+         <div className="groupButton1">
+           <button className="select" onClick={filter1}><span>1 - 50 ตัว</span> </button>
+           <button className="select" onClick={filter2}><span>51 - 100 ตัว </span> </button>
+           <button className="select" onClick={filter3}><span>100 ตัวขึ้นไป</span> </button>
+         </div>
+     </div>
+   </div>
+ </div>
     );
 };
 
@@ -68,179 +54,37 @@ const HelpmeFactoryTwo = ({  filterProduct, setFilterProduct, className }) => {
 
     @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
 
-    background-color: rgba(198, 204, 215, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-  
-    .content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width:1100px;
-      height:50%;
-    }
-  
-    h1 {
-      font-size: 40px;
-      font-weight: bold;
-      text-align: center;
-      font-family: 'Lora';
-    }
-  
-    .group-underline {
-      display: flex;
-      justify-content: center;
-    }
-  
-    .underline {
-      width: 70%;
-      height: 1px;
-      background: #000;
-      margin-bottom: 25px;
-    }
-  
-    .container {
-      width: 100%;
-      height: 500px;
-      max-width: 1200px;
-      background-color: #ffffff;
-      border-radius: 20px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
-    }
-  
-    .group-container {
-      display: flex;
-      
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .container-inside1 {
-      border-radius: 20px;
-      margin-top:3%;
-      background: #C6CCD7;
-      width: 70%;
-      min-height: 55px;
-    }
-  
-  
-    .groupButton {
-      display: flex;
-      justify-content: space-around;
-      min-height: 55%;
-    }
-  
-    button.button1 {
-      flex: 1;
-      max-width: 177px;
-      height: 38px;
-      border-radius: 20px;
-      background: #333A56;
-      margin-top: 12px;
-      color: #FFF;
-      text-align: center;
-      font-family: 'Lora', serif;
-      font-size: 20px;
-      font-weight: 500;
-      line-height: normal;
-      border: none;
-    }
-  
-    button.button2 {
-      flex: 1;
-      max-width: 177px;
-      height: 38px;
-      border-radius: 20px;
-      background: #C6CCD7;
-      margin-top: 12px;
-      color: #333A56;
-      text-align: center;
-      font-family: 'Lora', serif;
-      font-size: 20px;
-      font-weight: 500;
-      line-height: normal;
-      border: none;
-    }
-  
-    .container-inside2 {
-      width: 100%;
-      min-height:250px;
-      height: auto;
-      border-radius: 20px;
-      margin-top: 4%;
-      box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
-      background: #333A56;
-    }
-  
+    font: 1em/1.618 Inter, sans-serif;
     
-  
-  
-    .grouph2 {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-around;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    min-height: 100vh;
+    padding: 30px;
+    
+    margin: 0;
+    color: #224;
+    background: url(${backgroundImage}) center/ cover no-repeat fixed;
+    
+    .formHeader p {
+      font-size: 25px;
+      text-align: center;
+      font-weight: bold;
     }
-  
-    h2 {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-content: center;
-      align-items: center;
-      color: #fff;
-      font-family: 'Lora', serif;
-      font-weight: 500;
+    
+    .formHeader h3 {
+      font-size: 20px;
+      text-align: center;
     }
-  
+    
     .groupButton1 {
       display: flex;
       justify-content: space-around;
-      margin-top: 50px;
+      min-height: 55%;
+      gap: 20px;
     }
-  
-  button.select {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Center text both horizontally and vertically */
-    border-radius: 20px;
-    max-width: 145px;
-    width:100%;
-    height: 48px;
-    background: #FFFFFF;
-    border: none;
-  }
-  
-  button.select:hover {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Center text both horizontally and vertically */
-    border-radius: 20px;
-    max-width: 145px;
-    height: 48px;
-    background: #C6CCD7;
-    border: 2px solid #fff;
-  }
-  
-  button.select span {
-      color: #000;
-      text-align: center;
-      font-family: 'Lora', serif; 
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 300;
-      line-height: normal;
-      
-    }
-  
+    
     .previous {
       text-decoration: none;
       display: inline-block;
@@ -252,52 +96,65 @@ const HelpmeFactoryTwo = ({  filterProduct, setFilterProduct, className }) => {
       top: 20px;
       left: 20px;
     }
-  
+    
     .previous:hover {
       background-color: #ddd;
       color: black;
     }
-  
-    @media (max-width: 768px) {
-      .container {
-        margin: 10px;
-        padding: 10px;
-        border-radius: 20px;
-        width: 50%;
-        height: auto;
-        max-width: 100%;
-        max-height: none;  
-      }
-  
-      h1 {
-        font-size: 30px;
-      }
-  
-      .underline {
-        width: 100%;
-      }
-  
-      .previous {
-        top: 10px;
-        left: 10px;
-      }
-  
-      .container-inside1 {
-          border-radius: 20px;
-          margin-top:5%;
-          background: #C6CCD7;
-          width: 70%;
-          min-height: 55px;
-        }
-  
-        .container-inside2 {
-          width: 100%;
-          height: auto;   
-          border-radius: 20px;
-          margin-top: 4%;
-          box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
-          background: #333A56;
-        }
-      
+    
+    button.select {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      max-width: 545px;
+      height: 48px;
+      background: #000;
+      border: none;
     }
+    
+    button.select:hover {
+      border: 2px solid #fff;
+    }
+    
+    button.select span {
+      color: #fff;
+      text-align: center;
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    
+    .container {
+      max-width: 600px;
+      width: 100%;
+      height: 300px;
+      padding: 35px;
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(15px);
+    }
+    
+    input,
+    select {
+      border: none;
+      border-bottom: 2px solid #D3D5F1;
+      width: 300px;
+      height: 40px;
+    }
+    
+    button {
+      background-color: #24245C;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      width: 200px;
+      height: 60px;
+      margin-top: 40px;
+    }
+      }
+    
     `;

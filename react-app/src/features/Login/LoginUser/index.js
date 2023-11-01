@@ -145,7 +145,7 @@
   };
 
   export default styled(LoginComponent)`
-  background-color: #F9F8EE;
+  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,7 +154,7 @@
     text-decoration: none;
   }
     .container {
-      max-width: 1110px;
+      max-width: 1010px;
 
       max-height: 550px;
       width: 100%;
@@ -252,7 +252,7 @@
     }
 
     .right-content {
-      width: 600px ;
+      width: 400px ;
       max-height: 420px;
       border-radius: 40px;
       margin-left:20px;

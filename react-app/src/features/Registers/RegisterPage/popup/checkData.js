@@ -1,17 +1,16 @@
+
 import React, { useState, useEffect } from "react";
 import InputRegField from "../../../Component/input";
 import Button from "../../../Component/Botton";
 import styled from "styled-components";
-import doc from "../../../../image Hackathon/image/docfactory.jpeg";
 import { Link,useNavigate,useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 const Backgroud = styled.div`
-  background-color: #f9f8ee;
+  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
- 
   margin: 0;
 `;
 
@@ -33,9 +32,11 @@ const StyleContainer = styled.div`
 }
 @media (max-width: 1208px) {
   .container {
-    width: 70%; /* Make it full width on smaller screens */
+    width: 75%; /* Make it full width on smaller screens */
     border-radius: 20px; /* Adjust border-radius */
-    margin-top: 10px; /* Adjust the margin top */
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    margin-bottom: 10px;/* Adjust the margin top */
     flex-direction: row;
     margin-left:90px
   }
@@ -161,7 +162,7 @@ const Styleleft = styled.div`
     display: flex;
     margin-left: 380px;
     margin-top: 5px;
-    background: url(${doc}) no-repeat;
+
     background-size: 100%;
   }
   @media (max-width: 1208px) {
@@ -327,7 +328,7 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
 
             <Styleleft>
               <div className="image">
-                <img src={company.JuristicFile}></img>
+              <img src={company.JuristicFile} />
               </div>
             </Styleleft>
             <ButtonContainer>
