@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import axios from "axios";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 const Chat = ({
   url,
@@ -74,7 +75,9 @@ const Chat = ({
           </div>
         </div>
 
-        <div className="body-chat" >
+        
+
+        <ScrollToBottom className="body-chat" >
           {messageList.map((messageContent) => {
             if (messageContent.sendId === user.id) {
               return (
@@ -94,7 +97,7 @@ const Chat = ({
               );
             }
           })}
-        </div>
+        </ScrollToBottom>
 
         <div className="box-send-messages">
           <input
