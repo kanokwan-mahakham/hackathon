@@ -121,8 +121,8 @@ const Styleleft = styled.div`
 const StyleRight = styled.div`
   .right-image {
     display: flex;
-    width: 140px;
-    height: 255px;
+    width: 120px;
+    height: 205px;
     margin-left: -180px;
     margin-top: 100px;
 
