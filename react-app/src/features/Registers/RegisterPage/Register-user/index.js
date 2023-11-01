@@ -123,7 +123,7 @@ const StyledLink = styled(Link)`
   // Add other CSS styles if needed
 `;
 
-const RegisterUser = ({ setUser, url, className }) => {
+const RegisterUser = ({ companies,setUser, url, className }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -153,7 +153,35 @@ const RegisterUser = ({ setUser, url, className }) => {
       return;
     }
 
+    if (!email.includes("@")) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Invalid email format",
+        text: 'Email must contain "@"',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      return;
+    }
+
     try {
+
+      const findUser = companies.find(
+        (user) => user.email == email || user.username == username
+      );
+
+      if (findUser) {
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Invalid email format",
+            text: 'Duplicate email or username',
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          
+      } else {
       const newUser = {
         username: username,
         email: email,
@@ -177,6 +205,7 @@ const RegisterUser = ({ setUser, url, className }) => {
         navigate("/login");
       });
       console.log("User registered successfully", response.data);
+    }
     } catch (error) {
       console.error(`Register error : ${error}`);
     }

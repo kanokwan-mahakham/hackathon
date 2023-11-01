@@ -7,9 +7,10 @@ const NavbarSearch = ({
   setShownoti,
   setCompares,
   setShowListChat,
+  search,
+  setSearch,
   className,
 }) => {
-    
   const noti = require("../../image Hackathon/icon/notification.png");
   const chat = require("../../image Hackathon/icon/send.png");
   const profile = require("../../image Hackathon/icon/contact.png");
@@ -19,7 +20,7 @@ const NavbarSearch = ({
   function logOut() {
     setUser("");
     setCompares([]);
-    setShowListChat("")
+    setShowListChat("");
     navigate("/");
   }
 
@@ -28,10 +29,10 @@ const NavbarSearch = ({
   }
 
   function showChat() {
-    setShowListChat("show")
+    setShowListChat("show");
   }
 
-  function login(){
+  function login() {
     navigate("/login");
   }
 
@@ -50,18 +51,24 @@ const NavbarSearch = ({
           <Link to="/company">Factory</Link>
         </div>
         <div className="search">
-          <input placeholder="Search" className="search"></input>
+          <input
+            placeholder="Search"
+            className="search"
+            value={search}
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+          ></input>
         </div>
         <div className="about-user">
-          
-        {typeof user == "object" ? (
+          {typeof user == "object" ? (
             <>
               <img src={noti} className="round-image" onClick={showNoti} />
-              <img src={chat} className="round-image-chat" onClick={showChat}/>
+              <img src={chat} className="round-image-chat" onClick={showChat} />
             </>
           ) : (
             <>
-              <img src={noti} className="round-image" onClick={login}/>
+              <img src={noti} className="round-image" onClick={login} />
               <img src={chat} className="round-image-chat" onClick={login} />
             </>
           )}

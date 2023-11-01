@@ -104,7 +104,7 @@ const Styledh1 = styled.div`
   h1 {
     font-size: 43px;
     font-weight: bold;
-    margin-botton: 70px;
+    margin-bottom: 70px;
     margin-left: 0px;
     text-align: center;
   }
@@ -123,6 +123,7 @@ const StyleRight = styled.div`
       display: flex;
     justify-content: center;
     }
+  }
 `;
 const Styleleft = styled.div`
   .left-image {
@@ -145,6 +146,7 @@ const Styleleft = styled.div`
     flex-shrink: 0;
     background-size: 100%;
     }
+  }
 `;
 const Styledtext1 = styled.div`
   .text1 {
@@ -153,25 +155,27 @@ const Styledtext1 = styled.div`
     text-align: center;
     font-size:15px;
   }
-  @media (max-width: 768px) 
+  @media (max-width: 768px) {
   .text1 {
     margin-top: 10px;
     color: #000;
     text-align: center;
     font-size:10px;
   }
+}
 `;
 const Styledtext2 = styled.div`
   margin-top: 10px;
-  margin-botton: 140px;
+  margin-bottom: 140px;
   color: #000;
   text-align: center;
   font-weight: bold;
 
-  @media (max-width: 768px) 
+  @media (max-width: 768px) {
   .text2 {
     font-size:10px;
   }
+}
 `;
 const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
   const [image, setImage] = useState([]);
@@ -206,15 +210,38 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
     getCompanies();
   }, []);
 
+  // function handleFileChange(event) {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = function (e) {
+  //       const imagePath = e.target.result;
+  //       setImage(imagePath); // เก็บ URL ของภาพใน state
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
+
   function handleFileChange(event) {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const imagePath = e.target.result;
-        setImage(imagePath); // เก็บ URL ของภาพใน state
-      };
-      reader.readAsDataURL(file);
+      if (file.size <= 70 * 1024) { // ตรวจสอบขนาดของไฟล์ (70KB)
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const imagePath = e.target.result;
+          setImage(imagePath); // เก็บ URL ของภาพใน state
+        };
+        reader.readAsDataURL(file);
+        
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "ภาพใหญ่ไป",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
     }
   }
 

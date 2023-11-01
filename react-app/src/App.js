@@ -180,11 +180,11 @@ function App() {
           />
           <Route
             path="/register-user"
-            element={<RegisterUser setUser={setUser} url={url} />}
+            element={<RegisterUser companies={companies} setUser={setUser} url={url} />}
           />
           <Route
             path="/register-company"
-            element={<RegisterCompany setUser={setUser} url={url} />}
+            element={<RegisterCompany companies={companies} setUser={setUser} url={url} />}
           />
           <Route path="/choose-login-page" element={<ChoosePage />} />
           <Route

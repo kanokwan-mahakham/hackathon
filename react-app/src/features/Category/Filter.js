@@ -74,7 +74,7 @@ const Filter = ({
       {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} /> : null }
       
 
-      <NavbarSearch
+      <Navbar
         user={user}
         setUser={setUser}
         setShownoti={setShownoti}
