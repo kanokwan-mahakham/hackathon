@@ -37,8 +37,8 @@ export default styled(ProductSale)`
     display: flex;
     text-align: center;
     position: absolute;
-    bottom: 60px;
-    left: 40px;
+    bottom: 90px;
+    left: 30px;
     background-color: white;
     width: 340px;
     height: 170px;
