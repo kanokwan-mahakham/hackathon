@@ -127,47 +127,7 @@ const NavbarSearch = ({
 
 export default styled(NavbarSearch)`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-  .navbar {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 30px;
-  }
-
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      text-align: center;
-    }
-    .search {
-      width: 100%;
-    }
-    .round-image,
-    .round-image-chat {
-      margin-right: 0;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-    .round-image img,
-    .round-image-chat img {
-      max-width: 100%;
-      max-height: 100%;
-      cursor: pointer;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .navbar {
-      margin: 15px;
-    }
-    .search {
-      height: 40px;
-      font-size: 14px;
-    }
-  }
-
-  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-
+  
   .navbar a {
     margin: 40px;
     font-size: 23px;
@@ -191,6 +151,7 @@ export default styled(NavbarSearch)`
     font-size: 16px;
     font-weight: 400;
     padding-left: 10px;
+    margin-right: 30px;
   }
   .input .search {
     padding-left: 10px;
@@ -249,6 +210,7 @@ export default styled(NavbarSearch)`
     border-radius: 20px;
     border: none;
     cursor: pointer;
+    margin-right: 10px;
   }
   .logout img {
     max-width: 100%;

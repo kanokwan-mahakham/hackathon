@@ -47,7 +47,9 @@ export default styled(CardAdmin)`
     position: relative;
     display: flex;
     flex-direction: row;
-    margin-top:70px;
+    margin-top: 70px;
+    align-items: center;
+    justify-content: flex-start;
   }
   .data-admin {
     width: 550px;
@@ -58,7 +60,7 @@ export default styled(CardAdmin)`
   }
   .profile #name {
     position: relative;
-    top: -35px;
+    top: -175px;
     left: 350px;
     background-color: white;
     height: 100px;
@@ -84,9 +86,6 @@ export default styled(CardAdmin)`
     color: black;
   }
   .photo img {
-    top: 45px;
-    right: 200px;
-    position: absolute;
     width: 400px;
     height: 300px;
     border-radius: 20px;
