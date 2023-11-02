@@ -88,7 +88,7 @@ const BoxData = ({
         Swal.fire({
           position: "center",
           icon: "error",
-          title: "โปรดเลือกประเภทเดียวกัน",
+          title: "โปรดเลือกหมวดหมู่เดียวกัน",
           showConfirmButton: false,
           timer: 2000,
         });
@@ -98,7 +98,7 @@ const BoxData = ({
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "Compare full",
+        title: "เปรียบเทียบได้มากสุด  3  อย่างนะคะ",
         showConfirmButton: false,
         timer: 2000,
       });

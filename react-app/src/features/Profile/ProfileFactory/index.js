@@ -112,5 +112,6 @@ export default styled(ProfileFactory)`
   .sale-product {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   }
 `;
