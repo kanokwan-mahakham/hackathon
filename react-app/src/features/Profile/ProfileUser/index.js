@@ -200,7 +200,7 @@ export default styled(ProfileUser)`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 150px;
+    margin-left: 0px
   }
   .name-category {
     font-family: "Anuphan";
@@ -219,5 +219,9 @@ export default styled(ProfileUser)`
   .collect {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 20px;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
   }
 `;

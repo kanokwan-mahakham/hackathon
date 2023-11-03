@@ -176,7 +176,7 @@ const ButtonContainer = styled.div`
   gap: 10px; /* Adjust the gap as needed */
 `;
 
-const CheackPayment = ({ url, packages, setPackages,setUser, setNotis }) => {
+const CheackPayment = ({ url, packages, setPackages,setCompanies, setNotis }) => {
 
     const { id } = useParams();
     const { notiId } = useParams();
@@ -214,7 +214,8 @@ const CheackPayment = ({ url, packages, setPackages,setUser, setNotis }) => {
         const resUser = await axios.get(`${url}/users`)
         setPackages(resCom.data)
         setNotis(ress.data)
-        setUser(resUser.com)
+        setCompanies(resUser.data)
+        setUser()
     
         // Step 4: Display a success message using Swal (SweetAlert)
         Swal.fire({
@@ -255,7 +256,7 @@ const CheackPayment = ({ url, packages, setPackages,setUser, setNotis }) => {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Your work has been saved",
+            title: "ยืนยันโปรโมชั่น",
             showConfirmButton: false,
             timer: 1500,
           }).then(() => {

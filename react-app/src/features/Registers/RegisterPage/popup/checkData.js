@@ -28,7 +28,7 @@ const StyleContainer = styled.div`
     padding: 30px;
     flex-wrap: nowrap;
     margin-top: px;
-    margin-left:90px
+    margin-left:90px;
     box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.40);
 }
 @media (max-width: 1208px) {
@@ -39,9 +39,9 @@ const StyleContainer = styled.div`
     margin-bottom: 10px; 
     margin-bottom: 10px;/* Adjust the margin top */
     flex-direction: row;
-    margin-left:90px
+    margin-left:90px;
   }
-`;
+}`
 
 
 
@@ -91,6 +91,7 @@ const StyledBotton = styled.div`
     .button {
       width:70%
     }
+  }
 `;
 const StyledBotton2 = styled.div`
   .button {
@@ -135,13 +136,14 @@ const Styledh1 = styled.div`
     
   }
 
-  @media (max-width: 768px) 
+  @media (max-width: 768px) {
     .h1 {
     font-size: 43px;
     font-weight: bold;
     padding:0px;
     font-family: "Anuphan";
     }
+  }
 
 `;
 const ButtonContainer = styled.div`
@@ -172,6 +174,7 @@ const Styleleft = styled.div`
     .image {
       margin-left:200px;
     }
+  }
 `;
 const Styleline1 = styled.div`
   .underline {
@@ -185,6 +188,7 @@ const Styleline1 = styled.div`
     .underline {
       width: 50%;
     }
+  }
 `;
 const Stylep = styled.div`
   .boxtext {
@@ -198,6 +202,7 @@ const Stylep = styled.div`
     .boxtext {
       font-size: 17.55px;
     }
+  }
 `;
 
 const CheckData = ({url, companies,setCompanies,setNotis}) => {
@@ -212,7 +217,6 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
     async function confirm() {
       try {
         // Step 1: Delete a notification (notis) based on notiId
-        await axios.delete(`${url}/notis/${Number(notiId)}`);
     
         // Step 2: Create a new notification
         await axios.post(`${url}/notis`, {
@@ -234,7 +238,7 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Your work has been saved",
+          title: "ยืนยันเรียบร้อย",
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
@@ -249,7 +253,6 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
     async function cancel() {
       try {
         // Step 1: Delete a notification (notis) based on notiId
-        await axios.delete(`${url}/notis/${Number(notiId)}`);
     
         // Step 2: Create a new notification
         await axios.post(`${url}/notis`, {
@@ -267,7 +270,7 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Your work has been saved",
+          title: "ยกเลิกบัญชีเรียนร้อย",
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {

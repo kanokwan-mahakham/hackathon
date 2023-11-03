@@ -17,7 +17,8 @@
         Swal.fire({
           position: 'center',
           icon: 'error',
-          title: 'Please fill in all fields',
+          title: 'โปรดกรอดข้อมูลให้ครบ',
+          text: 'กรุณาลองใหม่อีกครั้ง',
           showConfirmButton: false,
           timer: 2000
         });
@@ -30,21 +31,14 @@
         if (response.data.user) {
           console.log('User found:', response.data.user);
           setUser(response.data.user)
-
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Your work has been saved',
+            title: 'เข้าสู่ระบบ',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
 
-            //  if (username === "addmin") {
-            //    navigate('/edit-home');
-            //  } else {
-            //   navigate('/');
-            //  }
-            // console.log(`username:${username}`)
             navigate('/');
             
           });
@@ -53,20 +47,15 @@
           Swal.fire({
             position: 'center',
             icon: 'error',
-            title: 'account not found !',
+            title: 'ไม่พบบัญชีผู้ใช้',
+            text: 'กรุณาลองใหม่อีกครั้ง',
             showConfirmButton: false,
             timer: 2000
           });
           console.error('User not found.');
         }
       } catch (error) {
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'account not found !',
-          showConfirmButton: false,
-          timer: 2000
-        });
+       
         console.error('Internal server error:', error);
       }
     };

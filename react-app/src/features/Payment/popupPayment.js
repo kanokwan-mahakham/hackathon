@@ -204,7 +204,7 @@ input:focus{
 
 `;
 const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
-  const [image, setImage] = useState([]);
+  const [image, setImage] = useState("");
   const navigate = useNavigate();
   const currentDate = new Date();
   const day = String(currentDate.getDate()).padStart(2, "0");
@@ -236,17 +236,6 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
     getCompanies();
   }, []);
 
-  // function handleFileChange(event) {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onload = function (e) {
-  //       const imagePath = e.target.result;
-  //       setImage(imagePath); // เก็บ URL ของภาพใน state
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
 
   function handleFileChange(event) {
     const file = event.target.files[0];
@@ -264,6 +253,7 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
           position: "center",
           icon: "error",
           title: "ภาพใหญ่ไป",
+          text: 'กรุณาลองใหม่อีกครั้ง',
           showConfirmButton: false,
           timer: 2000,
         });
@@ -272,6 +262,19 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
   }
 
   async function submit() {
+
+    if (!image) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "โปรดอัพโหลดภาพ",
+        text: 'กรุณาลองใหม่อีกครั้ง',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      return;
+    }
+
     try {
       await axios.post(`${url}/packages`, {
         companyId: user.id,
@@ -298,6 +301,7 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
         position: "center",
         icon: "success",
         title: "ชำระเงินเสร็จสิ้น",
+        text: 'รอการอนุมัติจากผู้ดูแล',
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {

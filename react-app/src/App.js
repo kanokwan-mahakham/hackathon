@@ -125,7 +125,12 @@ function App() {
     const company = companies.find((com)=> com.id == item.companyId)
     let {id,pack,...other} = company
     await axios.put(`${url}/users/${id}`,{...other,pack:0})
-    await axios.delete(`${url}/packages/${item.id}`)
+    await axios.post(`${url}/notis`, {
+      companyId: item.companyId,
+      icon: "cancel.png",
+      type: "cancel",
+      description: `การโปรโมทของคุณหมดอายุแล้ว`,
+    });
   }
 
   return (
@@ -705,7 +710,7 @@ function App() {
                 packages={packages}
                 setPackages={setPackages}
                 setNotis={setNotis}
-                setUser={setUser}
+                setCompanies={setCompanies}
               />
             }
           />
