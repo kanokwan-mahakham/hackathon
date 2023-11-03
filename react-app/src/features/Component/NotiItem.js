@@ -43,7 +43,7 @@ const NotiItem = ({ url, user, item, setNotis }) => {
           <Link to={`/check-regis/${item.companyId}/${item.id}`}>
             <div className="noti-detail">
               <div className="box-noti-detail">
-                <img src={icon} />
+                <img src={icon} alt="noti"/>
                 <p id="name">{company.name}</p>
                 <p id="noti-text">{item.description}</p>
               </div>
@@ -53,7 +53,7 @@ const NotiItem = ({ url, user, item, setNotis }) => {
       ) : item.type == "wait package" ? (
         <div className="noti-detail">
           <div className="box-noti-detail">
-            <img src={icon} id="buy-package" />
+            <img src={icon} id="buy-package" alt="pack"/>
             <p id="name">{company.name}</p>
             <p id="noti-text">{item.description}</p>
           </div>
@@ -61,7 +61,7 @@ const NotiItem = ({ url, user, item, setNotis }) => {
       ) : (
         <div className="noti-detail">
           <div className="box-noti-detail">
-            <img src={icon} />
+            <img src={icon} alt="icon"/>
             <p id="name">{company.name}</p>
             <p id="noti-text">{item.description}</p>
           </div>

@@ -30,7 +30,7 @@ transition: opacity 0.2s;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #4caf50;
+  background: #000;
   cursor: pointer;
 }
 `;
@@ -40,7 +40,7 @@ const HelpmeFabicTwo = ({ filterProduct, setFilterProduct, className }) => {
     const navigate = useNavigate();
 
     function filter(){
-        const finds = filterProduct.filter((find)=>find.price <= sliderValue)
+        const finds = filterProduct.filter((find)=>find.price < sliderValue)
         setFilterProduct(finds)
         navigate('/filter-fabric');
     }

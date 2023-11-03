@@ -55,6 +55,7 @@ export default styled(ChooseProducts)`
         text-align: center;
         margin-bottom: 20px;
         margin-right:50px;
+        font-family: "Anuphan";
     }
 
     .container {

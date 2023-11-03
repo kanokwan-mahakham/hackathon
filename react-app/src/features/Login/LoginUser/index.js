@@ -154,7 +154,7 @@
     text-decoration: none;
   }
     .container {
-      max-width: 1010px;
+      max-width: 1110px;
 
       max-height: 550px;
       width: 100%;
@@ -174,7 +174,7 @@
       font-weight: bold;
       margin: 5px;
       text-align: center;
-      font-family: "Lora";
+      font-family: "Anuphan";
     }
 
     p {
@@ -182,6 +182,7 @@
       padding-bottom: 10px;
       font-size: 17.55px;
       margin: 15px;
+      font-family: "Anuphan";
     }
 
     .group-underline {
@@ -225,7 +226,7 @@
     .button-text {
       color: #fff;
       text-align: center;
-      font-family: "Lora";
+      font-family: "Anuphan";
       font-size: 13px;
       font-weight: 700;
       line-height: 17.325px;
@@ -252,10 +253,11 @@
     }
 
     .right-content {
-      width: 400px ;
-      max-height: 420px;
+      width: 500px ;
+      max-height: 320px;
       border-radius: 40px;
       margin-left:20px;
+      margin-top:50px;
       flex-shrink: 0;
       display: flex;
       justify-content: center;
@@ -268,12 +270,15 @@
       font-size: 15px;
       display: flex;
       justify-content: center;
+      font-family: "Anuphan";
       margin-top: 10px;
+      font-family: "Anuphan";
     }
 
     .text1 {
       margin-right: 5px;
       font-size: 15px;
+      font-family: "Anuphan";
       color: #807d7d;
     }
 

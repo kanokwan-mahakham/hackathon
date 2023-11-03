@@ -33,7 +33,7 @@ const StyledBotton = styled.div`
   .button-text {
     color: #fff;
     text-align: center;
-    font-family: "Open Sans";
+    font-family: "Anuphan";
     font-size: 13px;
     font-weight: 700;
     line-height: 17.325px;

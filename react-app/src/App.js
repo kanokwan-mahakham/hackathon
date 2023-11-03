@@ -130,7 +130,7 @@ function App() {
 
   return (
     <>
-      {companies.length >= 0 ? (
+      {companies.length > 0 ? (
         <>
         <Routes>
           <Route
@@ -387,6 +387,8 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+                setFilterProduct={setFilterProduct}
+                products={products}
 
                 listChat={listChat}
                 socket={socket}
@@ -417,6 +419,8 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+                setFilterProduct={setFilterProduct}
+                products={products}
 
                 listChat={listChat}
                 socket={socket}
@@ -447,6 +451,8 @@ function App() {
                 setShowListChat={setShowListChat}
                 showChat={showChat}
                 setShowChat={setShowChat}
+                setFilterProduct={setFilterProduct}
+                products={products}
 
                 listChat={listChat}
                 socket={socket}

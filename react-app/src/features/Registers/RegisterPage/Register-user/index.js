@@ -38,6 +38,7 @@ const Stylep = styled.div`
   margin: 10px;
   font-size: 17.55px;
   text-align: center;
+  font-family: "Anuphan";
 `;
 
 const StyledContainer = styled.div`
@@ -100,12 +101,14 @@ const StyleAddtext = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    font-family: "Anuphan";
   }
 `;
 
 const Styledtext1 = styled.div`
   .text1 {
     color: #807d7d;
+    font-family: "Anuphan";
   }
 `;
 
@@ -115,12 +118,13 @@ const Styledh1 = styled.div`
     font-weight: bold;
     margin: 10px;
     text-align: center;
+    font-family: "Anuphan";
   }
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: your-desired-color; // Specify your desired text color here
-  // Add other CSS styles if needed
+  color: your-desired-color; 
+  font-family: "Anuphan";
 `;
 
 const RegisterUser = ({ companies,setUser, url, className }) => {

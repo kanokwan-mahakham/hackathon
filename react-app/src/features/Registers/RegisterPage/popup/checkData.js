@@ -129,6 +129,7 @@ const Styledh1 = styled.div`
     font-weight: bold;
     margin-top: 30px;
     text-align: center;
+    font-family: "Anuphan";
    
     
   }
@@ -138,6 +139,7 @@ const Styledh1 = styled.div`
     font-size: 43px;
     font-weight: bold;
     padding:0px;
+    font-family: "Anuphan";
     }
 
 `;
@@ -188,6 +190,7 @@ const Stylep = styled.div`
     margin: 30px;
     font-size: 17.55px;
     margin-left: 180px;
+    font-family: "Anuphan";
   }
 
   @media (max-width: 768px) {

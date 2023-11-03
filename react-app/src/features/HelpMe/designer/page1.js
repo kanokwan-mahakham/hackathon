@@ -69,6 +69,7 @@ const HelpmeDesignOne = ({  filterProduct, setFilterProduct, className }) => {
     .formHeader p {
       font-size: 25px;
       text-align: center;
+      font-family: "Anuphan";
       font-weight: bold;
     }
     
@@ -120,7 +121,7 @@ const HelpmeDesignOne = ({  filterProduct, setFilterProduct, className }) => {
     button.select span {
       color: #fff;
       text-align: center;
-      font-family: 'Lora', serif;
+      font-family: "Anuphan";
       font-size: 16px;
       font-weight: 300;
     }

@@ -8,6 +8,7 @@
   import axios from "axios";
 
   const Backgroud = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   background-color: rgba(198, 204, 215, 0.7);
   display: flex;
   justify-content: center;
@@ -139,6 +140,7 @@ const Styledh1 = styled.div`
     font-weight: bold;
     margin-top: 20px;
     text-align: center;
+    font-family: "Anuphan";
   }
 
   @media (max-width: 768px) {
@@ -147,6 +149,7 @@ const Styledh1 = styled.div`
       font-weight: bold;
       margin-top: 90px;
       text-align: center;
+      font-family: "Anuphan";
     }
   }
   
@@ -159,6 +162,7 @@ const Styledtextinput = styled.div`
     font-size: 16px;
     font-weight: 400;
     line-height: 17.325px;
+    font-family: "Anuphan";
     border: none;
     outline: none;
   }
@@ -166,6 +170,7 @@ const Styledtextinput = styled.div`
   @media (max-width: 768px) {
     .textinput {
       font-size: 12px;
+      font-family: "Anuphan";
     }
   }
 `;

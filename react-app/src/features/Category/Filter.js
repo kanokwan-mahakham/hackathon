@@ -4,7 +4,7 @@ import Footer from "../Component/Footer";
 import Navbar from "../Component/Navbar";
 import PopupCompare from "../Component/PopupCompare";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Noti from "../Component/Noti";
 import ListChat from "../Component/ListChat";
 import Chat from "../Component/Chat";
@@ -54,18 +54,22 @@ const Filter = ({
     }
   }
 
-  useEffect(() => {
+  useMemo(() => {
     async function getCompanies() {
-      filterProduct.map((product) => {
-        companies.map((company) => {
-          if (product.companyId == company.id) {
-            setNewCompanys([...newCompanys, company]);
-          }
-        });
+      const newCompanies = [];
+      filterProduct.forEach((product) => {
+        const findCompany = companies.find((company) => company.id === product.companyId);
+        if (findCompany) {
+          newCompanies.push(findCompany);
+        }
       });
+      // Update the state using the functional form of setNewCompanys
+      setNewCompanys((prevNewCompanys) => [...prevNewCompanys, ...newCompanies]);
     }
+  
     getCompanies();
-  }, []);
+  }, [filterProduct, companies]); // Add dependencies if needed
+  
 
   return (
     <div className={className}>
