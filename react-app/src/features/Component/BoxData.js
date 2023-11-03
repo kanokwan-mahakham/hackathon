@@ -98,7 +98,7 @@ const BoxData = ({
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "เปรียบเทียบได้มากสุด  3  อย่างนะคะ",
+        title: "เปรียบเทียบได้มากสุด  3  อย่าง",
         showConfirmButton: false,
         timer: 2000,
       });

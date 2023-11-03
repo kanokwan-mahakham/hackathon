@@ -36,7 +36,7 @@ const HomePage = ({
   setRoom,
   chat,
   setChat,
-  
+
   className,
 }) => {
   const image = require("../../../image Hackathon/image/bk1.png");
@@ -65,6 +65,12 @@ const HomePage = ({
     getCompanies();
   }, []);
 
+  const imagePaths = [
+    require("../../../image Hackathon/image/promote1.jpg"),
+    require("../../../image Hackathon/image/promote2.jpg"),
+    require("../../../image Hackathon/image/promote3.jpg"),
+  ];
+
   return (
     <div className={className}>
       {showNoti == "show" ? (
@@ -77,8 +83,29 @@ const HomePage = ({
         ></Noti>
       ) : null}
 
-      {showListChat == "show" ? <ListChat url={url} user={user} listChat={listChat} setShowListChat={setShowListChat} setShowChat={setShowChat} socket={socket} setRoom={setRoom} /> : null}
-      {showChat == "show" ? <Chat url={url} user={user} setShowChat={setShowChat} socket={socket} room={room} setChat={setChat} chat={chat} setRoom={setRoom} /> : null }
+      {showListChat == "show" ? (
+        <ListChat
+          url={url}
+          user={user}
+          listChat={listChat}
+          setShowListChat={setShowListChat}
+          setShowChat={setShowChat}
+          socket={socket}
+          setRoom={setRoom}
+        />
+      ) : null}
+      {showChat == "show" ? (
+        <Chat
+          url={url}
+          user={user}
+          setShowChat={setShowChat}
+          socket={socket}
+          room={room}
+          setChat={setChat}
+          chat={chat}
+          setRoom={setRoom}
+        />
+      ) : null}
 
       <Navbar
         user={user}
@@ -88,8 +115,6 @@ const HomePage = ({
         setShowListChat={setShowListChat}
       />
 
-  
-
       <div className="image">
         <img src={image}></img>
       </div>
@@ -97,7 +122,12 @@ const HomePage = ({
         <div className="header-text">
           <p>Blog</p>
         </div>
-        <BlogSlide imageHome={imageHome} />
+        {/* <BlogSlide imageHome={imageHome} /> */}
+        <div className="blogSlide">
+          {imagePaths.map((image, index) => (
+            <BlogSlide key={index} index={index} image={image} /> 
+          ))}
+        </div>
       </div>
 
       <div className="show-category">
@@ -216,17 +246,19 @@ export default styled(HomePage)`
   }
   .blog {
     width: 100%;
-    height: 600px;
+    height: 500px;
     margin: 80px 0px;
   }
   .header-text {
-    margin-left:20px;
+    margin-left: 20px;
     background-color: white;
     border-radius: 50px;
     border: 1px solid white;
     width: fit-content;
     height: fit-content;
-    box-shadow: rgb(5 5 255 / 57%) 0px 10px 300px -20px, rgb(5 55 194 / 83%) 0px 30px 60px -30px, rgb(2 44 130 / 81%) 0px -2px 6px 0px inset;
+    box-shadow: rgb(5 5 255 / 57%) 0px 10px 300px -20px,
+      rgb(5 55 194 / 83%) 0px 30px 60px -30px,
+      rgb(2 44 130 / 81%) 0px -2px 6px 0px inset;
   }
   .header-text p {
     margin: 15px 60px;
@@ -241,7 +273,8 @@ export default styled(HomePage)`
     padding: 40px;
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
-    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+      rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
   .header-category {
     background-color: black;
@@ -251,7 +284,9 @@ export default styled(HomePage)`
     height: fit-content;
     color: white;
     margin: 50px;
-    box-shadow: rgb(46 65 240 / 40%) 5px 5px, rgba(46, 65, 240, 0.3) 10px 10px, rgba(46, 65, 240, 0.2) 15px 15px, rgba(46, 65, 240, 0.1) 20px 20px, rgba(46, 65, 240, 0.05) 25px 25px;
+    box-shadow: rgb(46 65 240 / 40%) 5px 5px, rgba(46, 65, 240, 0.3) 10px 10px,
+      rgba(46, 65, 240, 0.2) 15px 15px, rgba(46, 65, 240, 0.1) 20px 20px,
+      rgba(46, 65, 240, 0.05) 25px 25px;
   }
   .header-category p {
     margin: 15px 60px;
@@ -281,10 +316,10 @@ export default styled(HomePage)`
     font-family: "Anuphan";
     font-size: 25px;
     font-weight: 500;
-    color:#ff9d00;;
+    color: #ff9d00;
     text-decoration: none;
   }
-  .detail #seeAll:hover{
+  .detail #seeAll:hover {
     color: #12136e;
   }
 
@@ -294,5 +329,12 @@ export default styled(HomePage)`
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: row;
+  }
+  .blogSlide {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 40px 0px;
+    justify-content: center;
   }
 `;

@@ -88,8 +88,8 @@ export default styled(Package)`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 450px;
-    height: 420px;
+    width: 326px;
+    height: 364px;
     background-color: white;
     margin: 0px 30px 50px 0px;
     flex-direction: column;
@@ -101,7 +101,7 @@ export default styled(Package)`
   }
   .detail {
     font-family: "Anuphan";
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 400;
     width: 70%;
     text-align: center;
@@ -111,7 +111,7 @@ export default styled(Package)`
     width: 190px;
     height: 60px;
     font-family: "Lora";
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     border-radius: 30px;
     background-image: linear-gradient(to bottom right, #ff9d00, #ded05a);

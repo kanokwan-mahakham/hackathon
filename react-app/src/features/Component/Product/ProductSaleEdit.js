@@ -59,26 +59,25 @@ export default styled(ProductSaleEdit)`
   }
 
   .box #box-image {
-    width: 400px;
-    height: 500px;
+    width: 320px;
+    height: 420px;
     border-radius: 30px;
     margin: 10px 40px 40px 0px;
-    object-fit: cover;
   }
-  
   .box-detail {
     display: flex;
     text-align: center;
     position: absolute;
-    bottom: 90px;
-    left: 30px;
+    bottom: 70px;
+    left: 15px;
     background-color: white;
-    width: 340px;
-    height: 170px;
+    width: 290px;
+    height: 150px;
     border-radius: 30px;
     z-index: 1;
     flex-direction: column;
     justify-content: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   }
   .image {
     flex: 1;
@@ -86,9 +85,9 @@ export default styled(ProductSaleEdit)`
   }
   .box-detail #name {
     font-family: "Anuphan";
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
     margin-top: 8px;
   }
 

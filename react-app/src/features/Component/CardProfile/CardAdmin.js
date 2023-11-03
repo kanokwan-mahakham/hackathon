@@ -66,6 +66,7 @@ export default styled(CardAdmin)`
     height: 100px;
   }
   .profile #name h1 {
+    font-family: "Anuphan";
     font-size: 50px;
     font-weight: 600;
   }

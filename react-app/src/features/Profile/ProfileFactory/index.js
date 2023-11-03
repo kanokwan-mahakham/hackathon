@@ -61,7 +61,7 @@ const ProfileFactory = ({
 
       <CardEdit user={user} information={information} />
       <div className="products">
-        <PhotoProduct information={information} />
+
         <h1>สินค้าตัวอย่าง</h1>
         <div className="sale-product">
           {products.length > 0
@@ -96,17 +96,17 @@ export default styled(ProfileFactory)`
   .products {
     height: fit-content;
     background-color: white;
-    margin-top: 100px;
     margin-bottom: 200px;
     padding: 120px 70px 70px 70px;
     border-radius: 100px;
   }
   .products h1 {
     font-family: "Anuphan";
-    font-size: 120px;
+    font-size: 100px;
     font-weight: 600;
     color: #333a56;
     text-align: center;
+    margin-top: 0px
 
   }
   .sale-product {

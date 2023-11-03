@@ -128,7 +128,7 @@ export default styled(CardEdit)`
     align-items: center;
   }
   .profile-detail #name {
-    font-family: "Lora";
+    font-family: "Anuphan";
     font-size: 50px;
     font-weight: 600;
     color: white;

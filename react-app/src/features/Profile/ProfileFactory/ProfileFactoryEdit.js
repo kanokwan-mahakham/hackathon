@@ -70,11 +70,7 @@ const ProfileFactoryEdit = ({
         setInformation={setInformation}
       />
       <div className="products">
-        <PhotoProductEdit
-          url={url}
-          information={information}
-          setInformation={setInformation}
-        />
+        
         <h1>สินค้าตัวอย่าง</h1>
         <div className="sale-product">
           {user.type == "company" ? (
@@ -137,8 +133,8 @@ export default styled(ProfileFactoryEdit)`
     left: 90px;
   }
   .add-product {
-    width: 400px;
-    height: 500px;
+    width: 320px;
+    height: 420px;
     border: 4px dashed gray;
     border-radius: 30px;
     display: flex;
@@ -159,17 +155,17 @@ export default styled(ProfileFactoryEdit)`
     position: relative;
     height: fit-content;
     background-color: white;
-    margin-top: 100px;
     margin-bottom: 100px;
     padding: 120px 70px 70px 70px;
     border-radius: 100px;
   }
   .products h1 {
     font-family: "Anuphan";
-    font-size: 120px;
+    font-size: 100px;
     font-weight: 600;
     color: #333a56;
     text-align: center;
+    margin-top: 0px
   }
   .sale-product {
     display: flex;
@@ -178,7 +174,7 @@ export default styled(ProfileFactoryEdit)`
   }
   .products .package {
     position: absolute;
-    transform: translate(150%, -10%);
+    transform: translate(140%, 10%);
   }
   .package h1 {
     font-size: 55px;

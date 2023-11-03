@@ -1,34 +1,38 @@
 import styled from "styled-components";
+import React, { useState } from "react";
 
-const BlogSlide = ({ imageHome, className }) => {
-  const image1 = require("../../image Hackathon/image/promote1.jpg");
-  const image2 = require("../../image Hackathon/image/promote2.jpg");
-  const image3 = require("../../image Hackathon/image/promote3.jpg");
+const BlogSlide = ({ className, index, image }) => {
+  const [expanded, setExpanded] = useState(index === 0);
+
+  const handleBoxClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <div className={className}>
-      <div className="blog-slide">
-        <img src={image1}></img>
-        <img src={image2}></img>
-        <img src={image3}></img>
-      </div>
+      <div
+        className={`box-blog ${expanded ? "expanded" : ""}`}
+        onClick={handleBoxClick}
+        style={{ backgroundImage: `url(${image})` }} 
+      ></div>
     </div>
   );
 };
 
 export default styled(BlogSlide)`
-@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-  .blog-slide{
-    display: flex;
-    justify-content: center;
-    margin-left:20px;
+  .box-blog {
+    width: 30px;
+    height: 250px;
+    margin: 10px;
+    cursor: pointer;
+    transition: width 0.3s ease-in, height 0.3s ease-in;
+    border-radius: 15px;
+    
   }
-  .blog-slide img {
+
+  .expanded {
     width: 500px;
-    height: 350px;
-    margin: 60px 20px 60px 0px;
-    border-radius: 20px;
-    object-fit: cover;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    height: 275px;
   }
 `;
+

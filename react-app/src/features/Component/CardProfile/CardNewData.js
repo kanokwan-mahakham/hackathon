@@ -100,7 +100,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Your work has been saved",
+        title: "บันทึกสำเร็จ",
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
@@ -311,7 +311,7 @@ export default styled(CardNewData)`
     align-items: center;
   }
   .profile-detail #name {
-    font-family: "Lora";
+    font-family: "Anuphan";
     font-size: 50px;
     font-weight: 600;
     color: white;

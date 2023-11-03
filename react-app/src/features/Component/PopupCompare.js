@@ -75,7 +75,7 @@ export default styled(PopupCompare)`
     margin-right: 20px;
   }
   .box-name p {
-    font-family: "Lora";
+    font-family: "Anuphan";
     font-weight: 500;
     font-size: 25px;
   }

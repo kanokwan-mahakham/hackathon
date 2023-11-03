@@ -83,7 +83,6 @@ const SeeProfile = ({
       <CardCompany url={url} client={user} id={id} userId={user.id} user={company} information={information} setShowListChat={setShowListChat} setShowChat={setShowChat} setListChat={setListChat} listChat={listChat} setRoom={setRoom} />
 
       <div className="products">
-        <PhotoProduct information={information} />
 
         <h1>สินค้าตัวอย่าง</h1>
         <div className="sale-product">
@@ -119,17 +118,17 @@ export default styled(SeeProfile)`
   .products {
     height: fit-content;
     background-color: white;
-    margin-top: 100px;
     margin-bottom: 200px;
     padding: 120px 70px 70px 70px;
     border-radius: 100px;
   }
   .products h1 {
     font-family: "Anuphan";
-    font-size: 120px;
+    font-size: 100px;
     font-weight: 600;
     color: #333a56;
     text-align: center;
+    margin-top: 0px
   }
   .sale-product {
     display: flex;

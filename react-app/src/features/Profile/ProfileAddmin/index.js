@@ -154,6 +154,7 @@ export default styled(ProfileAdmin)`
     position: absolute;
     transform: translate(170%, -90%);
     z-index: 2;
+    font-family: "Anuphan";
     font-size: 50px;
   }
   .head-name h1 {
