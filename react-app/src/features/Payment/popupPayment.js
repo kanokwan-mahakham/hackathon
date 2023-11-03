@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const Backgroud = styled.div`
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
   background-color: #c6ccd7; /* RGBA color with 0.7 alpha (70% opacity) */
   display: flex;
   justify-content: center;
@@ -221,15 +222,15 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
       if (pomotion == "day") {
         const res = String(currentDate.getDate() + 1).padStart(2, "0");
         setFormattedDay(`${res}-${month}-${year}`);
-        setPack("Package for 1 day")
+        setPack("เพิ่มการมองเห็น 1 วัน")
       } else if (pomotion == "month") {
         const res = String(currentDate.getMonth() + 2).padStart(2, "0");
         setFormattedDay(`${day}-${res}-${year}`);
-        setPack("Package for 1 month")
+        setPack("เพิ่มการมองเห็น 1 เดือน")
       } else {
         const res = String(currentDate.getFullYear() + 1).slice(2);
         setFormattedDay(`${day}-${month}-${res}`);
-        setPack("Package for 1 year")
+        setPack("เพิ่มการมองเห็น 1 ปี")
       }
     }
     getCompanies();
@@ -314,11 +315,11 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
         <Styledh1>
 
           {pomotion=="day"?(
-            <h1>Package 1 day</h1>
+            <h1>เพิ่มการมองเห็น 1 วัน</h1>
           ):pomotion=="month"?(
-            <h1>Package 1 month</h1>
+            <h1>เพิ่มการมองเห็น 1 เดือน</h1>
           ):(
-            <h1>Package 1 year</h1>
+            <h1>เพิ่มการมองเห็น 1 ปี</h1>
           )}
           
         </Styledh1>
