@@ -79,8 +79,8 @@
               <Link to="/" className="previous">
                 &#8249;
               </Link>
-              <h1>Welcome</h1>
-              <p>We are glad to see you back with us</p>
+              <h1>ยินดีต้อนรับ</h1>
+              <p>เราพร้อมให้บริการคุณ</p>
 
               <InputLoginFields
                 icon={
@@ -97,7 +97,7 @@
                     />
                   </svg>
                 }
-                placeholder="Username"
+                placeholder="ชื่อผู้ใช้"
                 type="text"
                 onChange={(event) => {
                   setUsername(event.target.value);
@@ -118,7 +118,7 @@
                     />
                   </svg>
                 }
-                placeholder="Password"
+                placeholder="รหัสผ่าน"
                 type="password"
                 onChange={(event) => {
                   setPassword(event.target.value);
@@ -129,9 +129,9 @@
               <Button text="LOGIN" onClick={submit} />
               </div>
               <div className="additional-text">
-                <div className="text1">don’t have account?</div>
+                <div className="text1">ยังไม่มีบัญชี</div>
                 <Link to="/choose-login-page" className="text2">
-                  Register
+                  สมัครสมาชิก
                 </Link>
               </div>
             </div>

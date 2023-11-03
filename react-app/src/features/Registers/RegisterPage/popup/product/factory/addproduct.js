@@ -342,7 +342,7 @@ input:focus{
                 </Link>
               </Styleprevious>
               <Styledh1>
-                <h1>Add Product</h1>
+                <h1>เพิ่มสินค้า</h1>
               </Styledh1>
               <InputField
                 placeholder="ชื่อสินค้า"

@@ -54,7 +54,7 @@ const HelpmeFabicTwo = ({ filterProduct, setFilterProduct, className }) => {
     <div className="container">
      <div className="formHolder">
        <div className="formHeader">
-         <p>ดีไซน์เนอร์ (Designer)</p>
+         <p>ร้านขายผ้า (fabric)</p>
          <h3>เรทราคา</h3>
          <h2>เรทราคา/เมตร</h2>
        </div>
@@ -98,7 +98,7 @@ const HelpmeFabicTwo = ({ filterProduct, setFilterProduct, className }) => {
     
     margin: 0;
     color: #224;
-    background: url(${backgroundImage}) center/ cover no-repeat fixed;
+    background-color:#000;
     
     .formHeader p {
       font-size: 25px;

@@ -339,7 +339,7 @@ const PopupAddProductFarbic = ({ url, user, setProducts }) => {
               </Link>
             </Styleprevious>
             <Styledh1>
-              <h1>Add Product</h1>
+              <h1>เพิ่มสินค้า</h1>
             </Styledh1>
             <InputRegField
               placeholder="ชื่อสินค้า"

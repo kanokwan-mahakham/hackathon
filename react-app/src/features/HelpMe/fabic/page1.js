@@ -31,14 +31,14 @@ const HelpmeFabicOne = ({  filterProduct, setFilterProduct, className }) => {
      
         <div className="formHolder">
           <div className="formHeader">
-            <p>ร้านขายผ้า (Designer)</p>
+            <p>ร้านขายผ้า (fabric)</p>
             <h3>หมวดหมู่</h3>
             <h3>สินค้าของคุณมีลักษณะเป็นแบบใด</h3>
           </div>
             <div className="groupButton1">
-              <button className="select" onClick={filter1}><span>วินเทจ</span> </button>
-              <button className="select" onClick={filter2}><span>เรโทร </span> </button>
-              <button className="select" onClick={filter3}><span>สตรีทแวร์</span> </button>
+              <button className="select" onClick={filter1}><span>ผ้าไหม</span> </button>
+              <button className="select" onClick={filter2}><span>ผ้าฝ้าย </span> </button>
+              <button className="select" onClick={filter3}><span>ผ้าลินิน</span> </button>
             </div>
         </div>
       </div>
@@ -64,7 +64,7 @@ padding: 30px;
 
 margin: 0;
 color: #224;
-background: url(${backgroundImage}) center/ cover no-repeat fixed;
+background-color:#000;
 
 .formHeader p {
   font-size: 25px;
