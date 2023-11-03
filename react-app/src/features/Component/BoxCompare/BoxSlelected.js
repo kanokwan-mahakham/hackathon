@@ -74,10 +74,15 @@ export default styled(BoxSelected)`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    text-align: center;
+  }
+  .box-detail #name{
+    height: 100px;
+    margin: 3px 18px;
   }
   .box-detail h1 {
-    font-family: "Lora";
+    font-family: "Anuphan";
     font-size: 35px;
     font-weight: 600;
   }
@@ -88,6 +93,11 @@ export default styled(BoxSelected)`
     text-align: center;
     padding: 18px;
     line-height: 30px;
+    
+  }
+  .detail {
+    height: 100px;
+    margin-bottom: 20px;
   }
   .button-detail {
     width: 200px;
@@ -99,6 +109,7 @@ export default styled(BoxSelected)`
     background-image: linear-gradient(to bottom right, #12136e, #6b78ff);
     color: white;
     border:none;
+    margin-bottom: 20px;
   }
   .button-detail:hover {
     color: #12136e;

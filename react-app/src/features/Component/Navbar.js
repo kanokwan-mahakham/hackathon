@@ -126,7 +126,7 @@ export default styled(Navbar)`
   }
 
   .navbar a {
-    margin: 40px;
+    margin: 35px;
     font-size: 23px;
     font-weight: 500;
     text-decoration: none;

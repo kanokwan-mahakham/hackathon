@@ -130,7 +130,7 @@ function App() {
 
   return (
     <>
-      {companies.length > 0 ? (
+      {companies.length >= 0 ? (
         <>
         <Routes>
           <Route

@@ -129,7 +129,7 @@ export default styled(NavbarSearch)`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   
   .navbar a {
-    margin: 40px;
+    margin: 30px;
     font-size: 23px;
     font-weight: 500;
     text-decoration: none;

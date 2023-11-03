@@ -171,9 +171,9 @@ export default styled(BoxData)`
     text-align: center;
     position: absolute;
     bottom: 30px;
-    left: 20px;
+    left: 12px;
     background-color: white;
-    width: 230px;
+    width: 245px;
     height: 120px;
     border-radius: 20px;
     z-index: 1;
@@ -189,14 +189,14 @@ export default styled(BoxData)`
     font-family: "Anuphan";
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 12px;
-    margin-top: 8px;
+    margin-bottom: 5px;
+    margin-top: 3px;
   }
   .box-detail #detail {
     font-family: "Anuphan";
-    font-size: 18px;
-    font-weight: 40;
-    margin: 0px 30px;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0px 25px;
   }
   .button {
     display: flex;
