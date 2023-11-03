@@ -217,6 +217,7 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
     async function confirm() {
       try {
         // Step 1: Delete a notification (notis) based on notiId
+        await axios.delete(`${url}/notis/${Number(notiId)}`);
     
         // Step 2: Create a new notification
         await axios.post(`${url}/notis`, {
@@ -253,6 +254,7 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
     async function cancel() {
       try {
         // Step 1: Delete a notification (notis) based on notiId
+        await axios.delete(`${url}/notis/${Number(notiId)}`);
     
         // Step 2: Create a new notification
         await axios.post(`${url}/notis`, {
@@ -270,7 +272,7 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "ยกเลิกบัญชีเรียนร้อย",
+          title: "ยกเลิกบัญชีเรียบร้อย",
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {

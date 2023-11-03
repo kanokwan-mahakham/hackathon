@@ -211,11 +211,12 @@ const CheackPayment = ({ url, packages, setPackages,setCompanies, setNotis }) =>
 
         const ress = await axios.get(`${url}/notis`)
         const resCom = await axios.get(`${url}/packages`)
-        const resUser = await axios.get(`${url}/users`)
         setPackages(resCom.data)
         setNotis(ress.data)
-        setCompanies(resUser.data)
         setUser()
+        const resUser = await axios.get(`${url}/users`)
+        setCompanies(resUser.data)
+        
     
         // Step 4: Display a success message using Swal (SweetAlert)
         Swal.fire({

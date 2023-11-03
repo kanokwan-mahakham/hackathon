@@ -354,7 +354,8 @@ const RegisterCompany = ({ companies, setUser, url }) => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Your work has been saved",
+          title: "สมัครบัญชีเรียบร้อย",
+          text: 'ยินดีต้อนรับ',
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {

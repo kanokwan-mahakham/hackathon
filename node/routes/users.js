@@ -6,9 +6,19 @@ const CustomerFav = require("../models/customerFavs")
 
 router.get('/', async (req, res) => {
   const users = await User.findAll();
+  shuffleArray(users); // เรียงแบบมั่ว
   users.sort((a, b) => b.pack - a.pack); // เรียงจากมากไปน้อย
   res.send(users);
 });
+
+// ฟังก์ชันสับสน (shuffle array) สำหรับสลับตำแหน่งข้อมูลในรายการ
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // สลับตำแหน่งข้อมูล
+  }
+}
+
 
 
 router.get('/:id', async (req, res) => {
