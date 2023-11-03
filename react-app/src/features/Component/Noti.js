@@ -18,7 +18,7 @@ const Noti = ({ url, user, setShownoti, notis, setNotis, className }) => {
         <div className="header">
           <p>ข้อความแจ้งเตือน</p>
           <div className="btn-header">
-            <img src={cancle} id="btn-cancle" onClick={closeNoti} />
+            <img src={cancle} id="btn-cancle" onClick={closeNoti} alt="cancle"/>
           </div>
         </div>
         <div className="line"></div>

@@ -71,11 +71,13 @@ const HelpmeFactoryOne = ({  filterProduct, setFilterProduct, className }) => {
       font-size: 25px;
       text-align: center;
       font-weight: bold;
+      font-family: "Anuphan";
     }
     
     .formHeader h3 {
       font-size: 20px;
       text-align: center;
+      font-family: "Anuphan";
     }
     
     .groupButton1 {
@@ -121,7 +123,7 @@ const HelpmeFactoryOne = ({  filterProduct, setFilterProduct, className }) => {
     button.select span {
       color: #fff;
       text-align: center;
-      font-family: 'Lora', serif;
+      font-family: "Anuphan";
       font-size: 16px;
       font-weight: 300;
     }

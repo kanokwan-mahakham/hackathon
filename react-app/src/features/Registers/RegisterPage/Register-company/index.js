@@ -37,6 +37,7 @@ const StyledButtonContainer = styled.div`
 const Stylep = styled.div`
   p {
     margin: 10px;
+    font-family: "Anuphan";
     text-align: center;
     font-size: 17.55px;
   }
@@ -142,6 +143,7 @@ const Styledtextinput = styled.div`
     font-weight: 400;
     line-height: 11.325px;
     border: none;
+    font-family: "Anuphan";
     outline: none;
   }
 `;
@@ -173,6 +175,7 @@ const StyleAddtext = styled.div`
     font-size: 13.55px;
     display: flex;
     justify-content: center;
+    font-family: "Anuphan";
     margin-top: 10px;
   }
 `;
@@ -181,6 +184,7 @@ const Styledtext1 = styled.div`
   .text1 {
     margin-right: 5px;
     font-size: 13.55px;
+    font-family: "Anuphan";
     color: #807d7d;
   }
 `;
@@ -190,13 +194,14 @@ const Styledh1 = styled.div`
     font-size: 43px;
     font-weight: bold;
     margin: 10px;
+    font-family: "Anuphan";
     text-align: center;
   }
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: your-desired-color; // Specify your desired text color here
-  // Add other CSS styles if needed
+  color: your-desired-color;
+  font-family: "Anuphan"; 
 `;
 const right = styled.div`
   .right-content {

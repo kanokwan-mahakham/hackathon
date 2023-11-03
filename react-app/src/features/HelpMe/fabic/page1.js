@@ -68,6 +68,7 @@ background-color:#000;
 
 .formHeader p {
   font-size: 25px;
+  font-family: "Anuphan";
   text-align: center;
   font-weight: bold;
 }
@@ -75,6 +76,7 @@ background-color:#000;
 .formHeader h3 {
   font-size: 20px;
   text-align: center;
+  font-family: "Anuphan";
 }
 
 .groupButton1 {
@@ -120,7 +122,7 @@ button.select:hover {
 button.select span {
   color: #fff;
   text-align: center;
-  font-family: 'Lora', serif;
+  font-family: "Anuphan";
   font-size: 16px;
   font-weight: 300;
 }

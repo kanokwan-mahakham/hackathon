@@ -270,6 +270,7 @@
       font-size: 15px;
       display: flex;
       justify-content: center;
+      font-family: "Anuphan";
       margin-top: 10px;
       font-family: "Anuphan";
     }
@@ -277,6 +278,7 @@
     .text1 {
       margin-right: 5px;
       font-size: 15px;
+      font-family: "Anuphan";
       color: #807d7d;
     }
 

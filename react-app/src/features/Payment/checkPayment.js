@@ -30,7 +30,7 @@ const StyledBotton = styled.div`
   .button-text {
     color: #fff;
     text-align: center;
-    font-family: "Open Sans";
+    font-family: "Anuphan";
     font-size: 13px;
     font-weight: 700;
     line-height: 17.325px;
@@ -58,6 +58,7 @@ const StyledBotton2 = styled.div`
     text-align: center;
     font-family: "Open Sans";
     font-size: 13px;
+    font-family: "Anuphan";
     font-weight: 700;
     line-height: 17.325px;
   }
@@ -103,6 +104,7 @@ const Styledh1 = styled.div`
     font-weight: bold;
     margin-bottom: 20px;
     margin-left: 320px;
+    font-family: "Anuphan";
   }
 `;
 
@@ -137,6 +139,7 @@ const Styledtext1 = styled.div`
     color: #000;
     text-align: center;
     margin-left: -160px;
+    font-family: "Anuphan";
   }
 `;
 
@@ -145,6 +148,7 @@ const Styledtext2 = styled.div`
     margin-top: 10px;
     margin-left: 190px;
     display: flex;
+    font-family: "Anuphan";
     color: #000;
     text-align: center;
     font-weight: bold;
@@ -156,6 +160,7 @@ const Styledtext3 = styled.div`
     margin-top: 10px;
     margin-left: 100px;
     display: flex;
+    font-family: "Anuphan";
     color: #000;
     text-align: center;
     font-weight: bold;

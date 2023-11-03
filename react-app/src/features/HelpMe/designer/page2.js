@@ -28,7 +28,7 @@ const RangeSlider = styled.input`
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #4caf50;
+    background: #fff;
     cursor: pointer;
   }
 `;
@@ -121,19 +121,23 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
       font-size: 25px;
       text-align: center;
       font-weight: bold;
+      font-family: "Anuphan";
     }
     
     .formHeader h3 {
       font-size: 20px;
+      font-family: "Anuphan";
       text-align: center;
     }
 
     .formHeader h2 {
         font-size: 17px;
+        font-family: "Anuphan";
         text-align: center;
       }
       p{
         font-size: 17px;
+        font-family: "Anuphan";
         text-align: center;
       }
     
@@ -180,7 +184,7 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
     button.select span {
       color: #fff;
       text-align: center;
-      font-family: 'Lora', serif;
+      font-family: "Anuphan";
       font-size: 16px;
       font-weight: 300;
     }
@@ -201,6 +205,7 @@ const HelpmeDesignTwo = ({ filterProduct, setFilterProduct,className }) => {
     select {
       border: none;
       border-bottom: 2px solid #D3D5F1;
+      font-family: "Anuphan";
       width: 300px;
       height: 40px;
     }

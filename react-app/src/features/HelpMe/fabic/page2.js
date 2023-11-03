@@ -30,7 +30,7 @@ transition: opacity 0.2s;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #4caf50;
+  background: #000;
   cursor: pointer;
 }
 `;
