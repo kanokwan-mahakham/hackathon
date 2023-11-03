@@ -368,7 +368,7 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
             </Styledtext2>
 
             <StyledBotton>
-              <Button text="Continue" onClick={submit} />
+              <Button text="ยืนยัน" onClick={submit} />
             </StyledBotton>
           </div>
           <StyleRight>

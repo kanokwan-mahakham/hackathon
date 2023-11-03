@@ -65,7 +65,7 @@ const HelpmeFactoryTwo = ({  filterProduct, setFilterProduct, className }) => {
     
     margin: 0;
     color: #224;
-    background: url(${backgroundImage}) center/ cover no-repeat fixed;
+    background-color:#000;
     
     .formHeader p {
       font-size: 25px;

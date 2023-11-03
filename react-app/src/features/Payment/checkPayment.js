@@ -310,10 +310,10 @@ const CheackPayment = ({ url, packages, setPackages, setNotis }) => {
             </Styledtext3>
             <ButtonContainer>
               <StyledBotton>
-                <Button text="Confirm" onClick={confirm} />
+                <Button text="ยืนยัน" onClick={confirm} />
               </StyledBotton>
               <StyledBotton2>
-                <Button text="Cancel" onClick={cancel} />
+                <Button text="ยกเลิก" onClick={cancel} />
               </StyledBotton2>
             </ButtonContainer>
           </div>

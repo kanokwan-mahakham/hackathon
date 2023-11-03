@@ -370,7 +370,7 @@ const RegisterCompany = ({ companies, setUser, url }) => {
               </Link>
             </Styleprevious>
             <Styledh1>
-              <h1>Create account</h1>
+              <h1>สร้างบัญชี</h1>
             </Styledh1>
 
             <Stylep>
@@ -389,7 +389,7 @@ const RegisterCompany = ({ companies, setUser, url }) => {
             </StyledGroupline>
 
             <InputField
-              placeholder="Enter your email"
+              placeholder="ใส่อีเมล์"
               type="text"
               onChange={(event) => {
                 setEmail(event.target.value);
@@ -397,7 +397,7 @@ const RegisterCompany = ({ companies, setUser, url }) => {
             />
 
             <InputField
-              placeholder="Create password"
+              placeholder="รหัสผ่าน"
               type="password"
               icon={
                 <svg
@@ -423,7 +423,7 @@ const RegisterCompany = ({ companies, setUser, url }) => {
             />
 
             <InputField
-              placeholder="Confirm password"
+              placeholder="ยืนยันรหัสผ่าน"
               type="password"
               icon={
                 <svg
@@ -467,9 +467,9 @@ const RegisterCompany = ({ companies, setUser, url }) => {
                       setType(event.target.value);
                     }}
                   >
-                    <option value="ofrabic shop">frabic shop</option>
-                    <option value="company">company</option>
-                    <option value="designer">designer</option>
+                    <option value="ofrabic shop">ร้านขายผ้า</option>
+                    <option value="company">โรงงาน</option>
+                    <option value="designer">ผู้ออกแบบ</option>
                   </select>
                 </StyledSelect>
               </div>
@@ -503,15 +503,15 @@ const RegisterCompany = ({ companies, setUser, url }) => {
 
             <StyledButtonContainer>
               <StyledButton>
-                <Button text="Continue" onClick={submit} />
+                <Button text="ยืนยัน" onClick={submit} />
               </StyledButton>
             </StyledButtonContainer>
 
             <StyleAddtext>
               <div className="additional-text">
-                <div className="text1">already have accoaccount ?</div>
+                <div className="text1">คุณมีบัญชีอยู่แล้ว</div>
                 <StyledLink to="/login" className="text2">
-                  Sign in
+                  เข้าสู่ระบบ
                 </StyledLink>
               </div>
             </StyleAddtext>

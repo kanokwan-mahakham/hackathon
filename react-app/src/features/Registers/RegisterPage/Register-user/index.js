@@ -318,10 +318,10 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
             <StyleAddtext>
               <div className="additional-text">
                 <Styledtext1>
-                  <div className="text1">already have accoaccount ?</div>{" "}
+                  <div className="text1">มีบัญชีอยู่แล้ว</div>{" "}
                 </Styledtext1>
                 <StyledLink to="/login" className="text2">
-                  Sign in
+                   เข้าสู่ระบบ
                 </StyledLink>
               </div>
             </StyleAddtext>

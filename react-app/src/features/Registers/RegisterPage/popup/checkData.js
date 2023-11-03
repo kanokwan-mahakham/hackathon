@@ -290,7 +290,7 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
           </Styleprevious>
           <div className="left-content">
             <Styledh1>
-              <h1>data validate</h1>
+              <h1>ตรวจสอบข้อมูล</h1>
             </Styledh1>
 
             <Stylep>
