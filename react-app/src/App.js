@@ -705,6 +705,7 @@ function App() {
                 packages={packages}
                 setPackages={setPackages}
                 setNotis={setNotis}
+                setUser={setUser}
               />
             }
           />

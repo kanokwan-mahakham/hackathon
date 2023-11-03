@@ -296,7 +296,7 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Your work has been saved",
+        title: "ชำระเงินเสร็จสิ้น",
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
