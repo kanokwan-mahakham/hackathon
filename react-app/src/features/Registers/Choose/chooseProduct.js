@@ -36,6 +36,7 @@ const ChooseProducts = ({ className }) => {
 };
 
 export default styled(ChooseProducts)`
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
     background-color: rgba(198, 204, 215, 0.7);
     display: flex;
     justify-content: center;
