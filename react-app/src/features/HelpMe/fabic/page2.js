@@ -40,7 +40,7 @@ const HelpmeFabicTwo = ({ filterProduct, setFilterProduct, className }) => {
     const navigate = useNavigate();
 
     function filter(){
-        const finds = filterProduct.filter((find)=>find.price <= sliderValue)
+        const finds = filterProduct.filter((find)=>find.price < sliderValue)
         setFilterProduct(finds)
         navigate('/filter-fabric');
     }

@@ -35,6 +35,8 @@ const Category = ({
   setRoom,
   chat,
   setChat,
+  setFilterProduct,
+  products,
   className,
 }) => {
   const image = require("../../image Hackathon/image/background.jpeg");
@@ -44,6 +46,10 @@ const Category = ({
 
   function login() {
     navigate("/login");
+  }
+
+  function setProduct(){
+    setFilterProduct(products)
   }
 
   useEffect(() => {
@@ -143,15 +149,15 @@ const Category = ({
           {typeof user == "object" ? (
             type == "company" ? (
               <Link to="/HelpmeFactoryOne">
-                <button className="btn-help-me">กลั่นกรอง</button>
+                <button className="btn-help-me" onClick={setProduct}>กลั่นกรอง</button>
               </Link>
             ) : type == "fabric" ? (
               <Link to="/HelpmeFabicOne">
-                <button className="btn-help-me">กลั่นกรอง</button>
+                <button className="btn-help-me"onClick={setProduct}>กลั่นกรอง</button>
               </Link>
             ) : (
               <Link to="/HelpmeDesignOne">
-                <button className="btn-help-me">กลั่นกรอง</button>
+                <button className="btn-help-me"onClick={setProduct}>กลั่นกรอง</button>
               </Link>
             )
           ) : (
