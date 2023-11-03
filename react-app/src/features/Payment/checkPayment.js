@@ -91,6 +91,9 @@ const Styleprevious = styled.div`
     background-color: #f1f1f1;
     color: black;
     border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 40px;
   }
 
   .previous:hover {

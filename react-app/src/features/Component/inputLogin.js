@@ -18,16 +18,17 @@ align-items: center;
 const Input = styled.input`
 color: #807D7D;
 font-family: 'Open Sans';
-font-size: 11.55px;
+font-size: 14.55px;
 font-weight: 400;
-line-height: 17.325px;
+line-height: 13.325px;
 border: none;
 outline: none;
 text-align: center  ;
+font-family: "Anuphan";
 `;
 
 const IconContainer = styled.div`
-width: 14.438px;
+width: 64.438px;
 height: 14.438px;
 margin-left: 100px ;
 `;

@@ -39,6 +39,7 @@ export default styled(ChooseProducts)`
 @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
     background-color: rgba(198, 204, 215, 0.7);
     display: flex;
+    font-family: "Anuphan";
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -47,6 +48,7 @@ export default styled(ChooseProducts)`
     .content {
         display: flex;
         flex-direction: column;
+        font-family: "Anuphan";
         align-items: center;
     }
 
@@ -64,6 +66,7 @@ export default styled(ChooseProducts)`
         justify-content: space-around;
         align-items: center;
         width: 1000px;
+        font-family: "Anuphan";
         height: 550px;
         background-color: #FFFFFF;
         border-radius: 54px;

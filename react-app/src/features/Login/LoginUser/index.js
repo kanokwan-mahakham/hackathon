@@ -134,7 +134,7 @@
   };
 
   export default styled(LoginComponent)`
-  
+  @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
   background-color: #000;
   display: flex;
   justify-content: center;
@@ -142,10 +142,11 @@
   height: 100vh;
   a{
     text-decoration: none;
+    font-family: "Anuphan";
   }
     .container {
       max-width: 1110px;
-
+      font-family: "Anuphan";
       max-height: 550px;
       width: 100%;
       height:100%;
@@ -262,7 +263,7 @@
       justify-content: center;
       font-family: "Anuphan";
       margin-top: 10px;
-      font-family: "Anuphan";
+     
     }
 
     .text1 {
@@ -276,15 +277,18 @@
       .container {
         margin: 20px;
         padding: 20px;
+        font-family: "Anuphan";
         width: 100%;
         height: auto;
       }
 
       .left-content {
+        font-family: "Anuphan";
         width: 100%;
       }
 
       .right-content {
+        font-family: "Anuphan";
         display: none;
       }
     } 

@@ -13,10 +13,12 @@ const Backgroud = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0;
+  font-family: "Anuphan";
 `;
 
 const StyleContainer = styled.div`
 .container {
+  font-family: "Anuphan";
     width: 1110px;
     height: 1070px;
     background-color: #FFFFFF;
@@ -33,6 +35,7 @@ const StyleContainer = styled.div`
 }
 @media (max-width: 1208px) {
   .container {
+    font-family: "Anuphan";
     width: 75%; /* Make it full width on smaller screens */
     border-radius: 20px; /* Adjust border-radius */
     margin-top: 10px; 
@@ -82,20 +85,22 @@ const StyledBotton = styled.div`
   .button-text {
     color: #fff;
     text-align: center;
-    font-family: "Open Sans";
+    font-family: "Anuphan";
     font-size: 13px;
     font-weight: 700;
     line-height: 17.325px;
   }
   @media (max-width: 1208px) {
     .button {
-      width:70%
+      width:70%;
+      font-family: "Anuphan";
     }
   }
 `;
 const StyledBotton2 = styled.div`
   .button {
     display: flex;
+
     width: 288.75px;
     padding: 8.663px 5.775px;
     justify-content: center;
@@ -112,7 +117,7 @@ const StyledBotton2 = styled.div`
   .button-text {
     color: #000;
     text-align: center;
-    font-family: "Open Sans";
+    font-family: "Anuphan";
     font-size: 13px;
     font-weight: 700;
     line-height: 17.325px;
@@ -120,7 +125,8 @@ const StyledBotton2 = styled.div`
 
   @media (max-width: 1208px) {
     .button {
-      width:70%
+      width:70%;
+      font-family: "Anuphan";
     }
 }
 `;
@@ -148,6 +154,7 @@ const Styledh1 = styled.div`
 `;
 const ButtonContainer = styled.div`
   display: flex;
+  font-family: "Anuphan";
   flex-direction: row;
   margin-left: 150px;
   margin-top: 15px;

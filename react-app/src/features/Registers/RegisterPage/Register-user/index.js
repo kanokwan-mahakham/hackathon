@@ -12,11 +12,13 @@ const Backgroud = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Anuphan";
   height: 100vh;
   margin: 0;
 `;
 const StyledButton = styled.div`
   display: flex;
+  font-family: "Anuphan";
   flex-direction: column;
   align-items: center;
   gap: 20px;
@@ -30,6 +32,7 @@ const StyledButton = styled.div`
 
 const StyledButtonContainer = styled.div`
   display: flex;
+  font-family: "Anuphan";
   flex-direction: column;
   align-items: center;
   color: #fff;
@@ -37,6 +40,7 @@ const StyledButtonContainer = styled.div`
 
 const Stylep = styled.div`
   margin: 10px;
+
   font-size: 17.55px;
   text-align: center;
   font-family: "Anuphan";
@@ -44,6 +48,7 @@ const Stylep = styled.div`
 
 const StyledContainer = styled.div`
   display: flex;
+  font-family: "Anuphan";
   flex-direction: column;
   width: 50%;
   max-width: 1110px;
@@ -58,6 +63,7 @@ const StyledContainer = styled.div`
 
 const Styleprevious = styled.div`
   .previous {
+
     text-decoration: none;
     display: inline-block;
     padding: 8px 16px;
@@ -81,6 +87,7 @@ const StyledGroupline = styled.div`
 const Styleline1 = styled.div`
   .underline {
     width: 50%;
+    font-family: "Anuphan";
     height: 1.444px;
     background: #000;
   }
@@ -88,6 +95,7 @@ const Styleline1 = styled.div`
 
 const Styleline2 = styled.div`
   .underline2 {
+    font-family: "Anuphan";
     width: 50%;
     height: 1.444px;
     background: #dbdbdb;
@@ -248,7 +256,7 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
             </StyledGroupline>
 
             <InputField
-              placeholder="Enter your email"
+              placeholder="อีเมล์"
               type="text"
               onChange={(event) => {
                 setEmail(event.target.value);
@@ -256,7 +264,7 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
             />
 
             <InputField
-              placeholder="Create password"
+              placeholder="รหัสผ่าน"
               type="password"
               icon={
                 <svg
@@ -282,7 +290,7 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
             />
 
             <InputField
-              placeholder="Confirm password"
+              placeholder="ยืนยันรหัสผ่าน"
               type="password"
               icon={
                 <svg
@@ -308,7 +316,7 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
             />
 
             <InputField
-              placeholder="Username"
+              placeholder="ชื่อผู้ใช้"
               type="text"
               onChange={(event) => {
                 setUsername(event.target.value);
@@ -317,7 +325,7 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
 
             <StyledButtonContainer>
               <StyledButton>
-                <Button text="Continue" onClick={submit} />
+                <Button text="ยืนยัน" onClick={submit} />
               </StyledButton>
             </StyledButtonContainer>
 

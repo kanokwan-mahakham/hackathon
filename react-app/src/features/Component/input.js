@@ -10,27 +10,31 @@ const InputContainer = styled.div`
     gap: 10.425px;
     border-radius: 8.663px;
     border: 0.722px solid #DBDBDB;
-    margin-top: 5px;}
+    margin-top: 8px;
+    font-family: "Anuphan";}
 `;
 
 const Input = styled.input`
 color: #807D7D;
-    font-family: 'Open Sans';
+  
     font-size: 14.55px;
     font-weight: 400;
     line-height: 17.325px;
     border: none;
     outline: none;
+    font-family: "Anuphan";
 `;
 
 const IconContainer = styled.div`
     width: 14.438px;
     height: 14.438px;
     margin-left: 500px;
+    font-family: "Anuphan";
     @media (max-width: 768px) {
         width:100%;
         height:100%;
         margin-left:25%;
+        font-family: "Anuphan";
 
     }
 

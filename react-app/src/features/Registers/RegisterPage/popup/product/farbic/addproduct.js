@@ -9,12 +9,13 @@ import axios from "axios";
 
 const Backgroud = styled.div`
 @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-  background-color: rgba(198, 204, 215, 0.7);
+  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  font-family: "Anuphan";
 `;
 
 const StyledBotton = styled.div`
@@ -28,12 +29,13 @@ const StyledBotton = styled.div`
     background: #141415;
     border-radius: 8.663px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom:26px;
   }
   .button-text {
     color: #fff;
     text-align: center;
-    font-family: "Open Sans";
+    font-family: "Anuphan";
     font-size: 13px;
     font-weight: 700;
     line-height: 17.325px;
@@ -42,7 +44,8 @@ const StyledBotton = styled.div`
 
 const StyleContainer = styled.div`
   .container {
-    width: 870px;
+    font-family: "Anuphan";
+    width: 490px;
     height: 470px;
     background-color: #ffffff;
     border-radius: 54px;
@@ -55,6 +58,7 @@ const StyleContainer = styled.div`
     margin-top: 20px; /* Adjust the margin top */
     margin-left: 20px;
     border: 2px solid #000;
+    
   }
 
   @media (max-width: 768px) {
@@ -77,6 +81,7 @@ const StyledSelect = styled.div`
     background-color: #fff;
     color: #333;
     appearance: none;
+    font-family: "Anuphan";
   }
 
   .select:hover {
@@ -109,6 +114,10 @@ const Styleprevious = styled.div`
     background-color: #f1f1f1;
     color: black;
     border-radius: 50%;
+    
+    position: absolute;
+    top: 20px;
+    left: 40px;
   }
 
   .previous:hover {
@@ -119,14 +128,14 @@ const Styleprevious = styled.div`
 
 const StyleRightimg = styled.div`
   .right-image {
-    margin-top: 140px; /* Adjust the margin top */
+    margin-top: 0px; /* Adjust the margin top */
     display: flex;
     justify-content: center;
   }
 
   @media (max-width: 768px) {
     .right-image {
-      margin-top:10px;
+      margin-top:0px;
       display: flex;
     justify-content: center;
     }
@@ -149,6 +158,7 @@ const Styledh1 = styled.div`
       font-weight: bold;
       margin-top: 90px;
       text-align: center;
+      font-family: "Anuphan";
     }
   }
   
@@ -177,6 +187,7 @@ const Styledinput1 = styled.div`
   .input-container2 {
     display: flex;
     height: 27px;
+    font-family: "Anuphan";
     padding: 10px 15px;
     align-items: center;
     gap: 20px;
@@ -187,7 +198,7 @@ const Styledinput1 = styled.div`
 
   .input-container2 input {
     color: #807d7d;
-    font-family: "Open Sans";
+    font-family: "Anuphan";
     font-size: 16px;
     font-weight: 400;
     line-height: 17.325px;
@@ -197,6 +208,7 @@ const Styledinput1 = styled.div`
   @media (max-width: 768px) {
     .input-container2 {
       display: flex;
+      font-family: "Anuphan";
       height: 50px;
       padding: 2px 2px;
       align-items: center;
@@ -207,7 +219,7 @@ const Styledinput1 = styled.div`
     }
     .input-container2 input {
       color: #807d7d;
-      font-family: "Open Sans";
+      font-family: "Anuphan";
       font-size: 16px;
       font-weight: 400;
       line-height: 17.325px;
@@ -223,19 +235,20 @@ input {
     padding: 8px 15px 8px 15px;
     border: 1px solid #ccc;
     border-radius: 0px;
-    margin-bottom: 25px;
-    margin-top: 2px;
+    margin-bottom: 0  px;
     width: 100%;
     box-sizing: border-box;
     color: #2C3E50;
     background-color: #ECEFF1;
     font-size: 16px;
     letter-spacing: 1px
+    font-family: "Anuphan";
 }
 input:focus{
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
+    font-family: "Anuphan";
     border: 1px solid #673AB7;
     outline-width: 0
 }

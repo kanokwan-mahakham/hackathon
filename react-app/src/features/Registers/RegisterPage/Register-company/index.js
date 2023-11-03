@@ -9,6 +9,7 @@ import axios from "axios";
 const Backgroud = styled.div`
 @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
   background-color: #000;
+  font-family: "Anuphan";
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +18,7 @@ const Backgroud = styled.div`
 
 const StyledButton = styled.div`
   display: flex;
+  font-family: "Anuphan";
   flex-direction: column;
   align-items: center;
   gap: 20px;
@@ -30,6 +32,7 @@ const StyledButton = styled.div`
 
 const StyledButtonContainer = styled.div`
   display: flex;
+  font-family: "Anuphan";
   flex-direction: column;
   align-items: center;
   color: #fff;
@@ -45,6 +48,7 @@ const Stylep = styled.div`
 `;
 const StyleContainer = styled.div`
   .container {
+    font-family: "Anuphan";
     display: flex;
     flex-direction: column;
     width: 95%;
@@ -60,6 +64,7 @@ const StyleContainer = styled.div`
     margin: 10px;
     border-radius: 20px;
     width: 50%;
+    font-family: "Anuphan";
     height: auto;
     max-width: 100%;
     max-height: none;
@@ -83,6 +88,7 @@ const Styleprevious = styled.div`
 const Styledinput = styled.div`
   .input-container2 {
     display: flex;
+    font-family: "Anuphan";
     height: 34.65px;
     padding: 5.775px 8.663px;
     align-items: center;
@@ -94,9 +100,8 @@ const Styledinput = styled.div`
 
   .input-container2 input {
     color: #807d7d;
-    font-family: "Open Sans";
+    font-family: "Anuphan";
     font-size: 14.55px;
-    font-weight: 400;
     line-height: 17.325px;
     border: none;
     outline: none;
@@ -110,22 +115,26 @@ const StyledSelect = styled.div`
     border-radius: 20px;
     font-size: 14px;
     background-color: #fff;
+    font-family: "Anuphan";
     color: #333;
     appearance: none; 
 }
 
 .select:hover {
     border-color: #666;
+    font-family: "Anuphan";
 }
 
 .select:focus {
     outline: none;
     border-color: #000000;
     box-shadow: 0 0 5px rgba(77, 77, 77, 0.5);
+    font-family: "Anuphan";
 }
 
 .select::after {
     content: '\25BC'; /* Down arrow character */
+    font-family: "Anuphan";
     position: absolute;
     top: 50%;
     right: 10px;
@@ -139,7 +148,7 @@ const StyledSelect = styled.div`
 const Styledtextinput = styled.div`
   .textinput {
     color: #807d7d;
-    font-family: "Open Sans";
+    font-family: "Anuphan";
     font-size: 13.55px;
     font-weight: 400;
     line-height: 11.325px;
@@ -152,12 +161,14 @@ const Styledtextinput = styled.div`
 const StyledGroupline = styled.div`
   .group-underline {
     display: flex;
+  
     justify-content: center;
   }
 `;
 const Styleline1 = styled.div`
   .underline {
     width: 50%;
+    font-family: "Anuphan";
     height: 1.444px;
     background: #000;
   }
@@ -166,6 +177,7 @@ const Styleline1 = styled.div`
 const Styleline2 = styled.div`
   .underline2 {
     width: 50%;
+    font-family: "Anuphan";
     height: 1.444px;
     background: #dbdbdb;
   }
@@ -458,7 +470,7 @@ const RegisterCompany = ({ companies, setUser, url }) => {
             />
 
             <InputField
-              placeholder="Username"
+              placeholder="ชื่อผู้ใช้"
               type="text"
               onChange={(event) => {
                 setUsername(event.target.value);
