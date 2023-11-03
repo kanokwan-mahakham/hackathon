@@ -7,7 +7,8 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const Backgroud = styled.div`
-  background-color: rgba(198, 204, 215, 0.7);
+
+  background-color: #000;
   display: flex;
   justify-content: center;
 `;
@@ -78,7 +79,7 @@ const StyleContainer = styled.div`
     padding-top: px;
     margin-bottom: 70px;
     margin-left: 20px;
-    border: 2px solid #000;
+    border: 2px solid #dddd;
   }
 `;
 
@@ -101,10 +102,12 @@ const Styleprevious = styled.div`
 const Styledh1 = styled.div`
   h1 {
     font-size: 40px;
-    font-weight: bold;
+    font-weight: 17px;
     margin-bottom: 20px;
     margin-left: 320px;
     font-family: "Anuphan";
+    color:#fff;
+
   }
 `;
 

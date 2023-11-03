@@ -10,12 +10,15 @@ import axios from "axios";
 
 const Backgroud = styled.div`
 @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
-  background-color: #c6ccd7; /* RGBA color with 0.7 alpha (70% opacity) */
+  background-color: #000; /* RGBA color with 0.7 alpha (70% opacity) */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  @media (max-width: 768px) {
+    background-color: #c6ccd7; /* RGBA color with 0.7 alpha (70% opacity) */
+  }
 `;
 const StyledBotton = styled.div`
   .button {
@@ -42,26 +45,27 @@ const StyledBotton = styled.div`
 `;
 const StyleContainer = styled.div`
 .container {
-  width: 870px;
-  height: 470px;
+  width: 470px;
+  height: 600px;
   background-color: #ffffff;
   border-radius: 54px;
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
   flex-direction: column;
-  padding: 30px;
+  padding: 20px;
   padding-top: 20px; /* Adjust the padding top */
   margin-top: 20px; /* Adjust the margin top */
-  margin-left: 20px;
-  border: 2px solid #000;
+  border: 2px solid #c6ccd7;
+
 }
 
 @media (max-width: 768px) {
   .container {
     width: 70%; /* Make it full width on smaller screens */
     border-radius: 20px; /* Adjust border-radius */
-    margin-top: 10px; /* Adjust the margin top */
+    margin-top: 10px;
+    margin-left:10px; /* Adjust the margin top */
     flex-direction: row;
   }
 }
@@ -105,16 +109,18 @@ const Styleprevious = styled.div`
 const Styledh1 = styled.div`
   h1 {
     font-size: 43px;
-    font-weight: bold;
-    margin-bottom: 70px;
-    margin-left: 0px;
+    font-weight: 10px;
+    display: flex;
+    font-family: "Anuphan";
     text-align: center;
+    margin-left: 45px;
+    color:#fff;
   }
 `;
 const StyleRight = styled.div`
 
   .right-image {
-    margin-top: 140px; /* Adjust the margin top */
+    margin-top: 40px; /* Adjust the margin top */
     display: flex;
     justify-content: center;
   }
@@ -156,6 +162,7 @@ const Styledtext1 = styled.div`
     color: #000;
     text-align: center;
     font-size:15px;
+    font-family: "Anuphan";
   }
   @media (max-width: 768px) {
   .text1 {
@@ -163,12 +170,13 @@ const Styledtext1 = styled.div`
     color: #000;
     text-align: center;
     font-size:10px;
+    font-family: "Anuphan";
   }
 }
 `;
 const Styledtext2 = styled.div`
   margin-top: 10px;
-  
+  font-family: "Anuphan";
   color: #000;
   text-align: center;
   font-weight: bold;
@@ -176,6 +184,7 @@ const Styledtext2 = styled.div`
   @media (max-width: 768px) {
   .text2 {
     font-size:10px;
+    font-family: "Anuphan";
   }
 
 }
@@ -186,7 +195,7 @@ input {
     border: 1px solid #ccc;
     border-radius: 0px;
     margin-bottom: 25px;
-    margin-top: 2px;
+    margin-top: 40px;
     width: 100%;
     box-sizing: border-box;
     color: #2C3E50;
@@ -315,18 +324,19 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
 
   return (
     <Backgroud>
-      <StyleContainer>
-        <Styledh1>
-
-          {pomotion=="day"?(
-            <h1>เพิ่มการมองเห็น 1 วัน</h1>
-          ):pomotion=="month"?(
-            <h1>เพิ่มการมองเห็น 1 เดือน</h1>
-          ):(
-            <h1>เพิ่มการมองเห็น 1 ปี</h1>
-          )}
-          
+    <styledWrapper>
+      <div className="Wrapper">
+      <Styledh1>
+        {pomotion=="day"?(
+          <h1>เพิ่มการมองเห็น 1 วัน</h1>
+        ):pomotion=="month"?(
+          <h1>เพิ่มการมองเห็น 1 เดือน</h1>
+        ):(
+          <h1>เพิ่มการมองเห็น 1 ปี</h1>
+        )}
         </Styledh1>
+      <StyleContainer>
+      
         <div className="container">
           <div className="left-content">
             <Styleprevious>
@@ -371,14 +381,7 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
                 เมื่อชำระเงินสำเร็จpackageจะส่งแจ้งเตือนไปหาคุณบนเว็ปไซต์
               </div>
             </Styledtext2>
-
-            <StyledBotton>
-              <Button text="ยืนยัน" onClick={submit} />
-            </StyledBotton>
-          </div>
-          <StyleRight>
-          
-              <div className="right-image ">
+ <div className="right-image ">
               <Styledinput>
                     <input
                       type="file"
@@ -391,10 +394,19 @@ const PopupPayment = ({ url, user, pomotion, setPackages,setNotis }) => {
                   </Styledinput>
                   
               </div>
+            <StyledBotton>
+              <Button text="ยืนยัน" onClick={submit} />
+            </StyledBotton>
+          </div>
+          <StyleRight>
+          
+             
             
           </StyleRight>
         </div>
       </StyleContainer>
+      </div>
+      </styledWrapper>
     </Backgroud>
   );
 };
