@@ -108,7 +108,7 @@ const Chat = ({
             }}
           ></input>
           <div className="btn-send-messages">
-          
+            <img src={file} onClick={sendMessage} />
             <img src={send} onClick={sendMessage} />
           </div>
         </div>
@@ -216,7 +216,7 @@ export default styled(Chat)`
   }
   .box-send-messages #input-messages {
     height: 25px;
-    width: 230px;
+    width: 210px;
     border-radius: 10px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
