@@ -293,6 +293,7 @@ const PopupAddProductFarbic = ({ url, user, setProducts }) => {
           position: "center",
           icon: "error",
           title: "ภาพใหญ่ไป",
+          text: 'กรุณาลองใหม่อีกครั้ง',
           showConfirmButton: false,
           timer: 2000,
         });
@@ -306,7 +307,8 @@ const PopupAddProductFarbic = ({ url, user, setProducts }) => {
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "Please fill in all fields",
+        title: 'โปรดกรอดข้อมูลให้ครบ',
+        text: 'กรุณาลองใหม่อีกครั้ง',
         showConfirmButton: false,
         timer: 2000,
       });
@@ -331,7 +333,7 @@ const PopupAddProductFarbic = ({ url, user, setProducts }) => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Your work has been saved",
+        title: "เพิ่มสินค้าเรียบร้อย",
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {

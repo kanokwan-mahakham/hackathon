@@ -49,6 +49,7 @@ const CardCompany = ({
           room: Number(`${userId}${Number(id)}`),
         });
         const response = await axios.get(`${url}/listChats`);
+        setRoom(Number(`${userId}${Number(id)}`))
         setListChat(response.data);
         setShowListChat("show");
         setShowChat("show");
