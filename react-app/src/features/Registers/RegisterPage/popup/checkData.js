@@ -262,13 +262,12 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
       try {
         // Step 1: Delete a notification (notis) based on notiId
         await axios.delete(`${url}/notis/${Number(notiId)}`);
-    
         // Step 2: Create a new notification
         await axios.post(`${url}/notis`, {
           companyId: company.id,
           icon: "cancel.png", //icon x
           type: "cancel",
-          description: "การยืนยันตัวตนของคุณไม่สำเร็จ",
+          description: "การยืนยันตัวตนของคุณไม่สำเร็จ โปรดติดต่อเจ้าหน้าที่",
         });
     
         // Step 3: Update the user's status to "company"

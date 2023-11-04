@@ -241,18 +241,6 @@ const RegisterCompany = ({ companies, setUser, url }) => {
   const [JuristicFile, setJuristicFile] = useState("");
   const navigate = useNavigate();
 
-  // function handleFileChange(event) {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onload = function (e) {
-  //       const imagePath = e.target.result;
-  //       setJuristicFile(imagePath); // เก็บ URL ของภาพใน state
-  //     };
-  //     reader.readAsDataURL(file);
-  //     // console.log('1',convertFileToURL(file))
-  //   }
-  // }
 
   function handleFileChange(event) {
     const file = event.target.files[0];
@@ -362,6 +350,21 @@ const RegisterCompany = ({ companies, setUser, url }) => {
           type: "wait regis",
           description: "รอตรวจสอบข้อมูลเพื่อดำเนินการเป็นสมาชิก",
         });
+
+        //////////////////////*************************/////////////////////////////
+
+        await axios.post(`${url}/listChats`, {
+          userId: 3,
+          companyId: response.data.id,
+          room: Number(`3${response.data.id}`),
+        });
+        await axios.post(`${url}/listChats`, {
+          userId: response.data.id,
+          companyId: 3,
+          room: Number(`3${response.data.id}`),
+        });
+
+        ///////////////////////////////////////////////////////////////////////////
 
         Swal.fire({
           position: "center",

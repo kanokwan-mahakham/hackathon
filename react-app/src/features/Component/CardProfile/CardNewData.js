@@ -55,6 +55,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
           position: "center",
           icon: "error",
           title: "ภาพใหญ่ไป",
+          text: "กรุณาลองใหม่อีกครั้ง",
           showConfirmButton: false,
           timer: 2000,
         });

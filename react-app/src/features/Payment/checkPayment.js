@@ -200,7 +200,6 @@ const CheackPayment = ({ url, packages, setPackages,setCompanies, setNotis }) =>
       try {
         // Step 1: Delete a notification (notis) based on notiId
         await axios.delete(`${url}/notis/${Number(notiId)}`);
-    
         // Step 2: Create a new notification
         await axios.post(`${url}/notis`, {
           companyId: pomotion.companyId,
@@ -208,13 +207,10 @@ const CheackPayment = ({ url, packages, setPackages,setCompanies, setNotis }) =>
           type: "confirm",
           description: `เริ่มการโปรโมทตาม ${pomotion.pack} นับตั้งแต่วันนี้จนถึงวันที่ ${pomotion.dayEnd}`,
         });
-    
         // Step 3: Update the user's status to "company"
         const { id, status, ...item } = pomotion;
         await axios.delete(`${url}/packages/${id}`)
         await axios.post(`${url}/packages`, { ...item, status: "completed" });
-        
-
         const ress = await axios.get(`${url}/notis`)
         const resCom = await axios.get(`${url}/packages`)
         setPackages(resCom.data)
@@ -263,7 +259,7 @@ const CheackPayment = ({ url, packages, setPackages,setCompanies, setNotis }) =>
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "ยืนยันโปรโมชั่น",
+            title: "ยกเลิกการโปรโมท",
             showConfirmButton: false,
             timer: 1500,
           }).then(() => {

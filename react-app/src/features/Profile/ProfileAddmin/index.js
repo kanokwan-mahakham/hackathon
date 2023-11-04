@@ -89,7 +89,7 @@ const ProfileAdmin = ({
           </div>
           <div className="box-category">
             <div className="number">4.5</div>
-            <div className="box-name">Rating</div>
+            <div className="box-name">User</div>
           </div>
         </div>
       </div>
