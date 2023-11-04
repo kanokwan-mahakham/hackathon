@@ -24,10 +24,11 @@ import HelpmeDesignTwo from "./features/HelpMe/designer/page2";
 import Category from "./features/Category";
 import Filter from "./features/Category/Filter";
 import PopupPayment from "./features/Payment/popupPayment";
-import CheckData from "./features/Registers/RegisterPage/popup/checkData";
-import CheackPayment from "./features/Payment/checkPayment";
+import CheckData from "./features/adminedit/checkData";
+import CheackPayment from "./features/adminedit/checkPayment";
 import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange"
-
+import Editcheckdata from "./features/adminedit/editcheckdata"
+import Editcheckpayment from "./features/adminedit/editcheckpayment"
 
 import Compare from "./features/Compare/index";
 
@@ -37,7 +38,7 @@ const socket = io.connect("http://localhost:3002");
 
 function App() {
   
-  const url = `http://localhost:3002`;
+  const url = `http://localhost:3003`;
   const [user, setUser] = useState("");
   const [companies, setCompanies] = useState([]);
   const [favs, setFavs] = useState([]);
@@ -135,9 +136,11 @@ function App() {
 
   return (
     <>
-      {companies.length > 0 ? (
+      {companies.length >= 0 ? (
         <>
         <Routes>
+        <Route path="/editcheckpayment" element={<Editcheckpayment/>}></Route>
+          <Route path="/editdata" element={<Editcheckdata/>}></Route>
           <Route
             path="/"
             element={

@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const Backgroud = styled.div`
-
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
   background-color: #000;
   display: flex;
   justify-content: center;
