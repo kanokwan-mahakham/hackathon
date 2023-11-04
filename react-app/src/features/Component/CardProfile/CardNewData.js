@@ -55,6 +55,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
           position: "center",
           icon: "error",
           title: "ภาพใหญ่ไป",
+          text: "กรุณาลองใหม่อีกครั้ง",
           showConfirmButton: false,
           timer: 2000,
         });
@@ -285,10 +286,13 @@ export default styled(CardNewData)`
     justify-content: center;
     align-items: center;
     border: 20px;
+    
   }
   .profile-image img {
     width: 280px;
     height: 310px;
+    object-fit: cover;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   }
   .profile-image #detail {
     width: 280px;

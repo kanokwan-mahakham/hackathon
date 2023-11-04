@@ -24,7 +24,6 @@
         });
         return;
       }
-
       try {
         const response = await axios.get(`${url}/users/${username}/${password}`)
 
@@ -38,24 +37,21 @@
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-
             navigate('/');
-            
           });
 
-        } else {
-          Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'ไม่พบบัญชีผู้ใช้',
-            text: 'กรุณาลองใหม่อีกครั้ง',
-            showConfirmButton: false,
-            timer: 2000
-          });
-          console.error('User not found.');
-        }
+        } 
+        
       } catch (error) {
-       
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'ไม่พบบัญชีผู้ใช้',
+          text: 'กรุณาลองใหม่อีกครั้ง',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        console.error('User not found.');
         console.error('Internal server error:', error);
       }
     };
@@ -115,7 +111,7 @@
               />
 
               <div className="bttncon">
-              <Button text="LOGIN" onClick={submit} />
+              <Button text="เข้าสู่ระบบ" onClick={submit} />
               </div>
               <div className="additional-text">
                 <div className="text1">ยังไม่มีบัญชี</div>

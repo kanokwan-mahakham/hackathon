@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import InputRegField from "../../../../../Component/input";
 import Button from "../../../../../../features/Component/Botton";
@@ -8,7 +7,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const Backgroud = styled.div`
-@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   background-color: #000;
   display: flex;
   justify-content: center;
@@ -30,7 +29,7 @@ const StyledBotton = styled.div`
     border-radius: 8.663px;
     cursor: pointer;
     margin-top: 10px;
-    margin-bottom:26px;
+    margin-bottom: 26px;
   }
   .button-text {
     color: #fff;
@@ -58,7 +57,6 @@ const StyleContainer = styled.div`
     margin-top: 20px; /* Adjust the margin top */
     margin-left: 20px;
     border: 2px solid #000;
-    
   }
 
   @media (max-width: 768px) {
@@ -134,12 +132,11 @@ const StyleRightimg = styled.div`
 
   @media (max-width: 768px) {
     .right-image {
-      margin-top:0px;
+      margin-top: 0px;
       display: flex;
-    justify-content: center;
+      justify-content: center;
     }
   }
-    
 `;
 
 const Styledh1 = styled.div`
@@ -160,7 +157,6 @@ const Styledh1 = styled.div`
       font-family: "Anuphan";
     }
   }
-  
 `;
 
 const Styledtextinput = styled.div`
@@ -181,10 +177,8 @@ const Styledtextinput = styled.div`
   }
 `;
 
-
 const Styledinput1 = styled.div`
   .input-container2 {
-    
     display: flex;
     height: 27px;
     padding: 10px 15px;
@@ -196,7 +190,7 @@ const Styledinput1 = styled.div`
     margin-top: 10px;
     font-size: 16px;
   }
-  .input-container2 text{
+  .input-container2 text {
     font-family: "Anuphan";
     font-size: 16px;
   }
@@ -231,7 +225,6 @@ const Styledinput1 = styled.div`
       outline: none;
     }
   }
-
 `;
 
 const Styledinput = styled.label`
@@ -284,19 +277,20 @@ const PopupAddProductDesigner = ({ url, user, setProducts }) => {
   function handleFileChange(event) {
     const file = event.target.files[0];
     if (file) {
-      if (file.size <= 70 * 1024) { // ตรวจสอบขนาดของไฟล์ (70KB)
+      if (file.size <= 70 * 1024) {
+        // ตรวจสอบขนาดของไฟล์ (70KB)
         const reader = new FileReader();
         reader.onload = function (e) {
           const imagePath = e.target.result;
           setImage(imagePath); // เก็บ URL ของภาพใน state
         };
         reader.readAsDataURL(file);
-        
       } else {
         Swal.fire({
           position: "center",
           icon: "error",
           title: "ภาพใหญ่ไป",
+          text: 'กรุณาลองใหม่อีกครั้ง',
           showConfirmButton: false,
           timer: 2000,
         });
@@ -309,7 +303,8 @@ const PopupAddProductDesigner = ({ url, user, setProducts }) => {
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "Please fill in all fields",
+        title: "โปรดกรอดข้อมูลให้ครบ",
+        text: "กรุณาลองใหม่อีกครั้ง",
         showConfirmButton: false,
         timer: 2000,
       });
@@ -334,7 +329,7 @@ const PopupAddProductDesigner = ({ url, user, setProducts }) => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Your work has been saved",
+        title: "เพิ่มสินค้าเรียบร้อย",
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
@@ -406,21 +401,20 @@ const PopupAddProductDesigner = ({ url, user, setProducts }) => {
             </StyledBotton>
           </div>
 
-            <StyleRightimg>
-          <div className="right-image ">
-          <Styledinput>
-          <input
-                      type="file"
-                      id="dropzone-file"
-                      name="product-image"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={handleFileChange}
-                    />
+          <StyleRightimg>
+            <div className="right-image ">
+              <Styledinput>
+                <input
+                  type="file"
+                  id="dropzone-file"
+                  name="product-image"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
               </Styledinput>
-              
-          </div>
-            </StyleRightimg>
+            </div>
+          </StyleRightimg>
         </div>
       </StyleContainer>
     </Backgroud>

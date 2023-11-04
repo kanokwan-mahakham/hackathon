@@ -63,8 +63,10 @@ const Filter = ({
           newCompanies.push(findCompany);
         }
       });
+
+      const filteredData = [...new Set(newCompanies)];
       // Update the state using the functional form of setNewCompanys
-      setNewCompanys((prevNewCompanys) => [...prevNewCompanys, ...newCompanies]);
+      setNewCompanys((prevNewCompanys) => [...prevNewCompanys, ...filteredData]);
     }
   
     getCompanies();

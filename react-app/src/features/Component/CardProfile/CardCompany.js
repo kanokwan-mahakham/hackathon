@@ -49,6 +49,7 @@ const CardCompany = ({
           room: Number(`${userId}${Number(id)}`),
         });
         const response = await axios.get(`${url}/listChats`);
+        setRoom(Number(`${userId}${Number(id)}`))
         setListChat(response.data);
         setShowListChat("show");
         setShowChat("show");
@@ -149,10 +150,13 @@ export default styled(CardCompany)`
     justify-content: center;
     align-items: center;
     border: 20px;
+   
   }
   .profile-image img {
     width: 280px;
     height: 310px;
+    object-fit: cover;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   }
   .profile-image #detail {
     width: 280px;

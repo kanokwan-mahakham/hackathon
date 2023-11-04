@@ -38,10 +38,11 @@ const ProfileUser = ({
   className,
 }) => {
   const [factory, setFactory] = useState([]);
-  window.scrollTo(0, 0);
+  
 
   useEffect(() => {
     async function getCompanies() {
+      window.scrollTo(0, 0);
       const companiesData = [];
       // กรอง favs ที่มี customerId ตรงกับ user.id
       const filteredFavs = favs.filter((fav) => fav.customerId === user.id);

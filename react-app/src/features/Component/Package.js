@@ -7,7 +7,7 @@ const Package = ({ user, className }) => {
     Swal.fire({
       position: "center",
       icon: "error",
-      title: "Please wait for approval. Account from admin",
+      title: "กรุณารอการยืนยันจากแอดมิน",
       showConfirmButton: false,
       timer: 2000,
     });

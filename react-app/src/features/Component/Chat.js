@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import axios from "axios";
 import ScrollToBottom from "react-scroll-to-bottom";
+import Swal from "sweetalert2";
 
 const Chat = ({
   url,
@@ -22,14 +23,13 @@ const Chat = ({
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const [check, setCheck] = useState([]);
-  
 
   useEffect(() => {
     const data = chat.filter((mes) => mes.room == room);
     if (data) {
       setMessageList(data);
     }
-  }, []);
+  }, [room]);
 
   useMemo(() => {
     socket.on("receive_message", (data) => {
@@ -39,8 +39,52 @@ const Chat = ({
     });
   }, [socket]);
 
-  const sendMessage = async () => {
+  async function handleFileChange(event) {
+    const file = event.target.files[0];
+    if (file) {
+      if (file.size <= 70 * 1024) { // Check file size (70KB)
+        const reader = new FileReader();
   
+        reader.onload = async function (e) {
+          const imagePath = e.target.result;
+          
+          const messageData = {
+            room: room,
+            sendId: user.id,
+            message: imagePath,
+          };
+  
+          try {
+            await socket.emit("send_message", messageData);
+            await axios.post(`${url}/chats`, messageData);
+  
+            let updatedMessageList = [...messageList, messageData];
+            let updatedChat = [...chat, messageData];
+            setMessageList(updatedMessageList);
+            setChat(updatedChat);
+          } catch (error) {
+            // Handle errors from socket.emit or axios.post
+            console.error("Error:", error);
+          }
+        };
+  
+        reader.readAsDataURL(file);
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "ภาพใหญ่ไป",
+          text: "กรุณาลองใหม่อีกครั้ง",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
+    }
+  }
+  
+  
+
+  const sendMessage = async () => {
     if (currentMessage !== "") {
       const messageData = {
         room: room,
@@ -70,31 +114,54 @@ const Chat = ({
         <div className="header">
           <p>ข้อความ</p>
           <div className="btn-header">
-
             <img src={cancle} id="btn-cancle" onClick={close} />
           </div>
         </div>
 
-        
-
-        <ScrollToBottom className="body-chat" >
+        <ScrollToBottom className="body-chat">
           {messageList.map((messageContent) => {
             if (messageContent.sendId === user.id) {
-              return (
-                <div className="right">
-                  <div id="text-right">
-                    <p>{messageContent.message}</p>
+              if (messageContent.message.toLowerCase().includes('data')) {
+                return (
+                  <div className="right">
+                    <div id="text-right">
+                      <img src={messageContent.message} />
+                    </div>
                   </div>
-                </div>
-              );
+                );
+              }
+              else{
+                return (
+                  <div className="right">
+                    <div id="text-right">
+                      <p>{messageContent.message}</p>
+                    </div>
+                  </div>
+                );
+
+              }
+              
             } else {
-              return (
-                <div className="left">
-                  <div id="text-left">
-                    <p>{messageContent.message}</p>
+              if (messageContent.message.toLowerCase().includes('data')) {
+                return (
+                  <div className="left">
+                    <div id="text-left">
+                      <img src={messageContent.message}/>
+                    </div>
                   </div>
-                </div>
-              );
+                );
+              }
+              else{
+                return (
+                  <div className="left">
+                    <div id="text-left">
+                      <p>{messageContent.message}</p>
+                    </div>
+                  </div>
+                );
+
+              }
+             
             }
           })}
         </ScrollToBottom>
@@ -108,7 +175,21 @@ const Chat = ({
             }}
           ></input>
           <div className="btn-send-messages">
-          
+
+            <input
+              type="file"
+              id="product-image"
+              name="product-image"
+              accept="image/*"
+              className="file-input"
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
+
+            <label htmlFor="product-image" className="file-label">
+              <img src={file} onClick={sendMessage} />
+            </label>
+
             <img src={send} onClick={sendMessage} />
           </div>
         </div>
@@ -118,7 +199,7 @@ const Chat = ({
 };
 
 export default styled(Chat)`
-@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .popup-chat {
     position: fixed;
     bottom: 20px;
@@ -129,8 +210,9 @@ export default styled(Chat)`
     width: 320px;
     height: 400px;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
   .header {
     width: 100%;
@@ -143,7 +225,7 @@ export default styled(Chat)`
     align-items: center;
   }
   .header p {
-    color:black;
+    color: black;
     font-family: "Anuphan";
     font-weight: 500;
     font-size: 20px;
@@ -213,10 +295,11 @@ export default styled(Chat)`
     width: 20px;
     height: 20px;
     margin-right: 15px;
+    cursor: pointer;
   }
   .box-send-messages #input-messages {
     height: 25px;
-    width: 230px;
+    width: 210px;
     border-radius: 10px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;

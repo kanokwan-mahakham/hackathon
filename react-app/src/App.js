@@ -38,7 +38,7 @@ const socket = io.connect("http://localhost:3002");
 
 function App() {
   
-  const url = `http://localhost:3003`;
+  const url = `http://localhost:3002`;
   const [user, setUser] = useState("");
   const [companies, setCompanies] = useState([]);
   const [favs, setFavs] = useState([]);
@@ -112,12 +112,16 @@ function App() {
     getInformation();
 
     async function endPackage(){
-        const find = packages.filter((pack)=> pack.dayEnd == formattedDay)
+        const find = packages.filter((pack)=> pack.dayEnd == formattedDay && pack.status == "completed")
         if(find){
           find.map((item)=>{
               endPack(item)
           })
         }
+        const resPackages = await axios.get(`${url}/packages`);
+        const resCompany = await axios.get(`${url}/users`);
+        setCompanies(resCompany.data);
+        setPackages(resPackages.data);
     }
     endPackage()
   }, [user]);
@@ -132,6 +136,7 @@ function App() {
       type: "cancel",
       description: `การโปรโมทของคุณหมดอายุแล้ว`,
     });
+    await axios.delete(`${url}/packages/${item.id}`)
   }
 
   return (
