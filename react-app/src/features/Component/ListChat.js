@@ -122,6 +122,7 @@ export default styled(ListChat)`
     height: 50px;
     border-radius: 50px;
     margin-right: 20px;
+    object-fit: cover;
   }
   .contact-user p {
     font-family: "lora";

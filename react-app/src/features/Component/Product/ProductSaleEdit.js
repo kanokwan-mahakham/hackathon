@@ -63,6 +63,7 @@ export default styled(ProductSaleEdit)`
     height: 420px;
     border-radius: 30px;
     margin: 10px 40px 40px 0px;
+    object-fit: cover;
   }
   .box-detail {
     display: flex;

@@ -113,11 +113,11 @@ const BoxData = ({
           <div className="box-box-image">
             {user.id == item.id ? (
               <Link to="/profile-company">
-                <img src={data.profile} alt="Box Image" />
+                <img src={data.profile} alt="รูปภาพ" />
               </Link>
             ) : (
               <Link to={`/company/${item.id}`}>
-                <img src={data.profile} alt="Box Image" />
+                <img src={data.profile} alt="รูปภาพ" />
               </Link>
             )}
           </div>
@@ -153,6 +153,7 @@ export default styled(BoxData)`
     height: 350px;
     border-radius: 30px;
     margin: 10px 30px 30px 0px;
+    object-fit: cover;
   }
   .box .box-box-image {
     width: 300px;
