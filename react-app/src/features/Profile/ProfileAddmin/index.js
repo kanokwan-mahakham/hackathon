@@ -93,14 +93,43 @@ const ProfileAdmin = ({
           </div>
         </div>
       </div>
+
+      <div className="check-data-admin">
+        <div className="check-data">
+          <h1>ข้อมูลที่กำลังรอตรวจสอบ</h1>
+          <p>มีข้อมูลมากมายที่กำลังรอให้คุณตรวจสอบใหม่อีกครั้งจากผู้ใช้งาน</p>
+          <div className="btn-select">
+            <p>ข้อมูลที่ต้องการตรวจสอบ: </p>
+            <select id="check">
+              <option value="login">การสมัครสมาชิก</option>
+              <option value="package">การซื้อ/ขายแพ็คเกจโปรโมท</option>
+            </select>
+          </div>
+          <button>ตรวจสอบ</button>
+        </div>
+        <div className="check-data">
+          <h1>ข้อมูลทั้งหมด</h1>
+          <p>คุณสามารถดูข้อมูลสมาชิกทั้งหมดของเว็บไซต์ได้ที่นี่</p>
+          <div className="btn-select">
+            <p>ข้อมูลที่ต้องการดู: </p>
+            <select id="check">
+              <option value="user">ผู้ใช้งาน</option>
+              <option value="company">ผู้ประกอบการ</option>
+            </select>
+          </div>
+          <button>ดูข้อมูล</button>
+        </div>
+      </div>
+
       <div className="package">
         <div className="head-name">
           <h1>แพ็คเกจสุดคุ้ม</h1>
         </div>
       </div>
       <div className="sale-package">
-        <Package user={user}/>
+        <Package user={user} />
       </div>
+
       <Footer />
     </div>
   );
@@ -123,7 +152,7 @@ export default styled(ProfileAdmin)`
     width: 1100px;
     background-image: linear-gradient(to bottom, #12136e, #6b78ff);
     color: white;
-    margin: 50px 0px 150px 0px;
+    margin: 50px 0px 80px 0px;
     border-radius: 100px;
   }
   .box-category {
@@ -171,4 +200,52 @@ export default styled(ProfileAdmin)`
     margin-bottom: 50px;
     padding-top: 100px;
   }
+  .check-data-admin {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 150px;
+    display: flex;
+    background-color: black;
+  }
+  .check-data {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 5px solid white;
+    font-family: "Anuphan";
+    color: white;
+  }
+  .check-data p {
+    font-size: 19px;
+    font-weight: 400;
+  }
+  .check-data:hover {
+    background-image: linear-gradient(to bottom right, #ff9d00, #ded05a);
+    color: black;
+  }
+
+  .btn-select p {
+    font-size: 17px;
+  }
+  .btn-select {
+    display: flex;
+  }
+  .btn-select #check {
+    margin-left: 20px;
+    font-size: 15px;
+    border-radius: 5px;
+  }
+  .check-data-admin button {
+    margin-top: 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    width: 150px;
+    height: 50px;
+    background-image: linear-gradient(to bottom right, #12136e, #6b78ff);
+    color: white;
+    border: none;
+  }
+  
 `;
