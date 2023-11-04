@@ -29,7 +29,7 @@ const Chat = ({
     if (data) {
       setMessageList(data);
     }
-  }, []);
+  }, [room]);
 
   useMemo(() => {
     socket.on("receive_message", (data) => {
