@@ -102,7 +102,7 @@ export default styled(ProfileFactory)`
   }
   .products h1 {
     font-family: "Anuphan";
-    font-size: 100px;
+    font-size: 85px;
     font-weight: 600;
     color: #333a56;
     text-align: center;

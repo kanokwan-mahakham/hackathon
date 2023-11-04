@@ -6,6 +6,7 @@ const Footer = ({ className }) => {
   const telephone = require("../../image Hackathon/icon/telephone.png");
   const facebook = require("../../image Hackathon/icon/facebook.png");
   const mail = require("../../image Hackathon/icon/arroba.png");
+  const chat = require("../../image Hackathon/icon/bubble-chat.png");
 
   return (
     <div className={className}>
@@ -27,6 +28,10 @@ const Footer = ({ className }) => {
             <div id="data">
               <img src={mail} />
               <p>Dev@StylePathPro.com</p>
+            </div>
+            <div id="data">
+              <img src={chat} />
+              <p>ส่งข้อความได้ที่นี่</p>
             </div>
           </div>
         </div>

@@ -59,8 +59,8 @@ export default styled(ProductSaleEdit)`
   }
 
   .box #box-image {
-    width: 320px;
-    height: 420px;
+    width: 300px;
+    height: 380px;
     border-radius: 30px;
     margin: 10px 40px 40px 0px;
     object-fit: cover;
@@ -72,8 +72,8 @@ export default styled(ProductSaleEdit)`
     bottom: 70px;
     left: 15px;
     background-color: white;
-    width: 290px;
-    height: 150px;
+    width: 270px;
+    height: 120px;
     border-radius: 30px;
     z-index: 1;
     flex-direction: column;
@@ -101,7 +101,7 @@ export default styled(ProductSaleEdit)`
   }
   .detail p {
     font-family: "Anuphan";
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
     margin: 7px;
   }
