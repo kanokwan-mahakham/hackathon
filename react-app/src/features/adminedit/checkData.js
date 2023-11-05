@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
-import InputRegField from "../../../Component/input";
-import Button from "../../../Component/Botton";
+import InputRegField from "../Component/input";
+import Button from "../Component/Botton";
 import styled from "styled-components";
 import { Link,useNavigate,useParams } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -274,6 +274,9 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
         // Step 3: Update the user's status to "company"
         const ress = await axios.get(`${url}/notis`)
         setNotis(ress.data)
+        const { id, status, ...item } = company;
+        await axios.put(`${url}/users/${id}`, { ...item, status: "cancel" });
+        
     
         // Step 4: Display a success message using Swal (SweetAlert)
         Swal.fire({

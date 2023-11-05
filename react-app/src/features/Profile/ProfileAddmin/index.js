@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../Component/Navbar";
 import Footer from "../../Component/Footer";
 import CardAdmin from "../../Component/CardProfile/CardAdmin";
@@ -6,6 +7,7 @@ import Package from "../../Component/Package";
 import Noti from "../../Component/Noti";
 import ListChat from "../../Component/ListChat";
 import Chat from "../../Component/Chat";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProfileAdmin = ({
   url,
@@ -28,6 +30,25 @@ const ProfileAdmin = ({
   setChat,
   className,
 }) => {
+  const [select1, setSelect1] = useState("regis");
+  const [select2, setSelect2] = useState("user");
+  const navigate = useNavigate();
+
+  function submit1() {
+    if(select1=="regis"){
+      navigate("/all/regis")
+    }else{
+      navigate("/all/package")
+    }
+  }
+  function submit2() {
+    if(select2=="user"){
+      navigate("/all/user")
+    }else{
+      navigate("/all/company")
+    }
+  }
+
   return (
     <div className={className}>
       {showNoti == "show" ? (
@@ -100,24 +121,34 @@ const ProfileAdmin = ({
           <p>มีข้อมูลมากมายที่กำลังรอให้คุณตรวจสอบใหม่อีกครั้งจากผู้ใช้งาน</p>
           <div className="btn-select">
             <p>ข้อมูลที่ต้องการตรวจสอบ: </p>
-            <select id="check">
-              <option value="login">การสมัครสมาชิก</option>
+            <select
+              id="check"
+              onChange={(event) => {
+                setSelect1(event.target.value);
+              }}
+            >
+              <option value="regis">การสมัครสมาชิก</option>
               <option value="package">การซื้อ/ขายแพ็คเกจโปรโมท</option>
             </select>
           </div>
-          <button>ตรวจสอบ</button>
+          <button onClick={submit1} >ตรวจสอบ</button>
         </div>
         <div className="check-data">
           <h1>ข้อมูลทั้งหมด</h1>
           <p>คุณสามารถดูข้อมูลสมาชิกทั้งหมดของเว็บไซต์ได้ที่นี่</p>
           <div className="btn-select">
             <p>ข้อมูลที่ต้องการดู: </p>
-            <select id="check">
+            <select 
+              id="check"
+              onChange={(event) => {
+                setSelect2(event.target.value);
+              }}
+            >
               <option value="user">ผู้ใช้งาน</option>
               <option value="company">ผู้ประกอบการ</option>
             </select>
           </div>
-          <button>ดูข้อมูล</button>
+          <button onClick={submit2} >ดูข้อมูล</button>
         </div>
       </div>
 
@@ -247,5 +278,4 @@ export default styled(ProfileAdmin)`
     color: white;
     border: none;
   }
-  
 `;

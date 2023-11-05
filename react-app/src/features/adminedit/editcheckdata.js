@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import defaultImage from '../../image Hackathon/image/choose1.jpeg';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import styled from "styled-components";
+import defaultImage from "../../image Hackathon/image/choose1.jpeg";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Background = styled.div`
   background-color: #000;
@@ -11,22 +13,22 @@ const Background = styled.div`
 `;
 
 const Styleprevious = styled.div`
-.previous {
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: #f1f1f1;
-  color: black;
-  border-radius: 50%;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
+  .previous {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f1f1f1;
+    color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
 
-.previous:hover {
-  background-color: #ddd;
-  color: black;
-}
+  .previous:hover {
+    background-color: #ddd;
+    color: black;
+  }
 `;
 
 const ScrollableContainer = styled.div`
@@ -65,7 +67,6 @@ const InputFieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px;
-  
 `;
 
 const InputLabel = styled.label`
@@ -137,8 +138,39 @@ const ConfirmButtonDiv = styled.div`
   }
 `;
 
-export default function EditCheckData() {
+function EditCheckData({ url, companies, setCompanies, setNotis }) {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [company, setCompany] = useState([]);
+  const [email, setEmail] = useState("");
+  const [type, setType ] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [juristicNumber, setJuristicNumber] = useState("");
+
+  
+  const { id } = useParams();
+  const navigate = useNavigate();
+  
+
+  useEffect(() => {
+    async function getCompanies() {
+      try {
+        const findCompany = companies.find((com) => com.id == Number(id));
+        if(findCompany){
+          setCompany(findCompany)
+          setEmail(company.email)
+          setUsername(company.username)
+          setPassword(company.password)
+          setJuristicNumber(company.juristicNumber)
+          setType(company.type)
+        }
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getCompanies();
+  }, [id]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -148,10 +180,14 @@ export default function EditCheckData() {
     }
   };
 
+  function back() {
+    navigate(-1);
+  }
+
   return (
     <Background>
       <Styleprevious>
-        <div to="/" className="previous">
+        <div className="previous" onClick={back}>
           &#8249;
         </div>
       </Styleprevious>
@@ -159,25 +195,35 @@ export default function EditCheckData() {
         <Container>
           <StyledH1>แก้ไขข้อมูล</StyledH1>
           <InputSection>
-            <InputFieldWrapper>
+            {/* <InputFieldWrapper>
               <InputLabel>ผู้ประกอบการ</InputLabel>
-              <InputField type="text" placeholder="ข้อมูลเก่า" />
-            </InputFieldWrapper>
+              <InputField type="text" placeholder=/>
+            </InputFieldWrapper> */}
             <InputFieldWrapper>
-              <InputLabel>อีเมล์ </InputLabel>
-              <InputField type="text" placeholder="ข้อมูลเก่า" />
+              <InputLabel>อีเมล </InputLabel>
+              <InputField
+                type="text"
+                placeholder={email}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                }}
+              />
             </InputFieldWrapper>
             <InputFieldWrapper>
               <InputLabel>ชื่อผู้ใช้</InputLabel>
-              <InputField type="text" placeholder="ข้อมูลเก่า" />
+              <InputField type="text" placeholder={username} />
+            </InputFieldWrapper>
+            <InputFieldWrapper>
+              <InputLabel>รหัสผ่าน</InputLabel>
+              <InputField type="text" placeholder={password} />
             </InputFieldWrapper>
             <InputFieldWrapper>
               <InputLabel>ประเภท</InputLabel>
-              <InputField type="text" placeholder="ข้อมูลเก่า" />
+              <InputField type="text" placeholder={type} />
             </InputFieldWrapper>
             <InputFieldWrapper>
               <InputLabel>เลขประจำตัวผู้เสียภาษี</InputLabel>
-              <InputField type="text" placeholder="ข้อมูลเก่า" />
+              <InputField type="text" placeholder={juristicNumber} />
             </InputFieldWrapper>
             <ImageSection>
               <ImageLabel>
@@ -197,3 +243,5 @@ export default function EditCheckData() {
     </Background>
   );
 }
+
+export default EditCheckData;

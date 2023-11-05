@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Button from "../Component/Botton";
 import styled from "styled-components";
 import paymentImage from "../../image Hackathon/image/qrcode.png";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link,useNavigate,useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 
 const Backgroud = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
   background-color: #000;
   display: flex;
   justify-content: center;
@@ -109,7 +109,8 @@ const Styledh1 = styled.div`
     margin-bottom: 20px;
     margin-left: 320px;
     font-family: "Anuphan";
-    color: #fff;
+    color:#fff;
+
   }
 `;
 
@@ -181,102 +182,99 @@ const ButtonContainer = styled.div`
   gap: 10px; /* Adjust the gap as needed */
 `;
 
-const CheackPayment = ({
-  url,
-  packages,
-  setPackages,
-  setCompanies,
-  setNotis,
-}) => {
-  const { id } = useParams();
-  const { notiId } = useParams();
-  const navigate = useNavigate();
-  const pomotion = packages.find((packs) => packs.companyId == Number(id));
+const CheckPay = ({ url, packages, setPackages,setCompanies, setNotis }) => {
 
-  async function setUser() {
-    const respone = await axios.get(`${url}/users/${pomotion.companyId}`);
-    const { id, pack, ...item } = respone.data;
-    await axios.put(`${url}/users/${id}`, { ...item, pack: 1 });
-  }
+    const { id } = useParams();
+    const { notiId } = useParams();
+    const navigate = useNavigate();
+    const pomotion = packages.find((packs)=> packs.companyId == Number(id));
 
-  async function confirm() {
-    try {
-      // Step 1: Delete a notification (notis) based on notiId
-      await axios.delete(`${url}/notis/${Number(notiId)}`);
-      // Step 2: Create a new notification
-      await axios.post(`${url}/notis`, {
-        companyId: pomotion.companyId,
-        icon: "checked.png",
-        type: "confirm",
-        description: `เริ่มการโปรโมทตาม ${pomotion.pack} นับตั้งแต่วันนี้จนถึงวันที่ ${pomotion.dayEnd}`,
-      });
-      // Step 3: Update the user's status to "company"
-      const { id, status, ...item } = pomotion;
-      await axios.delete(`${url}/packages/${id}`);
-      await axios.post(`${url}/packages`, { ...item, status: "completed" });
-      const ress = await axios.get(`${url}/notis`);
-      const resCom = await axios.get(`${url}/packages`);
-      setPackages(resCom.data);
-      setNotis(ress.data);
-      setUser();
-      const resUser = await axios.get(`${url}/users`);
-      setCompanies(resUser.data);
+    async function setUser(){
+        const respone = await axios.get(`${url}/users/${pomotion.companyId}`)
+        const {id,pack,...item} = respone.data;
+        await axios.put(`${url}/users/${id}`,{...item,pack:1})
 
-      // Step 4: Display a success message using Swal (SweetAlert)
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "เริ่มการโปรโมท",
-        showConfirmButton: false,
-        timer: 1500,
-      }).then(() => {
-        // Step 5: Navigate back to the home page
-        navigate("/");
-      });
-    } catch (error) {
-      console.error(error);
     }
-  }
 
-  async function cancel() {
-    try {
-      // Step 1: Delete a notification (notis) based on notiId
-      await axios.delete(`${url}/notis/${Number(notiId)}`);
+    async function confirm() {
+      try {
+        // Step 1: Delete a notification (notis) based on notiId
+        await axios.delete(`${url}/notis/${Number(notiId)}`);
+        // Step 2: Create a new notification
+        await axios.post(`${url}/notis`, {
+          companyId: pomotion.companyId,
+          icon: "checked.png",
+          type: "confirm",
+          description: `เริ่มการโปรโมทตาม ${pomotion.pack} นับตั้งแต่วันนี้จนถึงวันที่ ${pomotion.dayEnd}`,
+        });
+        // Step 3: Update the user's status to "company"
+        const { id, status, ...item } = pomotion;
+        await axios.delete(`${url}/packages/${id}`)
+        await axios.post(`${url}/packages`, { ...item, status: "completed" });
+        const ress = await axios.get(`${url}/notis`)
+        const resCom = await axios.get(`${url}/packages`)
+        setPackages(resCom.data)
+        setNotis(ress.data)
+        setUser()
+        const resUser = await axios.get(`${url}/users`)
+        setCompanies(resUser.data)
+        
+    
+        // Step 4: Display a success message using Swal (SweetAlert)
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "เริ่มการโปรโมท",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          // Step 5: Navigate back to the home page
+          navigate("/");
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  
+      async function cancel() {
+        try {
+          // Step 1: Delete a notification (notis) based on notiId
+          await axios.delete(`${url}/notis/${Number(notiId)}`);
+          await axios.delete(`${url}/packages/${Number(id)}`)
       
-      // Step 2: Create a new notification
-      await axios.post(`${url}/notis`, {
-        companyId: pomotion.companyId,
-        icon: "cancel.png",
-        type: "cancel",
-        description: `โปรโมชั่นของคุณถูกยกเลิก สอบถามเพิ่มเติมโปรดติดต่อเจ้าหน้าที่`,
-      });
+          // Step 2: Create a new notification
+          await axios.post(`${url}/notis`, {
+            companyId: pomotion.companyId,
+            icon: "cancel.png",
+            type: "cancel",
+            description: `โปรโมชั่นของคุณถูกยกเลิก สอบถามเพิ่มเติมโปรดติดต่อเจ้าหน้าที่`,
+          });
+      
+          // Step 3: Update the user's status to "company"
+          
+          const ress= await axios.get(`${url}/notis`)
+          setNotis(ress.data)
+      
+          // Step 4: Display a success message using Swal (SweetAlert)
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "ยกเลิกการโปรโมท",
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            // Step 5: Navigate back to the home page
+            navigate("/");
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      }
 
-      // Step 3: Update the user's status to "company"
-      const { id, status, ...item } = pomotion;
-      await axios.delete(`${url}/packages/${id}`);
-      await axios.post(`${url}/packages`, { ...item, status: "cancel" });
-      const resCom = await axios.get(`${url}/packages`);
-      setPackages(resCom.data);
-
-      const ress = await axios.get(`${url}/notis`);
-      setNotis(ress.data);
-
-      // Step 4: Display a success message using Swal (SweetAlert)
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "ยกเลิกการโปรโมท",
-        showConfirmButton: false,
-        timer: 1500,
-      }).then(() => {
-        // Step 5: Navigate back to the home page
-        navigate("/");
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
+      function back(){
+        navigate(-1)
+      }
+ 
   return (
     <Backgroud>
       <StyleContainer>
@@ -286,9 +284,9 @@ const CheackPayment = ({
         <div className="container">
           <div className="left-content">
             <Styleprevious>
-              <Link to="/" className="previous">
-                &#8249;
-              </Link>
+            <Link className="previous" onClick={back}>
+              &#8249;
+            </Link>
             </Styleprevious>
             <Styleleft>
               <div className="left-image"></div>
@@ -326,17 +324,17 @@ const CheackPayment = ({
             </Styledtext3>
             <ButtonContainer>
               <StyledBotton>
-                <Button text="ยืนยัน" onClick={confirm} />
+                <Button text="อนุมัติ" onClick={confirm} />
               </StyledBotton>
               <StyledBotton2>
-                <Button text="ยกเลิก" onClick={cancel} />
+                <Button text="ลบ" onClick={cancel} />
               </StyledBotton2>
             </ButtonContainer>
           </div>
 
           <StyleRight>
             <div className="right-image">
-              <img src={pomotion.slip}></img>
+                <img src={pomotion.slip} ></img>
             </div>
           </StyleRight>
         </div>
@@ -345,4 +343,4 @@ const CheackPayment = ({
   );
 };
 
-export default CheackPayment;
+export default CheckPay;
