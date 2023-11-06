@@ -185,7 +185,29 @@ const CheckPay = ({ url, packages, setPackages, setCompanies, setNotis }) => {
   const { id } = useParams();
   const { notiId } = useParams();
   const navigate = useNavigate();
-  const pomotion = packages.find((packs) => packs.companyId == Number(id));
+
+  const [pomotion, setPomotion] = useState([]);
+
+  useEffect(() => {
+    async function getCompanies() {
+      const find = packages.find((packs) => packs.companyId == Number(id));
+      if(find){
+        setPomotion(find)
+      } 
+    }
+    getCompanies();
+
+    if (pomotion.pack == "เพิ่มการมองเห็น 1 วัน") {
+      const res = String(currentDate.getDate() + 1).padStart(2, "0");
+      setFormattedDay(`${res}-${month}-${year}`);
+    } else if (pomotion.pack == "เพิ่มการมองเห็น 1 เดือน") {
+      const res = String(currentDate.getMonth() + 2).padStart(2, "0");
+      setFormattedDay(`${day}-${res}-${year}`);
+    } else {
+      const res = String(currentDate.getFullYear() + 1).slice(2);
+      setFormattedDay(`${day}-${month}-${res}`);
+    }
+  }, []);
 
   const currentDate = new Date();
   const day = String(currentDate.getDate()).padStart(2, "0");
@@ -204,22 +226,6 @@ const CheckPay = ({ url, packages, setPackages, setCompanies, setNotis }) => {
 
   async function confirm() {
 
-    if (pomotion.pack == "เพิ่มการมองเห็น 1 วัน") {
-      const res = String(currentDate.getDate() + 1).padStart(2, "0");
-      setFormattedDay(`${res}-${month}-${year}`);
-      changeData()
-    } else if (pomotion.pack == "เพิ่มการมองเห็น 1 เดือน") {
-      const res = String(currentDate.getMonth() + 2).padStart(2, "0");
-      setFormattedDay(`${day}-${res}-${year}`);
-      changeData()
-    } else {
-      const res = String(currentDate.getFullYear() + 1).slice(2);
-      setFormattedDay(`${day}-${month}-${res}`);
-      changeData()
-    }
-  }
-
-  async function changeData(){
     try {
       await axios.post(`${url}/notis`, {
         companyId: pomotion.companyId,
@@ -253,7 +259,6 @@ const CheckPay = ({ url, packages, setPackages, setCompanies, setNotis }) => {
     } catch (error) {
       console.error(error);
     }
-
   }
 
   async function cancel() {

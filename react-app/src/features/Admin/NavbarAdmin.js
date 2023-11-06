@@ -271,5 +271,6 @@ export default styled(NavbarAdmin)`
     font-family: "Anuphan";
     font-size: 18px;
     font-weight: 400;
+    background: black;
   }
 `;
