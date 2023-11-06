@@ -148,7 +148,8 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "Please fill in all fields",
+        title: "โปรดกรอกข้อมูลให้ครบ",
+        text: 'กรุณาลองใหม่อีกครั้ง',
         showConfirmButton: false,
         timer: 2000,
       });
@@ -159,7 +160,8 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "Passwords do not match",
+        title: "รหัสผ่านไม่ตรงกัน",
+        text: 'กรุณาลองใหม่อีกครั้ง',
         showConfirmButton: false,
         timer: 2000,
       });
@@ -170,8 +172,8 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "Invalid email format",
-        text: 'Email must contain "@"',
+        title: "โปรดกรอกอีเมลที่ถูกต้อง",
+        text: 'กรุณาลองใหม่อีกครั้ง',
         showConfirmButton: false,
         timer: 2000,
       });
@@ -188,8 +190,8 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
         Swal.fire({
             position: "center",
             icon: "error",
-            title: "Invalid email format",
-            text: 'Duplicate email or username',
+            title: "มีชื่อผู้ใช้งานหรืออีเมลนี้อยู่แล้ว",
+            text: 'กรุณาลองใหม่อีกครั้ง',
             showConfirmButton: false,
             timer: 2000,
           });

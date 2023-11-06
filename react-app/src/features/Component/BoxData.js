@@ -78,6 +78,7 @@ const BoxData = ({
             position: "center",
             icon: "error",
             title: "ซ้ำ",
+            text: "กรุณาลองใหม่อีกครั้ง",
             showConfirmButton: false,
             timer: 2000,
           });
@@ -89,6 +90,7 @@ const BoxData = ({
           position: "center",
           icon: "error",
           title: "โปรดเลือกหมวดหมู่เดียวกัน",
+          text: "กรุณาลองใหม่อีกครั้ง",
           showConfirmButton: false,
           timer: 2000,
         });
@@ -99,6 +101,7 @@ const BoxData = ({
         position: "center",
         icon: "error",
         title: "เปรียบเทียบได้มากสุด  3  อย่าง",
+        text: "กรุณาลองใหม่อีกครั้ง",
         showConfirmButton: false,
         timer: 2000,
       });

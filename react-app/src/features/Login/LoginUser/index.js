@@ -34,6 +34,7 @@
             position: 'center',
             icon: 'success',
             title: 'เข้าสู่ระบบ',
+            text: 'ยินดีต้อนรับ',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {

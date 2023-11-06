@@ -102,6 +102,7 @@ const CardNewData = ({ user, url, information, setInformation, className }) => {
         position: "center",
         icon: "success",
         title: "บันทึกสำเร็จ",
+        text: "โปรดตรวจสอบความถูกต้อง",
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {

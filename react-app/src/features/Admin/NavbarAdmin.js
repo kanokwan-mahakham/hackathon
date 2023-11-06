@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NavbarAdmin = ({
   user,
@@ -36,16 +38,53 @@ const NavbarAdmin = ({
     navigate("/login");
   }
 
+  const [selectedOption, setSelectedOption] = useState("");
+
+  // Function to handle the selection change
+  const handleSelectChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedOption(selectedValue);
+
+    // Use navigate to change the route
+    switch (selectedValue) {
+      case "all/regis":
+        navigate("/all/regis");
+        break;
+      case "all/package":
+        navigate("/all/package");
+        break;
+      case "all/company":
+        navigate("/all/company");
+        break;
+      case "all/user":
+        navigate("/all/user");
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className={className}>
       <div className="navbar">
         <div className="category">
-          
           <Link to="/">หน้าหลัก</Link>
+          {/* 
           <Link to="/all/regis">ลงทะเบียนไม่ผ่าน</Link>
           <Link to="/all/package">ซื้อแพคเก็จไม่ผ่าน</Link>
           <Link to="/all/company">ผู้ประกอบการ</Link>
-          <Link to="/all/user">ผู้ใช้งาน</Link>
+          <Link to="/all/user">ผู้ใช้งาน</Link> */}
+          <select
+            value={selectedOption}
+            onChange={handleSelectChange}
+            id="selection"
+          >
+            <option value="">เลือกหมวดหมู่</option>
+            <option value="all/regis">ลงทะเบียนไม่ผ่าน</option>
+            <option value="all/package">ซื้อแพคเก็จไม่ผ่าน</option>
+            <option value="all/company">ผู้ประกอบการ</option>
+            <option value="all/user">ผู้ใช้งาน</option>
+          </select>
         </div>
         <div className="search">
           <input
@@ -123,14 +162,14 @@ const NavbarAdmin = ({
 };
 
 export default styled(NavbarAdmin)`
-@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
-  
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+
   .navbar a {
     margin: 30px;
     font-size: 23px;
     font-weight: 500;
     text-decoration: none;
-    color:white;
+    color: white;
     font-family: "Anuphan";
   }
   .navbar {
@@ -214,5 +253,23 @@ export default styled(NavbarAdmin)`
     max-height: 100%;
     margin-right: 10px;
     cursor: pointer;
+  }
+  .category select{
+    width: 180px;
+    font-family: "Anuphan";
+    margin: 30px;
+    font-size: 23px;
+    font-weight: 500;
+    color: white;
+    background: none;
+    border: none;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+  }
+  .category option {
+    font-family: "Anuphan";
+    font-size: 18px;
+    font-weight: 400;
   }
 `;

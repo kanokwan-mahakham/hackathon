@@ -207,14 +207,19 @@ const CheckPay = ({ url, packages, setPackages, setCompanies, setNotis }) => {
     if (pomotion.pack == "เพิ่มการมองเห็น 1 วัน") {
       const res = String(currentDate.getDate() + 1).padStart(2, "0");
       setFormattedDay(`${res}-${month}-${year}`);
+      changeData()
     } else if (pomotion.pack == "เพิ่มการมองเห็น 1 เดือน") {
       const res = String(currentDate.getMonth() + 2).padStart(2, "0");
       setFormattedDay(`${day}-${res}-${year}`);
+      changeData()
     } else {
       const res = String(currentDate.getFullYear() + 1).slice(2);
       setFormattedDay(`${day}-${month}-${res}`);
+      changeData()
     }
+  }
 
+  async function changeData(){
     try {
       await axios.post(`${url}/notis`, {
         companyId: pomotion.companyId,
@@ -248,6 +253,7 @@ const CheckPay = ({ url, packages, setPackages, setCompanies, setNotis }) => {
     } catch (error) {
       console.error(error);
     }
+
   }
 
   async function cancel() {

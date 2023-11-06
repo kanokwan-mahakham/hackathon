@@ -258,6 +258,7 @@ const RegisterCompany = ({ companies, setUser, url }) => {
           position: "center",
           icon: "error",
           title: "ภาพใหญ่ไป",
+          text: 'กรุณาลองใหม่อีกครั้ง',
           showConfirmButton: false,
           timer: 2000,
         });
@@ -354,13 +355,13 @@ const RegisterCompany = ({ companies, setUser, url }) => {
         //////////////////////*************************/////////////////////////////
 
         await axios.post(`${url}/listChats`, {
-          userId: 3,
+          userId: 1,
           companyId: response.data.id,
           room: Number(`3${response.data.id}`),
         });
         await axios.post(`${url}/listChats`, {
           userId: response.data.id,
-          companyId: 3,
+          companyId: 1,
           room: Number(`3${response.data.id}`),
         });
 

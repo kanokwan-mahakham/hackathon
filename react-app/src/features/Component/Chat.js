@@ -257,12 +257,20 @@ export default styled(Chat)`
     display: flex;
     justify-content: flex-end;
   }
-  .right #text-right {
+  .right #text-right p{
     background-color: #f7f5e6;
     color: #333a56;
     width: fit-content;
-    padding: 0px 15px;
+    height:fit-content;
+    padding: 10px 15px;
     border-radius: 30px;
+    margin-top:0px;
+    margin-bottom:5px;
+  }
+  .right img{
+    width: 100px;
+    height:150px;
+    object-fit: cover;
   }
 
   .left {
@@ -274,12 +282,20 @@ export default styled(Chat)`
     display: flex;
     justify-content: flex-start;
   }
-  .left #text-left {
+  .left #text-left p{
     background-color: #c6ccd7;
     color: #333a56;
     width: fit-content;
-    padding: 0px 15px;
+    height:fit-content;
+    padding: 10px 15px;
     border-radius: 30px;
+    margin-top:0px;
+    margin-bottom:5px;
+  }
+  .left img{
+    width: 100px;
+    height:150px;
+    object-fit: cover;
   }
 
   .box-send-messages {
