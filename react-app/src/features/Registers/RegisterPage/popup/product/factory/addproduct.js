@@ -8,7 +8,7 @@
   import axios from "axios";
 
   const Backgroud = styled.div`
-@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   background-color: #000;
   display: flex;
   justify-content: center;
@@ -30,7 +30,7 @@ const StyledBotton = styled.div`
     border-radius: 8.663px;
     cursor: pointer;
     margin-top: 10px;
-    margin-bottom:26px;
+    margin-bottom: 26px;
   }
   .button-text {
     color: #fff;
@@ -58,7 +58,6 @@ const StyleContainer = styled.div`
     margin-top: 20px; /* Adjust the margin top */
     margin-left: 20px;
     border: 2px solid #000;
-    
   }
 
   @media (max-width: 768px) {
@@ -127,19 +126,18 @@ const Styleprevious = styled.div`
 
 const StyleRightimg = styled.div`
   .right-image {
-    margin-top: 0px; /* Adjust the margin top */
+    margin-top: -5px; /* Adjust the margin top */
     display: flex;
     justify-content: center;
   }
 
   @media (max-width: 768px) {
     .right-image {
-      margin-top:0px;
+      margin-top: -5px;
       display: flex;
-    justify-content: center;
+      justify-content: center;
     }
   }
-    
 `;
 
 const Styledh1 = styled.div`
@@ -160,7 +158,6 @@ const Styledh1 = styled.div`
       font-family: "Anuphan";
     }
   }
-  
 `;
 
 const Styledtextinput = styled.div`
@@ -181,20 +178,23 @@ const Styledtextinput = styled.div`
   }
 `;
 
-
 const Styledinput1 = styled.div`
   .input-container2 {
     display: flex;
     height: 27px;
     padding: 10px 15px;
-    align-items: center;
     font-family: "Anuphan";
+    align-items: center;
     gap: 20px;
     border-radius: 10px;
     border: 1px solid #dbdbdb;
     margin-top: 10px;
+    font-size: 16px;
   }
-
+  .input-container2 text {
+    font-family: "Anuphan";
+    font-size: 16px;
+  }
   .input-container2 input {
     color: #807d7d;
     font-family: "Anuphan";
@@ -207,13 +207,13 @@ const Styledinput1 = styled.div`
   @media (max-width: 768px) {
     .input-container2 {
       display: flex;
+      font-family: "Anuphan";
       height: 50px;
       padding: 2px 2px;
-      font-family: "Anuphan";
       align-items: center;
       gap: 20px;
       border-radius: 10px;
-      border: 1px solid #dbdbdb;
+      border: 0.5px solid #dbdbdb;
       margin-top: 10px;
     }
     .input-container2 input {
@@ -221,22 +221,22 @@ const Styledinput1 = styled.div`
       font-family: "Anuphan";
       font-size: 16px;
       font-weight: 400;
-      line-height: 17.325px;
+      line-height: 12.325px;
       border: none;
       outline: none;
     }
   }
-
 `;
 
 const Styledinput = styled.label`
 input {
-    padding: 8px 15px 8px 15px;
+    padding: 8px 10px 8px 1px;
     border: 1px solid #ccc;
     border-radius: 0px;
     margin-bottom: 0  px;
     width: 100%;
     box-sizing: border-box;
+
     color: #2C3E50;
     background-color: #ECEFF1;
     font-size: 16px;
