@@ -33,8 +33,9 @@ const Styleprevious = styled.div`
 `;
 
 const ScrollableContainer = styled.div`
-  max-height: 700px; /* Set the maximum height for scrolling */
-  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  max-height: 700px;
+  overflow-y: auto;
+  
 `;
 
 const Container = styled.div`
@@ -45,7 +46,8 @@ const Container = styled.div`
   width: 600px;
   max-width: 100%;
   overflow: hidden;
-  height: 50%; /* Set the height to 100% to expand within ScrollableContainer */
+  height: 50%; 
+  margin: 0 auto;
 `;
 
 const StyledH1 = styled.h1`

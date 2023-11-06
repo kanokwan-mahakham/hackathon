@@ -109,7 +109,7 @@ const StyledBotton2 = styled.div`
     border-radius: 8.663px;
     cursor: pointer;
     margin-top: 10px;
-    margin-left: 50px;
+    margin-right: 80px;
     border: 2px solid #000;
   }
 
@@ -149,17 +149,16 @@ const Styledh1 = styled.div`
   }
 `;
 const ButtonContainer = styled.div`
-  display: flex;
-  font-family: "Anuphan";
-  flex-direction: row;
-  margin-left: 150px;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  gap: 10px; /* Adjust the gap as needed */
+display: flex;
+flex-direction: column; // Change to column to stack buttons vertically
+align-items: center; // Center items horizontally
+margin-top: 15px;
+margin-bottom: 10px;
+gap: 10px; /* Adjust the gap as needed */
 
-  @media (max-width: 1208px) {
-    margin-right: 400px;
-  }
+@media (max-width: 1208px) {
+  margin-right: 400px;
+}
 `;
 
 const Styleleft = styled.div`
@@ -169,7 +168,6 @@ const Styleleft = styled.div`
     display: flex;
     margin-left: 380px;
     margin-top: 5px;
-
     background-size: 100%;
   }
   @media (max-width: 1208px) {
