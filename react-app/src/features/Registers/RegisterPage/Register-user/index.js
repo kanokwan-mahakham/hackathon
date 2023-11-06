@@ -210,6 +210,21 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
         informationId: response1.data.id,
       });
 
+       //////////////////////*************************/////////////////////////////
+
+       await axios.post(`${url}/listChats`, {
+        userId: 1,
+        companyId: response.data.id,
+        room: Number(`1${response.data.id}`),
+      });
+      await axios.post(`${url}/listChats`, {
+        userId: response.data.id,
+        companyId: 1,
+        room: Number(`1${response.data.id}`),
+      });
+
+      ///////////////////////////////////////////////////////////////////////////
+
       Swal.fire({
         position: "center",
         icon: "success",
