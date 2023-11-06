@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import InputRegField from "../Component/input";
 import Button from "../Component/Botton";
 import styled from "styled-components";
@@ -207,10 +207,11 @@ const Stylep = styled.div`
   }
 `;
 
-const Check = ({ url, companies, setCompanies, setNotis }) => {
+const Check = ({ url, companies, setCompanies, setNotis,products,setProducts }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const company = companies.find((com) => com.id == Number(id));
+  window.scrollTo(0, 0);
 
   async function confirm() {
     try {
@@ -250,10 +251,25 @@ const Check = ({ url, companies, setCompanies, setNotis }) => {
     try {
       
       // Step 4: Display a success message using Swal (SweetAlert)
+
+      await Promise.all(products.map(async (product) => {
+        if (product.companyId == company.id) {
+          await axios.delete(`${url}/products/${product.id}`);
+        }
+      }));
+
+      await axios.delete(`${url}/users/${company.id}`)
+      const res = await axios.get(`${url}/users`)
+      const resProducts = await axios.get(`${url}/products`)
+      setCompanies(res.data)
+      setProducts(resProducts.data)
+
+
       Swal.fire({
         position: "center",
         icon: "success",
         title: "ยกเลิกบัญชีเรียบร้อย",
+        text: "กลับสู่หน้าหลัก",
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
@@ -340,9 +356,6 @@ const Check = ({ url, companies, setCompanies, setNotis }) => {
                 </>
               ) : (
                 <>
-                  <StyledBotton>
-                    <Button text="ลบบัญชี" onClick={deleteUser} />
-                  </StyledBotton>
                   <StyledBotton2>
                     <Button text="แก้ไขข้อมูล" onClick={editUser} />
                   </StyledBotton2>

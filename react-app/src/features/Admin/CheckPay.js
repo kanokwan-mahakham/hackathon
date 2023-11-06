@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Button from "../Component/Botton";
 import styled from "styled-components";
 import paymentImage from "../../image Hackathon/image/qrcode.png";
-import { Link,useNavigate,useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 
 const Backgroud = styled.div`
-@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   background-color: #000;
   display: flex;
   justify-content: center;
@@ -109,8 +109,7 @@ const Styledh1 = styled.div`
     margin-bottom: 20px;
     margin-left: 320px;
     font-family: "Anuphan";
-    color:#fff;
-
+    color: #fff;
   }
 `;
 
@@ -182,164 +181,173 @@ const ButtonContainer = styled.div`
   gap: 10px; /* Adjust the gap as needed */
 `;
 
-const CheckPay = ({ url, packages, setPackages,setCompanies, setNotis }) => {
+const CheckPay = ({ url, packages, setPackages, setCompanies, setNotis }) => {
+  const { id } = useParams();
+  const { notiId } = useParams();
+  const navigate = useNavigate();
+  const pomotion = packages.find((packs) => packs.companyId == Number(id));
 
-    const { id } = useParams();
-    const { notiId } = useParams();
-    const navigate = useNavigate();
-    const pomotion = packages.find((packs)=> packs.companyId == Number(id));
+  const currentDate = new Date();
+  const day = String(currentDate.getDate()).padStart(2, "0");
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // เดือนใน JavaScript เริ่มจาก 0
+  const year = String(currentDate.getFullYear()).slice(2); // หรือคุณสามารถใช้ .substr(2) แทน .slice(2)
+  // const hours = String(currentDate.getHours()).padStart(2, "0");
+  // const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+  // const [formattedTime, setFormattedTime] = useState("");
+  const [formattedDay, setFormattedDay] = useState("");
 
-    async function setUser(){
-        const respone = await axios.get(`${url}/users/${pomotion.companyId}`)
-        const {id,pack,...item} = respone.data;
-        await axios.put(`${url}/users/${id}`,{...item,pack:1})
+  async function setUser() {
+    const respone = await axios.get(`${url}/users/${pomotion.companyId}`);
+    const { id, pack, ...item } = respone.data;
+    await axios.put(`${url}/users/${id}`, { ...item, pack: 1 });
+  }
 
+  async function confirm() {
+
+    if (pomotion.pack == "เพิ่มการมองเห็น 1 วัน") {
+      const res = String(currentDate.getDate() + 1).padStart(2, "0");
+      setFormattedDay(`${res}-${month}-${year}`);
+    } else if (pomotion.pack == "เพิ่มการมองเห็น 1 เดือน") {
+      const res = String(currentDate.getMonth() + 2).padStart(2, "0");
+      setFormattedDay(`${day}-${res}-${year}`);
+    } else {
+      const res = String(currentDate.getFullYear() + 1).slice(2);
+      setFormattedDay(`${day}-${month}-${res}`);
     }
 
-    async function confirm() {
-      try {
-        // Step 1: Delete a notification (notis) based on notiId
-        await axios.delete(`${url}/notis/${Number(notiId)}`);
-        // Step 2: Create a new notification
-        await axios.post(`${url}/notis`, {
-          companyId: pomotion.companyId,
-          icon: "checked.png",
-          type: "confirm",
-          description: `เริ่มการโปรโมทตาม ${pomotion.pack} นับตั้งแต่วันนี้จนถึงวันที่ ${pomotion.dayEnd}`,
-        });
-        // Step 3: Update the user's status to "company"
-        const { id, status, ...item } = pomotion;
-        await axios.delete(`${url}/packages/${id}`)
-        await axios.post(`${url}/packages`, { ...item, status: "completed" });
-        const ress = await axios.get(`${url}/notis`)
-        const resCom = await axios.get(`${url}/packages`)
-        setPackages(resCom.data)
-        setNotis(ress.data)
-        setUser()
-        const resUser = await axios.get(`${url}/users`)
-        setCompanies(resUser.data)
-        
-    
-        // Step 4: Display a success message using Swal (SweetAlert)
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "เริ่มการโปรโมท",
-          showConfirmButton: false,
-          timer: 1500,
-        }).then(() => {
-          // Step 5: Navigate back to the home page
-          navigate("/");
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  
-      async function cancel() {
-        try {
-          // Step 1: Delete a notification (notis) based on notiId
-          await axios.delete(`${url}/notis/${Number(notiId)}`);
-          await axios.delete(`${url}/packages/${Number(id)}`)
-      
-          // Step 2: Create a new notification
-          await axios.post(`${url}/notis`, {
-            companyId: pomotion.companyId,
-            icon: "cancel.png",
-            type: "cancel",
-            description: `โปรโมชั่นของคุณถูกยกเลิก สอบถามเพิ่มเติมโปรดติดต่อเจ้าหน้าที่`,
-          });
-      
-          // Step 3: Update the user's status to "company"
-          
-          const ress= await axios.get(`${url}/notis`)
-          setNotis(ress.data)
-      
-          // Step 4: Display a success message using Swal (SweetAlert)
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "ยกเลิกการโปรโมท",
-            showConfirmButton: false,
-            timer: 1500,
-          }).then(() => {
-            // Step 5: Navigate back to the home page
-            navigate("/");
-          });
-        } catch (error) {
-          console.error(error);
-        }
-      }
+    try {
+      await axios.post(`${url}/notis`, {
+        companyId: pomotion.companyId,
+        icon: "checked.png",
+        type: "confirm",
+        description: `เริ่มการโปรโมทตาม ${pomotion.pack} นับตั้งแต่วันนี้จนถึงวันที่ ${formattedDay}`,
+      });
+      // Step 3: Update the user's status to "company"
+      const { id, status,dayEnd, ...item } = pomotion;
+      await axios.delete(`${url}/packages/${id}`);
+      await axios.post(`${url}/packages`, { dayEnd:formattedDay, status: "completed" ,...item});
+      const ress = await axios.get(`${url}/notis`);
+      const resCom = await axios.get(`${url}/packages`);
+      setPackages(resCom.data);
+      setNotis(ress.data);
+      setUser();
+      const resUser = await axios.get(`${url}/users`);
+      setCompanies(resUser.data);
 
-      function back(){
-        navigate(-1)
-      }
- 
+      // Step 4: Display a success message using Swal (SweetAlert)
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "เริ่มการโปรโมท",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        // Step 5: Navigate back to the home page
+        navigate(-1);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function cancel() {
+    try {
+
+      await axios.delete(`${url}/packages/${pomotion.id}`);
+      const ress = await axios.get(`${url}/packages`);
+      setPackages(ress.data);
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "ยกเลิกการโปรโมท",
+        text: "กลับสู่หน้าเดิม",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        navigate(-1);
+      });
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function back() {
+    navigate(-1);
+  }
+
   return (
-    <Backgroud>
-      <StyleContainer>
-        <Styledh1>
-          <h1>{pomotion.pack}</h1>
-        </Styledh1>
-        <div className="container">
-          <div className="left-content">
-            <Styleprevious>
-            <Link className="previous" onClick={back}>
-              &#8249;
-            </Link>
-            </Styleprevious>
-            <Styleleft>
-              <div className="left-image"></div>
-            </Styleleft>
-            <Styledtext1>
-              <div className="text1">
-                ธนาคารไทยพาณิชย์ (SCB)
-                <br />
-                405-1-39704-8
-                <br />
-                ชื่อบัญชี บริษัท ###### จำกัด (มหาชน) ประเภทบัญชีออมทรัพย์
-              </div>
-            </Styledtext1>
+    <>
+      {pomotion ? (
+        <Backgroud>
+          <StyleContainer>
+            <Styledh1>
+              <h1>{pomotion.pack || "pack"}</h1>
+            </Styledh1>
+            <div className="container">
+              <div className="left-content">
+                <Styleprevious>
+                  <Link className="previous" onClick={back}>
+                    &#8249;
+                  </Link>
+                </Styleprevious>
+                <Styleleft>
+                  <div className="left-image"></div>
+                </Styleleft>
+                <Styledtext1>
+                  <div className="text1">
+                    ธนาคารไทยพาณิชย์ (SCB)
+                    <br />
+                    405-1-39704-8
+                    <br />
+                    ชื่อบัญชี บริษัท ###### จำกัด (มหาชน) ประเภทบัญชีออมทรัพย์
+                  </div>
+                </Styledtext1>
 
-            <Styledtext2>
-              <div className="text2">สามารถชำระเงินได้ตามขั้นตอนต่อไปนี้</div>
-            </Styledtext2>
-            <Styledtext1>
-              <div className="text1">
-                1. เซฟภาพหน้าจอ
-                <br />
-                2. เปิดแอพธนาคารของท่าน
-                <br />
-                3. เลือกเมนูสแกน QR
-                <br />
-                4. กดปุ่มรูปภาพ เพื่อเลือกรูปหน้าจอ QR ที่จับภาพไว้
-                <br />
-              </div>
-            </Styledtext1>
+                <Styledtext2>
+                  <div className="text2">
+                    สามารถชำระเงินได้ตามขั้นตอนต่อไปนี้
+                  </div>
+                </Styledtext2>
+                <Styledtext1>
+                  <div className="text1">
+                    1. เซฟภาพหน้าจอ
+                    <br />
+                    2. เปิดแอพธนาคารของท่าน
+                    <br />
+                    3. เลือกเมนูสแกน QR
+                    <br />
+                    4. กดปุ่มรูปภาพ เพื่อเลือกรูปหน้าจอ QR ที่จับภาพไว้
+                    <br />
+                  </div>
+                </Styledtext1>
 
-            <Styledtext3>
-              <div className="text3">
-                เมื่อชำระเงินสำเร็จpackageจะส่แจ้งเตือนไปหาคุณบนเว็ปไซต์
+                <Styledtext3>
+                  <div className="text3">
+                    เมื่อชำระเงินสำเร็จpackageจะส่แจ้งเตือนไปหาคุณบนเว็ปไซต์
+                  </div>
+                </Styledtext3>
+                <ButtonContainer>
+                  <StyledBotton>
+                    <Button text="อนุมัติ" onClick={confirm} />
+                  </StyledBotton>
+                  <StyledBotton2>
+                    <Button text="ลบ" onClick={cancel} />
+                  </StyledBotton2>
+                </ButtonContainer>
               </div>
-            </Styledtext3>
-            <ButtonContainer>
-              <StyledBotton>
-                <Button text="อนุมัติ" onClick={confirm} />
-              </StyledBotton>
-              <StyledBotton2>
-                <Button text="ลบ" onClick={cancel} />
-              </StyledBotton2>
-            </ButtonContainer>
-          </div>
 
-          <StyleRight>
-            <div className="right-image">
-                <img src={pomotion.slip} ></img>
+              <StyleRight>
+                <div className="right-image">
+                  <img src={pomotion.slip}></img>
+                </div>
+              </StyleRight>
             </div>
-          </StyleRight>
-        </div>
-      </StyleContainer>
-    </Backgroud>
+          </StyleContainer>
+        </Backgroud>
+      ) : null}
+    </>
   );
 };
 

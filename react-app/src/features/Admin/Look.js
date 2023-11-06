@@ -64,7 +64,7 @@ const AdminLookTotalData = ({
       setDataPack((prevNewCompanys) => [...prevNewCompanys, ...newCompanies]);
     }
     getCompanies();
-  }, []);
+  }, [packages]);
 
   function login() {
     navigate("/login");

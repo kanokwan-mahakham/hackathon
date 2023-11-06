@@ -276,6 +276,8 @@ const CheckData = ({url, companies,setCompanies,setNotis}) => {
         setNotis(ress.data)
         const { id, status, ...item } = company;
         await axios.put(`${url}/users/${id}`, { ...item, status: "cancel" });
+        const resUser = await axios.get(`${url}/users`)
+        setCompanies(resUser.data)
         
     
         // Step 4: Display a success message using Swal (SweetAlert)

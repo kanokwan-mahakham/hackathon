@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import defaultImage from "../../image Hackathon/image/choose1.jpeg";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Background = styled.div`
   background-color: #000;
@@ -139,32 +140,30 @@ const ConfirmButtonDiv = styled.div`
 `;
 
 function EditCheckData({ url, companies, setCompanies, setNotis }) {
-  const [selectedImage, setSelectedImage] = useState(null);
   const [company, setCompany] = useState([]);
-  const [email, setEmail] = useState("");
-  const [type, setType ] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [juristicNumber, setJuristicNumber] = useState("");
+  const [mail, setmail] = useState("");
+  const [typ, setTyp] = useState("");
+  const [name, setName] = useState("");
+  const [pass, setPass] = useState("");
+  const [number, setNumber] = useState("");
+  const [selectedImage, setSelectedImage] = useState("");
 
-  
   const { id } = useParams();
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     async function getCompanies() {
       try {
         const findCompany = companies.find((com) => com.id == Number(id));
-        if(findCompany){
-          setCompany(findCompany)
-          setEmail(company.email)
-          setUsername(company.username)
-          setPassword(company.password)
-          setJuristicNumber(company.juristicNumber)
-          setType(company.type)
+        if (findCompany) {
+          setCompany(findCompany);
+          setmail(findCompany.email);
+          setName(findCompany.username);
+          setPass(findCompany.password);
+          setNumber(findCompany.juristicNumber);
+          setTyp(findCompany.type);
+          setSelectedImage(findCompany.JuristicFile);
         }
-
       } catch (error) {
         console.error(error);
       }
@@ -172,16 +171,73 @@ function EditCheckData({ url, companies, setCompanies, setNotis }) {
     getCompanies();
   }, [id]);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  function handleImageChange(event) {
+    const file = event.target.files[0];
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setSelectedImage(imageUrl);
+      if (file.size <= 70 * 1024) {
+        // ตรวจสอบขนาดของไฟล์ (70KB)
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const imagePath = e.target.result;
+          setSelectedImage(imagePath); // เก็บ URL ของภาพใน state
+        };
+        reader.readAsDataURL(file);
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "ภาพใหญ่ไป",
+          text: "กรุณาลองใหม่อีกครั้ง",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
     }
-  };
+  }
 
   function back() {
     navigate(-1);
+  }
+
+  async function submit() {
+    try {
+      const {
+        id,
+        username,
+        email,
+        password,
+        type,
+        juristicNumber,
+        JuristicFile,
+        ...item
+      } = company;
+
+      await axios.put(`${url}/users/${id}`, {
+        username: name,
+        email: mail,
+        password: pass,
+        type: typ,
+        juristicNumber: number,
+        JuristicFile: selectedImage,
+        ...item,
+      });
+
+      const res = await axios.get(`${url}/users`);
+      setCompanies(res.data);
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "แก้ไขข้อมูลเรียบร้อย",
+        text: "กลับสู่หน้าเดิม",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        navigate(-1);
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -203,27 +259,51 @@ function EditCheckData({ url, companies, setCompanies, setNotis }) {
               <InputLabel>อีเมล </InputLabel>
               <InputField
                 type="text"
-                placeholder={email}
+                value={mail}
                 onChange={(event) => {
-                  setEmail(event.target.value);
+                  setmail(event.target.value);
                 }}
               />
             </InputFieldWrapper>
             <InputFieldWrapper>
               <InputLabel>ชื่อผู้ใช้</InputLabel>
-              <InputField type="text" placeholder={username} />
+              <InputField
+                type="text"
+                value={name}
+                onChange={(event) => {
+                  setName(event.target.value);
+                }}
+              />
             </InputFieldWrapper>
             <InputFieldWrapper>
               <InputLabel>รหัสผ่าน</InputLabel>
-              <InputField type="text" placeholder={password} />
+              <InputField
+                type="text"
+                value={pass}
+                onChange={(event) => {
+                  setPass(event.target.value);
+                }}
+              />
             </InputFieldWrapper>
             <InputFieldWrapper>
               <InputLabel>ประเภท</InputLabel>
-              <InputField type="text" placeholder={type} />
+              <InputField
+                type="text"
+                value={typ}
+                onChange={(event) => {
+                  setTyp(event.target.value);
+                }}
+              />
             </InputFieldWrapper>
             <InputFieldWrapper>
               <InputLabel>เลขประจำตัวผู้เสียภาษี</InputLabel>
-              <InputField type="text" placeholder={juristicNumber} />
+              <InputField
+                type="text"
+                value={number}
+                onChange={(event) => {
+                  setNumber(event.target.value);
+                }}
+              />
             </InputFieldWrapper>
             <ImageSection>
               <ImageLabel>
@@ -234,8 +314,8 @@ function EditCheckData({ url, companies, setCompanies, setNotis }) {
                   onChange={handleImageChange}
                 />
               </ImageLabel>
-              <Image src={selectedImage || defaultImage} alt="Your Image" />
-              <ConfirmButtonDiv>ยืนยัน</ConfirmButtonDiv>
+              <Image src={selectedImage} alt="Your Image" />
+              <ConfirmButtonDiv onClick={submit}>ยืนยัน</ConfirmButtonDiv>
             </ImageSection>
           </InputSection>
         </Container>

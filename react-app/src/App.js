@@ -812,6 +812,8 @@ function App() {
                   companies={companies}
                   setCompanies={setCompanies}
                   setNotis={setNotis}
+                  products={products}
+                  setProducts={setProducts}
                 ></Check>
               }
             />
