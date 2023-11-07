@@ -114,6 +114,10 @@ const BoxData = ({
       <div className={className}>
         <div className="box">
           <div className="box-box-image">
+            {/* ที่เพิ่มเข้ามา */}
+            <div className="recommend">
+              <p>แนะนำ</p>
+            </div>
             {user.id == item.id ? (
               <Link to="/profile-company">
                 <img src={data.profile} alt="รูปภาพ" />
@@ -147,7 +151,7 @@ const BoxData = ({
 };
 
 export default styled(BoxData)`
-@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@200;300;400;500&family=Lora:wght@400;500;600;700&family=Pangolin&family=Prompt:wght@200;500;700&display=swap");
   .box {
     position: relative;
   }
@@ -159,6 +163,7 @@ export default styled(BoxData)`
     object-fit: cover;
   }
   .box .box-box-image {
+    position: relative;
     width: 300px;
     height: 350px;
     border-radius: 30px;
@@ -170,11 +175,28 @@ export default styled(BoxData)`
     text-decoration: none;
     color: #333a56;
   }
+  .recommend {
+    position: absolute;
+    padding: 10px;
+    top: -5px;
+    left: -15px;
+  }
+  .box-box-image .recommend p {
+    font-family: "Anuphan";
+    font-size: 17px;
+    font-weight: 500;
+    background-image: linear-gradient(to bottom right, #cf0a0a, #ff7c1d);
+    color: white;
+    text-align: center;
+    width: 90px;
+    height: 24px;
+    border-radius: 15px;
+  }
   .box-detail {
     display: flex;
     text-align: center;
     position: absolute;
-    bottom: 30px;
+    bottom: 10px;
     left: 12px;
     background-color: white;
     width: 245px;
@@ -183,7 +205,9 @@ export default styled(BoxData)`
     z-index: 1;
     flex-direction: column;
     justify-content: center;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   }
   .image {
     flex: 1;
@@ -232,5 +256,4 @@ export default styled(BoxData)`
     height: 25px;
     cursor: pointer;
   }
-  
 `;
