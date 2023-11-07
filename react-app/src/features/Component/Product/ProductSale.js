@@ -20,62 +20,63 @@ const ProductSale = ({ product,className }) => {
 };
 
 export default styled(ProductSale)`
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+.box {
+  position: relative;
+}
+.box #box-image {
+  width: 300px;
+  height: 380px;
+  border-radius: 30px;
+  margin: 10px 40px 40px 0px;
+  object-fit: cover;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.box-detail {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  text-align: center;
+  position: absolute;
+  bottom: 70px;
+  left: 15px;
+  background-color: white;
+  width: 270px;
+  height: 120px;
+  border-radius: 30px;
+  z-index: 1;
+  flex-direction: column;
   justify-content: center;
-  .box {
-    position: relative;
-  }
-  .box #box-image {
-    width: 300px;
-    height: 380px;
-    border-radius: 30px;
-    margin: 10px 40px 40px 0px;
-    object-fit: cover;
-  }
-  .box-detail {
-    display: flex;
-    text-align: center;
-    position: absolute;
-    bottom: 70px;
-    left: 15px;
-    background-color: white;
-    width: 270px;
-    height: 120px;
-    border-radius: 30px;
-    z-index: 1;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  }
-  .image {
-    flex: 1;
-    overflow: hidden;
-  }
-  .box-detail #name {
-    font-family: "Anuphan";
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    margin-top: 8px;
-  }
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.image {
+  flex: 1;
+  overflow: hidden;
+}
+.box-detail #name {
+  font-family: "Anuphan";
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-top: 8px;
+}
 
-  .detail {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
-    flex-direction: column;
-  }
-  .detail p {
-    font-family: "Anuphan";
-    font-size: 15px;
-    font-weight: 400;
-    margin: 7px;
-  }
-  .detail #price {
-    font-weight: 600;
-    color: #333a56;
-  }
+.detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  flex-direction: column;
+}
+.detail p {
+  font-family: "Anuphan";
+  font-size: 15px;
+  font-weight: 400;
+  margin: 2px;
+}
+.detail #price {
+  font-weight: 600;
+  color: #333a56;
+}
 `;

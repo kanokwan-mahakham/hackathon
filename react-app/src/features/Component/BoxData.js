@@ -115,9 +115,13 @@ const BoxData = ({
         <div className="box">
           <div className="box-box-image">
             {/* ที่เพิ่มเข้ามา */}
-            <div className="recommend">
-              <p>แนะนำ</p>
-            </div>
+            {
+              (item.pack == 1 ? (
+                <div className="recommend">
+                  <p>แนะนำ</p>
+                </div>
+              ) : null)
+            }
             {user.id == item.id ? (
               <Link to="/profile-company">
                 <img src={data.profile} alt="รูปภาพ" />
@@ -215,7 +219,7 @@ export default styled(BoxData)`
   }
   .box-detail #name {
     font-family: "Anuphan";
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 5px;
     margin-top: 3px;
@@ -225,6 +229,7 @@ export default styled(BoxData)`
     font-size: 13px;
     font-weight: 400;
     margin: 0px 25px;
+    height: 30px;
   }
   .button {
     display: flex;
