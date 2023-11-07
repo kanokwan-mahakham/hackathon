@@ -223,6 +223,13 @@ const RegisterUser = ({ companies,setUser, url, className }) => {
         room: Number(`1${response.data.id}`),
       });
 
+
+      await axios.post(`${url}/listChats`, {
+        userId: response.data.id,
+        companyId: 0,
+        room: 0,
+      });
+
       ///////////////////////////////////////////////////////////////////////////
 
       Swal.fire({

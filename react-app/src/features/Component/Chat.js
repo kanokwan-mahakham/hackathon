@@ -42,22 +42,23 @@ const Chat = ({
   async function handleFileChange(event) {
     const file = event.target.files[0];
     if (file) {
-      if (file.size <= 70 * 1024) { // Check file size (70KB)
+      if (file.size <= 70 * 1024) {
+        // Check file size (70KB)
         const reader = new FileReader();
-  
+
         reader.onload = async function (e) {
           const imagePath = e.target.result;
-          
+
           const messageData = {
             room: room,
             sendId: user.id,
             message: imagePath,
           };
-  
+
           try {
             await socket.emit("send_message", messageData);
             await axios.post(`${url}/chats`, messageData);
-  
+
             let updatedMessageList = [...messageList, messageData];
             let updatedChat = [...chat, messageData];
             setMessageList(updatedMessageList);
@@ -67,7 +68,7 @@ const Chat = ({
             console.error("Error:", error);
           }
         };
-  
+
         reader.readAsDataURL(file);
       } else {
         Swal.fire({
@@ -81,8 +82,58 @@ const Chat = ({
       }
     }
   }
-  
-  
+
+  async function sendMessageBot() {
+    try {
+
+      const messageDataUser = {
+        room: room,
+        sendId: user.id,
+        message: currentMessage,
+      };
+      await axios.post(`${url}/chats`, messageDataUser);
+      setMessageList((list) => [...list, messageDataUser]);
+      let updatedChat = [...chat, messageDataUser];
+      setChat(updatedChat);
+      setCurrentMessage("");
+
+
+      const response = await fetch(`${url}/completions`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: currentMessage,
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+
+      const messageDataBot = {
+        room: room,
+        sendId: 0,
+        message: data.choices[0].message.content,
+      };
+      await axios.post(`${url}/chats`, messageDataBot);
+      setMessageList((list) => [...list, messageDataBot]);
+      let updatedChatBot = [...chat, messageDataBot];
+      setChat(updatedChatBot);
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  // async function sendMessageBot() {
+  //   try {
+  //     const response = await axios.post(`${url}/completions`, { prompt: "how are you" });
+  //     console.log(response.data); // แสดงข้อมูลที่ได้รับจากเซิร์ฟเวอร์
+  //   } catch (error) {
+  //     // ดำเนินการเมื่อเกิดข้อผิดพลาด
+  //     console.error(error);
+  //   }
+  // }
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -121,7 +172,7 @@ const Chat = ({
         <ScrollToBottom className="body-chat">
           {messageList.map((messageContent) => {
             if (messageContent.sendId === user.id) {
-              if (messageContent.message.toLowerCase().includes('data')) {
+              if (messageContent.message.toLowerCase().includes("data")) {
                 return (
                   <div className="right">
                     <div id="text-right">
@@ -129,8 +180,7 @@ const Chat = ({
                     </div>
                   </div>
                 );
-              }
-              else{
+              } else {
                 return (
                   <div className="right">
                     <div id="text-right">
@@ -138,20 +188,17 @@ const Chat = ({
                     </div>
                   </div>
                 );
-
               }
-              
             } else {
-              if (messageContent.message.toLowerCase().includes('data')) {
+              if (messageContent.message.toLowerCase().includes("data")) {
                 return (
                   <div className="left">
                     <div id="text-left">
-                      <img src={messageContent.message}/>
+                      <img src={messageContent.message} />
                     </div>
                   </div>
                 );
-              }
-              else{
+              } else {
                 return (
                   <div className="left">
                     <div id="text-left">
@@ -159,9 +206,7 @@ const Chat = ({
                     </div>
                   </div>
                 );
-
               }
-             
             }
           })}
         </ScrollToBottom>
@@ -175,7 +220,6 @@ const Chat = ({
             }}
           ></input>
           <div className="btn-send-messages">
-
             <input
               type="file"
               id="product-image"
@@ -186,11 +230,18 @@ const Chat = ({
               onChange={handleFileChange}
             />
 
-            <label htmlFor="product-image" className="file-label">
-              <img src={file} onClick={sendMessage} />
-            </label>
-
-            <img src={send} onClick={sendMessage} />
+            {room == 0 ? (
+              <>
+                <img src={send} onClick={sendMessageBot} />
+              </>
+            ) : (
+              <>
+                <label htmlFor="product-image" className="file-label">
+                  <img src={file} onClick={sendMessage} />
+                </label>
+                <img src={send} onClick={sendMessage} />
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -257,19 +308,19 @@ export default styled(Chat)`
     display: flex;
     justify-content: flex-end;
   }
-  .right #text-right p{
+  .right #text-right p {
     background-color: #f7f5e6;
     color: #333a56;
     width: fit-content;
-    height:fit-content;
+    height: fit-content;
     padding: 10px 15px;
     border-radius: 30px;
-    margin-top:0px;
-    margin-bottom:5px;
+    margin-top: 0px;
+    margin-bottom: 5px;
   }
-  .right img{
+  .right img {
     width: 100px;
-    height:150px;
+    height: 150px;
     object-fit: cover;
   }
 
@@ -282,19 +333,19 @@ export default styled(Chat)`
     display: flex;
     justify-content: flex-start;
   }
-  .left #text-left p{
+  .left #text-left p {
     background-color: #c6ccd7;
     color: #333a56;
     width: fit-content;
-    height:fit-content;
+    height: fit-content;
     padding: 10px 15px;
     border-radius: 30px;
-    margin-top:0px;
-    margin-bottom:5px;
+    margin-top: 0px;
+    margin-bottom: 5px;
   }
-  .left img{
+  .left img {
     width: 100px;
-    height:150px;
+    height: 150px;
     object-fit: cover;
   }
 
