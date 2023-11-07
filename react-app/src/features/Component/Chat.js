@@ -104,7 +104,7 @@ const Chat = ({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          message: currentMessage,
+          messages: currentMessage,
         }),
       });
       const data = await response.json();
@@ -117,8 +117,9 @@ const Chat = ({
       };
       await axios.post(`${url}/chats`, messageDataBot);
       setMessageList((list) => [...list, messageDataBot]);
-      let updatedChatBot = [...chat, messageDataBot];
-      setChat(updatedChatBot);
+      let updatedChatbot = [...chat, messageDataBot];
+      setChat(updatedChatbot);
+      
 
     } catch (error) {
       console.error(error)

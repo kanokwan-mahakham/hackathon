@@ -18,7 +18,7 @@ const chatRoutes = require("./routes/chats");
 const app = express();
 
 // const { OpenAIApi } = require("openai");
-const API_KEY = "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";
+const API_KEY = "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";
 
 // const openai = new OpenAIApi({ apiKey: API_KEY });
 

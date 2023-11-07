@@ -20,6 +20,7 @@ const Navbar = ({
     setCompares([]);
     setShowListChat("");
     navigate("/");
+    
   }
 
   function showNoti() {
