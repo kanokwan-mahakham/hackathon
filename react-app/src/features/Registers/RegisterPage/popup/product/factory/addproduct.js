@@ -45,7 +45,7 @@ const StyledBotton = styled.div`
 const StyleContainer = styled.div`
   .container {
     font-family: "Anuphan";
-    width: 490px;
+    width: 700px;
     height: 470px;
     background-color: #ffffff;
     border-radius: 54px;

@@ -149,16 +149,17 @@ const Styledh1 = styled.div`
   }
 `;
 const ButtonContainer = styled.div`
-display: flex;
-flex-direction: column; // Change to column to stack buttons vertically
-align-items: center; // Center items horizontally
-margin-top: 15px;
-margin-bottom: 10px;
-gap: 10px; /* Adjust the gap as needed */
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
 
-@media (max-width: 1208px) {
-  margin-right: 400px;
-}
+  @media (max-width: 1208px) {
+    margin-right: 400px;
+  }
 `;
 
 const Styleleft = styled.div`
@@ -205,7 +206,14 @@ const Stylep = styled.div`
   }
 `;
 
-const Check = ({ url, companies, setCompanies, setNotis,products,setProducts }) => {
+const Check = ({
+  url,
+  companies,
+  setCompanies,
+  setNotis,
+  products,
+  setProducts,
+}) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const company = companies.find((com) => com.id == Number(id));
@@ -247,21 +255,21 @@ const Check = ({ url, companies, setCompanies, setNotis,products,setProducts }) 
 
   async function deleteUser() {
     try {
-      
       // Step 4: Display a success message using Swal (SweetAlert)
 
-      await Promise.all(products.map(async (product) => {
-        if (product.companyId == company.id) {
-          await axios.delete(`${url}/products/${product.id}`);
-        }
-      }));
+      await Promise.all(
+        products.map(async (product) => {
+          if (product.companyId == company.id) {
+            await axios.delete(`${url}/products/${product.id}`);
+          }
+        })
+      );
 
-      await axios.delete(`${url}/users/${company.id}`)
-      const res = await axios.get(`${url}/users`)
-      const resProducts = await axios.get(`${url}/products`)
-      setCompanies(res.data)
-      setProducts(resProducts.data)
-
+      await axios.delete(`${url}/users/${company.id}`);
+      const res = await axios.get(`${url}/users`);
+      const resProducts = await axios.get(`${url}/products`);
+      setCompanies(res.data);
+      setProducts(resProducts.data);
 
       Swal.fire({
         position: "center",
@@ -282,7 +290,7 @@ const Check = ({ url, companies, setCompanies, setNotis,products,setProducts }) 
   function editUser() {
     navigate(`/editCheckdata/${company.id}`);
   }
-  
+
   function back() {
     navigate(-1);
   }
@@ -300,8 +308,6 @@ const Check = ({ url, companies, setCompanies, setNotis,products,setProducts }) 
             <Styledh1>
               <h1>ตรวจสอบข้อมูล</h1>
             </Styledh1>
-
-            
 
             <Stylep>
               <div className="boxtext">อีเมล : {company.email}</div>
